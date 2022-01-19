@@ -1,4 +1,4 @@
-import Fantom from "../images/Fantom.svg"
+import Fantom from "../Assets/Fantom.svg"
 import { useLocation } from "react-router-dom"
 
 const Header = () => {

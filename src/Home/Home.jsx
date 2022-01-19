@@ -1,14 +1,6 @@
-import Video from "../Assets/Autumn.mp4"
-
 const Home = () => {
   return (
     <div className="relative flex items-center justify-center h-screen mb-12 overflow-y-hidden">
-      <video
-        src={Video}
-        className="absolute z-10 w-auto min-w-full min-h-full max-w-none"
-        controls="controls"
-        autoplay="true"
-      />
       <div>
         <a
           href="/products"

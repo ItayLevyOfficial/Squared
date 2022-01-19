@@ -1,9 +1,9 @@
-import Alchemhy from "../images/Alchemy.svg"
-import Discord from "../images/Discord-Logo.svg"
-import Medium from "../images/Medium-Logo.svg"
-import Reddit from "../images/Reddit-Logo.svg"
-import Telegram from "../images/Telegram-Logo.svg"
-import Twitter from "../images/Twitter-Logo.svg"
+import Alchemhy from "../Assets/Alchemy.svg"
+import Discord from "../Assets/Discord-Logo.svg"
+import Medium from "../Assets/Medium-Logo.svg"
+import Reddit from "../Assets/Reddit-Logo.svg"
+import Telegram from "../Assets/Telegram-Logo.svg"
+import Twitter from "../Assets/Twitter-Logo.svg"
 
 const Footer = () => {
   return (
