@@ -6,7 +6,7 @@ export const LaunchEventScreen = () => {
             <LaunchEventHeader/>
             <Spacer height="20"/>
             <div className="w-1/2">
-                <h1 className="text-white text-2xl font-medium tracking-widel">Commit Assets</h1>
+                <h1 className="text-white text-2xl font-medium tracking-wide">Commit Assets</h1>
             </div>
         </div>
     </ScreenPaddedContainer>
