@@ -10,7 +10,6 @@ export const LaunchEventScreen = () => {
                     Commit FTM or MIM to swap for BAKD.
                     Final conversion rate is set at start of last look.
                 </p>
-
             </div>
         </div>
     </ScreenPaddedContainer>
@@ -26,7 +25,10 @@ const LaunchEventHeader = ({className = ''}) => {
                 <h2 className="text-primary text-xl font-light">DEGENESIS EVENT</h2>
             </div>
         </div>
-        <AddressButton/>
+        <div className="flex items-center">
+
+            <AddressButton/>
+        </div>
     </div>
 }
 
