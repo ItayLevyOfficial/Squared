@@ -6,7 +6,7 @@ const ModalInfo = ({ isModalOnWidthdraw, selectedToken }) => {
       {isModalOnWidthdraw ? (
         <>
           <ModalLine
-            title="Description"
+            title="Deposited"
             amount="0.00"
             selectedToken={selectedToken}
           />
@@ -35,7 +35,7 @@ const ModalInfo = ({ isModalOnWidthdraw, selectedToken }) => {
       ) : (
         <>
           <ModalLine
-            title="Description"
+            title="Deposited"
             amount="0.00"
             selectedToken={selectedToken}
           />
