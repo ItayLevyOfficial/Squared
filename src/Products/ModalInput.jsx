@@ -3,7 +3,7 @@ const ModalInput = ({ selectedToken }) => {
     <div className="w-full flex justify-center mt-10">
       <div className="w-10/12 h-14 bg-dark flex justify-center rounded-lg">
         <div className="w-full flex justify-between items-center px-6">
-          <button className="px-2 h-6 flex justify-center items-center border bg-black text-white hover:bg-primary hover:text-black  rounded-lg">
+          <button className="px-2 -ml-4 h-6 flex justify-center items-center border bg-black text-white hover:bg-primary hover:text-black  rounded-lg">
             MAX
           </button>
           <input
@@ -13,7 +13,7 @@ const ModalInput = ({ selectedToken }) => {
             dir="rtl"
           />
         </div>
-        <div className="flex h-full justify-end items-center pr-2 text-white">
+        <div className="flex h-full justify-end items-center pr-2 text-white text-sm">
           {selectedToken}
         </div>
       </div>
