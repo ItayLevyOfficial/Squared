@@ -26,7 +26,7 @@ const LaunchEventHeader = ({className = ''}) => {
             </div>
         </div>
         <div className="flex items-center">
-
+            <h2 className="text-primary text-lg tracking-wide font-light mr-10">4 DAYS 23 HOURS 59 MINUTES REMAIN</h2>
             <AddressButton/>
         </div>
     </div>
