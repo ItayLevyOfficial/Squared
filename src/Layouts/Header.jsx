@@ -1,5 +1,6 @@
 import Fantom from "../Assets/Fantom.svg"
 import {useLocation} from "react-router-dom"
+import {useState} from "react";
 
 const Header = () => {
     const {pathname} = useLocation()
@@ -14,12 +15,13 @@ const Header = () => {
     )
 }
 
-export const AddressButton = ({onClick, address = "0xA3318B6027DC8fC382F990Bee9d2308E2ea3a388"}) => (
-    <button onClick={onClick}
-            className="border-solid border-[0.5px] border-white text-white font-medium h-fit px-5 py-2 rounded-xl hover:border-0 hover:bg-lightDark">
+export const AddressButton = ({onClick, address = "0xA3318B6027DC8fC382F990Bee9d2308E2ea3a388"}) => {
+    const [isHovered, setIsHovered] = useState(false)
 
-        {address.slice(0, 7)}...
+    return <button onClick={onClick} onMouseEnter={() => setIsHovered(true)} onMouseLeave={() => setIsHovered(false)}
+                   className="border-solid border-[0.5px] border-white text-white font-medium h-fit px-5 py-2 rounded-xl hover:border-0 hover:bg-lightDark">
+        {isHovered ? "Disconnect" : `${address.slice(0, 7)}...`}
     </button>
-)
+}
 
 export default Header
