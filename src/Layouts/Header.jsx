@@ -14,15 +14,11 @@ const Header = () => {
     )
 }
 
-export const HeaderButtons = ({connectWallet}) => <div className="flex space-x-4">
-    <div
-        className="w-36 h-10 flex justify-center items-center border-transparent  bg-[#2F8652] text-gray-200 cursor-default rounded-xl p-2">
-        <img src={Fantom} className="h-8 w-8"/>
-        <div>Fantom</div>
-    </div>
-    <div className=" w-36 h-10 flex justify-center text-gray-100 bg-[#D05C47]  cursor-pointer rounded-xl p-2">
-        Connect Wallet
-    </div>
-</div>
+export const HeaderButtons = ({connectWallet}) => (
+    <button onClick={connectWallet}
+            className="bg-lightDark hover:bg-dark text-white font-medium h-fit px-5 py-2 rounded-xl">
+        Connect
+    </button>
+)
 
 export default Header
