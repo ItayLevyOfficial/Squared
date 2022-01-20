@@ -1,5 +1,4 @@
 import {AddressButton} from "../Layouts/Header";
-import Information from './info.svg'
 
 export const LaunchEventHeader = ({className = ''}) => {
     return <div className={`flex items-center w-full justify-between ${className}`}>
@@ -9,7 +8,7 @@ export const LaunchEventHeader = ({className = ''}) => {
             <div className="flex flex-col space-y-2 font-bold tracking-widest">
                 <h1 className="text-white text-5xl">PUFF</h1>
                 <h2 className="text-primary text-xl font-light">DEGENESIS EVENT</h2>
-                <InfoIcon fill="white"/>
+                <InfoIcon className="hover:fill-lightDark fill-primary"/>
             </div>
         </div>
         <div className="flex items-center">
