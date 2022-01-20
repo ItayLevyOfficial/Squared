@@ -1,6 +1,6 @@
 export const LaunchEventScreen = () => <ScreenPaddedContainer>
-    <div className="flex flex-col w-full max-w-screen-2xl bg-red-500 h-1.5">
-
+    <div className="flex w-full max-w-screen-2xl">
+        <h1 className="text-white text-5xl font-bold tracking-wide">Puff</h1>
     </div>
 </ScreenPaddedContainer>
 
