@@ -1,5 +1,0 @@
-const black = '#000000'
-const dark = '#52057B'
-const lightDark = '#892CDC'
-const primary = '#BC6FF1'
-const white = '#ffffff'
