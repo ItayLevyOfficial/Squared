@@ -5,8 +5,9 @@ export const LaunchEventScreen = () => {
         <div className="flex flex-col items-center w-full max-w-screen-xl">
             <LaunchEventHeader/>
             <Spacer height="20"/>
-            <div className="w-1/2">
-                <h1 className="text-white text-2xl font-medium tracking-wide">Commit Assets</h1>
+            <div className="w-1/2 flex flex-col">
+                <h1 className="text-white text-2xl font-medium tracking-wide mb-1.5">Commit Assets</h1>
+                <h2 className="text-primary tracking-wide">4 DAYS 23 HOURS 59 MINUTES REMAIN</h2>
             </div>
         </div>
     </ScreenPaddedContainer>
