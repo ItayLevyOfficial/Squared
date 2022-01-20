@@ -1,4 +1,4 @@
-import {ConnectWalletButton} from "../Layouts/Header";
+import {AddressButton} from "../Layouts/Header";
 
 export const LaunchEventScreen = () => {
     return <ScreenPaddedContainer>
@@ -19,10 +19,6 @@ export const LaunchEventScreen = () => {
 }
 
 const LaunchEventHeader = () => {
-    const connectWallet = () => {
-        // TODO: Implement connect wallet functionality.
-    }
-
     return <div className="flex items-center w-full justify-between">
         <div className="flex">
             <div className="w-0.5 h-50 bg-primary"/>
@@ -32,7 +28,7 @@ const LaunchEventHeader = () => {
                 <h2 className="text-primary text-xl tracking-widest font-light">DEGENESIS EVENT</h2>
             </div>
         </div>
-        <ConnectWalletButton connectWallet={connectWallet}/>
+        <AddressButton/>
     </div>
 }
 
