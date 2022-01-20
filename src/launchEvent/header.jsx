@@ -7,8 +7,10 @@ export const LaunchEventHeader = ({className = ''}) => {
             <div className="w-5"/>
             <div className="flex flex-col space-y-2 font-bold tracking-widest">
                 <h1 className="text-white text-5xl">PUFF</h1>
-                <h2 className="text-primary text-xl font-light">DEGENESIS EVENT</h2>
-                <InfoIcon className="hover:fill-lightDark fill-primary"/>
+                <div>
+                    <h2 className="text-primary text-xl font-light">DEGENESIS EVENT</h2>
+                    <InfoIcon className="hover:fill-lightDark fill-primary"/>
+                </div>
             </div>
         </div>
         <div className="flex items-center">
