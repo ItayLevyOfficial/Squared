@@ -5,9 +5,14 @@ export const LaunchEventScreen = () => {
         <div className="flex flex-col items-center w-full max-w-screen-xl">
             <LaunchEventHeader/>
             <Spacer height="20"/>
-            <div className="w-1/2 flex flex-col">
-                <h1 className="text-white text-2xl font-medium tracking-wide mb-1.5">Commit Assets</h1>
-                <h2 className="text-primary tracking-wide">4 DAYS 23 HOURS 59 MINUTES REMAIN</h2>
+            <div className="w-[60ch] flex flex-col">
+                <h1 className="text-white text-3xl font-medium tracking-wide mb-1.5">Commit Assets</h1>
+                <h2 className="text-primary text-lg tracking-wide font-light mb-3">4 DAYS 23 HOURS 59 MINUTES REMAIN</h2>
+                <p className="text-white font-light">
+                    Commit FTM or MIM to swap for BAKD.
+                    Final conversion rate is set at start of last look.
+                </p>
+
             </div>
         </div>
     </ScreenPaddedContainer>
@@ -34,6 +39,6 @@ const LaunchEventHeader = () => {
 const Spacer = ({width = "0", height = "0"}) => <div className={`w-${width} h-${height} flex-none`}/>
 
 export const ScreenPaddedContainer = (props) => <div
-    className="w-screen h-screen bg-black flex flex-col items-center px-40 py-10">
+    className="w-screen h-screen bg-black flex flex-col items-center px-40 py-16">
     {props.children}
 </div>
