@@ -30,8 +30,6 @@ const LaunchEventHeader = ({className = ''}) => {
     </div>
 }
 
-const Spacer = ({width = "0", height = "0"}) => <div className={`w-${width} h-${height} flex-none`}/>
-
 export const ScreenPaddedContainer = (props) => <div
     className="w-screen h-screen bg-black flex flex-col items-center px-40 py-16">
     {props.children}
