@@ -5,18 +5,18 @@ import LiquidityPool from './LiquidityPool'
 import Sidenav from '../Layouts/Sidenav'
 import Header from '../Layouts/Header'
 import Footer from '../Layouts/Footer'
-import DisplayModal from './DisplayModal'
+import ModalDisplay from './ModalDisplay'
 import { InformationCircleIcon } from '@heroicons/react/outline'
 
 import { StakingPoolsObject } from './StakingPools'
 
 const Products = () => {
   const [modalIsOpen, setIsOpen] = useState(false)
-  const [selectedPool, setSelectedPool] = useState('')
+  const [selectedToken, setSelectedToken] = useState('')
 
   const openModal = (id) => {
     setIsOpen(true)
-    setSelectedPool(id)
+    setSelectedToken(id)
   }
 
   const closeModal = () => {
@@ -25,22 +25,24 @@ const Products = () => {
 
   return (
     <>
-      <DisplayModal
+      <ModalDisplay
         modalIsOpen={modalIsOpen}
         closeModal={closeModal}
-        selectedPool={selectedPool}
-        children={StakingPoolsObject.map(
+        selectedToken={selectedToken}
+      >
+        {StakingPoolsObject.map(
           (el) =>
-            el.id == selectedPool && (
-              <StakingPool el={el} key={el.id} selectedPool={selectedPool} />
+            el.id == selectedToken && (
+              <StakingPool el={el} key={el.id} selectedToken={selectedToken} />
             )
         )}
-      />
+      </ModalDisplay>
+
       <div className="w-full h-screen flex justify-center">
         <Sidenav />
         <div className="flex flex-col justify-between ml-6 w-9/12">
           <Header />
-          <div className="w-full mb-6 text-gray-100 h-56 border-transparent rounded-3xl flex items-center justify-between p-6 space-x-4 overflow-x-scroll scrollbar scrollbar-thumb-green-200 scrollbar-track-gray-700 scrollbar-thin">
+          <div className="w-full mb-6 text-gray-100 h-56 border-transparent rounded-3xl flex items-center justify-between p-6 space-x-4 overflow-x-scroll ">
             {StakingPoolsObject.map((el) => (
               <StakingPool el={el} key={el.id} openModal={openModal} />
             ))}
@@ -50,17 +52,17 @@ const Products = () => {
             column2="APR on Deposits"
             column3="My Vote"
             column4="APR on Vote"
-            children={
-              <LiquidityPool
-                column1="$140M"
-                column2="14%"
-                column3="NONE"
-                column4={
-                  <InformationCircleIcon className="h-6 cursor-pointer text-gray-100" />
-                }
-              />
-            }
-          />
+          >
+            <LiquidityPool
+              column1="$140M"
+              column2="14%"
+              column3="NONE"
+              column4={
+                <InformationCircleIcon className="h-6 cursor-pointer text-gray-100" />
+              }
+            />
+          </LiquidityPools>
+
           <Footer />
         </div>
       </div>
