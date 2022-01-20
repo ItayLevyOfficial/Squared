@@ -4,6 +4,6 @@ export const LaunchEventScreen = () => <ScreenPaddedContainer>
     </div>
 </ScreenPaddedContainer>
 
-export const ScreenPaddedContainer = ({children}) => <div className="w-screen h-screen bg-black flex flex-col items-center px-40 py-10">
-    {children()}
+export const ScreenPaddedContainer = (props) => <div className="w-screen h-screen bg-black flex flex-col items-center px-40 py-10">
+    {props.children}
 </div>
