@@ -1,8 +1,8 @@
 export const LaunchEventScreen = () => <ScreenPaddedContainer>
     <div className="flex w-full max-w-screen-2xl">
-        <div className="flex flex-col space-y-5">
-            <h1 className="text-white text-5xl font-bold tracking-wide">Puff</h1>
-            <h2 className="">Degenesis Event</h2>
+        <div className="flex flex-col space-y-2">
+            <h1 className="text-white text-5xl font-bold tracking-wide">PUFF</h1>
+            <h2 className="text-primary text-xl tracking-wide font-light">DEGENESIS EVENT</h2>
         </div>
     </div>
 </ScreenPaddedContainer>
