@@ -1,15 +1,14 @@
-import Footer from "../Layouts/Footer"
-import Header from "../Layouts/Header"
-import Sidenav from "../Layouts/Sidenav"
-import ProductPools from "../Products/LiquidityPools"
-import ProductPool from "../Products/LiquidityPool"
-import { InformationCircleIcon } from "@heroicons/react/outline"
-import Balance from "./Balance"
+import Footer from '../Layouts/Footer'
+import Header from '../Layouts/Header'
+import Sidenav from '../Layouts/Sidenav'
+import ProductPools from '../Products/LiquidityPools'
+import ProductPool from '../Products/LiquidityPool'
+import { InformationCircleIcon } from '@heroicons/react/outline'
+import Balance from './Balance'
 
 const Dashboard = () => {
   return (
     <div className="w-full h-screen flex justify-center">
-
       <Sidenav />
 
       <div className="flex flex-col justify-between ml-6 w-9/12">
