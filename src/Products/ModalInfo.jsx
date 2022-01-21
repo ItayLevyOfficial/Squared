@@ -1,9 +1,9 @@
 import ModalLine from './ModalLine'
 
-const ModalInfo = ({ isModalOnWidthdraw, selectedToken }) => {
+const ModalInfo = ({ isOnWithdraw, selectedToken }) => {
   return (
     <div className="text-white text-sm mt-6">
-      {isModalOnWidthdraw ? (
+      {isOnWithdraw ? (
         <>
           <ModalLine
             title="Deposited"
@@ -22,12 +22,12 @@ const ModalInfo = ({ isModalOnWidthdraw, selectedToken }) => {
             selectedToken={selectedToken}
           />
           <br /> <br />
-          <div className="w-full flex flex-col items-center">
-            <span className="text-xs">
+          <div className="w-full flex flex-col items-center text-xs">
+            <span>
               Subsequent withdrawal requests will overwrite existing requests
             </span>
 
-            <span className="text-xs">
+            <span>
               Requested withdrawals will become available after 1 cycle
             </span>
           </div>
@@ -40,16 +40,14 @@ const ModalInfo = ({ isModalOnWidthdraw, selectedToken }) => {
             selectedToken={selectedToken}
           />
           <br /> <br />
-          <div className="w-full flex flex-col items-center">
-            <span className="text-xs">
-              Withdrawals from Tokemak pools are subjected to a cooldown
-            </span>
+          <div className="w-full flex flex-col items-center text-xs">
+            <span>Withdrawals from Puff pools are subject to a cooldown</span>
 
-            <span className="text-xs">
+            <span>
               Requested withdrawals become available at the beginning of next
               Cycle
             </span>
-            <span className="text-xs">( within 24h )</span>
+            <span>( within 24h )</span>
           </div>
         </>
       )}

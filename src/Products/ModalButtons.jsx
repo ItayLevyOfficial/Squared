@@ -1,23 +1,22 @@
-const ModalButtons = ({ isModalOnWidthdraw, selectedToken }) => {
+const ModalButtons = ({ isOnWithdraw, selectedToken }) => {
+  const Button = ({ text }) => {
+    return (
+      <button className="text-white text-sm border-transparent hover:text-black bg-dark hover:bg-primary rounded-lg p-2  w-5/12">
+        {text}
+      </button>
+    )
+  }
   return (
-    <>
-      {!isModalOnWidthdraw ? (
-        <div className="w-full h-10 flex justify-center items-center space-x-4">
-          <button className="text-white border border-primary hover:text-black hover:bg-primary rounded-lg px-4">
-            DEPOSIT {selectedToken}
-          </button>
-        </div>
+    <div className="w-full h-10 flex justify-center items-center space-x-4">
+      {isOnWithdraw ? (
+        <>
+          <Button text={`REQUEST WITHDRAWL`} />
+          <Button text={`WITHDRAW ${selectedToken}`} />
+        </>
       ) : (
-        <div className="w-full h-10 flex justify-center items-center space-x-4">
-          <button className="text-white border border-primary hover:text-black hover:bg-primary rounded-lg px-4">
-            REQUEST WITHDRAWL
-          </button>
-          <button className="text-white border rounded-lg px-4 opacity-70">
-            WITHDRAW {selectedToken}
-          </button>
-        </div>
+        <Button text={`DEPOSIT ${selectedToken}`} />
       )}
-    </>
+    </div>
   )
 }
 

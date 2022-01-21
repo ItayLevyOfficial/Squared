@@ -1,30 +1,24 @@
-const ModalOptions = ({
-  isModalOnWidthdraw,
-  setIsModalOnWidthdraw,
-  selectedToken,
-}) => {
+const ModalOptions = ({ isOnWithdraw, setIsOnWithdraw, selectedToken }) => {
+  const Option = ({ boolean, optionName, isDisabled }) => {
+    return (
+      <button
+        disabled={isDisabled}
+        className={`flex justify-center w-full py-1 text-white ${
+          isOnWithdraw === boolean
+            ? 'bg-dark opacity-100'
+            : 'bg-black  opacity-70'
+        }`}
+        onClick={() => setIsOnWithdraw(!isOnWithdraw)}
+      >
+        {optionName} {selectedToken}
+      </button>
+    )
+  }
+
   return (
-    <div className="w-full flex justify-between border-b border-white cursor-pointer ">
-      <div
-        className={`flex justify-center w-full py-1 transition ease-in-out duration-200 ${
-          isModalOnWidthdraw == false
-            ? 'bg-dark text-white'
-            : 'bg-black text-white opacity-70'
-        }`}
-        onClick={() => setIsModalOnWidthdraw(false)}
-      >
-        DEPOSIT {selectedToken}
-      </div>
-      <div
-        className={`flex justify-center w-full py-1 transition ease-in-out duration-200 ${
-          isModalOnWidthdraw == true
-            ? 'bg-dark text-white'
-            : 'bg-black text-white opacity-70'
-        }`}
-        onClick={() => setIsModalOnWidthdraw(true)}
-      >
-        WITHDRAW {selectedToken}
-      </div>
+    <div className="w-full flex justify-between border-b border-white cursor-pointer">
+      <Option optionName="DEPOSIT" boolean={false} isDisabled={!isOnWithdraw} />
+      <Option optionName="WITHDRAW" boolean={true} isDisabled={isOnWithdraw} />
     </div>
   )
 }

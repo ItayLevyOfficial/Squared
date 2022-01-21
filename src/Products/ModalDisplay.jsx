@@ -36,20 +36,20 @@ const overlayStyles = {
   backgroundColor: 'rgba(0, 0, 0, 0.70)',
 }
 
-const DisplayModal = ({ modalIsOpen, closeModal, selectedToken }) => {
-  const [isModalOnWidthdraw, setIsModalOnWidthdraw] = useState(false)
+const DisplayModal = ({ isOpen, close, selectedToken }) => {
+  const [isOnWithdraw, setIsOnWithdraw] = useState(false)
 
   return (
     <Modal
-      isOpen={modalIsOpen}
-      onRequestClose={closeModal}
+      isOpen={isOpen}
+      onRequestClose={close}
       style={{
         overlay: overlayStyles,
         content: contentStyles,
       }}
     >
       <div className="flex justify-end">
-        <button onClick={closeModal}>
+        <button onClick={close}>
           <XIcon className="h-6 text-white" />
         </button>
       </div>
@@ -59,19 +59,16 @@ const DisplayModal = ({ modalIsOpen, closeModal, selectedToken }) => {
 
       <div className="border-white border rounded-lg bg-transparent w-full h-96 flex flex-col overflow-hidden">
         <ModalOptions
-          isModalOnWidthdraw={isModalOnWidthdraw}
-          setIsModalOnWidthdraw={setIsModalOnWidthdraw}
+          isOnWithdraw={isOnWithdraw}
+          setIsOnWithdraw={setIsOnWithdraw}
           selectedToken={selectedToken}
         />
         <ModalInput selectedToken={selectedToken} />
-        <ModalInfo
-          selectedToken={selectedToken}
-          isModalOnWidthdraw={isModalOnWidthdraw}
-        />
+        <ModalInfo selectedToken={selectedToken} isOnWithdraw={isOnWithdraw} />
         <br />
 
         <ModalButtons
-          isModalOnWidthdraw={isModalOnWidthdraw}
+          isOnWithdraw={isOnWithdraw}
           selectedToken={selectedToken}
         />
         <br />
