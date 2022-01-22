@@ -18,7 +18,7 @@ export const AddressButton = ({onClick, address = "0xA3318B6027DC8fC382F990Bee9d
     const [isHovered, setIsHovered] = useState(false)
 
     return <button onClick={onClick} onMouseEnter={() => setIsHovered(true)} onMouseLeave={() => setIsHovered(false)}
-                   className="border-solid border-[0.5px] border-white text-white font-medium h-fit px-5 py-2 rounded-xl hover:border-0 hover:bg-lightDark">
+                   className="border-solid border-[0.5px] border-white text-white font-number hover:font-baloo h-fit px-5 py-2 rounded-xl hover:border-0 hover:bg-lightDark">
         {isHovered ? "Disconnect" : `${address.slice(0, 7)}...`}
     </button>
 }
