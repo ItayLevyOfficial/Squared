@@ -11,7 +11,7 @@ module.exports = {
       white: '#ffffff',
     },
     fontFamily: {
-      basic: ['Baloo 2', 'sans-serif']
+      baloo: ['\"Baloo 2\"', 'sans-serif']
     }
   },
   plugins: [],
