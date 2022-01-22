@@ -6,11 +6,11 @@ const ModalInput = ({ selectedToken }) => {
       </button>
       <input
         type="number"
-        className="bg-dark w-full mx-2 text-white outline-none text-xl"
+        className="w-full  bg-dark mx-2 text-white outline-none text-xl"
         autoFocus
         dir="rtl"
       />
-      <div className="flex justify-end items-center pr-2 text-white text-sm">
+      <div className=" text-white text-sm -mr-4 w-auto right-0 ">
         {selectedToken}
       </div>
     </div>

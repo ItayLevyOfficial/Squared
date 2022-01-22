@@ -1,12 +1,12 @@
-import { LibraryIcon, BookOpenIcon } from "@heroicons/react/outline"
-import Logo from "../Assets/Logo.svg"
-import { useLocation } from "react-router-dom"
+import { LibraryIcon, BookOpenIcon } from '@heroicons/react/outline'
+import Logo from '../Assets/Logo.svg'
+import { useLocation } from 'react-router-dom'
 
 const Sidenav = () => {
   const { pathname } = useLocation()
 
   return (
-    <div className="my-6 bg-[#2F8652] text-white w-52  border-transparent rounded-xl flex flex-col space-y-6 items-start px-6 pt-6">
+    <div className="fixed left-5  top-5 bottom-5  rounded-xl w-52 bg-dark text-white flex flex-col space-y-6 items-start px-6 pt-6">
       <div className="w-full flex flex-col justify-center items-center">
         <div className="bg-white rounded-full">
           <img src={Logo} className="w-20 h-20 rounded-full border" />
@@ -17,29 +17,29 @@ const Sidenav = () => {
       <div className="flex cursor-pointer group space-x-2 items-center ">
         <LibraryIcon
           className={`h-6 text-white ${
-            pathname !== "/products" && "opacity-40"
+            pathname !== '/products' && 'opacity-40'
           }`}
         />
 
         <a
           href="/products"
-          className={`text-white ${pathname !== "/products" && "opacity-40"}`}
+          className={`text-white ${pathname !== '/products' && 'opacity-40'}`}
         >
-          Puff's Long Tail
+          Assets
         </a>
       </div>
 
       <div className="flex cursor-pointer group space-x-2 items-center">
         <BookOpenIcon
           className={`h-6 text-white ${
-            pathname !== "/dashboard" && "opacity-40"
+            pathname !== '/dashboard' && 'opacity-40'
           }`}
         />
         <a
           href="/dashboard"
-          className={`text-white ${pathname !== "/dashboard" && "opacity-40"}`}
+          className={`text-white ${pathname !== '/dashboard' && 'opacity-40'}`}
         >
-          Puff's Paper
+          Dashboard
         </a>
       </div>
     </div>
