@@ -27,7 +27,7 @@ const Products = () => {
         close={close}
         selectedToken={selectedToken}
       >
-        {StakingPoolsObject.map(
+        {StakingPoolsObject.find(
           (el) =>
             el.id === selectedToken && (
               <StakingPool el={el} key={el.id} selectedToken={selectedToken} />
