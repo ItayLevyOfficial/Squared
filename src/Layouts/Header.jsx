@@ -1,5 +1,5 @@
-import Fantom from "../Assets/Fantom.svg"
-import { useLocation } from "react-router-dom"
+import {useLocation} from "react-router-dom"
+import {useState} from "react";
 
 const Header = () => {
     const {pathname} = useLocation()
