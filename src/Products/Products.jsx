@@ -35,6 +35,7 @@ const Products = () => {
         )}
       </ModalDisplay>
       <Sidenav />
+
       <div className="flex flex-col w-10/12 max-w-main min-h-full">
         <Header />
         <div className="w-full h-56 flex items-center justify-between space-x-4 overflow-x-scroll ">

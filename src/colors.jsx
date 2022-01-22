@@ -1,0 +1,5 @@
+const black = '#000000'
+const dark = '#372e29'
+const lightDark = '#726255'
+const primary = '#f0c75e'
+const strongPrimary = '#ecb939'

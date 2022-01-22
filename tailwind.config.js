@@ -8,6 +8,7 @@ module.exports = {
         main: '112rem',
       },
     },
+
     colors: {
       black: '#000000',
       dark: '#52057B',

@@ -16,6 +16,7 @@ const LiquidityPool = ({ el }) => {
           </div>
         </div>
       </div>
+
       <div className="border border-b-primary w-[98%] mb-2 self-center" />
 
       <div className="w-full mb-2 flex justify-between items-center">
