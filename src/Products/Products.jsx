@@ -47,7 +47,7 @@ const Products = () => {
           <span className="text-white text-3xl opacity-90">
             Liquidity Pools
           </span>
-          <div className="border-b w-full border-primary opacity-80 mb-4"></div>
+          <div className="border-b w-full border-primary opacity-80 mb-4" />
           {StakingPoolsObject.map((el) => (
             <LiquidityPool el={el} key={el.id} />
           ))}

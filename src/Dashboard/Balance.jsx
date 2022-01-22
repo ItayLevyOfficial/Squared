@@ -8,7 +8,7 @@ const InformationBox = (props) => {
 
 const Balance = () => {
   return (
-    <div className="w-full mb-6 h-56 rounded-xl flex items-center justify-between p-6 space-x-2">
+    <div className="w-full h-56 rounded-xl flex items-center justify-between p-6 space-x-2">
       <InformationBox text="APR" />
       <InformationBox text="BALANCE" />
       <InformationBox text="Rewards" />
