@@ -5,6 +5,7 @@ import Header from '../Layouts/Header'
 import Footer from '../Layouts/Footer'
 import ModalDisplay from './ModalDisplay'
 import Sidenav from '../Layouts/Sidenav'
+
 import { StakingPoolsObject } from './StakingPools'
 
 const Products = () => {
@@ -51,7 +52,6 @@ const Products = () => {
             <LiquidityPool el={el} key={el.id} />
           ))}
         </div>
-
         <Footer />
       </div>
     </div>
