@@ -1,4 +1,5 @@
 import {AddressButton} from "../Layouts/Header";
+import MetamaskIcon from './metamask.svg'
 
 export const LaunchEventHeader = ({className = ''}) => {
     return <div className={`flex items-center w-full justify-between ${className}`}>
@@ -13,7 +14,8 @@ export const LaunchEventHeader = ({className = ''}) => {
             </div>
         </div>
         <div className="flex items-center">
-            <h2 className="text-primary text-lg tracking-wide font-light mr-10 font-number">4 DAYS 23 HOURS 59 MINUTES REMAIN</h2>
+            {/*<h2 className="text-primary text-lg tracking-wide font-light mr-10 font-number">4 DAYS 23 HOURS 59 MINUTES REMAIN</h2>*/}
+            <img src={MetamaskIcon} className="mr-4" alt=""/>
             <AddressButton/>
         </div>
     </div>
