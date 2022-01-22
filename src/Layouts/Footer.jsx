@@ -1,13 +1,13 @@
-import Alchemhy from "../Assets/Alchemy.svg"
-import Discord from "../Assets/Discord-Logo.svg"
-import Medium from "../Assets/Medium-Logo.svg"
-import Reddit from "../Assets/Reddit-Logo.svg"
-import Telegram from "../Assets/Telegram-Logo.svg"
-import Twitter from "../Assets/Twitter-Logo.svg"
+import Alchemhy from '../Assets/Alchemy.svg'
+import Discord from '../Assets/Discord-Logo.svg'
+import Medium from '../Assets/Medium-Logo.svg'
+import Reddit from '../Assets/Reddit-Logo.svg'
+import Telegram from '../Assets/Telegram-Logo.svg'
+import Twitter from '../Assets/Twitter-Logo.svg'
 
 const Footer = () => {
   return (
-    <div className="w-full mb-6 bg-[#2F8652] text-black h-20  border-transparent rounded-3xl flex items-center justify-between p-6 space-x-4">
+    <div className="w-full mb-6 bg-dark text-black h-20  border-transparent rounded-3xl flex items-center justify-between p-6 space-x-4">
       <div className="flex space-x-2">
         <div className="cursor-pointer">
           <img src={Discord} className="opacity-40 hover:opacity-70 h-8 w-8" />

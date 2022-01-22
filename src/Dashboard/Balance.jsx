@@ -1,15 +1,17 @@
+const InformationBox = (props) => {
+  return (
+    <div className="w-full bg-dark  h-40  text-white rounded-xl flex flex-col items-center justify-between p-2 ">
+      <div className="underline">{props.text}</div>
+    </div>
+  )
+}
+
 const Balance = () => {
   return (
-    <div className="w-full mb-6 text-gray-100 h-40  border-transparent rounded-3xl flex items-center justify-between p-6 space-x-4">
-      <div className="w-full bg-[#2F8652] text-gray-100 h-40  border-transparent rounded-3xl flex flex-col items-center justify-between p-2 ">
-        <div className="underline">APR</div>
-      </div>
-      <div className="w-full bg-[#2F8652] text-gray-100 h-40  border-transparent rounded-3xl flex flex-col items-center justify-between p-2 ">
-        <div className="underline">TVL</div>
-      </div>
-      <div className="w-full bg-[#2F8652] text-gray-100 h-40  border-transparent rounded-3xl flex flex-col items-center justify-between p-2 ">
-        <div className="underline">REWARDS</div>
-      </div>
+    <div className="w-full mb-6 h-56  rounded-xl flex items-center justify-between p-6 space-x-4">
+      <InformationBox text="APR" />
+      <InformationBox text="BALANCE" />
+      <InformationBox text="Rewards" />
     </div>
   )
 }
