@@ -1,7 +1,7 @@
 import {AddressButton} from "../Layouts/Header";
 
 export const LaunchEventHeader = ({className = ''}) => {
-    return <div className={`flex items-center w-full justify-between ${className}`}>
+    return <div className={`flex items-center w-full justify-between font-number ${className}`}>
         <div className="flex">
             <div className="w-0.5 h-50 bg-primary"/>
             <div className="w-5"/>
