@@ -4,6 +4,7 @@ import Home from './Home'
 import Dashboard from './Dashboard'
 import Products from './Products'
 import ScrollToTop from './Layouts/ScrollToTop'
+import {LaunchEventScreen} from "./launchEvent/launchEventScreen";
 
 function App() {
   return (
@@ -12,6 +13,7 @@ function App() {
         <ScrollToTop>
           <Routes>
             <Route path="/" element={<Home />} />
+            <Route path="/launch" element={<LaunchEventScreen/>}/>
             <Route path="/dashboard" element={<Dashboard />} />
             <Route path="/products" element={<Products />} />
           </Routes>
