@@ -3,6 +3,12 @@ module.exports = {
   purge: ['./public/**/*.html', './src/**/*.{js,jsx,ts,tsx,vue}'],
   content: ['./src/**/*.{js,jsx,ts,tsx}'],
   theme: {
+    extend: {
+      spacing: {
+        main: '112rem',
+      },
+    },
+
     colors: {
       black: '#000000',
       dark: '#52057B',
