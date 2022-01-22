@@ -6,7 +6,7 @@ const Sidenav = () => {
   const { pathname } = useLocation()
 
   return (
-    <div className="fixed left-5  top-5 bottom-5  rounded-xl w-52 bg-dark text-white flex flex-col space-y-6 items-start px-6 pt-6">
+    <div className="sticky h-screen top-0 mr-6  w-52 bg-dark text-white flex flex-col space-y-6 items-start px-6 pt-6">
       <div className="w-full flex flex-col justify-center items-center">
         <div className="bg-white rounded-full">
           <img src={Logo} className="w-20 h-20 rounded-full border" />

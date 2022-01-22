@@ -21,7 +21,7 @@ const Products = () => {
   }
 
   return (
-    <div className="w-full h-full flex justify-center relative">
+    <div className="flex">
       <ModalDisplay
         isOpen={isModalOpen}
         close={close}
@@ -35,7 +35,7 @@ const Products = () => {
         )}
       </ModalDisplay>
       <Sidenav />
-      <div className="absolute left-72 flex flex-col justify-between items-end w-[1050px]">
+      <div className="flex flex-col w-[1050px] min-h-full">
         <Header />
         <div className="w-full h-56 flex items-center justify-between space-x-4 overflow-x-scroll ">
           {StakingPoolsObject.map((el) => (

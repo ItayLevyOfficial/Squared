@@ -7,9 +7,9 @@ import { StakingPoolsObject } from '../Products/StakingPools'
 
 const Dashboard = () => {
   return (
-    <div className="w-full h-full flex justify-center relative">
+    <div className="flex">
       <Sidenav />
-      <div className="absolute left-72 flex flex-col justify-between items-end w-[1050px]">
+      <div className="flex flex-col w-[1050px] min-h-full">
         <Header />
         <Balance />
         <div className="w-full">

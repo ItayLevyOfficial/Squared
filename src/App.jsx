@@ -7,7 +7,7 @@ import ScrollToTop from './Layouts/ScrollToTop'
 
 function App() {
   return (
-    <div className="h-screen w-full">
+    <div className="flex justify-center w-full">
       <Router>
         <ScrollToTop>
           <Routes>
