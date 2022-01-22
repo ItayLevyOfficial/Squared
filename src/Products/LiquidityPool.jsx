@@ -1,4 +1,4 @@
-const LiquidityPool = ({ el }) => {
+const LiquidityPool = ({ el, openModal }) => {
   const { title, amount, apr, button } = el
 
   return (
@@ -20,7 +20,10 @@ const LiquidityPool = ({ el }) => {
       <div className="border border-b-primary w-[98%] mb-2 self-center" />
 
       <div className="w-full mb-2 flex justify-between items-center">
-        <button className="ml-6 justify-center items-center bg-lightDark hover:bg-black text-white rounded-lg p-2 w-32 ">
+        <button
+          onClick={() => openModal(title)}
+          className="ml-6 justify-center items-center bg-lightDark hover:bg-black text-white rounded-lg p-2 w-32 "
+        >
           {button}
         </button>
 
