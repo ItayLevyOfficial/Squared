@@ -10,6 +10,9 @@ module.exports = {
       primary: '#BC6FF1',
       white: '#ffffff',
     },
+    fontFamily: {
+      basic: ['Baloo 2', 'sans-serif']
+    }
   },
   plugins: [],
 }
