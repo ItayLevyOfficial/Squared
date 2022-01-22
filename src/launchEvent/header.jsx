@@ -13,8 +13,8 @@ export const LaunchEventHeader = ({className = ''}) => {
                 </div>
             </div>
         </div>
+        <TimeLeft/>
         <div className="flex items-center">
-            {/*<h2 className="text-primary text-lg tracking-wide font-light mr-10 font-number">4 DAYS 23 HOURS 59 MINUTES REMAIN</h2>*/}
             <img src={MetamaskIcon} className="mr-4" alt=""/>
             <AddressButton/>
         </div>
@@ -22,4 +22,4 @@ export const LaunchEventHeader = ({className = ''}) => {
 }
 
 const TimeLeft = ({text = "4 DAYS 23 HOURS 59 MINUTES REMAIN", className}) => <h2
-    className={`text-primary text-lg tracking-wide font-light mr-10 font-number ${className}`}>{text}</h2>
+    className={`text-white text-lg tracking-wide font-light mr-10 font-number ${className}`}>{text}</h2>
