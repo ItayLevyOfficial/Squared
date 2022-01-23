@@ -10,6 +10,9 @@ export const EventStatus = ({totalCommitments = 207_341, puffPrice = 8}) => {
                 <div className="bg-white h-full rounded-t-lg w-5"/>
                 <div className="bg-white h-[0.5px] w-24"/>
             </div>
+            <div className="flex h-2/3">
+                <div className="bg-dark h-full rounded-b-lg w-5"/>
+            </div>
         </div>
     </div>
 }
