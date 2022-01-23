@@ -21,5 +21,12 @@ export const LaunchEventHeader = ({className = ''}) => {
     </div>
 }
 
-const TimeLeft = ({text = "4 DAYS 23 HOURS 59 MINUTES REMAIN", className}) => <h2
-    className={`text-white text-lg tracking-wide font-light mr-10 font-number ${className}`}>{text}</h2>
+const TimeLeft = ({text = "4 DAYS 23 HOURS 59 MINUTES REMAIN", className = ''}) => <div className={
+    `${className} flex flex-col items-center mr-10`}>
+    <h2
+        className={`text-white text-lg tracking-wide font-light font-number`}>{text}</h2>
+    <div className="h-4"/>
+    <div className="bg-dark h-4 w-[580px] rounded-md">
+
+    </div>
+</div>
