@@ -21,12 +21,22 @@ export const LaunchEventHeader = ({className = ''}) => {
     </div>
 }
 
-const TimeLeft = ({text = "4 DAYS 23 HOURS 59 MINUTES REMAIN", className = ''}) => <div className={
-    `${className} flex flex-col items-center mr-10`}>
-    <h2
-        className={`text-white text-lg tracking-wide font-light font-number`}>{text}</h2>
-    <div className="h-4"/>
-    <div className="bg-dark h-4 w-[580px] rounded-md">
+const TimeLeft = ({remainTimeMillis = 276480000, className = ''}) => {
+    const weekInMillis = 604800000
+    const remainTimePercent = Math.round((remainTimeMillis / weekInMillis) * 100)
+    const remainDays = 4
+    const remainHours = 23
+    const remainMinutes = 59
 
+    return <div className={
+        `${className} flex flex-col items-center mr-10`}>
+        <h2
+            className={`text-white text-lg tracking-wide font-light font-number`}>
+            {`${remainDays} DAYS ${remainHours} HOURS ${remainMinutes} MINUTES REMAIN`}
+        </h2>
+        <div className="h-4"/>
+        <div className="bg-dark h-4 w-[580px] rounded-md">
+            <div className={`bg-primary w-[${remainTimePercent}%] rounded-l-md h-full`}/>
+        </div>
     </div>
-</div>
+}
