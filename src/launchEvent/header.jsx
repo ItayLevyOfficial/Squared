@@ -23,8 +23,9 @@ export const LaunchEventHeader = ({className = ''}) => {
                 <AddressButton/>
             </div>
         </div>
-        <p className={`w-[${timeLeftBarWidth}] text-center font-medium text-base`}>
-            Puff's take-off event has arrived. It's the first time users can buy PUFF to fill our liquidity reserve.  Learn more
+        <p className={`w-[${timeLeftBarWidth}] text-center font-medium text-base tracking-wider`}>
+            Puff's take-off event has arrived. It's the first time users can buy PUFF to fill our liquidity reserve.&nbsp;<span
+            className="text-primary underline">Learn more</span>
         </p>
     </div>
 }
@@ -32,7 +33,6 @@ export const LaunchEventHeader = ({className = ''}) => {
 const TimeLeft = ({remainTimeMillis = 276480000, className = ''}) => {
     const weekInMillis = 604800000
     const remainTimePercent = `${Math.round((remainTimeMillis / weekInMillis) * 100)}%`
-    console.log({remainTimePercent})
     const formattedRemainTime = convertMilliseconds(remainTimeMillis)
 
     return <div className={
