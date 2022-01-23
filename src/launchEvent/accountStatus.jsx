@@ -8,12 +8,16 @@ const DepositButton = ({backgroundColor, tokenName, iconSrc, className = '', tex
     Deposit / Withdraw&nbsp;{tokenName}
 </button>
 
+const BodyHeaderText = ({title, firstRow, secondRow}) => <>
+    <h1 className="text-4xl font-medium tracking-wide mb-5">{title}</h1>
+    <h2 className="font-number text-base mb-2">{firstRow}</h2>
+    <h2 className="font-number text-base mb-5">{secondRow}</h2>
+</>
 
 export const AccountStatus = ({bnbCommitted = 0, busdCommitted = 0, handleBnbClick, handleBusdClick}) => {
     return <div className="flex flex-col">
-        <h1 className="text-4xl font-medium tracking-wide mb-5">Your Account Status</h1>
-        <h2 className="font-number text-base mb-2">BNB committed: ${bnbCommitted}</h2>
-        <h2 className="font-number text-base mb-5">BUSD committed: ${busdCommitted}</h2>
+        <BodyHeaderText title="Your Account Status" firstRow={`BNB committed: $${bnbCommitted}`}
+                        secondRow={`BUSD committed: $${busdCommitted}`}/>
         <DepositButton backgroundColor="#F3BA2F" iconSrc={BNBIcon} tokenName="BNB" className="mb-5"
                        onClick={handleBnbClick}/>
         <DepositButton backgroundColor="#fff" iconSrc={BUSDIcon} tokenName="BUSD" textColor="black"
