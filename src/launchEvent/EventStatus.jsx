@@ -15,7 +15,7 @@ const StatusBar = ({percent, text, backgroundColorClass, className}) => <div
 export const EventStatus = ({totalCommitments = 207_341, puffPrice = 8}) => {
     return <div className="flex flex-col">
         <BodyHeaderText title='Event Status' firstRow={`Total commitments: $${totalCommitments}`}
-                        secondRow={`Conversion rate: $${puffPrice.toFixed(2)}/PUFF`}
+                        secondRow={`Conversion rate: $${puffPrice.toFixed(2)}/PUFF`} marginBottomClass="mb-7"
         />
         <div className="flex space-x-10">
             <StatusBar percent={64} text="Sold" backgroundColorClass="bg-dark"/>

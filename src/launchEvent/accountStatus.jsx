@@ -7,10 +7,10 @@ const DepositButton = ({tokenName, iconSrc, className = '', onClick}) => <button
     Deposit / Withdraw&nbsp;{tokenName}
 </button>
 
-export const BodyHeaderText = ({title, firstRow, secondRow}) => <>
+export const BodyHeaderText = ({title, firstRow, secondRow, marginBottomClass = 'mb-5'}) => <>
     <h1 className="text-4xl font-medium tracking-wide mb-5">{title}</h1>
     <h2 className="font-number text-lg mb-2">{firstRow}</h2>
-    <h2 className="font-number text-lg mb-5">{secondRow}</h2>
+    <h2 className={`font-number text-lg ${marginBottomClass}`}>{secondRow}</h2>
 </>
 
 export const AccountStatus = (
