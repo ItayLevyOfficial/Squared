@@ -14,5 +14,6 @@
     body {
         @apply font-baloo;
         @apply text-white;
+        @apply tracking-wide;
     }
 }
