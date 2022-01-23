@@ -38,10 +38,9 @@ const TimeLeft = ({remainTimeMillis = 276480000, className = ''}) => {
     return <div className={
         `${className} flex flex-col items-center mr-10`}>
         <h2
-            className={`text-white text-lg tracking-wide font-light font-number`}>
+            className={`text-white text-lg tracking-wide font-light font-number mb-4`}>
             {`${formattedRemainTime.d} DAYS ${formattedRemainTime.h} HOURS ${formattedRemainTime.m} MINUTES REMAIN`}
         </h2>
-        <div className="h-4"/>
         <div className={`bg-dark h-4 w-[${timeLeftBarWidth}] rounded-md`}>
             <div className={`bg-primary w-[${remainTimePercent}] rounded-l-md h-full`}/>
         </div>
