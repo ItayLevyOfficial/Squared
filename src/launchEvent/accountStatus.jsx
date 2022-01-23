@@ -1,8 +1,9 @@
 import BNBIcon from './BNB.svg'
 import BUSDIcon from './busd.svg'
 
-const DepositButton = ({backgroundColor, tokenName, iconSrc, className, textColor = "white"}) => <button
-    className={`w-80 bg-[${backgroundColor}] py-3 font-medium text-lg rounded-xl flex ${className} text-${textColor}`}>
+const DepositButton = ({backgroundColor, tokenName, iconSrc, className = '', textColor = "white"}) => <button
+    className={`w-80 bg-[${backgroundColor}] py-3 font-medium text-lg rounded-xl flex ${className}
+     text-${textColor} hover:bg-opacity-95`}>
     <img src={iconSrc} alt="" className="ml-8 mr-4"/>
     Deposit / Withdraw&nbsp;{tokenName}
 </button>
