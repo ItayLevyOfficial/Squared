@@ -1,11 +1,11 @@
-import {LaunchEventHeader} from "./header";
-import {AccountStatus} from './accountStatus'
+import {Header} from "./Header";
+import {Body} from './Body'
 
 export const LaunchEventScreen = () => {
     return <ScreenPaddedContainer>
         <div className="flex flex-col items-center w-full max-w-screen-xl">
-            <LaunchEventHeader className='mb-28'/>
-            <AccountStatus/>
+            <Header className='mb-28'/>
+            <Body/>
         </div>
     </ScreenPaddedContainer>
 }

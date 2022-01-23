@@ -3,7 +3,7 @@ import Home from './Home'
 import Dashboard from './Dashboard'
 import Products from './Products'
 import ScrollToTop from './Layouts/ScrollToTop'
-import {LaunchEventScreen} from "./launchEvent/launchEventScreen"
+import {LaunchEventScreen} from "./launchEvent/LaunchEventScreen"
 import {AccountStatus} from './launchEvent/accountStatus'
 
 function App() {

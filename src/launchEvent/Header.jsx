@@ -4,11 +4,11 @@ import {convertMilliseconds} from './convertMillis'
 
 const timeLeftBarWidth = "580px"
 
-export const LaunchEventHeader = ({className = ''}) => {
+export const Header = ({className = ''}) => {
     return <div className={`flex flex-col items-center w-full ${className}`}>
         <div className={`flex items-center w-full justify-between mb-4`}>
             <div className="flex">
-                <div className="w-0.5 h-50 bg-primary"/>
+                <div className="w-[0.5px] h-50 bg-primary"/>
                 <div className="w-5"/>
                 <div className="flex flex-col space-y-2 font-bold tracking-widest">
                     <h1 className="text-white text-5xl font-basic font-semibold">PUFF</h1>
