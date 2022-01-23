@@ -12,6 +12,7 @@ export const EventStatus = ({totalCommitments = 207_341, puffPrice = 8}) => {
             </div>
             <div className="flex h-2/3">
                 <div className="bg-dark h-full rounded-b-lg w-5"/>
+                <span className="font-number font-normal py-2 px-3">64% Sold</span>
             </div>
         </div>
     </div>
