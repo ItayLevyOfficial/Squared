@@ -9,8 +9,8 @@ const DepositButton = ({tokenName, iconSrc, className = '', onClick}) => <button
 
 export const BodyHeaderText = ({title, firstRow, secondRow}) => <>
     <h1 className="text-4xl font-medium tracking-wide mb-5">{title}</h1>
-    <h2 className="font-number text-base mb-2">{firstRow}</h2>
-    <h2 className="font-number text-base mb-5">{secondRow}</h2>
+    <h2 className="font-number text-lg mb-2">{firstRow}</h2>
+    <h2 className="font-number text-lg mb-5">{secondRow}</h2>
 </>
 
 export const AccountStatus = (
