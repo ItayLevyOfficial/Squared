@@ -1,9 +1,8 @@
 import BNBIcon from './BNB.svg'
 import BUSDIcon from './busd.svg'
 
-const DepositButton = ({backgroundColor, tokenName, iconSrc, className = '', textColor = "white", onClick}) => <button
-    className={`w-80 bg-[${backgroundColor}] py-3 font-medium text-lg rounded-xl flex ${className}
-     text-${textColor} hover:bg-opacity-95`} onClick={onClick}>
+const DepositButton = ({tokenName, iconSrc, className = '', onClick}) => <button
+    className={`w-80 py-3 font-medium text-lg rounded-xl flex ${className} hover:bg-opacity-95`} onClick={onClick}>
     <img src={iconSrc} alt="" className="ml-8 mr-4"/>
     Deposit / Withdraw&nbsp;{tokenName}
 </button>
@@ -18,10 +17,9 @@ export const AccountStatus = ({bnbCommitted = 0, busdCommitted = 0, handleBnbCli
     return <div className="flex flex-col">
         <BodyHeaderText title="Your Account Status" firstRow={`BNB committed: $${bnbCommitted}`}
                         secondRow={`BUSD committed: $${busdCommitted}`}/>
-        <DepositButton backgroundColor="#F3BA2F" iconSrc={BNBIcon} tokenName="BNB" className="mb-5"
+        <DepositButton backgroundColorClass="" iconSrc={BNBIcon} tokenName="BNB" className="mb-5 bg-[#F3BA2F]"
                        onClick={handleBnbClick}/>
-        <DepositButton backgroundColor="#fff" iconSrc={BUSDIcon} tokenName="BUSD" textColor="black"
-                       onClick={handleBusdClick}/>
+        <DepositButton iconSrc={BUSDIcon} tokenName="BUSD" onClick={handleBusdClick} className="bg-white text-black"/>
     </div>
 }
 
