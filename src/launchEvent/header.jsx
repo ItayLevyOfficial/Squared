@@ -1,5 +1,6 @@
 import {AddressButton} from "../Layouts/Header";
 import MetamaskIcon from './metamask.svg'
+import {convertMilliseconds} from './convertMillis'
 
 export const LaunchEventHeader = ({className = ''}) => {
     return <div className={`flex items-center w-full justify-between ${className}`}>
@@ -24,15 +25,14 @@ export const LaunchEventHeader = ({className = ''}) => {
 const TimeLeft = ({remainTimeMillis = 276480000, className = ''}) => {
     const weekInMillis = 604800000
     const remainTimePercent = Math.round((remainTimeMillis / weekInMillis) * 100)
-    const remainDays = 4
-    const remainHours = 23
-    const remainMinutes = 59
+
+    const formattedRemainTime = convertMilliseconds(remainTimeMillis)
 
     return <div className={
         `${className} flex flex-col items-center mr-10`}>
         <h2
             className={`text-white text-lg tracking-wide font-light font-number`}>
-            {`${remainDays} DAYS ${remainHours} HOURS ${remainMinutes} MINUTES REMAIN`}
+            {`${formattedRemainTime.d} DAYS ${formattedRemainTime.h} HOURS ${formattedRemainTime.m} MINUTES REMAIN`}
         </h2>
         <div className="h-4"/>
         <div className="bg-dark h-4 w-[580px] rounded-md">
