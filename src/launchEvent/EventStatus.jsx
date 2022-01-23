@@ -17,8 +17,9 @@ export const EventStatus = ({totalCommitments = 207_341, puffPrice = 8}) => {
         <BodyHeaderText title='Event Status' firstRow={`Total commitments: $${totalCommitments}`}
                         secondRow={`Conversion rate: $${puffPrice.toFixed(2)}/PUFF`}
         />
-        <div className="flex">
-            <StatusBar percent={54} text="Sold" backgroundColorClass="bg-dark"/>
+        <div className="flex space-x-10">
+            <StatusBar percent={64} text="Sold" backgroundColorClass="bg-dark"/>
+            <StatusBar percent={36} text="Remaining" backgroundColorClass="bg-primary"/>
         </div>
     </div>
 }
