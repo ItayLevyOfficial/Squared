@@ -7,19 +7,20 @@ const DepositButton = ({tokenName, iconSrc, className = '', onClick}) => <button
     Deposit / Withdraw&nbsp;{tokenName}
 </button>
 
-const BodyHeaderText = ({title, firstRow, secondRow}) => <>
+export const BodyHeaderText = ({title, firstRow, secondRow}) => <>
     <h1 className="text-4xl font-medium tracking-wide mb-5">{title}</h1>
     <h2 className="font-number text-base mb-2">{firstRow}</h2>
     <h2 className="font-number text-base mb-5">{secondRow}</h2>
 </>
 
-export const AccountStatus = ({bnbCommitted = 0, busdCommitted = 0, handleBnbClick, handleBusdClick}) => {
-    return <div className="flex flex-col">
-        <BodyHeaderText title="Your Account Status" firstRow={`BNB committed: $${bnbCommitted}`}
-                        secondRow={`BUSD committed: $${busdCommitted}`}/>
-        <DepositButton backgroundColorClass="" iconSrc={BNBIcon} tokenName="BNB" className="mb-5 bg-[#F3BA2F]"
-                       onClick={handleBnbClick}/>
-        <DepositButton iconSrc={BUSDIcon} tokenName="BUSD" onClick={handleBusdClick} className="bg-white text-black"/>
-    </div>
-}
+export const AccountStatus = (
+    {bnbCommitted = 0, busdCommitted = 0, handleBnbClick, handleBusdClick}) => <div
+    className="flex flex-col">
+    <BodyHeaderText title="Your Account Status" firstRow={`BNB committed: $${bnbCommitted}`}
+                    secondRow={`BUSD committed: $${busdCommitted}`}/>
+    <DepositButton backgroundColorClass="" iconSrc={BNBIcon} tokenName="BNB" className="mb-5 bg-[#F3BA2F]"
+                   onClick={handleBnbClick}/>
+    <DepositButton iconSrc={BUSDIcon} tokenName="BUSD" onClick={handleBusdClick} className="bg-white text-black"/>
+</div>
+
 
