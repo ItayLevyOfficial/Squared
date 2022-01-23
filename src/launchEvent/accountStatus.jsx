@@ -1,5 +1,12 @@
 import BNBIcon from './BNB.svg'
 
+const DepositButton = ({backgroundColor, tokenName, iconSrc}) => <button
+    className={`w-80 bg-[${backgroundColor}] py-3 font-medium text-lg rounded-xl flex`}>
+    <img src={iconSrc} alt="" className="ml-8 mr-4"/>
+    Deposit / Withdraw&nbsp;{tokenName}
+</button>
+
+
 export const AccountStatus = () => {
     return <div className="flex flex-col">
         <h1 className="text-4xl font-medium tracking-wide mb-5">Your Account Status</h1>
@@ -11,3 +18,4 @@ export const AccountStatus = () => {
         </button>
     </div>
 }
+
