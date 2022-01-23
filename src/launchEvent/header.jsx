@@ -2,30 +2,37 @@ import {AddressButton} from "../Layouts/Header";
 import MetamaskIcon from './metamask.svg'
 import {convertMilliseconds} from './convertMillis'
 
+const timeLeftBarWidth = "580px"
+
 export const LaunchEventHeader = ({className = ''}) => {
-    return <div className={`flex items-center w-full justify-between ${className}`}>
-        <div className="flex">
-            <div className="w-0.5 h-50 bg-primary"/>
-            <div className="w-5"/>
-            <div className="flex flex-col space-y-2 font-bold tracking-widest">
-                <h1 className="text-white text-5xl font-basic font-semibold">PUFF</h1>
-                <div className="flex items-center">
-                    <h2 className="text-primary text-xl font-normal mr-1.5">TAKE OFF EVENT</h2>
+    return <div className={`flex flex-col items-center w-full ${className}`}>
+        <div className={`flex items-center w-full justify-between mb-5`}>
+            <div className="flex">
+                <div className="w-0.5 h-50 bg-primary"/>
+                <div className="w-5"/>
+                <div className="flex flex-col space-y-2 font-bold tracking-widest">
+                    <h1 className="text-white text-5xl font-basic font-semibold">PUFF</h1>
+                    <div className="flex items-center">
+                        <h2 className="text-primary text-xl font-normal mr-1.5">TAKE OFF EVENT</h2>
+                    </div>
                 </div>
             </div>
+            <TimeLeft/>
+            <div className="flex items-center">
+                <img src={MetamaskIcon} className="mr-4" alt=""/>
+                <AddressButton/>
+            </div>
         </div>
-        <TimeLeft/>
-        <div className="flex items-center">
-            <img src={MetamaskIcon} className="mr-4" alt=""/>
-            <AddressButton/>
-        </div>
+        <p className={`w-[${timeLeftBarWidth}] text-center font-medium text-base`}>
+            Puff's take-off event has arrived. It's the first time users can buy PUFF to fill our liquidity reserve.  Learn more
+        </p>
     </div>
 }
 
 const TimeLeft = ({remainTimeMillis = 276480000, className = ''}) => {
     const weekInMillis = 604800000
-    const remainTimePercent = Math.round((remainTimeMillis / weekInMillis) * 100)
-
+    const remainTimePercent = `${Math.round((remainTimeMillis / weekInMillis) * 100)}%`
+    console.log({remainTimePercent})
     const formattedRemainTime = convertMilliseconds(remainTimeMillis)
 
     return <div className={
@@ -35,8 +42,8 @@ const TimeLeft = ({remainTimeMillis = 276480000, className = ''}) => {
             {`${formattedRemainTime.d} DAYS ${formattedRemainTime.h} HOURS ${formattedRemainTime.m} MINUTES REMAIN`}
         </h2>
         <div className="h-4"/>
-        <div className="bg-dark h-4 w-[580px] rounded-md">
-            <div className={`bg-primary w-[${remainTimePercent}%] rounded-l-md h-full`}/>
+        <div className={`bg-dark h-4 w-[${timeLeftBarWidth}] rounded-md`}>
+            <div className={`bg-primary w-[${remainTimePercent}] rounded-l-md h-full`}/>
         </div>
     </div>
 }

@@ -13,5 +13,6 @@
 @layer base {
     body {
         @apply font-baloo;
+        @apply text-white;
     }
 }
