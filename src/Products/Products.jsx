@@ -5,7 +5,6 @@ import Header from '../Layouts/Header'
 import Footer from '../Layouts/Footer'
 import ModalDisplay from './ModalDisplay'
 import Sidenav from '../Layouts/Sidenav'
-
 import { StakingPoolsObject } from './StakingPools'
 
 const Products = () => {
@@ -28,7 +27,7 @@ const Products = () => {
         close={close}
         selectedToken={selectedToken}
       >
-        {StakingPoolsObject.map(
+        {StakingPoolsObject.find(
           (el) =>
             el.id === selectedToken && (
               <StakingPool el={el} key={el.id} selectedToken={selectedToken} />
@@ -36,7 +35,8 @@ const Products = () => {
         )}
       </ModalDisplay>
       <Sidenav />
-      <div className="flex flex-col w-[1050px] min-h-full">
+
+      <div className="flex flex-col w-10/12 max-w-main min-h-full">
         <Header />
         <div className="w-full h-56 flex items-center justify-between space-x-4 overflow-x-scroll ">
           {StakingPoolsObject.map((el) => (
@@ -47,11 +47,12 @@ const Products = () => {
           <span className="text-white text-3xl opacity-90">
             Liquidity Pools
           </span>
-          <div className="border-b w-full border-primary opacity-80 mb-4"></div>
+          <div className="border-b w-full border-primary opacity-80 mb-4" />
           {StakingPoolsObject.map((el) => (
-            <LiquidityPool el={el} key={el.id} />
+            <LiquidityPool el={el} key={el.id} openModal={open} />
           ))}
         </div>
+
         <Footer />
       </div>
     </div>
