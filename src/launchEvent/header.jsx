@@ -6,7 +6,7 @@ const timeLeftBarWidth = "580px"
 
 export const LaunchEventHeader = ({className = ''}) => {
     return <div className={`flex flex-col items-center w-full ${className}`}>
-        <div className={`flex items-center w-full justify-between mb-5`}>
+        <div className={`flex items-center w-full justify-between mb-4`}>
             <div className="flex">
                 <div className="w-0.5 h-50 bg-primary"/>
                 <div className="w-5"/>
@@ -24,8 +24,9 @@ export const LaunchEventHeader = ({className = ''}) => {
             </div>
         </div>
         <p className={`w-[${timeLeftBarWidth}] text-center font-medium text-base tracking-wider`}>
-            Puff's take-off event has arrived. It's the first time users can buy PUFF to fill our liquidity reserve.&nbsp;<span
-            className="text-primary underline">Learn more</span>
+            Puff's take-off event has arrived. It's the first time users can buy PUFF to fill our liquidity
+            reserve.&nbsp;
+            <a className="text-primary underline">Learn more</a>
         </p>
     </div>
 }
