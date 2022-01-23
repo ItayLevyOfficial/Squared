@@ -2,7 +2,7 @@ import {AddressButton} from "../Layouts/Header";
 import MetamaskIcon from './metamask.svg'
 import {convertMilliseconds} from './convertMillis'
 
-const timeLeftBarWidth = "580px"
+const timeLeftBarWidth = "w-[580px]"
 
 export const Header = ({className = ''}) => {
     return <div className={`flex flex-col items-center w-full ${className}`}>
@@ -23,7 +23,7 @@ export const Header = ({className = ''}) => {
                 <AddressButton/>
             </div>
         </div>
-        <p className={`w-[${timeLeftBarWidth}] text-center font-medium text-base tracking-wider`}>
+        <p className={`${timeLeftBarWidth} text-center font-medium text-base tracking-wider`}>
             Puff's take-off event has arrived. It's the first time users can buy PUFF to fill our liquidity
             reserve.&nbsp;
             <a className="text-primary underline">Learn more</a>
@@ -33,8 +33,9 @@ export const Header = ({className = ''}) => {
 
 const TimeLeft = ({remainTimeMillis = 276480000, className = ''}) => {
     const weekInMillis = 604800000
-    const remainTimePercent = `${Math.round((remainTimeMillis / weekInMillis) * 100)}%`
+    const remainTimePercent = Math.round((remainTimeMillis / weekInMillis) * 12)
     const formattedRemainTime = convertMilliseconds(remainTimeMillis)
+    const innerProgressLength = `w-${remainTimePercent}/12`
 
     return <div className={
         `${className} flex flex-col items-center mr-10`}>
@@ -42,8 +43,8 @@ const TimeLeft = ({remainTimeMillis = 276480000, className = ''}) => {
             className={`text-white text-lg tracking-wide font-light font-number mb-4`}>
             {`${formattedRemainTime.d} DAYS ${formattedRemainTime.h} HOURS ${formattedRemainTime.m} MINUTES REMAIN`}
         </h2>
-        <div className={`bg-dark h-4 w-[${timeLeftBarWidth}] rounded-md`}>
-            <div className={`bg-primary w-[${remainTimePercent}] rounded-l-md h-full`}/>
+        <div className={`bg-dark h-4 ${timeLeftBarWidth} rounded-md`}>
+            <div className={`bg-primary ${innerProgressLength} rounded-l-md h-full`}/>
         </div>
     </div>
 }
