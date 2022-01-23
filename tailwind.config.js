@@ -4,13 +4,13 @@ module.exports = {
   content: ['./src/**/*.{js,jsx,ts,tsx}'],
   theme: {
     extend: {
+      fontFamily: {
+        baloo: ['\"Baloo 2\"', 'sans-serif'],
+        number: ['Red Hat Display']
+      },
       spacing: {
         main: '112rem',
       },
-    },
-    fontFamily: {
-      baloo: ['\"Baloo 2\"', 'sans-serif'],
-      number: ['Red Hat Display']
     },
     colors: {
       black: '#000000',
