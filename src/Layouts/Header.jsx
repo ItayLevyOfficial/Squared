@@ -1,20 +1,23 @@
-import Fantom from '../Assets/Fantom.svg'
 import { useLocation } from 'react-router-dom'
-import { ethers } from 'ethers'
+import { useState } from 'react'
 
 const Header = () => {
   const { pathname } = useLocation()
+  const { ethereum } = window
+  const [connected, setConnected] = useState(false)
 
-  function getBalance() {
-    const url =
-      'https://winter-blue-resonance.bsc.quiknode.pro/8f059c17bb29420d84ff5cf99bbaea3be1eb081b/'
+  const connectWallet = async () => {
+    try {
+      if (!ethereum) return alert('Please install MetaMask.')
 
-    const provider = new ethers.providers.JsonRpcProvider(url)
+      const accounts = await ethereum.request({ method: 'eth_requestAccounts' })
+      setConnected(accounts)
+    } catch (error) {
+      console.log(error)
 
-    console.log(provider)
+      throw new Error('No ethereum object')
+    }
   }
-
-  getBalance()
 
   return (
     <nav className="flex h-20 space-x-2 items-center justify-between w-full mt-2 mb-4">
@@ -22,12 +25,12 @@ const Header = () => {
         {pathname == '/products' ? 'Assets' : 'Dashboard'}
       </div>
       <div className="flex space-x-4">
-        <div className="w-36 h-10 flex justify-center items-center border-transparent  bg-[#2F8652] text-gray-200 cursor-default rounded-xl p-2">
-          <img src={Fantom} className="h-8 w-8" />
-          <div>Fantom</div>
-        </div>
-        <button className="w-36 h-10 flex justify-center   text-gray-100 bg-[#D05C47]  cursor-pointer rounded-xl p-2">
-          Connect Wallet
+        <button
+          onClick={connectWallet}
+          disabled={connected}
+          className="w-36 h-10 flex justify-center text-gray-100 bg-primary  cursor-pointer rounded-xl p-2"
+        >
+          {connected ? connected.toString().substring(0, 10) : `Connect Wallet`}
         </button>
       </div>
     </nav>
