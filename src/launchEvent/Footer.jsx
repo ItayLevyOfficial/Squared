@@ -8,12 +8,8 @@ const FooterIcon = ({src}) => <img src={src} alt="" className="opacity-70 hover:
 
 export const Footer = () => <div className="flex items-center space-x-7">
     <FooterIcon src={TwitterIcon}/>
-    <FooterIcon src={TwitterIcon}/>
-    <FooterIcon src={TwitterIcon}/>
-    <FooterIcon src={TwitterIcon}/>
-    <FooterIcon src={TwitterIcon}/>
-    <img src={MediumIcon} alt=""/>
-    <img src={DocsIcon} alt=""/>
-    <img src={DiscordIcon} alt=""/>
-    <img src={GithubIcon} alt=""/>
+    <FooterIcon src={MediumIcon}/>
+    <FooterIcon src={DocsIcon}/>
+    <FooterIcon src={DiscordIcon}/>
+    <FooterIcon src={GithubIcon}/>
 </div>
