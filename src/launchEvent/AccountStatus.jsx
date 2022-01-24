@@ -1,5 +1,5 @@
-import BNBIcon from './BNB.svg'
-import BUSDIcon from './busd.svg'
+import BNBIcon from './icons/BNB.svg'
+import BUSDIcon from './icons/busd.svg'
 
 const DepositButton = ({tokenName, iconSrc, className = '', onClick}) => <button
     className={`w-80 py-3 font-medium text-lg rounded-xl flex ${className} hover:bg-opacity-95`} onClick={onClick}>

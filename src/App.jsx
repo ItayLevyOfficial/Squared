@@ -4,7 +4,7 @@ import Dashboard from './Dashboard'
 import Products from './Products'
 import ScrollToTop from './Layouts/ScrollToTop'
 import {LaunchEventScreen} from "./launchEvent/LaunchEventScreen"
-import {AccountStatus} from './launchEvent/accountStatus'
+import {AccountStatus} from './launchEvent/AccountStatus'
 
 function App() {
   return (

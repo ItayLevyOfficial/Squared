@@ -1,5 +1,5 @@
 import {AddressButton} from "../Layouts/Header";
-import MetamaskIcon from './metamask.svg'
+import MetamaskIcon from './icons/metamask.svg'
 import {convertMilliseconds} from './convertMillis'
 
 const timeLeftBarWidth = "w-[580px]"
