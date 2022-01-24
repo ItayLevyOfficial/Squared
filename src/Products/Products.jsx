@@ -29,7 +29,7 @@ const Products = () => {
                 <Header/>
                 <div className="w-full h-56 flex items-center justify-between space-x-4 overflow-x-scroll ">
                     {StakingPoolsObject.map((el) => (
-                        <StakingPool el={el} key={el.id} openModal={open}/>
+                        <StakingPool el={el} key={el.id} openModal={() => open(el.id)}/>
                     ))}
                 </div>
                 <div className="w-full">
@@ -38,7 +38,7 @@ const Products = () => {
           </span>
                     <div className="border-b w-full border-primary opacity-80 mb-4"/>
                     {StakingPoolsObject.map((el) => (
-                        <LiquidityPool el={el} key={el.id} openModal={open}/>
+                        <LiquidityPool el={el} key={el.id} openModal={() => open(el.id)}/>
                     ))}
                 </div>
 
