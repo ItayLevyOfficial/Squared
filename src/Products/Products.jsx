@@ -26,21 +26,14 @@ const Products = () => {
         isOpen={isModalOpen}
         close={close}
         selectedToken={selectedToken}
-      >
-        {StakingPoolsObject.find(
-          (el) =>
-            el.id === selectedToken && (
-              <StakingPool el={el} key={el.id} selectedToken={selectedToken} />
-            )
-        )}
-      </ModalDisplay>
+      />
       <Sidenav />
 
       <div className="flex flex-col w-10/12 max-w-main min-h-full">
         <Header />
         <div className="w-full h-56 flex items-center justify-between space-x-4 overflow-x-scroll ">
           {StakingPoolsObject.map((el) => (
-            <StakingPool el={el} key={el.id} openModal={open} />
+            <StakingPool el={el} key={el.id} openModal={() => open(el.id)} />
           ))}
         </div>
         <div className="w-full">
@@ -49,7 +42,7 @@ const Products = () => {
           </span>
           <div className="border-b w-full border-primary opacity-80 mb-4" />
           {StakingPoolsObject.map((el) => (
-            <LiquidityPool el={el} key={el.id} openModal={open} />
+            <LiquidityPool el={el} key={el.id} openModal={() => open(el.id)} />
           ))}
         </div>
 
