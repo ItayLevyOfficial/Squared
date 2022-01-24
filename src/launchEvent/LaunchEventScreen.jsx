@@ -5,7 +5,7 @@ import {Footer} from './Footer'
 export const LaunchEventScreen = () => {
     return <ScreenPaddedContainer>
         <div className="flex flex-col items-center w-full max-w-screen-xl h-full">
-            <Header className="mb-32"/>
+            <Header className="mb-28"/>
             <Body/>
             <div className="flex-1"/>
             <Footer/>

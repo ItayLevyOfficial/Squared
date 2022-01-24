@@ -26,12 +26,6 @@ const Dashboard = () => {
         close={close}
         selectedToken={selectedToken}
       >
-        {StakingPoolsObject.find(
-          (el) =>
-            el.id === selectedToken && (
-              <StakingPool el={el} key={el.id} selectedToken={selectedToken} />
-            )
-        )}
       </ModalDisplay>
       <Sidenav />
       <div className="flex flex-col w-10/12 max-w-main min-h-full">
