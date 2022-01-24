@@ -21,12 +21,7 @@ const Dashboard = () => {
   }
   return (
     <div className="flex">
-      <ModalDisplay
-        isOpen={isModalOpen}
-        close={close}
-        selectedToken={selectedToken}
-      >
-      </ModalDisplay>
+      <ModalDisplay isOpen={isModalOpen} close={close} selectedToken={selectedToken}/>
       <Sidenav />
       <div className="flex flex-col w-10/12 max-w-main min-h-full">
         <Header />
