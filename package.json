@@ -7,14 +7,16 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@ethersproject/providers": "^5.5.2",
     "@emotion/react": "^11.7.1",
     "@emotion/styled": "^11.6.0",
+    "@ethersproject/providers": "^5.5.2",
     "@heroicons/react": "^1.0.5",
+    "@popperjs/core": "^2.11.2",
     "dotenv": "^14.2.0",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-modal": "^3.14.4",
+    "react-popper": "^2.2.5",
     "react-router-dom": "^6.2.1"
   },
   "devDependencies": {
