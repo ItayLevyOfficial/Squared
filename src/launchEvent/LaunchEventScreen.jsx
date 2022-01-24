@@ -1,11 +1,13 @@
 import {Header} from "./Header";
 import {Body} from './Body'
+import {Footer} from './Footer'
 
 export const LaunchEventScreen = () => {
     return <ScreenPaddedContainer>
-        <div className="flex flex-col items-center w-full max-w-screen-xl">
-            <Header className='mb-28'/>
+        <div className="flex flex-col items-center w-full max-w-screen-xl h-full justify-between">
+            <Header/>
             <Body/>
+            <Footer/>
         </div>
     </ScreenPaddedContainer>
 }
