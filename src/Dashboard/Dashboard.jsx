@@ -33,7 +33,7 @@ const Dashboard = () => {
           <div className="border-b w-full border-primary opacity-80 mb-4" />
 
           {StakingPoolsObject.map((el) => (
-            <ProductPool el={el} key={el.id} openModal={open} />
+            <ProductPool el={el} key={el.id} openModal={() => open(el.id)} />
           ))}
         </div>
         <Footer />
