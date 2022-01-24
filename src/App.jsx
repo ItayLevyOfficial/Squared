@@ -5,7 +5,14 @@ import Dashboard from './Dashboard'
 import Products from './Products'
 import ScrollToTop from './Layouts/ScrollToTop'
 
+import { ConnectBlockchain } from './Hooks/ConnectBlockchain'
+import { useEffect } from 'react'
+
 function App() {
+  useEffect(() => {
+    ConnectBlockchain()
+  }, [])
+
   return (
     <div className="flex justify-center w-full">
       <Router>
