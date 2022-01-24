@@ -1,7 +1,7 @@
 import {Header} from "./Header";
 import {Body} from './Body'
 import {Footer} from './Footer'
-import Dragon from './dragon.png';
+import Dragon from './icons/dragon.png';
 
 export const LaunchEventScreen = () => {
   return <ScreenPaddedContainer>
