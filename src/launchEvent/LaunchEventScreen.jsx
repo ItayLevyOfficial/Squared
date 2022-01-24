@@ -1,6 +1,7 @@
 import {Header} from "./Header";
 import {Body} from './Body'
 import {Footer} from './Footer'
+import Dragon from './dragon.png';
 
 export const LaunchEventScreen = () => {
   return <ScreenPaddedContainer>
@@ -10,6 +11,7 @@ export const LaunchEventScreen = () => {
       <div className="flex-1"/>
       <Footer/>
     </div>
+    <img src={Dragon} alt='' className='fixed bottom-6 left-6'/>
   </ScreenPaddedContainer>
 }
 
