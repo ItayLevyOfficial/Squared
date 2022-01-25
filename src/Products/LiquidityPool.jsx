@@ -37,7 +37,6 @@ const LiquidityPool = ({ el, openModal }) => {
             defaultValue={0}
             type="number"
             className="w-full bg-lightDark mx-2 text-white outline-none text-xl"
-            autoFocus
             dir="rtl"
           />
           <div className=" text-white text-sm -mr-4 w-auto right-0 ">Votes</div>

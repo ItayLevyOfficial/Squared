@@ -1,5 +1,5 @@
 import { LibraryIcon, BookOpenIcon } from '@heroicons/react/outline'
-import Logo from './goldlogo.svg'
+import Logo from './icons//goldlogo.svg'
 import { useLocation } from 'react-router-dom'
 
 const Sidenav = () => {

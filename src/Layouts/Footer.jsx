@@ -1,9 +1,9 @@
-import Binance from './binance.svg'
-import Discord from '../Assets/Discord-Logo.svg'
-import Medium from '../Assets/Medium-Logo.svg'
-import Reddit from '../Assets/Reddit-Logo.svg'
-import Telegram from '../Assets/Telegram-Logo.svg'
-import Twitter from '../Assets/Twitter-Logo.svg'
+import Binance from './icons/binance.svg'
+import Discord from './icons/Discord-Logo.svg'
+import Medium from './icons/Medium-Logo.svg'
+import Reddit from './icons/Reddit-Logo.svg'
+import Telegram from './icons/Telegram-Logo.svg'
+import Twitter from './icons/Twitter-Logo.svg'
 
 const Footer = () => {
   return (
