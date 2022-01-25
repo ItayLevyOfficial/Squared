@@ -1,9 +1,9 @@
-import Alchemhy from '../Assets/Alchemy.svg'
-import Discord from '../Assets/Discord-Logo.svg'
-import Medium from '../Assets/Medium-Logo.svg'
-import Reddit from '../Assets/Reddit-Logo.svg'
-import Telegram from '../Assets/Telegram-Logo.svg'
-import Twitter from '../Assets/Twitter-Logo.svg'
+import Binance from './icons/binance.svg'
+import Discord from './icons/Discord-Logo.svg'
+import Medium from './icons/Medium-Logo.svg'
+import Reddit from './icons/Reddit-Logo.svg'
+import Telegram from './icons/Telegram-Logo.svg'
+import Twitter from './icons/Twitter-Logo.svg'
 
 const Footer = () => {
   return (
@@ -38,7 +38,7 @@ const Footer = () => {
       </div>
 
       <div className="cursor-pointer">
-        <img src={Alchemhy} className="opacity-40 hover:opacity-70 w-40 h-20" />
+        <img src={Binance} className="opacity-40 hover:opacity-70 w-40 h-20" />
       </div>
     </div>
   )

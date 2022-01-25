@@ -7,7 +7,7 @@ export const Body = ({ className }) => {
   const [selectedToken, setSelectedToken] = useState(null)
 
   return (
-    <div className={`flex z-10 space-x-32 ${className}`}>
+    <div className={`flex space-x-32 -mt-20 ${className}`}>
       <AccountStatus
         bnbCommitted={57}
         busdCommitted={93}

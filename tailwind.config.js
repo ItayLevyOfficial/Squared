@@ -5,15 +5,16 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        black: '#000000',
-        dark: '#52057B',
+        black: '#0f172a',
+        dark: '#4c1d95',
         lightDark: '#892CDC',
         primary: '#BC6FF1',
         white: '#ffffff',
+        gold: '#FFD700',
       },
       fontFamily: {
-        baloo: ['\"Baloo 2\"', 'sans-serif'],
-        number: ['Red Hat Display']
+        baloo: ['"Baloo 2"', 'sans-serif'],
+        number: ['Red Hat Display'],
       },
       spacing: {
         main: '112rem',
