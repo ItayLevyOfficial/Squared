@@ -6,14 +6,7 @@ import ScrollToTop from './layouts/ScrollToTop'
 import { LaunchEventScreen } from './launchEvent/LaunchEventScreen'
 import { AccountStatus } from './launchEvent/AccountStatus'
 
-import { ConnectBlockchain } from './hooks/ConnectBlockchain'
-import { useEffect } from 'react'
-
 function App() {
-  useEffect(() => {
-    ConnectBlockchain()
-  }, [])
-
   return (
     <div className="flex justify-center w-full ">
       <Router>

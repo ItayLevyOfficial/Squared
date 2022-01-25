@@ -12,7 +12,6 @@ const Sidenav = () => {
           src={Logo}
           className="w-24 h-24 bg-dark rounded-full cursor-default"
         />
-        <h1 className="text-3xl  cursor-default text-white">PUFF</h1>
       </div>
 
       <div className="flex cursor-pointer group space-x-2 items-center ">
