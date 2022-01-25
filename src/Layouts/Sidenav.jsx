@@ -1,5 +1,5 @@
 import { LibraryIcon, BookOpenIcon } from '@heroicons/react/outline'
-import Logo from '../Assets/Logo.svg'
+import Logo from './icons//goldlogo.svg'
 import { useLocation } from 'react-router-dom'
 
 const Sidenav = () => {
@@ -8,10 +8,10 @@ const Sidenav = () => {
   return (
     <div className="sticky h-screen top-0 mr-6  w-52 bg-dark text-white flex flex-col space-y-6 items-start px-6 pt-6">
       <div className="w-full flex flex-col justify-center items-center">
-        <div className="bg-white rounded-full">
-          <img src={Logo} className="w-20 h-20 rounded-full border" />
-        </div>
-        <div className="text-gray-100 underline cursor-default">PUFF</div>
+        <img
+          src={Logo}
+          className="w-24 h-24 bg-dark rounded-full cursor-default"
+        />
       </div>
 
       <div className="flex cursor-pointer group space-x-2 items-center ">
