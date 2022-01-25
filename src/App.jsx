@@ -15,7 +15,7 @@ function App() {
   }, [])
 
   return (
-    <div className="flex justify-center w-full">
+    <div className="flex justify-center w-full ">
       <Router>
         <ScrollToTop>
           <Routes>
