@@ -29,7 +29,7 @@ const Home = () => {
       {/*>*/}
       {/*  <source src={Video} type="video/mp4" />*/}
       {/*</video>*/}
-      <div className="w-full h-full z-10 bg-white absolute opacity-70"/>
+      <div className="w-full h-full z-10 bg-black absolute opacity-70"/>
 
       <div className="flex flex-col justify-between items-center h-full w-full z-20 pb-14">
         <div className="flex flex-col items-center">
