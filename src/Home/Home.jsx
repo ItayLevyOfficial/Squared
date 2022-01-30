@@ -24,7 +24,7 @@ export const Home = () => {
       <div className="absolute w-screen h-screen bg-[#000000] opacity-50 -z-10"/>
       <div className="flex flex-col justify-between items-center h-full w-full z-20 py-14">
         <div className="flex flex-col items-center">
-          <PuffLogo className="h-40 w-40 object-cover mb-12 mt-8"/>
+          <PuffLogo className="h-48 w-48 object-cover mb-12 mt-8"/>
           <h1 className="text-7xl -tracking-wider font-bold mb-3">ENTER THE DRAGON</h1>
           {/*<img src={Heading} alt="" className="animate-fadeIn -mb-14" />*/}
           <h2 className="text-gold text-3xl font-light mb-12 tracking-wide">

@@ -6,7 +6,7 @@ import GithubIcon from './icons/github.svg'
 
 const FooterIcon = ({src}) => <img src={src} alt="" className="opacity-70 hover:opacity-100"/>
 
-export const Footer = () => <div className="flex items-center space-x-7">
+export const Footer = () => <div className="flex items-center space-x-9">
   <FooterIcon src={TwitterIcon}/>
   <FooterIcon src={MediumIcon}/>
   <FooterIcon src={DocsIcon}/>
