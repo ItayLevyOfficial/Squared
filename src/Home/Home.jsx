@@ -19,19 +19,22 @@ const PuffLogo = ({ className = '' }) => (
 
 export const Home = () => {
   return (
-    <div className="w-screen h-screen bg-black">
-      <div className="flex flex-col justify-between items-center h-full w-full z-20 pb-14">
+    <div className="w-screen h-screen">
+      <video src={Video} autoPlay muted className="absolute h-screen w-screen object-cover -z-20" loop/>
+      <div className="absolute w-screen h-screen bg-[#000000] opacity-50 -z-10"/>
+      <div className="flex flex-col justify-between items-center h-full w-full z-20 py-14">
         <div className="flex flex-col items-center">
-          <PuffLogo className="h-40 w-40 object-cover"/>
-          <img src={Heading} alt="" className="animate-fadeIn -mb-14" />
-          <h1 className="text-gold text-4xl text-baloo opacity-70">
+          <PuffLogo className="h-40 w-40 object-cover mb-12 mt-8"/>
+          <h1 className="text-7xl -tracking-wider font-bold mb-3">ENTER THE DRAGON</h1>
+          {/*<img src={Heading} alt="" className="animate-fadeIn -mb-14" />*/}
+          <h2 className="text-gold text-3xl font-light mb-12 tracking-wide">
             Sustainable Liquidity for Long Tail Assets
-          </h1>
+          </h2>
           <button
             type="button"
-            className="p-5 text-lg bg-black opacity-80 hover:text-gold transition ease-in-out duration-200 rounded-xl w-40"
+            className="py-5 px-10 text-lg bg-[#000] hover:text-gold rounded-xl "
           >
-            <a href="/launch">Connect Walle</a>
+            <a href="/launch">Connect Wallet</a>
           </button>
         </div>
         <Footer />
