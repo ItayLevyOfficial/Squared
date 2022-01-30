@@ -21,20 +21,20 @@ export const Home = () => {
   return (
     <div className="w-screen h-screen">
       <video src={Video} autoPlay muted className="absolute h-screen w-screen object-cover -z-20" loop/>
-      <div className="absolute w-screen h-screen bg-[#000000] opacity-50 -z-10"/>
+      <div className="absolute w-screen h-screen bg-[#000000] opacity-70 -z-10"/>
       <div className="flex flex-col justify-between items-center h-full w-full z-20 py-14">
         <div className="flex flex-col items-center">
           <PuffLogo className="h-48 w-48 object-cover mb-12 mt-8"/>
           <h1 className="text-7xl -tracking-wider font-bold mb-3">ENTER THE DRAGON</h1>
           {/*<img src={Heading} alt="" className="animate-fadeIn -mb-14" />*/}
-          <h2 className="text-gold text-3xl font-light mb-12 tracking-wide">
+          <h2 className="text-gold text-3xl font-light mb-10 tracking-wide">
             Sustainable Liquidity for Long Tail Assets
           </h2>
           <button
             type="button"
-            className="py-5 px-10 text-lg bg-[#000] hover:text-gold rounded-xl "
+            className="py-5 px-10 bg-[#000] hover:text-gold rounded-xl text-xl tracking-wider"
           >
-            <a href="/launch">Connect Wallet</a>
+            Coming Soon
           </button>
         </div>
         <Footer />

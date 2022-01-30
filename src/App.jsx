@@ -1,6 +1,5 @@
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
 import ScrollToTop from './layouts/ScrollToTop'
-import { LaunchEventScreen } from './launchEvent/LaunchEventScreen'
 import { Home } from './Home/Home'
 
 function App() {
@@ -9,8 +8,7 @@ function App() {
       <Router>
         <ScrollToTop>
           <Routes>
-            <Route path="/launch" element={<LaunchEventScreen />} />
-            <Route path="/test" element={<Home />} />
+            <Route path="/*" element={<Home />} />
           </Routes>
         </ScrollToTop>
       </Router>
