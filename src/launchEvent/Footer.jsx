@@ -4,12 +4,23 @@ import DocsIcon from './icons/docs.svg'
 import DiscordIcon from './icons/discord.svg'
 import GithubIcon from './icons/github.svg'
 
-const FooterIcon = ({src}) => <img src={src} alt="" className="opacity-70 hover:opacity-100"/>
+const FooterIcon = ({ src, url }) => (
+  <img
+    src={src}
+    alt=""
+    className="opacity-70 hover:opacity-100"
+    onClick={() => (window.location.href = url)}
+  />
+)
 
-export const Footer = () => <div className="flex items-center space-x-9">
-  <FooterIcon src={TwitterIcon}/>
-  <FooterIcon src={MediumIcon}/>
-  <FooterIcon src={DocsIcon}/>
-  <FooterIcon src={DiscordIcon}/>
-  <FooterIcon src={GithubIcon}/>
-</div>
+const twitterPuffUrl = 'https://twitter.com/puffpuffmoney'
+
+export const Footer = () => (
+  <div className="flex items-center space-x-9">
+    <FooterIcon src={TwitterIcon} url={twitterPuffUrl}/>
+    <FooterIcon src={MediumIcon} />
+    <FooterIcon src={DocsIcon} />
+    <FooterIcon src={DiscordIcon} />
+    <FooterIcon src={GithubIcon} />
+  </div>
+)
