@@ -9,20 +9,21 @@ const FooterIcon = ({ src, url }) => (
     src={src}
     alt=""
     className="opacity-70 hover:opacity-100"
-    onClick={() => (window.location.href = url)}
+    onClick={() => (window.open(url))}
   />
 )
 
 const twitter = 'https://twitter.com/puffpuffmoney'
 const medium = 'https://medium.com/@puffpuffmoney'
 const github = 'https://github.com/puffpuffmoney/puff_contracts'
+const discord = 'https://discord.gg/j7SstuFv7E'
 
 export const Footer = () => (
   <div className="flex items-center space-x-9">
-    <FooterIcon src={TwitterIcon} url={twitter}/>
-    <FooterIcon src={MediumIcon} url={medium}/>
+    <FooterIcon src={TwitterIcon} url={twitter} />
+    <FooterIcon src={MediumIcon} url={medium} />
     <FooterIcon src={DocsIcon} />
-    <FooterIcon src={DiscordIcon} />
-    <FooterIcon src={GithubIcon} url={github}/>
+    <FooterIcon src={DiscordIcon} url={discord} />
+    <FooterIcon src={GithubIcon} url={github} />
   </div>
 )
