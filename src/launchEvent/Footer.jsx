@@ -15,6 +15,7 @@ const FooterIcon = ({ src, url }) => (
 
 const twitter = 'https://twitter.com/puffpuffmoney'
 const medium = 'https://medium.com/@puffpuffmoney'
+const github = 'https://github.com/puffpuffmoney/puff_contracts'
 
 export const Footer = () => (
   <div className="flex items-center space-x-9">
@@ -22,6 +23,6 @@ export const Footer = () => (
     <FooterIcon src={MediumIcon} url={medium}/>
     <FooterIcon src={DocsIcon} />
     <FooterIcon src={DiscordIcon} />
-    <FooterIcon src={GithubIcon} />
+    <FooterIcon src={GithubIcon} url={github}/>
   </div>
 )
