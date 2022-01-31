@@ -1,5 +1,4 @@
 import Video from './icons/landing.mp4'
-import Heading from './icons/heading.svg'
 import { Footer } from '../launchEvent/Footer'
 
 const PuffLogo = ({ className = '' }) => (
