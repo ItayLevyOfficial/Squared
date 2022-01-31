@@ -13,12 +13,13 @@ const FooterIcon = ({ src, url }) => (
   />
 )
 
-const twitterPuffUrl = 'https://twitter.com/puffpuffmoney'
+const twitter = 'https://twitter.com/puffpuffmoney'
+const medium = 'https://medium.com/@puffpuffmoney'
 
 export const Footer = () => (
   <div className="flex items-center space-x-9">
-    <FooterIcon src={TwitterIcon} url={twitterPuffUrl}/>
-    <FooterIcon src={MediumIcon} />
+    <FooterIcon src={TwitterIcon} url={twitter}/>
+    <FooterIcon src={MediumIcon} url={medium}/>
     <FooterIcon src={DocsIcon} />
     <FooterIcon src={DiscordIcon} />
     <FooterIcon src={GithubIcon} />
