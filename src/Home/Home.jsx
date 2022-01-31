@@ -25,7 +25,7 @@ export const Home = () => {
       <div className="flex flex-col justify-between items-center h-full w-full z-20 py-14 animate-fadeIn">
         <div className="flex flex-col items-center">
           <PuffLogo className="h-48 w-48 object-cover mb-12 mt-8"/>
-          <h1 className="text-7xl -tracking-wider font-bold mb-3">ENTER THE DRAGON</h1>
+          <h1 className="text-7xl -tracking-wider font-bold mb-3">PUFF</h1>
           <h2 className="text-gold text-3xl font-light mb-10 tracking-wide">
             Sustainable Liquidity for Long Tail Assets
           </h2>
