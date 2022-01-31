@@ -17,12 +17,13 @@ const twitter = 'https://twitter.com/puffpuffmoney'
 const medium = 'https://medium.com/@puffpuffmoney'
 const github = 'https://github.com/puffpuffmoney/puff_contracts'
 const discord = 'https://discord.gg/j7SstuFv7E'
+const docs = 'https://docs.puff.money'
 
 export const Footer = () => (
   <div className="flex items-center space-x-9">
     <FooterIcon src={TwitterIcon} url={twitter} />
     <FooterIcon src={MediumIcon} url={medium} />
-    <FooterIcon src={DocsIcon} />
+    <FooterIcon src={DocsIcon} url={docs}/>
     <FooterIcon src={DiscordIcon} url={discord} />
     <FooterIcon src={GithubIcon} url={github} />
   </div>
