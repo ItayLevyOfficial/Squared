@@ -20,8 +20,8 @@ export const Home = () => {
   return (
     <div className="w-screen h-screen">
       <video src={Video} autoPlay muted className="absolute h-screen w-screen object-cover -z-20" loop/>
-      <div className="absolute w-screen h-screen bg-[#000000] opacity-70 -z-10"/>
-      <div className="flex flex-col justify-between items-center h-full w-full z-20 py-14 animate-fadeIn">
+      <div className="absolute w-screen h-screen bg-[#000000] -z-10 opacity-80"/>
+      <div className="flex flex-col justify-between items-center h-full w-full z-20 py-14 animate-fadeIn relative">
         <div className="flex flex-col items-center">
           <PuffLogo className="h-48 w-48 object-cover mb-12 mt-8"/>
           <h1 className="text-7xl -tracking-wider font-bold mb-3">PUFF</h1>
