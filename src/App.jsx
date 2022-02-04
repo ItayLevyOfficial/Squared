@@ -1,10 +1,6 @@
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
-import Home from './home'
-import Dashboard from './dashboard'
-import Products from './products'
 import ScrollToTop from './layouts/ScrollToTop'
-import { LaunchEventScreen } from './launchEvent/LaunchEventScreen'
-import { AccountStatus } from './launchEvent/AccountStatus'
+import { Home } from './Home/Home'
 
 function App() {
   return (
@@ -12,11 +8,7 @@ function App() {
       <Router>
         <ScrollToTop>
           <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/launch" element={<LaunchEventScreen />} />
-            <Route path="/dashboard" element={<Dashboard />} />
-            <Route path="/products" element={<Products />} />
-            <Route path="/testing" element={<AccountStatus />} />
+            <Route path="/*" element={<Home />} />
           </Routes>
         </ScrollToTop>
       </Router>
