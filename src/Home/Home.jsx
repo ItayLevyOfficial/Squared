@@ -1,13 +1,35 @@
+import Video from './icons/landing.mp4'
+import Heading from './icons/heading.svg'
+import { Footer } from '../launchEvent/Footer'
+import Logo from '../layouts/icons/goldlogo.svg'
+
 const Home = () => {
   return (
-    <div className="relative flex items-center justify-center h-screen mb-12 overflow-y-hidden">
-      <div>
-        <a
-          href="/products"
-          className="relative cursor-pointer z-30 p-5 text-2xl text-white bg-purple-300 bg-opacity-50 rounded-xl"
-        >
-          Puff puff pass
-        </a>
+    <div className="w-screen h-screen">
+      <video
+        className="h-full w-full z-0 absolute opacity-20"
+        autoPlay
+        muted
+        loop
+      >
+        <source src={Video} type="video/mp4" />
+      </video>
+
+      <div className="flex flex-col justify-between items-center h-full w-full z-10 pb-14">
+        <div className="h-full flex flex-col justify-center items-center space-y-10">
+          <img src={Heading} alt="" className="animate-fadeIn -mb-14" />
+
+          <h1 className="text-gold text-4xl text-baloo opacity-70">
+            Sustainable Liquidity for Long Tail Assets
+          </h1>
+          <button
+            type="button"
+            className="p-5 text-lg bg-black opacity-80 hover:text-gold transition ease-in-out duration-200 rounded-xl w-40"
+          >
+            <a href="/launch">Connect Wallet</a>
+          </button>
+        </div>
+        <Footer />
       </div>
     </div>
   )
