@@ -1,7 +1,8 @@
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
 import ScrollToTop from './layouts/ScrollToTop'
 import { Home } from './Home/Home'
-import { LaunchEventScreen } from './launchEvent/LaunchEventScreen'
+import React from 'react'
+import { LaunchEventScreen } from './launchEvent/LaunchEventScreen';
 
 function App() {
   return (
