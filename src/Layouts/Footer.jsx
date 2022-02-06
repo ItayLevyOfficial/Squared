@@ -1,8 +1,6 @@
 import Binance from './icons/binance.svg'
 import Discord from './icons/Discord-Logo.svg'
 import Medium from './icons/Medium-Logo.svg'
-import Reddit from './icons/Reddit-Logo.svg'
-import Telegram from './icons/Telegram-Logo.svg'
 import Twitter from './icons/Twitter-Logo.svg'
 
 export const Footer = () => {
@@ -14,12 +12,6 @@ export const Footer = () => {
         </div>
         <div className="cursor-pointer">
           <img src={Medium} className="opacity-40 hover:opacity-70 h-8 w-8" />
-        </div>
-        <div className="cursor-pointer">
-          <img src={Reddit} className="opacity-40 hover:opacity-70 h-8 w-8" />
-        </div>
-        <div className="cursor-pointer">
-          <img src={Telegram} className="opacity-40 hover:opacity-70 h-8 w-8" />
         </div>
         <div className="cursor-pointer">
           <img src={Twitter} className="opacity-40 hover:opacity-70 h-8 w-8" />
