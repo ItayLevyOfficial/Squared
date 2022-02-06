@@ -1,7 +1,7 @@
 import ModalLine from './ModalLine'
 import React from 'react'
 
-const ModalInfo = ({ isOnWithdraw, selectedToken }) => {
+export const ModalInfo = ({ isOnWithdraw, selectedToken }) => {
   return (
     <div className="text-white text-sm mt-6">
       {isOnWithdraw ? (
@@ -55,5 +55,3 @@ const ModalInfo = ({ isOnWithdraw, selectedToken }) => {
     </div>
   )
 }
-
-export default ModalInfo

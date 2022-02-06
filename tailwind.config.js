@@ -19,8 +19,13 @@ module.exports = {
       },
       colors: {
         black: '#000000',
+<<<<<<< HEAD
         dark: '#4c1d95',
         lightDark: '#892CDC',
+=======
+        dark: '#232334',
+        lightDark: '#454258',
+>>>>>>> master
         primary: '#BC6FF1',
         white: '#ffffff',
         gold: '#FFD700',

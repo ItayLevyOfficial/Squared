@@ -2,13 +2,13 @@ import { useLocation } from 'react-router-dom'
 import { useState } from 'react'
 import React from 'react'
 
-const Header = () => {
+export const Header = () => {
   const { pathname } = useLocation()
 
   return (
     <nav className="flex flex-wrap h-20 space-x-2 items-center justify-between w-full mt-2">
       <div className="block text-white opacity-90 text-3xl">
-        {pathname == '/products' ? 'Assets' : 'Dashboard'}
+        {pathname == '/assets' ? 'Assets' : 'Dashboard'}
       </div>
       <AddressButton />
     </nav>
@@ -37,5 +37,3 @@ export const AddressButton = ({ address }) => {
     </button>
   )
 }
-
-export default Header
