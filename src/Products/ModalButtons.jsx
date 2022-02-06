@@ -13,7 +13,7 @@ const ModalButtons = ({ isOnWithdraw, selectedToken }) => {
     <div className="w-full h-10 flex justify-center items-center space-x-4">
       {isOnWithdraw ? (
         <>
-          <Button text={`REQUEST WITHDRAWL`} />
+          <Button text={`REQUEST WITHDRAWAL`} />
           <Button text={`WITHDRAW ${selectedToken}`} />
         </>
       ) : (
