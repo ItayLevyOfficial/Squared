@@ -6,7 +6,8 @@ import { CommitAssetsModal } from './commitAssetsModal';
 
 export const Body = ({ className }) => {
   const [selectedToken, setSelectedToken] = useState(null)
-
+  const isConnected = false
+  
   return (
     <div className={`flex space-x-32 -mt-20 ${className}`}>
       <AccountStatus
@@ -20,7 +21,7 @@ export const Body = ({ className }) => {
       <CommitAssetsModal
         isOpen={selectedToken}
         selectedToken={selectedToken ?? ''}
-        close={() => setSelectedToken(null)}
+        close={() => setSelectedToken(null)} isConnected={isConnected}
       />
     </div>
   )

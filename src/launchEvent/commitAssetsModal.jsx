@@ -18,7 +18,7 @@ export const CommitAssetsModal = ({
   selectedToken,
   commitedCount,
   isOpen,
-  close,
+  close, isConnected
 }) => {
   const obj = StakingPoolsObject.find((el) => el.id === selectedToken)
 
@@ -36,10 +36,10 @@ export const CommitAssetsModal = ({
         <h1 className="text-2xl mb-8 -mt-4 text-white font-medium">Commit {obj?.title}</h1>
         <ModalInput selectedToken={obj?.title} className='mb-8'/>
         <p className='w-10/12 text-center mb-8'>
-          You will be able to withdraw your assets during the last look.&nbsp;
+          You will be able to withdraw your assets during the last look period.&nbsp;
           <span className='text-primary underline cursor-pointer' onClick={() => window.open(mediumArticleLink) }>Learn more</span>
         </p>
-        <ModalButton text='Deposit'/>
+        <ModalButton text={isConnected ? 'Deposit': 'Connect Wallet'}/>
       </div>
     </Modal>
   )
