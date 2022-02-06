@@ -1,5 +1,6 @@
 import { useLocation } from 'react-router-dom'
 import { useState } from 'react'
+import React from 'react'
 
 const Header = () => {
   const { pathname } = useLocation()
@@ -14,19 +15,25 @@ const Header = () => {
   )
 }
 
-export const AddressButton = ({
-  address = '0xA3318B6027DC8fC382F990Bee9d2308E2ea3a388',
-}) => {
+export const AddressButton = ({ address }) => {
   const [isHovered, setIsHovered] = useState(false)
+
+  const buttonStyles = 'bg-lightDark border-0 font-baloo'
+  const styles = address ? (isHovered ? buttonStyles : '') : buttonStyles
+
+  const buttonText = address
+    ? isHovered
+      ? 'Disconnect'
+      : `${address.slice(0, 7)}...`
+    : 'Connect'
 
   return (
     <button
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
-      className="border-solid border-[0.5px] border-white text-white font-number hover:font-baloo h-fit
-                    px-5 py-2 rounded-xl hover:border-0 hover:bg-lightDark"
+      className={`border-solid border-[0.5px] border-white text-white font-number h-fit px-5 py-2 rounded-xl ${styles}`}
     >
-      {isHovered ? 'Disconnect' : `${address.slice(0, 7)}...`}
+      {buttonText}
     </button>
   )
 }
