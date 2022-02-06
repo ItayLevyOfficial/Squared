@@ -1,4 +1,4 @@
-const ModalOptions = ({ isOnWithdraw, setIsOnWithdraw, selectedToken }) => {
+export const ModalOptions = ({ isOnWithdraw, setIsOnWithdraw, selectedToken }) => {
   const Option = ({ boolean, optionName, isDisabled }) => {
     return (
       <button
@@ -23,4 +23,4 @@ const ModalOptions = ({ isOnWithdraw, setIsOnWithdraw, selectedToken }) => {
   )
 }
 
-export default ModalOptions
+

@@ -1,4 +1,4 @@
-const StakingPool = ({ el, openModal }) => {
+export const StakingPool = ({ el, openModal }) => {
   const { title, amount, apr, swap, button } = el
   return (
     <div className="group w-48 h-40 bg-dark text-white border-transparent rounded-xl flex flex-col items-center justify-between p-2 flex-shrink-0">
@@ -26,5 +26,3 @@ const StakingPool = ({ el, openModal }) => {
     </div>
   )
 }
-
-export default StakingPool

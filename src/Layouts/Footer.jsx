@@ -5,7 +5,7 @@ import Reddit from './icons/Reddit-Logo.svg'
 import Telegram from './icons/Telegram-Logo.svg'
 import Twitter from './icons/Twitter-Logo.svg'
 
-const Footer = () => {
+export const Footer = () => {
   return (
     <div className="w-full mb-6 bg-dark text-black h-20  border-transparent rounded-3xl flex items-center justify-between p-6 space-x-4">
       <div className="flex space-x-2">
@@ -43,5 +43,3 @@ const Footer = () => {
     </div>
   )
 }
-
-export default Footer

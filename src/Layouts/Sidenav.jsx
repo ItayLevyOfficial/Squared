@@ -2,7 +2,7 @@ import { LibraryIcon, BookOpenIcon } from '@heroicons/react/outline'
 import Logo from './icons//goldlogo.svg'
 import { useLocation } from 'react-router-dom'
 
-const Sidenav = () => {
+export const Sidenav = () => {
   const { pathname } = useLocation()
 
   return (
@@ -45,5 +45,3 @@ const Sidenav = () => {
     </div>
   )
 }
-
-export default Sidenav

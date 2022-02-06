@@ -1,7 +1,7 @@
 import { useLocation } from 'react-router-dom'
 import { useState } from 'react'
 
-const Header = () => {
+export const Header = () => {
   const { pathname } = useLocation()
 
   return (
@@ -30,5 +30,3 @@ export const AddressButton = ({
     </button>
   )
 }
-
-export default Header

@@ -1,4 +1,4 @@
-const LiquidityPool = ({ el, openModal }) => {
+export const LiquidityPool = ({ el, openModal }) => {
   const { title, amount, apr, button } = el
 
   return (
@@ -45,5 +45,3 @@ const LiquidityPool = ({ el, openModal }) => {
     </div>
   )
 }
-
-export default LiquidityPool

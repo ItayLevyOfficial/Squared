@@ -1,13 +1,13 @@
 import { useState } from 'react'
-import StakingPool from './StakingPool'
-import LiquidityPool from './LiquidityPool'
-import Header from '../Layouts/Header'
-import Footer from '../Layouts/Footer'
-import ModalDisplay from './ModalDisplay'
-import Sidenav from '../Layouts/Sidenav'
+import { StakingPool } from './StakingPool'
+import { LiquidityPool } from './LiquidityPool'
+import { Header } from '../layouts/Header'
+import { Footer } from '../layouts/Footer'
+import { ModalDisplay } from './ModalDisplay'
+import { Sidenav } from '../layouts/Sidenav'
 import { StakingPoolsObject } from './StakingPools'
 
-const Products = () => {
+export const Products = () => {
   const [isModalOpen, setIsOpen] = useState(false)
   const [selectedToken, setSelectedToken] = useState('')
 
@@ -51,5 +51,3 @@ const Products = () => {
     </div>
   )
 }
-
-export default Products
