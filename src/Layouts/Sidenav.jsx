@@ -29,14 +29,12 @@ export const Sidenav = () => {
 
       <div className="flex cursor-pointer group space-x-2 items-center ">
         <LibraryIcon
-          className={`h-6 text-white ${
-            pathname !== '/products' && 'opacity-40'
-          }`}
+          className={`h-6 text-white ${pathname !== '/assets' && 'opacity-40'}`}
         />
 
         <a
-          href="/products"
-          className={`text-white ${pathname !== '/products' && 'opacity-40'}`}
+          href="/assets"
+          className={`text-white ${pathname !== '/assets' && 'opacity-40'}`}
         >
           Assets
         </a>
