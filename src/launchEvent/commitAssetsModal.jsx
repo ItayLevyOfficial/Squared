@@ -6,6 +6,11 @@ import { CloseButton } from '../Products/ModalDisplay'
 import { StakingPoolsObject } from '../Products/StakingPools'
 import { ModalInput } from '../Products/ModalInput';
 
+const commitContentStyles = {
+  ...contentStyles, 
+  height: '400px'
+}
+
 export const CommitAssetsModal = ({
   selectedToken,
   commitedCount,
@@ -20,13 +25,14 @@ export const CommitAssetsModal = ({
       onRequestClose={close}
       style={{
         overlay: overlayStyles,
-        content: contentStyles,
+        content: commitContentStyles,
       }}
     >
       <CloseButton close={close} />
       <div className="flex flex-col items-center">
-        <h1 className="text-2xl mb-4 -mt-4 text-white font-medium">Commit {obj?.title}</h1>
+        <h1 className="text-2xl mb-6 -mt-4 text-white font-medium">Commit {obj?.title}</h1>
         <ModalInput selectedToken={obj?.title} />
+        
       </div>
     </Modal>
   )
