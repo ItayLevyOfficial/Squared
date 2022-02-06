@@ -5,6 +5,7 @@ import { contentStyles } from '../Products/ModalDisplay'
 import { CloseButton } from '../Products/ModalDisplay'
 import { StakingPoolsObject } from '../Products/StakingPools'
 import { ModalInput } from '../Products/ModalInput';
+import { ModalButton } from '../Products/ModalButtons';
 
 const commitContentStyles = {
   ...contentStyles, 
@@ -32,12 +33,13 @@ export const CommitAssetsModal = ({
     >
       <CloseButton close={close} />
       <div className="flex flex-col items-center">
-        <h1 className="text-2xl mb-6 -mt-4 text-white font-medium">Commit {obj?.title}</h1>
-        <ModalInput selectedToken={obj?.title} className='mb-6'/>
-        <p className='w-10/12 text-center'>
+        <h1 className="text-2xl mb-8 -mt-4 text-white font-medium">Commit {obj?.title}</h1>
+        <ModalInput selectedToken={obj?.title} className='mb-8'/>
+        <p className='w-10/12 text-center mb-8'>
           You will be able to withdraw your assets during the last look.&nbsp;
           <span className='text-primary underline cursor-pointer' onClick={() => window.open(mediumArticleLink) }>Learn more</span>
         </p>
+        <ModalButton text='Deposit'/>
       </div>
     </Modal>
   )
