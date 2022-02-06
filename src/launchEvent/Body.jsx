@@ -1,8 +1,8 @@
 import { AccountStatus } from './AccountStatus'
 import { EventStatus } from './EventStatus'
 import { useState } from 'react'
-import {ModalDisplay} from '../Products/ModalDisplay'
 import React from 'react'
+import { CommitAssetsModal } from './commitAssetsModal';
 
 export const Body = ({ className }) => {
   const [selectedToken, setSelectedToken] = useState(null)
@@ -17,7 +17,7 @@ export const Body = ({ className }) => {
       />
       <div className="w-[0.5px] h-full bg-white" />
       <EventStatus />
-      <ModalDisplay
+      <CommitAssetsModal
         isOpen={selectedToken}
         selectedToken={selectedToken ?? ''}
         close={() => setSelectedToken(null)}
