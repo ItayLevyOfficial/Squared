@@ -1,3 +1,5 @@
+import React from "react"
+
 const Button = ({ text }) => {
   return (
     <button className="text-white text-sm border-transparent hover:text-black bg-dark hover:bg-primary rounded-lg p-2  w-5/12">

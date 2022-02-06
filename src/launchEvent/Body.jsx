@@ -2,6 +2,7 @@ import { AccountStatus } from './AccountStatus'
 import { EventStatus } from './EventStatus'
 import { useState } from 'react'
 import ModalDisplay from '../Products/ModalDisplay'
+import React from 'react'
 
 export const Body = ({ className }) => {
   const [selectedToken, setSelectedToken] = useState(null)

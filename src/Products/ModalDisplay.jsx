@@ -6,7 +6,7 @@ import ModalOptions from './ModalOptions'
 import ModalInput from './ModalInput'
 import ModalButtons from './ModalButtons'
 import { StakingPoolsObject } from './StakingPools'
-
+import React from 'react'
 Modal.setAppElement('#root')
 
 const contentStyles = {
