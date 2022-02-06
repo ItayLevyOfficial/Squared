@@ -30,16 +30,10 @@ export const Dashboard = () => {
       <div className="flex flex-col w-10/12 max-w-main min-h-full">
         <Header />
         <Balance />
-        <div className="w-full">
-          <span className="text-white text-3xl opacity-90">
-            Liquidity Pools
-          </span>
-          <div className="border-b w-full border-primary opacity-80 mb-4" />
 
-          {StakingPoolsObject.map((el) => (
-            <LiquidityPool el={el} key={el.id} openModal={() => open(el.id)} />
-          ))}
-        </div>
+        {StakingPoolsObject.map((el) => (
+          <LiquidityPool el={el} key={el.id} openModal={() => open(el.id)} />
+        ))}
         <Footer />
       </div>
     </div>
