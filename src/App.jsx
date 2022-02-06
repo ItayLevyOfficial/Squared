@@ -2,6 +2,7 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
 import { ScrollToTop } from './layouts/ScrollToTop'
 import { Home } from './Home/Home'
 import { Products } from './products/Products'
+import { Dashboard } from './dashboard/Dashboard'
 
 function App() {
   return (
@@ -11,6 +12,7 @@ function App() {
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/products" element={<Products />} />
+            <Route path="/dashboard" element={<Dashboard />} />
           </Routes>
         </ScrollToTop>
       </Router>

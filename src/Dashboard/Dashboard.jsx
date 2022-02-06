@@ -1,11 +1,11 @@
 import { useState } from 'react'
-import Footer from '../Layouts/Footer'
-import Header from '../Layouts/Header'
-import ProductPool from '../Products/LiquidityPool'
-import Balance from './Balance'
-import Sidenav from '../Layouts/Sidenav'
-import { StakingPoolsObject } from '../Products/StakingPools'
-import ModalDisplay from '../Products/ModalDisplay'
+import { Footer } from '../layouts/Footer'
+import { Header } from '../layouts/Header'
+import { LiquidityPool } from '../products/LiquidityPool'
+import { Balance } from './Balance'
+import { Sidenav } from '../layouts/Sidenav'
+import { StakingPoolsObject } from '../products/StakingPools'
+import { ModalDisplay } from '../products/ModalDisplay'
 
 export const Dashboard = () => {
   const [isModalOpen, setIsOpen] = useState(false)
@@ -37,7 +37,7 @@ export const Dashboard = () => {
           <div className="border-b w-full border-primary opacity-80 mb-4" />
 
           {StakingPoolsObject.map((el) => (
-            <ProductPool el={el} key={el.id} openModal={() => open(el.id)} />
+            <LiquidityPool el={el} key={el.id} openModal={() => open(el.id)} />
           ))}
         </div>
         <Footer />
