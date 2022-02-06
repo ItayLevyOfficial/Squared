@@ -1,10 +1,6 @@
-<<<<<<< HEAD
 import React from "react"
 
-const ModalLine = ({ title, amount, selectedToken }) => {
-=======
-export const ModalLine = ({ title, amount, selectedPool }) => {
->>>>>>> master
+export const ModalLine = ({ title, amount, selectedToken }) => {
   return (
     <div className="w-full px-6 flex justify-between items-center">
       <span>{title}</span>
