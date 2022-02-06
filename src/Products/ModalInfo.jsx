@@ -1,5 +1,5 @@
-import ModalLine from './ModalLine'
 import React from 'react'
+import { ModalLine } from './ModalLine';
 
 export const ModalInfo = ({ isOnWithdraw, selectedToken }) => {
   return (
