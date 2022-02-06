@@ -3,13 +3,17 @@ import Modal from 'react-modal'
 import { overlayStyles } from '../Products/ModalDisplay'
 import { contentStyles } from '../Products/ModalDisplay'
 import { CloseButton } from '../Products/ModalDisplay'
+import { StakingPoolsObject } from '../Products/StakingPools'
+import { ModalInput } from '../Products/ModalInput';
 
 export const CommitAssetsModal = ({
-  tokenName,
+  selectedToken,
   commitedCount,
   isOpen,
   close,
 }) => {
+  const obj = StakingPoolsObject.find((el) => el.id === selectedToken)
+
   return (
     <Modal
       isOpen={isOpen}
@@ -21,9 +25,8 @@ export const CommitAssetsModal = ({
     >
       <CloseButton close={close} />
       <div className="flex flex-col items-center">
-        <h1 className="text-2xl mb-4 -mt-4 text-white">
-          Commit {tokenName}
-        </h1>
+        <h1 className="text-2xl mb-4 -mt-4 text-white font-medium">Commit {obj?.title}</h1>
+        <ModalInput selectedToken={obj?.title} />
       </div>
     </Modal>
   )

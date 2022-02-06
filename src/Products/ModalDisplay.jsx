@@ -69,7 +69,7 @@ export const ModalDisplay = ({ isOpen, close, selectedToken }) => {
           setIsOnWithdraw={setIsOnWithdraw}
           selectedToken={obj?.title}
         />
-        <ModalInput selectedToken={obj?.title} />
+        <ModalInput selectedToken={obj?.title} className="mt-10" />
         <ModalInfo selectedToken={obj?.title} isOnWithdraw={isOnWithdraw} />
         <br />
         <ModalButtons isOnWithdraw={isOnWithdraw} selectedToken={obj?.title} />
