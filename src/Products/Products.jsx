@@ -3,7 +3,7 @@ import StakingPool from './StakingPool'
 import LiquidityPool from './LiquidityPool'
 import Header from '../Layouts/Header'
 import Footer from '../Layouts/Footer'
-import ModalDisplay from './ModalDisplay'
+import {ModalDisplay} from './ModalDisplay'
 import Sidenav from '../Layouts/Sidenav'
 import { StakingPoolsObject } from './StakingPools'
 

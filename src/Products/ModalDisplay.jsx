@@ -9,7 +9,7 @@ import { StakingPoolsObject } from './StakingPools'
 import React from 'react'
 Modal.setAppElement('#root')
 
-const contentStyles = {
+export const contentStyles = {
   position: 'absolute',
   top: '50%',
   left: '50%',
@@ -28,7 +28,7 @@ const contentStyles = {
   height: '500px',
 }
 
-const overlayStyles = {
+export const overlayStyles = {
   display: 'flex',
   justifyContent: 'center',
   alignItems: 'center',
@@ -37,7 +37,7 @@ const overlayStyles = {
   backgroundColor: 'rgba(0, 0, 0, 0.70)',
 }
 
-const DisplayModal = ({ isOpen, close, selectedToken }) => {
+export const ModalDisplay = ({ isOpen, close, selectedToken }) => {
   const [isOnWithdraw, setIsOnWithdraw] = useState(false)
   const obj = StakingPoolsObject.find((el) => el.id === selectedToken)
 
@@ -55,9 +55,9 @@ const DisplayModal = ({ isOpen, close, selectedToken }) => {
           <XIcon className="h-6 text-white" />
         </button>
       </div>
-      <div className="text-2xl mb-4 -mt-4 text-white flex justify-center">
+      <h1 className="text-2xl mb-4 -mt-4 text-white flex justify-center">
         {obj?.title}
-      </div>
+      </h1>
 
       <div className="border-white border rounded-lg bg-transparent w-full h-96 flex flex-col overflow-hidden">
         <ModalOptions
@@ -68,12 +68,9 @@ const DisplayModal = ({ isOpen, close, selectedToken }) => {
         <ModalInput selectedToken={obj?.title} />
         <ModalInfo selectedToken={obj?.title} isOnWithdraw={isOnWithdraw} />
         <br />
-
         <ModalButtons isOnWithdraw={isOnWithdraw} selectedToken={obj?.title} />
         <br />
       </div>
     </Modal>
   )
 }
-
-export default DisplayModal

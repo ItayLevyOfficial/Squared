@@ -6,7 +6,7 @@ import ProductPool from '../Products/LiquidityPool'
 import Balance from './Balance'
 import Sidenav from '../Layouts/Sidenav'
 import {StakingPoolsObject} from '../Products/StakingPools'
-import ModalDisplay from '../Products/ModalDisplay'
+import {ModalDisplay} from '../Products/ModalDisplay'
 
 const Dashboard = () => {
   const [isModalOpen, setIsOpen] = useState(false)
