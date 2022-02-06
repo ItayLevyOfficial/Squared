@@ -53,8 +53,7 @@ export const AddressButton = () => {
   return (
     <button
       onClick={connectWalletHandler}
-      className="border-solid border-[0.5px] border-white text-white font-number h-fit
-                    px-5 py-2 rounded-xl hover:border-0 hover:bg-lightDark"
+      className="font-number h-fit px-5 py-2 rounded-xl border-0 bg-gold text-black hover:bg-dark hover:text-white "
     >
       {address.toString().substring(0, 14)}
     </button>
