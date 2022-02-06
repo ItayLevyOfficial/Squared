@@ -37,6 +37,14 @@ export const overlayStyles = {
   backgroundColor: 'rgba(0, 0, 0, 0.70)',
 }
 
+export const CloseButton = ({ close }) => (
+  <div className="flex justify-end">
+    <button onClick={close}>
+      <XIcon className="h-6 text-white" />
+    </button>
+  </div>
+)
+
 export const ModalDisplay = ({ isOpen, close, selectedToken }) => {
   const [isOnWithdraw, setIsOnWithdraw] = useState(false)
   const obj = StakingPoolsObject.find((el) => el.id === selectedToken)
@@ -50,11 +58,7 @@ export const ModalDisplay = ({ isOpen, close, selectedToken }) => {
         content: contentStyles,
       }}
     >
-      <div className="flex justify-end">
-        <button onClick={close}>
-          <XIcon className="h-6 text-white" />
-        </button>
-      </div>
+      <CloseButton close={close} />
       <h1 className="text-2xl mb-4 -mt-4 text-white flex justify-center">
         {obj?.title}
       </h1>

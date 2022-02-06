@@ -1,5 +1,7 @@
 import React from "react"
 import { Modal } from 'react-modal';
+import { overlayStyles } from "../Products/ModalDisplay";
+import { contentStyles } from "../Products/ModalDisplay";
 
 export const CommitAssetsModal = ({selectedToken, commitedAssets, isOpen}) => {
     
@@ -10,5 +12,6 @@ export const CommitAssetsModal = ({selectedToken, commitedAssets, isOpen}) => {
         overlay: overlayStyles,
         content: contentStyles,
       }}
+      
     ></Modal>
 }
