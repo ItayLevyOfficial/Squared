@@ -18,7 +18,7 @@ export const Header = () => {
 export const AddressButton = ({ address }) => {
   const [isHovered, setIsHovered] = useState(false)
 
-  const buttonStyles = 'bg-lightDark border-0 font-baloo'
+  const buttonStyles = 'bg-primary border-none font-baloo'
   const styles = address ? (isHovered ? buttonStyles : '') : buttonStyles
 
   const buttonText = address
