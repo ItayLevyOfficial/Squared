@@ -11,6 +11,8 @@ const commitContentStyles = {
   height: '400px'
 }
 
+const mediumArticleLink = 'https://medium.com/puffpuffmoney'
+
 export const CommitAssetsModal = ({
   selectedToken,
   commitedCount,
@@ -31,8 +33,11 @@ export const CommitAssetsModal = ({
       <CloseButton close={close} />
       <div className="flex flex-col items-center">
         <h1 className="text-2xl mb-6 -mt-4 text-white font-medium">Commit {obj?.title}</h1>
-        <ModalInput selectedToken={obj?.title} />
-        
+        <ModalInput selectedToken={obj?.title} className='mb-6'/>
+        <p className='w-10/12 text-center'>
+          You will be able to withdraw your assets during the last look.&nbsp;
+          <span className='text-primary underline cursor-pointer' onClick={() => window.open(mediumArticleLink) }>Learn more</span>
+        </p>
       </div>
     </Modal>
   )
