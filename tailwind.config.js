@@ -18,9 +18,9 @@ module.exports = {
         fadeIn: 'fadeIn 2s ease-in',
       },
       colors: {
-        black: '#0f172a',
-        dark: '#4c1d95',
-        lightDark: '#892CDC',
+        black: '#000000',
+        dark: '#232334',
+        lightDark: '#454258',
         primary: '#BC6FF1',
         white: '#ffffff',
         gold: '#FFD700',
