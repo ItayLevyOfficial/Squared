@@ -6,14 +6,12 @@ const InformationBox = (props) => {
   )
 }
 
-const Balance = () => {
+export const Balance = () => {
   return (
-    <div className="w-full h-56 rounded-xl flex items-center justify-between p-6 space-x-2">
+    <div className="w-full h-56 rounded-xl flex items-center justify-evenly p-6 space-x-2">
       <InformationBox text="APR" />
       <InformationBox text="BALANCE" />
       <InformationBox text="Rewards" />
     </div>
   )
 }
-
-export default Balance

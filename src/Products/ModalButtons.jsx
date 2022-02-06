@@ -6,7 +6,7 @@ const Button = ({ text }) => {
   )
 }
 
-const ModalButtons = ({ isOnWithdraw, selectedToken }) => {
+export const ModalButtons = ({ isOnWithdraw, selectedToken }) => {
   return (
     <div className="w-full h-10 flex justify-center items-center space-x-4">
       {isOnWithdraw ? (
@@ -20,5 +20,3 @@ const ModalButtons = ({ isOnWithdraw, selectedToken }) => {
     </div>
   )
 }
-
-export default ModalButtons

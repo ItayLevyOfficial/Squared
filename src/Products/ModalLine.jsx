@@ -1,4 +1,4 @@
-const ModalLine = ({ title, amount, selectedPool }) => {
+export const ModalLine = ({ title, amount, selectedPool }) => {
   return (
     <div className="w-full px-6 flex justify-between items-center">
       <span>{title}</span>
@@ -17,4 +17,3 @@ const ModalLine = ({ title, amount, selectedPool }) => {
   )
 }
 
-export default ModalLine

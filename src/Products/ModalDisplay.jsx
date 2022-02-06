@@ -1,10 +1,10 @@
 import Modal from 'react-modal'
-import ModalInfo from './ModalInfo'
+import { ModalInfo } from './ModalInfo'
 import { XIcon } from '@heroicons/react/outline'
 import { useState } from 'react'
-import ModalOptions from './ModalOptions'
-import ModalInput from './ModalInput'
-import ModalButtons from './ModalButtons'
+import { ModalOptions } from './ModalOptions'
+import { ModalInput } from './ModalInput'
+import { ModalButtons } from './ModalButtons'
 import { StakingPoolsObject } from './StakingPools'
 
 Modal.setAppElement('#root')
@@ -37,7 +37,7 @@ const overlayStyles = {
   backgroundColor: 'rgba(0, 0, 0, 0.70)',
 }
 
-const DisplayModal = ({ isOpen, close, selectedToken }) => {
+export const ModalDisplay = ({ isOpen, close, selectedToken }) => {
   const [isOnWithdraw, setIsOnWithdraw] = useState(false)
   const obj = StakingPoolsObject.find((el) => el.id === selectedToken)
 
@@ -75,5 +75,3 @@ const DisplayModal = ({ isOpen, close, selectedToken }) => {
     </Modal>
   )
 }
-
-export default DisplayModal
