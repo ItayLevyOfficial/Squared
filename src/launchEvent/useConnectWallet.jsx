@@ -38,13 +38,14 @@ export const useConnectWallet = () => {
       }
     }
     await provider.send('eth_requestAccounts', [])
+    setSigner(provider.getSigner())
   }
 
   useEffect(() => {
     if (signer) {
       signer.getAddress().then((newAddress) => setAddress(newAddress))
     }
-  }, [])
+  }, [signer])
 
   useEffect(() => {
     if (provider) {
