@@ -30,10 +30,11 @@ export const Dashboard = () => {
       <div className="flex flex-col w-10/12 max-w-main min-h-full">
         <Header />
         <Balance />
-
-        {StakingPoolsObject.map((el) => (
-          <LiquidityPool el={el} key={el.id} openModal={() => open(el.id)} />
-        ))}
+        <div className="px-6">
+          {StakingPoolsObject.map((el) => (
+            <LiquidityPool el={el} key={el.id} openModal={() => open(el.id)} />
+          ))}
+        </div>
         <Footer />
       </div>
     </div>
