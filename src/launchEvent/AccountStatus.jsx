@@ -1,5 +1,6 @@
 import BNBIcon from './icons/BNB.svg'
 import BUSDIcon from './icons/busd.svg'
+import React from 'react'
 
 const DepositButton = ({ tokenName, iconSrc, className = '', onClick }) => (
   <button
