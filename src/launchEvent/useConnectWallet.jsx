@@ -1,10 +1,14 @@
 import { useState } from 'react'
 const delay = (ms) => new Promise((resolve) => setTimeout(resolve, ms))
 import { useEffect, useMemo } from 'react'
+import { ethers } from 'ethers'
 
 export const useConnectWallet = () => {
   const [signer, setSigner] = useState(null)
-  const provider = useMemo(() => new window.ethers.providers.Web3Provider(window.ethereum, 'any'), [])
+  const provider = useMemo(
+    () => new ethers.providers.Web3Provider(window.ethereum, 'any'),
+    []
+  )
 
   const connectWallet = async () => {
     try {
@@ -28,7 +32,7 @@ export const useConnectWallet = () => {
           // Need this line because the browser need some time before launching the connect window again.
           await delay(1_000)
         } catch (addError) {
-          console.error({addError})
+          console.error({ addError })
         }
       }
     }
@@ -39,7 +43,7 @@ export const useConnectWallet = () => {
 
   useEffect(() => {
     if (provider) {
-        provider.getSigner().then(newSigner => setSigner(newSigner)) 
+      setSigner(provider.getSigner())
     }
   }, [provider])
 
