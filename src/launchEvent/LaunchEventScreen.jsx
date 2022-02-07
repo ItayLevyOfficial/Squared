@@ -11,14 +11,21 @@ const launchContractAddress = '0xb9bEECD1A582768711dE1EE7B0A1d582D9d72a6C'
 export const LaunchEventScreen = () => {
   const [signer, connectWallet, walletAddress] = useConnectWallet()
   const [launchContract, setLaunchContract] = useState()
-
-  console.log({ launchContract })
+  const [userData, setUserData] = useState()
 
   useEffect(() => {
     setLaunchContract(
       new ethers.Contract(launchContractAddress, launchContractAbi, signer)
     )
   }, [signer])
+
+  useEffect(() => {
+    if (launchContract) {
+      launchContract
+        .accountBalance(signer.address)
+        .then((response) => console.log({ response }))
+    }
+  }, [launchContract])
 
   return (
     <ScreenPaddedContainer>
