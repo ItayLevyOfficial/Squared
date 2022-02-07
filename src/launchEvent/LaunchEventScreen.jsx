@@ -6,14 +6,12 @@ import Dragon from './icons/dragon.svg'
 import { useConnectWallet } from './useConnectWallet';
 
 export const LaunchEventScreen = () => {
-  const [signer, connectWallet] = useConnectWallet()
-
-  console.log({signer, connectWallet})
+  const [signer, connectWallet, address] = useConnectWallet()
 
   return (
     <ScreenPaddedContainer>
       <div className="flex flex-col items-center justify-between w-full max-w-screen-xl h-full">
-        <Header />
+        <Header address={address} connectWallet={connectWallet}/>
         <Body />
         <Footer />
       </div>

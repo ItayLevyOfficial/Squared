@@ -18,40 +18,8 @@ export const Header = () => {
   )
 }
 
-export const AddressButton = () => {
+export const AddressButton = ({address, connectWallet}) => {
   const [isHovered, setIsHovered] = useState(false)
-  const [address, setAddress] = useState()
-  const connectWalletHandler = async () => {
-    try {
-      await window.ethereum.request({
-        method: 'wallet_switchEthereumChain',
-        params: [{ chainId: '0x7a' }],
-      })
-    } catch (switchError) {
-      if (switchError.code === 4902) {
-        try {
-          await window.ethereum.request({
-            method: 'wallet_addEthereumChain',
-            params: [
-              {
-                chainId: '0x7a',
-                chainName: 'Fuse',
-                rpcUrls: ['https://rpc.fuse.io/'],
-              },
-            ],
-          })
-          // Need this line because the browser need some time before launching the connect window again.
-          await delay(1_000)
-        } catch (addError) {
-          console.error(addError)
-        }
-      }
-    }
-    const provider = new ethers.providers.Web3Provider(window.ethereum, 'any')
-    await provider.send('eth_requestAccounts', [])
-    const signer = provider.getSigner()
-    setAddress(await signer.getAddress())
-  }
 
   const buttonStyles = 'bg-primary border-none font-baloo'
   const styles = address ? (isHovered ? buttonStyles : '') : buttonStyles
@@ -64,7 +32,7 @@ export const AddressButton = () => {
 
   return (
     <button
-      onClick={connectWalletHandler}
+      onClick={connectWallet}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
       className={`border-solid border-[0.5px] border-white text-white font-number h-fit px-5 py-2 rounded-xl ${styles}`}

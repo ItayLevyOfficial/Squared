@@ -5,6 +5,7 @@ import { ethers } from 'ethers'
 
 export const useConnectWallet = () => {
   const [signer, setSigner] = useState(null)
+  const [address, setAddress] = useState(null)
   const provider = useMemo(
     () => new ethers.providers.Web3Provider(window.ethereum, 'any'),
     []
@@ -42,10 +43,16 @@ export const useConnectWallet = () => {
   }
 
   useEffect(() => {
+    if (signer) {
+        signer.getAddress().then(newAddress => setAddress(newAddress))
+    }
+  }, [])
+
+  useEffect(() => {
     if (provider) {
       setSigner(provider.getSigner())
     }
   }, [provider])
 
-  return [signer, connectWallet]
+  return [signer, connectWallet, address]
 }
