@@ -53,21 +53,21 @@ export const useConnectWallet = () => {
     }
   }, [provider])
 
+  useEffect(() => {
+    const handleChainChange = () => window.location.reload()
+
+    window.ethereum.on('chainChanged', handleChainChange)
+    return () => window.ethereum.removeListener(handleChainChange)
+  }, [])
+
   return [signer, connectWallet, address]
 }
 
-// Handle chain change great
-// useEffect(async () => {
-//     const provider = new ethers.providers.Web3Provider(window.ethereum)
-//     const signer = provider.getSigner()
+
+//  Old Barry code, keeping it here for case we need to do extra work on chain change.
 //     const { chainId } = await provider.getNetwork()
 //     if (chainId === 122) {
 //       setAddress(await signer.getAddress())
 //     } else {
 //       setAddress()
 //     }
-//   }, [])
-
-//   window.ethereum.on('chainChanged', () => {
-//     window.location.reload()
-//   })
