@@ -1,4 +1,5 @@
-import {ModalLine} from './ModalLine'
+import React from 'react'
+import { ModalLine } from './ModalLine';
 
 export const ModalInfo = ({ isOnWithdraw, selectedToken }) => {
   return (
@@ -12,12 +13,12 @@ export const ModalInfo = ({ isOnWithdraw, selectedToken }) => {
           />
           <br />
           <ModalLine
-            title="Requested Withdrawl"
+            title="Requested Withdrawal"
             amount="0.00"
             selectedToken={selectedToken}
           />
           <ModalLine
-            title="Available for Withdrawl"
+            title="Available for Withdrawal"
             amount="0.00"
             selectedToken={selectedToken}
           />
