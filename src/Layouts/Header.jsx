@@ -1,5 +1,6 @@
 import { useLocation } from 'react-router-dom'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
+import { ethers } from 'ethers'
 import React from 'react'
 
 export const Header = (props) => {
@@ -10,24 +11,20 @@ export const Header = (props) => {
       <div className="block text-white opacity-90 text-3xl">
         {pathname == '/assets' ? 'Assets' : 'Dashboard'}
       </div>
-      <AddressButton {...props}/>
+      <AddressButton {...props} />
     </nav>
   )
 }
 
-export const AddressButton = ({address, connectWallet}) => {
+export const AddressButton = ({ address, connectWallet }) => {
   const [isHovered, setIsHovered] = useState(false)
 
-  console.log({address, connectWallet})
+  console.log({ address, connectWallet })
 
   const buttonStyles = 'bg-primary border-none font-baloo'
   const styles = address ? (isHovered ? buttonStyles : '') : buttonStyles
-
-  const buttonText = address
-    ? isHovered
-      ? 'Disconnect'
-      : `${address.slice(0, 7)}...`
-    : 'Connect'
+  
+  const buttonText = address ? `${address.slice(0, 7)}...` : 'Connect'
 
   return (
     <button

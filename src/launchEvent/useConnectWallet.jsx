@@ -55,3 +55,19 @@ export const useConnectWallet = () => {
 
   return [signer, connectWallet, address]
 }
+
+// Handle chain change great
+// useEffect(async () => {
+//     const provider = new ethers.providers.Web3Provider(window.ethereum)
+//     const signer = provider.getSigner()
+//     const { chainId } = await provider.getNetwork()
+//     if (chainId === 122) {
+//       setAddress(await signer.getAddress())
+//     } else {
+//       setAddress()
+//     }
+//   }, [])
+
+//   window.ethereum.on('chainChanged', () => {
+//     window.location.reload()
+//   })
