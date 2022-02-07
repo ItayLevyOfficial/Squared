@@ -7,6 +7,7 @@ import { useConnectWallet } from './useConnectWallet';
 
 export const LaunchEventScreen = () => {
   const [signer, connectWallet, address] = useConnectWallet()
+  
 
   return (
     <ScreenPaddedContainer>
