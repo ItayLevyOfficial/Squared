@@ -19,8 +19,10 @@ export const LaunchEventScreen = () => {
     )
   }, [signer])
 
+
+
   useEffect(() => {
-    if (launchContract) {
+    if (launchContract && walletAddress) {
       launchContract
         .accountBalance(signer.address)
         .then((response) => console.log({ response }))
