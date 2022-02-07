@@ -1,5 +1,5 @@
 import React from 'react'
-import { Header } from './Header'
+import { LaunchScreenHeader } from './LaunchScreenHeader'
 import { Body } from './Body'
 import { Footer } from './Footer'
 import Dragon from './icons/dragon.svg'
@@ -11,7 +11,7 @@ export const LaunchEventScreen = () => {
   return (
     <ScreenPaddedContainer>
       <div className="flex flex-col items-center justify-between w-full max-w-screen-xl h-full">
-        <Header address={address} connectWallet={connectWallet}/>
+        <LaunchScreenHeader address={address} connectWallet={connectWallet}/>
         <Body />
         <Footer />
       </div>

@@ -5,7 +5,7 @@ import React from 'react'
 
 const timeLeftBarWidth = 'w-[580px]'
 
-export const Header = ({ address, connectWallet, className = '' }) => (
+export const LaunchScreenHeader = ({ address, connectWallet, className = '' }) => (
   <div className={`flex flex-col items-center w-full ${className}`}>
     <div className={`flex items-center w-full justify-between mb-6`}>
       <div className="flex">

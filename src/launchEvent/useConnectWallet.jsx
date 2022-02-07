@@ -12,7 +12,6 @@ export const useConnectWallet = () => {
   )
 
   const connectWallet = async () => {
-    const provider = new ethers.providers.Web3Provider(window.ethereum, 'any')
     try {
       await window.ethereum.request({
         method: 'wallet_switchEthereumChain',
