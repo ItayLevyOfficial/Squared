@@ -1,8 +1,10 @@
 import { useState } from 'react'
 const delay = (ms) => new Promise((resolve) => setTimeout(resolve, ms))
+import { useEffect, useMemo } from 'react'
 
 export const useConnectWallet = () => {
   const [signer, setSigner] = useState(null)
+  const provider = useMemo(() => new window.ethers.providers.Web3Provider(window.ethereum, 'any'), [])
 
   const connectWallet = async () => {
     try {
@@ -31,10 +33,15 @@ export const useConnectWallet = () => {
       }
     }
 
-    const provider = new window.ethers.providers.Web3Provider(window.ethereum, 'any')
     await provider.send('eth_requestAccounts', [])
     setSigner(provider.getSigner())
   }
+
+  useEffect(() => {
+    if (provider) {
+        provider.getSigner().then(newSigner => setSigner(newSigner)) 
+    }
+  }, [provider])
 
   return [signer, connectWallet]
 }
