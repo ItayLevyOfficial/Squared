@@ -9,7 +9,7 @@ export const StakingPoolsObject = [
   },
   {
     id: 2,
-    title: 'fUSD',
+    title: 'FUSD',
     apr: '6%',
     amount: '$2M',
     swap: 'PUFF/fUSD',

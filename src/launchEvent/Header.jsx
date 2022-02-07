@@ -1,6 +1,7 @@
 import {AddressButton} from "../Layouts/Header";
 import MetamaskIcon from './icons/metamask.svg'
 import {convertMilliseconds} from './convertMillis'
+import React from "react";
 
 const timeLeftBarWidth = "w-[580px]"
 

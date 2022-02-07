@@ -24,6 +24,8 @@
   "devDependencies": {
     "@vitejs/plugin-react": "1.0.7",
     "autoprefixer": "^10.4.2",
+    "eslint": "^8.8.0",
+    "eslint-plugin-react": "^7.28.0",
     "ethers": "^5.5.3",
     "postcss": "^8.4.5",
     "prettier": "^2.5.1",

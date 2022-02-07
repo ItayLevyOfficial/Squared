@@ -6,10 +6,10 @@ import { ModalOptions } from './ModalOptions'
 import { ModalInput } from './ModalInput'
 import { ModalButtons } from './ModalButtons'
 import { StakingPoolsObject } from './StakingPools'
-
+import React from 'react'
 Modal.setAppElement('#root')
 
-const contentStyles = {
+export const contentStyles = {
   position: 'absolute',
   top: '50%',
   left: '50%',
@@ -17,7 +17,7 @@ const contentStyles = {
   bottom: 'auto',
   marginRight: '-50%',
   transform: 'translate(-50%, -50%)',
-  border: '1px solid #ccc',
+  border: '0.5px solid #ccc',
   background: `black`,
   borderRadius: '10px',
   borderColor: 'white',
@@ -28,7 +28,7 @@ const contentStyles = {
   height: '500px',
 }
 
-const overlayStyles = {
+export const overlayStyles = {
   display: 'flex',
   justifyContent: 'center',
   alignItems: 'center',
@@ -36,6 +36,14 @@ const overlayStyles = {
   height: '100vh',
   backgroundColor: 'rgba(0, 0, 0, 0.70)',
 }
+
+export const CloseButton = ({ close }) => (
+  <div className="flex justify-end">
+    <button onClick={close}>
+      <XIcon className="h-6 text-white" />
+    </button>
+  </div>
+)
 
 export const ModalDisplay = ({ isOpen, close, selectedToken }) => {
   const [isOnWithdraw, setIsOnWithdraw] = useState(false)
@@ -50,14 +58,10 @@ export const ModalDisplay = ({ isOpen, close, selectedToken }) => {
         content: contentStyles,
       }}
     >
-      <div className="flex justify-end">
-        <button onClick={close}>
-          <XIcon className="h-6 text-white" />
-        </button>
-      </div>
-      <div className="text-2xl mb-4 -mt-4 text-white flex justify-center">
+      <CloseButton close={close} />
+      <h1 className="text-2xl mb-4 -mt-4 text-white flex justify-center">
         {obj?.title}
-      </div>
+      </h1>
 
       <div className="border-white border rounded-lg bg-transparent w-full h-96 flex flex-col overflow-hidden">
         <ModalOptions
@@ -65,10 +69,9 @@ export const ModalDisplay = ({ isOpen, close, selectedToken }) => {
           setIsOnWithdraw={setIsOnWithdraw}
           selectedToken={obj?.title}
         />
-        <ModalInput selectedToken={obj?.title} />
+        <ModalInput selectedToken={obj?.title} className="mt-10" />
         <ModalInfo selectedToken={obj?.title} isOnWithdraw={isOnWithdraw} />
         <br />
-
         <ModalButtons isOnWithdraw={isOnWithdraw} selectedToken={obj?.title} />
         <br />
       </div>

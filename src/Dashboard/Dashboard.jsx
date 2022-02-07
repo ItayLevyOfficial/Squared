@@ -6,6 +6,7 @@ import { Balance } from './Balance'
 import { Sidenav } from '../layouts/Sidenav'
 import { StakingPoolsObject } from '../products/StakingPools'
 import { ModalDisplay } from '../products/ModalDisplay'
+import React from 'react'
 
 export const Dashboard = () => {
   const [isModalOpen, setIsOpen] = useState(false)
