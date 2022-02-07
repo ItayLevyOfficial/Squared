@@ -6,6 +6,7 @@ import { ModalDisplay } from './ModalDisplay'
 import { Sidenav } from '../layouts/Sidenav'
 import { StakingPoolsObject } from './StakingPools'
 import { Information } from './Information'
+import React from 'react'
 
 export const Products = () => {
   const [isModalOpen, setIsOpen] = useState(false)

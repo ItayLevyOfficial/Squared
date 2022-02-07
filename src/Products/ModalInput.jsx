@@ -1,6 +1,8 @@
-export const ModalInput = ({ selectedToken }) => {
+import React from "react"
+
+export const ModalInput = ({ selectedToken, className = ''}) => {
   return (
-    <div className="self-center w-10/12 h-10 bg-dark flex justify-between items-center rounded-lg mt-10 p-6">
+    <div className={`self-center w-10/12 h-10 bg-dark flex justify-between items-center rounded-lg p-6 ${className} `}>
       <button className="px-2 -ml-4 h-6 flex justify-center items-center border-transparent bg-black text-white hover:bg-primary hover:text-black  rounded-lg">
         MAX
       </button>

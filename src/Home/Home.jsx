@@ -1,5 +1,7 @@
 import Video from './icons/landing.mp4'
 import { Footer } from '../launchEvent/Footer'
+import React from 'react'
+import { useNavigate } from "react-router-dom"
 
 const PuffLogo = ({ className = '' }) => (
   <svg className={className}
@@ -17,6 +19,8 @@ const PuffLogo = ({ className = '' }) => (
 )
 
 export const Home = () => {
+  const navigate = useNavigate()
+
   return (
     <div className="w-screen h-screen">
       <video src={Video} autoPlay muted className="absolute h-screen w-screen object-cover -z-20" loop/>
@@ -29,10 +33,10 @@ export const Home = () => {
             Sustainable Liquidity for Long Tail Assets
           </h2>
           <button
-            type="button"
+            type="button" onClick={() => navigate('/launch')}
             className="py-5 px-10 bg-[#000] hover:text-gold rounded-xl text-xl tracking-wider"
           >
-            Coming Soon
+            Enter the Dragon
           </button>
         </div>
         <Footer />

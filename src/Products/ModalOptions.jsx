@@ -1,4 +1,6 @@
-export const ModalOptions = ({ isOnWithdraw, setIsOnWithdraw, selectedToken }) => {
+import React from "react"
+
+export const ModalOptions = ({ isOnWithdraw, setIsOnWithdraw, selectedToken, className = '' }) => {
   const Option = ({ boolean, optionName, isDisabled }) => {
     return (
       <button
@@ -16,7 +18,7 @@ export const ModalOptions = ({ isOnWithdraw, setIsOnWithdraw, selectedToken }) =
   }
 
   return (
-    <div className="w-full flex justify-between border-b border-white cursor-pointer">
+    <div className={`w-full flex justify-between border-b border-white cursor-pointer ${className}}`}>
       <Option optionName="DEPOSIT" boolean={false} isDisabled={!isOnWithdraw} />
       <Option optionName="WITHDRAW" boolean={true} isDisabled={isOnWithdraw} />
     </div>
