@@ -12,7 +12,6 @@ export const Body = ({ className }) => {
   
   return (
     <div className={`flex space-x-32 -mt-20 ${className}`}>
-      
       <AccountStatus
         nativeCommitted={nativeCommitted}
         stableCommitted={stableCommitted}
