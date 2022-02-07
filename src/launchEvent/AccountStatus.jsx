@@ -20,8 +20,8 @@ export const BodyHeaderText = ({
 }) => (
   <>
     <h1 className="text-4xl font-medium tracking-wide mb-5">{title}</h1>
-    <h2 className="font-number text-lg mb-2">{firstRow}</h2>
-    <h2 className={`font-number text-lg ${marginBottomClass}`}>{secondRow}</h2>
+    <h2 className="font-number text-lg mb-2 tracking-wider">{firstRow}</h2>
+    <h2 className={`font-number text-lg tracking-wider ${marginBottomClass}`}>{secondRow}</h2>
   </>
 )
 
