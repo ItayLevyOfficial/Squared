@@ -3,6 +3,8 @@ import { useState } from 'react'
 import { ethers } from 'ethers'
 import React from 'react'
 
+const delay = (ms) => new Promise((resolve) => setTimeout(resolve, ms))
+
 export const Header = () => {
   const { pathname } = useLocation()
 
@@ -21,14 +23,14 @@ export const AddressButton = () => {
   const [address, setAddress] = useState()
   const connectWalletHandler = async () => {
     try {
-      await ethereum.request({
+      await window.ethereum.request({
         method: 'wallet_switchEthereumChain',
         params: [{ chainId: '0x7a' }],
       })
     } catch (switchError) {
       if (switchError.code === 4902) {
         try {
-          await ethereum.request({
+          await window.ethereum.request({
             method: 'wallet_addEthereumChain',
             params: [
               {
@@ -38,6 +40,8 @@ export const AddressButton = () => {
               },
             ],
           })
+          // Need this line because the browser need some time before launching the connect window again.
+          await delay(1_000)
         } catch (addError) {
           console.error(addError)
         }
