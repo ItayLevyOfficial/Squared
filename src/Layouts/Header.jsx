@@ -3,7 +3,7 @@ import { useState, useEffect } from 'react'
 import { ethers } from 'ethers'
 
 export const AddressButton = () => {
-  const [address, setAddress] = useState('Connect Wallet')
+  const [address, setAddress] = useState()
 
   const connectWalletHandler = async () => {
     try {
@@ -42,7 +42,7 @@ export const AddressButton = () => {
     if (chainId === 122) {
       setAddress(await signer.getAddress())
     } else {
-      setAddress('Connect Wallet')
+      setAddress()
     }
   }, [])
 
@@ -50,12 +50,14 @@ export const AddressButton = () => {
     window.location.reload()
   })
 
+  const buttonText = address ? `${address.slice(0, 7)}...` : 'Connect'
+
   return (
     <button
       onClick={connectWalletHandler}
       className="font-number h-fit px-5 py-2 rounded-xl border-0 bg-gold text-black hover:bg-dark hover:text-white "
     >
-      {address.toString().substring(0, 14)}
+      {buttonText}
     </button>
   )
 }
