@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { StakingPool } from './StakingPool'
 import { Header } from '../layouts/Header'
-import { Footer } from '../layouts/Footer'
+import { Footer } from '../launchEvent/Footer'
 import { ModalDisplay } from './ModalDisplay'
 import { Sidenav } from '../layouts/Sidenav'
 import { StakingPoolsObject } from './StakingPools'

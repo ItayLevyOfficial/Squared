@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { Footer } from '../layouts/Footer'
+import { Footer } from '../launchEvent/Footer'
 import { Header } from '../layouts/Header'
 import { LiquidityPool } from '../products/LiquidityPool'
 import { Balance } from './Balance'
