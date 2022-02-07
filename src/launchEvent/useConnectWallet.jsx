@@ -3,7 +3,7 @@ const delay = (ms) => new Promise((resolve) => setTimeout(resolve, ms))
 import { useEffect, useMemo } from 'react'
 import { ethers } from 'ethers'
 
-export const provider = new ethers.providers.Web3Provider(window.ethereum, 'any')
+export const provider = new ethers.providers.Web3Provider(window.ethereum)
 
 export const useConnectWallet = () => {
   const [signer, setSigner] = useState(null)
