@@ -24,7 +24,7 @@ export const CommitAssetsModal = ({
 
   return (
     <Modal
-      isOpen={selectedToken !== ''}
+      isOpen={selectedToken}
       onRequestClose={close}
       style={{
         overlay: overlayStyles,
