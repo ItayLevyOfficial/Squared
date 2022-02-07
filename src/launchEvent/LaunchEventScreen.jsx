@@ -12,11 +12,11 @@ export const LaunchEventScreen = () => {
   const [signer, connectWallet, walletAddress] = useConnectWallet()
   const [launchContract, setLaunchContract] = useState()
 
+  console.log({ launchContract })
+
   useEffect(() => {
-    const launchContract = new ethers.Contract(
-      launchContractAddress,
-      launchContractAbi,
-      signer
+    setLaunchContract(
+      new ethers.Contract(launchContractAddress, launchContractAbi, signer)
     )
   }, [signer])
 
