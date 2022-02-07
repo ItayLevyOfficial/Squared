@@ -18,6 +18,8 @@ export const Header = (props) => {
 export const AddressButton = ({address, connectWallet}) => {
   const [isHovered, setIsHovered] = useState(false)
 
+  console.log({address, connectWallet})
+
   const buttonStyles = 'bg-primary border-none font-baloo'
   const styles = address ? (isHovered ? buttonStyles : '') : buttonStyles
 

@@ -12,6 +12,7 @@ export const useConnectWallet = () => {
   )
 
   const connectWallet = async () => {
+    const provider = new ethers.providers.Web3Provider(window.ethereum, 'any')
     try {
       await window.ethereum.request({
         method: 'wallet_switchEthereumChain',
@@ -37,14 +38,12 @@ export const useConnectWallet = () => {
         }
       }
     }
-
     await provider.send('eth_requestAccounts', [])
-    setSigner(provider.getSigner())
   }
 
   useEffect(() => {
     if (signer) {
-        signer.getAddress().then(newAddress => setAddress(newAddress))
+      signer.getAddress().then((newAddress) => setAddress(newAddress))
     }
   }, [])
 
