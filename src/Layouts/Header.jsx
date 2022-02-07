@@ -1,24 +1,10 @@
 import { useLocation } from 'react-router-dom'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { ethers } from 'ethers'
-import React from 'react'
-
-export const Header = () => {
-  const { pathname } = useLocation()
-
-  return (
-    <nav className="flex flex-wrap h-20 space-x-2 items-center justify-between w-full mt-2">
-      <div className="block text-white opacity-90 text-3xl">
-        {pathname == '/assets' ? 'Assets' : 'Dashboard'}
-      </div>
-      <AddressButton />
-    </nav>
-  )
-}
 
 export const AddressButton = () => {
-  const [isHovered, setIsHovered] = useState(false)
   const [address, setAddress] = useState()
+
   const connectWalletHandler = async () => {
     try {
       await ethereum.request({
@@ -43,29 +29,48 @@ export const AddressButton = () => {
         }
       }
     }
-    const provider = new ethers.providers.Web3Provider(window.ethereum, 'any')
+    const provider = new ethers.providers.Web3Provider(window.ethereum)
     await provider.send('eth_requestAccounts', [])
     const signer = provider.getSigner()
     setAddress(await signer.getAddress())
   }
 
-  const buttonStyles = 'bg-primary border-none font-baloo'
-  const styles = address ? (isHovered ? buttonStyles : '') : buttonStyles
+  useEffect(async () => {
+    const provider = new ethers.providers.Web3Provider(window.ethereum)
+    const signer = provider.getSigner()
+    const { chainId } = await provider.getNetwork()
+    if (chainId === 122) {
+      setAddress(await signer.getAddress())
+    } else {
+      setAddress()
+    }
+  }, [])
 
-  const buttonText = address
-    ? isHovered
-      ? 'Disconnect'
-      : `${address.slice(0, 7)}...`
-    : 'Connect'
+  window.ethereum.on('chainChanged', () => {
+    window.location.reload()
+  })
+
+  const buttonText = address ? `${address.slice(0, 7)}...` : 'Connect'
 
   return (
     <button
       onClick={connectWalletHandler}
-      onMouseEnter={() => setIsHovered(true)}
-      onMouseLeave={() => setIsHovered(false)}
-      className={`border-solid border-[0.5px] border-white text-white font-number h-fit px-5 py-2 rounded-xl ${styles}`}
+      className="font-number h-fit px-5 py-2 rounded-xl border-0 bg-gold text-black hover:bg-dark hover:text-white "
     >
       {buttonText}
     </button>
+  )
+}
+
+export const Header = () => {
+  const { pathname } = useLocation()
+
+  return (
+    <nav className="flex flex-wrap h-20 items-center justify-between w-full px-6 mt-2">
+      <div className="block text-white opacity-90 text-3xl">
+        {pathname == '/assets' ? 'Assets' : 'Dashboard'}
+      </div>
+      <AddressButton />
+    </nav>
   )
 }
