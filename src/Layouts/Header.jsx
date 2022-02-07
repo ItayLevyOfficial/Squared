@@ -1,11 +1,8 @@
 import { useLocation } from 'react-router-dom'
 import { useState } from 'react'
-import { ethers } from 'ethers'
 import React from 'react'
 
-const delay = (ms) => new Promise((resolve) => setTimeout(resolve, ms))
-
-export const Header = () => {
+export const Header = (props) => {
   const { pathname } = useLocation()
 
   return (
@@ -13,7 +10,7 @@ export const Header = () => {
       <div className="block text-white opacity-90 text-3xl">
         {pathname == '/assets' ? 'Assets' : 'Dashboard'}
       </div>
-      <AddressButton />
+      <AddressButton {...props}/>
     </nav>
   )
 }
