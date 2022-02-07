@@ -4,7 +4,7 @@ import React from 'react'
 export const Header = (props) => {
   const { pathname } = useLocation()
   return (
-    <nav className="flex flex-wrap h-20 space-x-2 items-center justify-between w-full mt-2">
+    <nav className="flex flex-wrap h-20 items-center justify-between w-full px-6 mt-2">
       <div className="block text-white opacity-90 text-3xl">
         {pathname == '/assets' ? 'Assets' : 'Dashboard'}
       </div>
