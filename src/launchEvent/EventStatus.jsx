@@ -1,4 +1,5 @@
 import { BodyHeaderText } from './AccountStatus'
+import React from 'react'
 
 const StatusBar = ({ percent, text, backgroundColorClass, className }) => (
   <div className={`flex flex-col h-36 ${className}`}>
@@ -28,11 +29,7 @@ export const EventStatus = ({ totalCommitments = 207_341, puffPrice = 8 }) => {
       />
       <div className="flex space-x-10">
         <StatusBar percent={64} text="Sold" backgroundColorClass="bg-dark" />
-        <StatusBar
-          percent={36}
-          text="Remaining"
-          backgroundColorClass="bg-primary"
-        />
+        <StatusBar percent={36} text="Remaining" backgroundColorClass="bg-primary"/>
       </div>
     </div>
   )
