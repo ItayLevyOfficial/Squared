@@ -4,7 +4,7 @@ import React from 'react'
 export const Header = (props) => {
   const { pathname } = useLocation()
   return (
-    <nav className="flex flex-wrap h-20 items-center justify-between w-full px-6 mt-2">
+    <nav className="flex flex-wrap h-20 items-center justify-between w-full px-6 mt-6">
       <div className="block text-white opacity-90 text-3xl">
         {pathname == '/assets' ? 'Assets' : 'Dashboard'}
       </div>
@@ -28,7 +28,10 @@ export const AddressButton = ({ address, connectWallet }) =>
       {`${address.slice(0, 7)}...`}
     </AddressContainer>
   ) : (
-    <AddressContainer onClick={connectWallet} className="bg-primary hover:bg-opacity-95">
+    <AddressContainer
+      onClick={connectWallet}
+      className="bg-primary hover:bg-opacity-95"
+    >
       Connect
     </AddressContainer>
   )
