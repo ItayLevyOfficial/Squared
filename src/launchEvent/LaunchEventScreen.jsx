@@ -19,8 +19,6 @@ export const LaunchEventScreen = () => {
     )
   }, [signer])
 
-
-
   useEffect(() => {
     if (launchContract && walletAddress) {
       launchContract
