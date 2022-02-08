@@ -21,7 +21,6 @@ export const Body = ({ className }) => {
       <div className="w-[0.5px] h-full bg-white" />
       <EventStatus />
       <CommitAssetsModal
-        isOpen={false}
         selectedToken={selectedToken ?? ''}
         close={() => setSelectedToken(null)} isConnected={isConnected}
       />

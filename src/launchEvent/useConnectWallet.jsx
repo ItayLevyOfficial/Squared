@@ -1,21 +1,20 @@
 import { useState } from 'react'
 const delay = (ms) => new Promise((resolve) => setTimeout(resolve, ms))
-import { useEffect, useMemo } from 'react'
+import { useEffect } from 'react'
 import { ethers } from 'ethers'
+import { selectedChain } from './chains'
+
+export const provider = new ethers.providers.Web3Provider(window.ethereum)
 
 export const useConnectWallet = () => {
-  const [signer, setSigner] = useState(null)
+  const [signer, setSigner] = useState(provider.getSigner())
   const [address, setAddress] = useState(null)
-  const provider = useMemo(
-    () => new ethers.providers.Web3Provider(window.ethereum, 'any'),
-    []
-  )
 
   const connectWallet = async () => {
     try {
       await window.ethereum.request({
         method: 'wallet_switchEthereumChain',
-        params: [{ chainId: '0x7a' }],
+        params: [{ chainId: selectedChain.chainId }],
       })
     } catch (switchError) {
       if (switchError.code === 4902) {
@@ -24,9 +23,9 @@ export const useConnectWallet = () => {
             method: 'wallet_addEthereumChain',
             params: [
               {
-                chainId: '0x7a',
-                chainName: 'Fuse',
-                rpcUrls: ['https://rpc.fuse.io/'],
+                chainId: selectedChain.chainId,
+                chainName: selectedChain.chainName,
+                rpcUrls: selectedChain.rpcUrls,
               },
             ],
           })
@@ -48,12 +47,6 @@ export const useConnectWallet = () => {
   }, [signer])
 
   useEffect(() => {
-    if (provider) {
-      setSigner(provider.getSigner())
-    }
-  }, [provider])
-
-  useEffect(() => {
     const handleChainChange = () => window.location.reload()
 
     window.ethereum.on('chainChanged', handleChainChange)
@@ -62,7 +55,6 @@ export const useConnectWallet = () => {
 
   return [signer, connectWallet, address]
 }
-
 
 //  Old Barry code, keeping it here for case we need to do extra work on chain change.
 //     const { chainId } = await provider.getNetwork()
