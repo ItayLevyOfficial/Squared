@@ -24,10 +24,10 @@ export const LaunchEventScreen = () => {
   useEffect(() => {
     if (launchContract && walletAddress) {
       launchContract
-        .accountBalance(signer.address)
+        .accountBalance(walletAddress)
         .then((response) => console.log({ response }))
     }
-  }, [launchContract])
+  }, [launchContract, walletAddress])
 
   return (
     <ScreenPaddedContainer>
