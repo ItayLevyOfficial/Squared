@@ -42,7 +42,7 @@ export const CommitAssetsModal = ({ selectedToken, close, isConnected, connectWa
             Learn more
           </span>
         </p>
-        <ModalButton text={isConnected ? 'Deposit' : 'Connect Wallet'} onClick={handleButtonClick}/>
+        <ModalButton text={isConnected ? 'Deposit' : 'Connect Wallet'} />
       </div>
     </Modal>
   )
