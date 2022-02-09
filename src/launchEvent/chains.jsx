@@ -9,7 +9,8 @@ const chains = {
     chainName: 'hardhat',
     rpcUrls: ['http://127.0.0.1:8545/'],
     nativeToken: '0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2',
-    stableToken: '0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48'
+    stableToken: '0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48',
+    launchContractAddress: '0xD42912755319665397FF090fBB63B1a31aE87Cee'
   }
 }
 

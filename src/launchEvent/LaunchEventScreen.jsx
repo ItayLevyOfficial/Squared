@@ -6,7 +6,7 @@ import Dragon from './icons/dragon.svg'
 import { useConnectWallet } from './useConnectWallet'
 import { ethers } from 'ethers'
 import { launchContractAbi } from './defiRoundAbi'
-const launchContractAddress = '0xCA8c8688914e0F7096c920146cd0Ad85cD7Ae8b9'
+import { selectedChain } from './chains';
 
 export const LaunchEventScreen = () => {
   const [signer, connectWallet, walletAddress] = useConnectWallet()
@@ -21,7 +21,7 @@ export const LaunchEventScreen = () => {
 
   useEffect(() => {
     setLaunchContract(
-      new ethers.Contract(launchContractAddress, launchContractAbi, signer)
+      new ethers.Contract(selectedChain.launchContractAddress, launchContractAbi, signer)
     )
   }, [signer])
 
