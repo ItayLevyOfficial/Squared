@@ -26,7 +26,7 @@ export const Body = ({
       <EventStatus />
       <CommitAssetsModal
         selectedToken={selectedToken ?? ''}
-        handleButtonClick={isConnected ? commitFunds : connectWallet}
+        handleButtonClick={isConnected ? () => commitFunds({token: }) : connectWallet}
         close={() => setSelectedToken(null)}
         isConnected={isConnected}
       />

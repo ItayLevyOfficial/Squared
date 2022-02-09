@@ -15,7 +15,7 @@ export const LaunchEventScreen = () => {
 
   const commitFunds = async ({amount, token}) => {
     if (launchContract) {
-      await launchContract.deposit({token, amount}, [], {value: amount})
+      await launchContract.deposit({token, amount}, [])
     }    
   }
 
@@ -42,7 +42,7 @@ export const LaunchEventScreen = () => {
           address={walletAddress}
           connectWallet={connectWallet}
         />
-        <Body isConnected={walletAddress} connectWallet={connectWallet}/>
+        <Body isConnected={walletAddress} connectWallet={connectWallet} commitFunds={commitFunds}/>
         <Footer />
       </div>
       <img
