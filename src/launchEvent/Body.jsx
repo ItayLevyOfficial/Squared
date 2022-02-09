@@ -3,6 +3,8 @@ import { EventStatus } from './EventStatus'
 import { useState } from 'react'
 import React from 'react'
 import { CommitAssetsModal } from './commitAssetsModal'
+import { selectedChain } from './chains'
+import { ethers } from 'ethers'
 
 export const Body = ({
   className,
@@ -26,7 +28,15 @@ export const Body = ({
       <EventStatus />
       <CommitAssetsModal
         selectedToken={selectedToken ?? ''}
-        handleButtonClick={isConnected ? () => commitFunds({token: }) : connectWallet}
+        handleButtonClick={
+          isConnected
+            ? () =>
+                commitFunds({
+                  token: selectedChain.nativeToken,
+                  amount: ethers.utils.parseEther('0.5'),
+                })
+            : connectWallet
+        }
         close={() => setSelectedToken(null)}
         isConnected={isConnected}
       />

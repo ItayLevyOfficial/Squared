@@ -15,7 +15,7 @@ export const LaunchEventScreen = () => {
 
   const commitFunds = async ({amount, token}) => {
     if (launchContract) {
-      await launchContract.deposit({token, amount}, [])
+      await launchContract.deposit({token, amount}, [], {value: amount})
     }    
   }
 
