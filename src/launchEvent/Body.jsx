@@ -4,9 +4,8 @@ import { useState } from 'react'
 import React from 'react'
 import { CommitAssetsModal } from './commitAssetsModal';
 
-export const Body = ({ className }) => {
+export const Body = ({ className, isConnected, connectWallet }) => {
   const [selectedToken, setSelectedToken] = useState(null)
-  const [isConnected, setIsConnected] = useState(false)
   const [nativeCommitted, setNativeCommitted] = useState(0)
   const [stableCommitted, setStableCommitted] = useState(0)
   

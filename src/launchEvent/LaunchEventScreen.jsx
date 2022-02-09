@@ -21,10 +21,11 @@ export const LaunchEventScreen = () => {
 
   useEffect(() => {
     if (launchContract && walletAddress) {
-      console.log({launchContract});
-      launchContract
-        .getAccountData(walletAddress)
-        .then((response) => console.log({ response }))
+      console.log({ launchContract })
+      launchContract.getAccountData(walletAddress).then((response) => {
+        console.log({ response })
+
+      })
     }
   }, [launchContract, walletAddress])
 
@@ -35,7 +36,7 @@ export const LaunchEventScreen = () => {
           address={walletAddress}
           connectWallet={connectWallet}
         />
-        <Body />
+        <Body isConnected={walletAddress} connectWallet={connectWallet}/>
         <Footer />
       </div>
       <img
