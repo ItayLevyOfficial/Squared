@@ -13,12 +13,6 @@ export const LaunchEventScreen = () => {
   const [launchContract, setLaunchContract] = useState()
   const [userData, setUserData] = useState()
 
-  const commitFunds = async ({amount, token}) => {
-    if (launchContract) {
-      await launchContract.deposit({token, amount}, [], {value: amount})
-    }    
-  }
-
   useEffect(() => {
     setLaunchContract(
       new ethers.Contract(selectedChain.launchContractAddress, launchContractAbi, signer)
