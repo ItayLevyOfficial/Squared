@@ -1,8 +1,8 @@
 import React from "react"
 
-export const ModalButton = ({ text }) => {
+export const ModalButton = ({ text, onClick }) => {
   return (
-    <button className="text-white border-transparent bg-primary hover:bg-opacity-95 rounded-lg p-2  w-5/12">
+    <button className="text-white border-transparent bg-primary hover:bg-opacity-95 rounded-lg p-2  w-5/12" onClick={onClick}>
       {text}
     </button>
   )

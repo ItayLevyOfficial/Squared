@@ -2,13 +2,18 @@ import { AccountStatus } from './AccountStatus'
 import { EventStatus } from './EventStatus'
 import { useState } from 'react'
 import React from 'react'
-import { CommitAssetsModal } from './commitAssetsModal';
+import { CommitAssetsModal } from './commitAssetsModal'
 
-export const Body = ({ className, isConnected, connectWallet }) => {
+export const Body = ({
+  className,
+  isConnected,
+  connectWallet,
+  commitFunds,
+}) => {
   const [selectedToken, setSelectedToken] = useState(null)
   const [nativeCommitted, setNativeCommitted] = useState(0)
   const [stableCommitted, setStableCommitted] = useState(0)
-  
+
   return (
     <div className={`flex space-x-32 -mt-20 ${className}`}>
       <AccountStatus
@@ -21,7 +26,9 @@ export const Body = ({ className, isConnected, connectWallet }) => {
       <EventStatus />
       <CommitAssetsModal
         selectedToken={selectedToken ?? ''}
-        close={() => setSelectedToken(null)} isConnected={isConnected}
+        handleButtonClick={isConnected ? commitFunds : connectWallet}
+        close={() => setSelectedToken(null)}
+        isConnected={isConnected}
       />
     </div>
   )
