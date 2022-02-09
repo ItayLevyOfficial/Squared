@@ -14,7 +14,7 @@ const commitContentStyles = {
 
 const mediumArticleLink = 'https://medium.com/puffpuffmoney'
 
-export const CommitAssetsModal = ({ selectedToken, close, isConnected, handleButtonClick }) => {
+export const CommitAssetsModal = ({ selectedToken, close, isConnected, connectWallet, commitAssets}) => {
   const obj = StakingPoolsObject.find((el) => el.id === selectedToken)
 
   return (

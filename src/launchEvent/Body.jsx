@@ -7,10 +7,10 @@ import { selectedChain } from './chains'
 import { ethers } from 'ethers'
 
 export const Body = ({
-  className,
+  className = '',
   isConnected,
   connectWallet,
-  commitFunds,
+  commitAssets
 }) => {
   const [selectedToken, setSelectedToken] = useState(null)
   const [nativeCommitted, setNativeCommitted] = useState(0)
@@ -28,17 +28,8 @@ export const Body = ({
       <EventStatus />
       <CommitAssetsModal
         selectedToken={selectedToken ?? ''}
-        handleButtonClick={
-          isConnected
-            ? () =>
-                commitFunds({
-                  token: selectedChain.nativeToken,
-                  amount: ethers.utils.parseEther('0.5'),
-                })
-            : connectWallet
-        }
-        close={() => setSelectedToken(null)}
-        isConnected={isConnected}
+        close={() => setSelectedToken(null)} commitAssets={commitAssets}
+        isConnected={isConnected} connectWallet={connectWallet}
       />
     </div>
   )

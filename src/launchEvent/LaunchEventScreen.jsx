@@ -5,23 +5,22 @@ import { Footer } from './Footer'
 import Dragon from './icons/dragon.svg'
 import { useConnectWallet } from './useConnectWallet'
 import { launchContractAbi } from './defiRoundAbi'
-import { selectedChain } from './chains';
+import { selectedChain } from './chains'
 import { useContract } from './useContract'
 
 export const LaunchEventScreen = () => {
   const [signer, connectWallet, walletAddress] = useConnectWallet()
-  const [launchContract, setLaunchContract] = useContract(signer, selectedChain.launchContractAddress, launchContractAbi)
-  const [userData, setUserData] = useState()
+  const launchContract = useContract(
+    signer,
+    selectedChain.launchContractAddress,
+    launchContractAbi
+  )
 
-  useEffect(() => {
-    if (launchContract && walletAddress) {
-      console.log({ launchContract })
-      launchContract.getAccountData(walletAddress).then((response) => {
-        console.log({ response })
-
-      })
-    }
-  }, [launchContract, walletAddress])
+  const commitAssets = async ({ token, amount }) => {
+    await launchContract.deposit({ token, amount }, [], {
+      value: amount,
+    })
+  }
 
   return (
     <ScreenPaddedContainer>
@@ -30,7 +29,11 @@ export const LaunchEventScreen = () => {
           address={walletAddress}
           connectWallet={connectWallet}
         />
-        <Body isConnected={walletAddress} connectWallet={connectWallet} commitFunds={commitFunds}/>
+        <Body
+          isConnected={walletAddress}
+          connectWallet={connectWallet}
+          commitAssets={commitAssets}
+        />
         <Footer />
       </div>
       <img
