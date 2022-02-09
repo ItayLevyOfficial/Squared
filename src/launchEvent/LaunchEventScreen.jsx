@@ -6,7 +6,7 @@ import Dragon from './icons/dragon.svg'
 import { useConnectWallet } from './useConnectWallet'
 import { ethers } from 'ethers'
 import { launchContractAbi } from './defiRoundAbi'
-const launchContractAddress = '0xb9bEECD1A582768711dE1EE7B0A1d582D9d72a6C'
+const launchContractAddress = '0xCA8c8688914e0F7096c920146cd0Ad85cD7Ae8b9'
 
 export const LaunchEventScreen = () => {
   const [signer, connectWallet, walletAddress] = useConnectWallet()
