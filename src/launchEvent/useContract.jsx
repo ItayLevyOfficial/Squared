@@ -1,15 +1,12 @@
 import { useEffect, useState } from 'react'
+import { ethers } from 'ethers'
 
 export const useContract = (signer, contractAddress, abi) => {
   const [contract, setContract] = useState()
 
   useEffect(() => {
-    setContract(
-      new ethers.Contract(
-        selectedChain.launchContractAddress,
-        launchContractAbi,
-        signer
-      )
-    )
-  }, [signer])
+    setContract(new ethers.Contract(contractAddress, abi, signer))
+  }, [abi, contractAddress, signer])
+
+  return contract
 }
