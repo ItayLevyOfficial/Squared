@@ -5,7 +5,9 @@ export const useContract = (signer, contractAddress, abi) => {
   const [contract, setContract] = useState()
 
   useEffect(() => {
-    setContract(new ethers.Contract(contractAddress, abi, signer))
+    if (signer) {
+      setContract(new ethers.Contract(contractAddress, abi, signer))
+    }
   }, [abi, contractAddress, signer])
 
   return contract
