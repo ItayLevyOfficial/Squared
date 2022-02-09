@@ -4,20 +4,14 @@ import { Body } from './Body'
 import { Footer } from './Footer'
 import Dragon from './icons/dragon.svg'
 import { useConnectWallet } from './useConnectWallet'
-import { ethers } from 'ethers'
 import { launchContractAbi } from './defiRoundAbi'
 import { selectedChain } from './chains';
+import { useContract } from './useContract'
 
 export const LaunchEventScreen = () => {
   const [signer, connectWallet, walletAddress] = useConnectWallet()
-  const [launchContract, setLaunchContract] = useState()
+  const [launchContract, setLaunchContract] = useContract(signer, selectedChain.launchContractAddress, launchContractAbi)
   const [userData, setUserData] = useState()
-
-  useEffect(() => {
-    setLaunchContract(
-      new ethers.Contract(selectedChain.launchContractAddress, launchContractAbi, signer)
-    )
-  }, [signer])
 
   useEffect(() => {
     if (launchContract && walletAddress) {
