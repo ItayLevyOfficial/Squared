@@ -75,7 +75,7 @@ export const CommitAssetsModal = ({
         </p>
         <ModalButton
           text={isConnected ? 'Deposit' : 'Connect Wallet'}
-          onClick={isConnected ? () => commitAssets : connectWallet}
+          onClick={isConnected ? commitAssets : connectWallet}
         />
       </div>
     </Modal>
