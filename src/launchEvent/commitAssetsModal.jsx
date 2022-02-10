@@ -19,7 +19,7 @@ export const CommitAssetsModal = ({ selectedToken, close, isConnected, connectWa
   const [tokenAmount, setTokenAmount] = useState('')
 
   const handleDepositClick = () => {
-            
+    // const amount =
   }
 
   return (
