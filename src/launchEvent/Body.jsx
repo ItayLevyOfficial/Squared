@@ -1,10 +1,7 @@
+import React, { useState } from 'react'
 import { AccountStatus } from './AccountStatus'
-import { EventStatus } from './EventStatus'
-import { useState } from 'react'
-import React from 'react'
 import { CommitAssetsModal } from './commitAssetsModal'
-import { selectedChain } from './chains'
-import { ethers } from 'ethers'
+import { EventStatus } from './EventStatus'
 
 export const Body = ({
   className = '',

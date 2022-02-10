@@ -1,11 +1,11 @@
-import React, { useEffect, useState } from 'react'
-import { LaunchScreenHeader } from './LaunchScreenHeader'
+import React from 'react'
 import { Body } from './Body'
+import { selectedChain } from './chains'
+import { launchContractAbi } from './defiRoundAbi'
 import { Footer } from './Footer'
 import Dragon from './icons/dragon.svg'
+import { LaunchScreenHeader } from './LaunchScreenHeader'
 import { useConnectWallet } from './useConnectWallet'
-import { launchContractAbi } from './defiRoundAbi'
-import { selectedChain } from './chains'
 import { useContract } from './useContract'
 
 export const LaunchEventScreen = () => {
