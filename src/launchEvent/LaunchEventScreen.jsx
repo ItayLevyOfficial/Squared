@@ -16,8 +16,6 @@ export const LaunchEventScreen = () => {
     launchContractAbi
   )
 
-  
-
   return (
     <ScreenPaddedContainer>
       <div className="flex flex-col items-center justify-between w-full max-w-screen-xl h-full">
@@ -28,6 +26,7 @@ export const LaunchEventScreen = () => {
         <Body
           isConnected={walletAddress}
           connectWallet={connectWallet}
+          launchContract={launchContract}
         />
         <Footer />
       </div>

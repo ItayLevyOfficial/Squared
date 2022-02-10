@@ -10,7 +10,7 @@ export const Body = ({
   className = '',
   isConnected,
   connectWallet,
-  commitAssets
+  launchContract
 }) => {
   const [selectedToken, setSelectedToken] = useState(null)
   const [nativeCommitted, setNativeCommitted] = useState(0)
@@ -28,7 +28,7 @@ export const Body = ({
       <EventStatus />
       <CommitAssetsModal
         selectedToken={selectedToken}
-        close={() => setSelectedToken(null)} commitAssets={commitAssets}
+        close={() => setSelectedToken(null)} launchContract={launchContract}
         isConnected={isConnected} connectWallet={connectWallet}
       />
     </div>
