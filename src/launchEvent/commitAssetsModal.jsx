@@ -71,7 +71,7 @@ export const CommitAssetsModal = ({
           onClick={() =>
             commitAssets({
               token: tokenData.address,
-              amount: BigNumber.from(tokenAmount).mul(BigNumber.from("10").pow(BigNumber.from("18"))),
+              amount: BigNumber.from(tokenAmount).mul(BigNumber.from("10").pow(BigNumber.from(tokenData.decimals))),
             })
           }
         />
