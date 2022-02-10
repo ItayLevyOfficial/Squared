@@ -3,7 +3,6 @@ import Modal from 'react-modal'
 import { overlayStyles } from '../Products/ModalDisplay'
 import { contentStyles } from '../Products/ModalDisplay'
 import { CloseButton } from '../Products/ModalDisplay'
-import { StakingPoolsObject } from '../Products/StakingPools'
 import { ModalInput } from '../Products/ModalInput'
 import { ModalButton } from '../Products/ModalButtons'
 import { selectedChain } from './chains'
@@ -21,14 +20,24 @@ export const CommitAssetsModal = ({
   close,
   isConnected,
   connectWallet,
-  commitAssets,
+  launchContract,
 }) => {
   const isOpen = selectedToken !== null
   const tokenData = isOpen ? selectedChain.tokens[selectedToken] : null
   const [tokenAmount, setTokenAmount] = useState('')
 
-  const handleDepositClick = () => {
-    // const amount =
+  const commitAssets = async () => {
+    const amount = BigNumber.from(tokenAmount).mul(
+      BigNumber.from('10').pow(BigNumber.from(tokenData.decimals))
+    )
+    await launchContract.deposit(
+      {
+        token: tokenData.address,
+        amount: amount,
+      },
+      [],
+      { value: amount }
+    )
   }
 
   const onClose = () => {
@@ -68,12 +77,7 @@ export const CommitAssetsModal = ({
         </p>
         <ModalButton
           text={isConnected ? 'Deposit' : 'Connect Wallet'}
-          onClick={() =>
-            commitAssets({
-              token: tokenData.address,
-              amount: BigNumber.from(tokenAmount).mul(BigNumber.from("10").pow(BigNumber.from(tokenData.decimals))),
-            })
-          }
+          onClick={isConnected ? () => commitAssets : connectWallet}
         />
       </div>
     </Modal>

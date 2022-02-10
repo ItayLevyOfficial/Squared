@@ -16,11 +16,7 @@ export const LaunchEventScreen = () => {
     launchContractAbi
   )
 
-  const commitAssets = async ({ token, amount }) => {
-    await launchContract.deposit({ token, amount }, [], {
-      value: amount,
-    })
-  }
+  
 
   return (
     <ScreenPaddedContainer>
@@ -32,7 +28,6 @@ export const LaunchEventScreen = () => {
         <Body
           isConnected={walletAddress}
           connectWallet={connectWallet}
-          commitAssets={commitAssets}
         />
         <Footer />
       </div>
