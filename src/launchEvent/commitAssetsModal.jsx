@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import Modal from 'react-modal'
 import { overlayStyles } from '../Products/ModalDisplay'
 import { contentStyles } from '../Products/ModalDisplay'
@@ -16,6 +16,11 @@ const mediumArticleLink = 'https://medium.com/puffpuffmoney'
 
 export const CommitAssetsModal = ({ selectedToken, close, isConnected, connectWallet, commitAssets}) => {
   const obj = StakingPoolsObject.find((el) => el.id === selectedToken)
+  const [tokenAmount, setTokenAmount] = useState('')
+
+  const handleDepositClick = () => {
+            
+  }
 
   return (
     <Modal
@@ -31,7 +36,7 @@ export const CommitAssetsModal = ({ selectedToken, close, isConnected, connectWa
         <h1 className="text-2xl mb-8 -mt-4 text-white font-medium">
           Commit {obj?.title}
         </h1>
-        <ModalInput selectedToken={obj?.title} className="mb-8" />
+        <ModalInput selectedToken={obj?.title} className="mb-8" value={tokenAmount} handleChange={setTokenAmount}/>
         <p className="w-10/12 text-center mb-8">
           You will be able to withdraw your assets during the last look
           period.&nbsp;
