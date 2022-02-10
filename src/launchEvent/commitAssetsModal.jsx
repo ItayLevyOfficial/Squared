@@ -6,6 +6,7 @@ import { CloseButton } from '../Products/ModalDisplay'
 import { StakingPoolsObject } from '../Products/StakingPools'
 import { ModalInput } from '../Products/ModalInput'
 import { ModalButton } from '../Products/ModalButtons'
+import { selectedChain } from './chains'
 
 const commitContentStyles = {
   ...contentStyles,
@@ -15,7 +16,7 @@ const commitContentStyles = {
 const mediumArticleLink = 'https://medium.com/puffpuffmoney'
 
 export const CommitAssetsModal = ({ selectedToken, close, isConnected, connectWallet, commitAssets}) => {
-  const obj = StakingPoolsObject.find((el) => el.id === selectedToken)
+  const tokenData = selectedToken ? selectedChain.tokens[selectedToken] : null
   const [tokenAmount, setTokenAmount] = useState('')
 
   const handleDepositClick = () => {
@@ -34,9 +35,9 @@ export const CommitAssetsModal = ({ selectedToken, close, isConnected, connectWa
       <CloseButton close={close} />
       <div className="flex flex-col items-center">
         <h1 className="text-2xl mb-8 -mt-4 text-white font-medium">
-          Commit {obj?.title}
+          Commit {tokenData?.title}
         </h1>
-        <ModalInput selectedToken={obj?.title} className="mb-8" value={tokenAmount} handleChange={setTokenAmount}/>
+        <ModalInput selectedToken={tokenData?.title} className="mb-8" value={tokenAmount} handleChange={setTokenAmount}/>
         <p className="w-10/12 text-center mb-8">
           You will be able to withdraw your assets during the last look
           period.&nbsp;

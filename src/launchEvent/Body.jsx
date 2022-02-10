@@ -21,7 +21,7 @@ export const Body = ({
       <AccountStatus
         nativeCommitted={nativeCommitted}
         stableCommitted={stableCommitted}
-        handleBnbClick={() => setSelectedToken(2)}
+        handleBnbClick={() => setSelectedToken(0)}
         handleBusdClick={() => setSelectedToken(1)}
       />
       <div className="w-[0.5px] h-full bg-white" />
