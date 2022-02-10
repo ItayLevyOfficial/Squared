@@ -16,28 +16,34 @@ const commitContentStyles = {
 const mediumArticleLink = 'https://medium.com/puffpuffmoney'
 
 export const CommitAssetsModal = ({ selectedToken, close, isConnected, connectWallet, commitAssets}) => {
-  const tokenData = selectedToken ? selectedChain.tokens[selectedToken] : null
+  const isOpen = selectedToken !== null
+  const tokenData = isOpen ? selectedChain.tokens[selectedToken] : null
   const [tokenAmount, setTokenAmount] = useState('')
 
   const handleDepositClick = () => {
     // const amount =
   }
 
+  const onClose = () => {
+    setTokenAmount('')
+    close()
+  }
+
   return (
     <Modal
-      isOpen={Boolean(selectedToken)}
-      onRequestClose={close}
+      isOpen={isOpen}
+      onRequestClose={onClose}
       style={{
         overlay: overlayStyles,
         content: commitContentStyles,
       }}
     >
-      <CloseButton close={close} />
+      <CloseButton close={onClose} />
       <div className="flex flex-col items-center">
         <h1 className="text-2xl mb-8 -mt-4 text-white font-medium">
-          Commit {tokenData?.title}
+          Commit {tokenData?.name}
         </h1>
-        <ModalInput selectedToken={tokenData?.title} className="mb-8" value={tokenAmount} handleChange={setTokenAmount}/>
+        <ModalInput selectedToken={tokenData?.name} className="mb-8" value={tokenAmount} handleChange={setTokenAmount}/>
         <p className="w-10/12 text-center mb-8">
           You will be able to withdraw your assets during the last look
           period.&nbsp;
