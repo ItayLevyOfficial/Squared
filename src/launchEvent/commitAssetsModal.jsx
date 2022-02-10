@@ -7,6 +7,7 @@ import { StakingPoolsObject } from '../Products/StakingPools'
 import { ModalInput } from '../Products/ModalInput'
 import { ModalButton } from '../Products/ModalButtons'
 import { selectedChain } from './chains'
+import { BigNumber } from 'ethers'
 
 const commitContentStyles = {
   ...contentStyles,
@@ -70,7 +71,7 @@ export const CommitAssetsModal = ({
           onClick={() =>
             commitAssets({
               token: tokenData.address,
-              amount: parseInt(tokenAmount),
+              amount: BigNumber.from(tokenAmount).mul(BigNumber.from("10").pow(BigNumber.from("18"))),
             })
           }
         />
