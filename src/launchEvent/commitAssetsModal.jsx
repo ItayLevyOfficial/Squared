@@ -2,7 +2,11 @@ import { BigNumber } from 'ethers'
 import React, { useState } from 'react'
 import Modal from 'react-modal'
 import { ModalButton } from '../Products/ModalButtons'
-import { CloseButton, contentStyles, overlayStyles } from '../Products/ModalDisplay'
+import {
+  CloseButton,
+  contentStyles,
+  overlayStyles,
+} from '../Products/ModalDisplay'
 import { ModalInput } from '../Products/ModalInput'
 import { selectedChain } from './chains'
 
