@@ -34,7 +34,7 @@ export const CommitAssetsModal = ({
         amount: amount,
       },
       [],
-      { value: amount }
+      selectedToken === 0 ? { value: amount } : {}
     )
   }
 
