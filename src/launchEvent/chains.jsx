@@ -5,7 +5,7 @@ const chains = {
     rpcUrls: ['https://rpc.fuse.io/'],
   },
   ethereum: {
-    chainId: '7A69',
+    chainId: '1337',
     chainName: 'hardhat',
     rpcUrls: ['http://127.0.0.1:8545/'],
     nativeToken: '0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2',
