@@ -9,7 +9,7 @@ const StatusBar = ({ percent, text, backgroundColorClass, className }) => (
     </div>
     <div className={`flex`} style={{ height: `${percent}%` }}>
       <div
-        className={`bg-dark ${backgroundColorClass} h-full rounded-b-lg w-5`}
+        className={`bg-dark ${backgroundColorClass} h-full rounded-b-lg w-5 flex-none`}
       />
       <span className="font-number font-normal py-2 px-3">
         {percent}% {text}
