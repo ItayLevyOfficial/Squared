@@ -21,7 +21,7 @@
     "react-modal": "^3.14.4",
     "react-popper": "^2.2.5",
     "react-router-dom": "^6.2.1",
-    "ethers": "^5.5.3"
+    "ethers": "5.5.4"
   },
   "devDependencies": {
     "@vitejs/plugin-react": "1.1.4",
