@@ -1,18 +1,33 @@
 import React from 'react'
-import { LaunchScreenHeader } from './LaunchScreenHeader'
 import { Body } from './Body'
+import { selectedChain } from './chains'
+import { launchContractAbi } from './defiRoundAbi'
 import { Footer } from './Footer'
 import Dragon from './icons/dragon.svg'
-import { useConnectWallet } from './useConnectWallet';
+import { LaunchScreenHeader } from './LaunchScreenHeader'
+import { useConnectWallet } from './useConnectWallet'
+import { useContract } from './useContract'
 
 export const LaunchEventScreen = () => {
-  const [signer, connectWallet, address] = useConnectWallet()
+  const [signer, connectWallet, walletAddress] = useConnectWallet()
+  const launchContract = useContract(
+    signer,
+    selectedChain.launchContractAddress,
+    launchContractAbi
+  )
 
   return (
     <ScreenPaddedContainer>
       <div className="flex flex-col items-center justify-between w-full max-w-screen-xl h-full">
-        <LaunchScreenHeader address={address} connectWallet={connectWallet}/>
-        <Body />
+        <LaunchScreenHeader
+          address={walletAddress}
+          connectWallet={connectWallet}
+        />
+        <Body
+          isConnected={walletAddress}
+          connectWallet={connectWallet}
+          launchContract={launchContract}
+        />
         <Footer />
       </div>
       <img
