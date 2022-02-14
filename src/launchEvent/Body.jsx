@@ -19,9 +19,10 @@ export const Body = ({ className = '', launchContract, address }) => {
         setDepositedToken(await launchContract.accountToken(address))
       }
     }
+
     fetchBalance()
   }, [address, launchContract])
-
+  console.log({balance});
   useEffect(() => {
     if (depositedToken !== ethers.constants.AddressZero) {
       launchContract
