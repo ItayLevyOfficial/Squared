@@ -3,12 +3,7 @@ import { AccountStatus } from './AccountStatus'
 import { CommitAssetsModal } from './commitAssetsModal'
 import { EventStatus } from './EventStatus'
 
-export const Body = ({
-  className = '',
-  isConnected,
-  connectWallet,
-  launchContract
-}) => {
+export const Body = ({ className = '', launchContract }) => {
   const [selectedToken, setSelectedToken] = useState(null)
   const [nativeCommitted, setNativeCommitted] = useState(0)
   const [stableCommitted, setStableCommitted] = useState(0)
@@ -25,8 +20,8 @@ export const Body = ({
       <EventStatus />
       <CommitAssetsModal
         selectedToken={selectedToken}
-        close={() => setSelectedToken(null)} launchContract={launchContract}
-        isConnected={isConnected} connectWallet={connectWallet}
+        close={() => setSelectedToken(null)}
+        launchContract={launchContract}
       />
     </div>
   )

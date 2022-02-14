@@ -20,7 +20,11 @@ const commitContentStyles = {
 
 const mediumArticleLink = 'https://medium.com/puffpuffmoney'
 
-export const CommitAssetsModal = ({ selectedToken, close, launchContract }) => {
+export const CommitAssetsModal = ({
+  selectedToken,
+  close,
+  launchContract
+}) => {
   const isOpen = selectedToken !== null
   const tokenData = isOpen ? selectedChain.tokens[selectedToken] : null
   const [tokenAmount, setTokenAmount] = useState('')
