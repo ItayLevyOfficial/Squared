@@ -26,6 +26,7 @@ export const CommitAssetsModal = ({
 }) => {
   const isOpen = selectedToken !== null
   const tokenData = isOpen ? selectedChain.tokens[selectedToken] : null
+  console.log({tokenData});
   const [tokenAmount, setTokenAmount] = useState('')
 
   const commitAssets = async () => {
