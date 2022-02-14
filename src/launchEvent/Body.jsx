@@ -36,14 +36,9 @@ export const Body = ({ className = '', launchContract, address }) => {
   return (
     <div className={`flex space-x-32 -mt-20 ${className}`}>
       <AccountStatus
-        nativeCommitted={
-          depositedToken === selectedChain.tokens[0].address ? balance : 0
-        }
-        stableCommitted={
-          depositedToken === selectedChain.tokens[1].address ? balance : 0
-        }
-        handleBnbClick={() => setSelectedToken(0)}
-        handleBusdClick={() => setSelectedToken(1)}
+        amountCommitted={balance} isNativeCommitted={depositedToken === selectedChain.tokens[0].address}
+        handleNativeClick={() => setSelectedToken(0)}
+        handleStableClick={() => setSelectedToken(1)}
       />
       <div className="w-[0.5px] h-full bg-white" />
       <EventStatus />
