@@ -10,6 +10,8 @@ import {
 import { ModalInput } from '../Products/ModalInput'
 import { selectedChain } from './chains'
 import { useConnectWallet } from './useConnectWallet'
+import { useContract } from './useContract'
+import { erc20abi } from './erc20abi'
 
 const commitContentStyles = {
   ...contentStyles,
@@ -28,21 +30,24 @@ export const CommitAssetsModal = ({
   const tokenData = isOpen ? selectedChain.tokens[selectedToken] : null
   const [tokenAmount, setTokenAmount] = useState('')
   const [signer, connectWallet, address] = useConnectWallet()
-  
+  const erc20 = useContract(signer, selectedChain.tokens[1].address, erc20abi)
 
-  
   const commitAssets = async () => {
     const amount = BigNumber.from(tokenAmount).mul(
       BigNumber.from('10').pow(BigNumber.from(tokenData.decimals))
     )
-    await launchContract.deposit(
-      {
-        token: tokenData.address,
-        amount: amount,
-      },
-      [],
-      selectedToken === 0 ? { value: amount } : {}
-    )
+    if (selectedToken === 0) {
+      await launchContract.deposit(
+        {
+          token: tokenData.address,
+          amount: amount,
+        },
+        [],
+        { value: amount }
+      )
+    } else {
+      await erc20.approve()
+    }
   }
 
   const onClose = () => {
