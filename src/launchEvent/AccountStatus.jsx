@@ -26,7 +26,7 @@ export const BodyHeaderText = ({
 )
 
 export const AccountStatus = ({
-  bnbCommitted = 0,
+  nativeCommitted = 0,
   busdCommitted = 0,
   handleBnbClick,
   handleBusdClick,
@@ -34,7 +34,7 @@ export const AccountStatus = ({
   <div className="flex flex-col">
     <BodyHeaderText
       title="Your Account Status"
-      firstRow={`BNB committed: $${bnbCommitted}`}
+      firstRow={`BNB committed: $${nativeCommitted}`}
       secondRow={`BUSD committed: $${busdCommitted}`}
     />
     <DepositButton
