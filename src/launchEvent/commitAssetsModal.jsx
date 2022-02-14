@@ -9,6 +9,7 @@ import {
 } from '../Products/ModalDisplay'
 import { ModalInput } from '../Products/ModalInput'
 import { selectedChain } from './chains'
+import { useConnectWallet } from './useConnectWallet'
 
 const commitContentStyles = {
   ...contentStyles,
@@ -21,14 +22,15 @@ export const CommitAssetsModal = ({
   selectedToken,
   close,
   isConnected,
-  connectWallet,
   launchContract,
 }) => {
   const isOpen = selectedToken !== null
   const tokenData = isOpen ? selectedChain.tokens[selectedToken] : null
-  console.log({tokenData});
   const [tokenAmount, setTokenAmount] = useState('')
+  const [signer, connectWallet, address] = useConnectWallet()
+  
 
+  
   const commitAssets = async () => {
     const amount = BigNumber.from(tokenAmount).mul(
       BigNumber.from('10').pow(BigNumber.from(tokenData.decimals))
