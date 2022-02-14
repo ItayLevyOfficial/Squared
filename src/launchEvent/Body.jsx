@@ -12,7 +12,8 @@ export const Body = ({ className = '', launchContract, address }) => {
   useEffect(() => {
     const fetchBalance = async () => {
       if (launchContract) {
-        const usdBalance = await launchContract?.accountBalance(address)
+        const usdBalance = await launchContract.accountBalance(address)
+        const accountToken = await launchContract.accountToken(address)
       }
     }
     fetchBalance()
