@@ -22,12 +22,13 @@ export const Body = ({ className = '', launchContract, address }) => {
 
     fetchBalance()
   }, [address, launchContract])
-  console.log({balance});
+  console.log({ balance })
   useEffect(() => {
     if (depositedToken !== ethers.constants.AddressZero) {
-      launchContract
-        .accountBalance(address)
-        .then((newBalance) => setBalance(newBalance))
+      launchContract.accountBalance(address).then((newBalance) => {
+        const formattedNewBalance = newBalance.div(10 ** 8)
+        setBalance(formattedNewBalance.toNumber())
+      })
     }
   }, [address, depositedToken, launchContract])
 
