@@ -2,11 +2,18 @@ import React, { useState } from 'react'
 import { AccountStatus } from './AccountStatus'
 import { CommitAssetsModal } from './commitAssetsModal'
 import { EventStatus } from './EventStatus'
+import { useEffect } from 'react'
 
-export const Body = ({ className = '', launchContract }) => {
+export const Body = ({ className = '', launchContract, address }) => {
   const [selectedToken, setSelectedToken] = useState(null)
   const [nativeCommitted, setNativeCommitted] = useState(0)
   const [stableCommitted, setStableCommitted] = useState(0)
+
+  useEffect(() => {
+    launchContract?.accountBalance(address).then((response) => {
+      console.table({ response })
+    })
+  }, [address, launchContract])
 
   return (
     <div className={`flex space-x-32 -mt-20 ${className}`}>
