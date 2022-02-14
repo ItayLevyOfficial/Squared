@@ -16,16 +16,18 @@ export const Body = ({ className = '', launchContract, address }) => {
   useEffect(() => {
     const fetchBalance = async () => {
       if (launchContract && address) {
-        setDepositedToken((await launchContract.accountToken(address)).toString())
+        setDepositedToken(
+          (await launchContract.accountToken(address)).toString()
+        )
       }
     }
 
     fetchBalance()
   }, [address, launchContract])
-  console.log({ balance })
+
   useEffect(() => {
     if (depositedToken !== ethers.constants.AddressZero) {
-      console.table({depositedToken})
+      console.table({ depositedToken })
       launchContract.accountBalance(address).then((newBalance) => {
         const formattedNewBalance = newBalance.div(10 ** 8)
         setBalance(formattedNewBalance.toNumber())
@@ -36,7 +38,8 @@ export const Body = ({ className = '', launchContract, address }) => {
   return (
     <div className={`flex space-x-32 -mt-20 ${className}`}>
       <AccountStatus
-        amountCommitted={balance} isNativeCommitted={depositedToken === selectedChain.tokens[0].address}
+        amountCommitted={balance}
+        isNativeCommitted={depositedToken === selectedChain.tokens[0].address}
         handleNativeClick={() => setSelectedToken(0)}
         handleStableClick={() => setSelectedToken(1)}
       />
