@@ -8,7 +8,9 @@ import { selectedChain } from './chains'
 
 export const Body = ({ className = '', launchContract, address }) => {
   const [selectedToken, setSelectedToken] = useState(null)
-  const [depositedToken, setDepositedToken] = useState(ethers.constants.Zero)
+  const [depositedToken, setDepositedToken] = useState(
+    ethers.constants.AddressZero
+  )
   const [balance, setBalance] = useState(0)
 
   useEffect(() => {
@@ -19,6 +21,14 @@ export const Body = ({ className = '', launchContract, address }) => {
     }
     fetchBalance()
   }, [address, launchContract])
+
+  useEffect(() => {
+    if (depositedToken !== ethers.constants.AddressZero) {
+      launchContract
+        .accountBalance(address)
+        .then((newBalance) => setBalance(newBalance))
+    }
+  }, [address, depositedToken, launchContract])
 
   return (
     <div className={`flex space-x-32 -mt-20 ${className}`}>
