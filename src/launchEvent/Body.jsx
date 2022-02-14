@@ -10,9 +10,12 @@ export const Body = ({ className = '', launchContract, address }) => {
   const [stableCommitted, setStableCommitted] = useState(0)
 
   useEffect(() => {
-    launchContract?.accountBalance(address).then((response) => {
-      console.table({ response })
-    })
+    const fetchBalance = async () => {
+      if (launchContract) {
+        const usdBalance = await launchContract?.accountBalance(address)
+      }
+    }
+    fetchBalance()
   }, [address, launchContract])
 
   return (
