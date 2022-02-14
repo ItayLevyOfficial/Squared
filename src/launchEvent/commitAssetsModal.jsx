@@ -20,16 +20,12 @@ const commitContentStyles = {
 
 const mediumArticleLink = 'https://medium.com/puffpuffmoney'
 
-export const CommitAssetsModal = ({
-  selectedToken,
-  close,
-  isConnected,
-  launchContract,
-}) => {
+export const CommitAssetsModal = ({ selectedToken, close, launchContract }) => {
   const isOpen = selectedToken !== null
   const tokenData = isOpen ? selectedChain.tokens[selectedToken] : null
   const [tokenAmount, setTokenAmount] = useState('')
   const [signer, connectWallet, address] = useConnectWallet()
+  const isConnected = Boolean(address)
   const erc20 = useContract(signer, selectedChain.tokens[1].address, erc20abi)
 
   const commitAssets = async () => {
