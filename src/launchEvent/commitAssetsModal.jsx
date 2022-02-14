@@ -46,7 +46,15 @@ export const CommitAssetsModal = ({
         { value: amount }
       )
     } else {
-      await erc20.approve()
+      await erc20.approve(selectedChain.launchContractAddress, amount)
+      await launchContract.deposit(
+        {
+          token: tokenData.address,
+          amount: amount,
+        },
+        [],
+        {}
+      )
     }
   }
 
