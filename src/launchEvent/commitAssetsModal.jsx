@@ -13,7 +13,7 @@ import { useConnectWallet } from './useConnectWallet'
 import { useContract } from './useContract'
 import { erc20abi } from './erc20abi'
 
-const commitContentStyles = {
+export const commitContentStyles = {
   ...contentStyles,
   height: '400px',
 }
