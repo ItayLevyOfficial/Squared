@@ -23,11 +23,7 @@ export const LaunchEventScreen = () => {
           address={walletAddress}
           connectWallet={connectWallet}
         />
-        <Body
-          isConnected={walletAddress}
-          connectWallet={connectWallet}
-          launchContract={launchContract}
-        />
+        <Body launchContract={launchContract} />
         <Footer />
       </div>
       <img
