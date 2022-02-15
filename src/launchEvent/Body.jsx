@@ -14,7 +14,14 @@ export const Body = ({ className = '', launchContract, address }) => {
   const [balance, setBalance] = useState(0)
 
   const fetchBalance = useCallback(async () => {
-    setDepositedToken(await launchContract.accountToken(address))
+    const accountToken = await launchContract.accountToken(address)
+    setDepositedToken(accountToken)
+    if (accountToken !== ethers.constants.AddressZero) {
+      const newBalance = await launchContract.accountBalance(address)
+      const usdChainlinkDecimals = 8
+      const formattedNewBalance = newBalance.div(10 ** usdChainlinkDecimals)
+      setBalance(formattedNewBalance.toNumber())
+    }
   }, [address, launchContract])
 
   useEffect(() => {
@@ -24,22 +31,13 @@ export const Body = ({ className = '', launchContract, address }) => {
   }, [address, fetchBalance, launchContract])
 
   useEffect(() => {
-    if (depositedToken !== ethers.constants.AddressZero) {
-      launchContract.accountBalance(address).then((newBalance) => {
-        const usdChainlinkDecimals = 8
-        const formattedNewBalance = newBalance.div(10 ** usdChainlinkDecimals)
-        setBalance(formattedNewBalance.toNumber())
-      })
-    }
-  }, [address, depositedToken, launchContract])
-
-  useEffect(() => {
     const handleDeposit = () => () => {
+      console.log('aaaaaa')
       fetchBalance()
     }
     if (launchContract) {
-      launchContract.on('Deposited', handleDeposit())
-      return () => launchContract.remove(handleDeposit)
+      launchContract.on('Deposited', handleDeposit)
+      return () => launchContract.removeListener(handleDeposit)
     }
   }, [fetchBalance, launchContract])
 
