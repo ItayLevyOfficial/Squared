@@ -26,7 +26,8 @@ export const Body = ({ className = '', launchContract, address }) => {
   useEffect(() => {
     if (depositedToken !== ethers.constants.AddressZero) {
       launchContract.accountBalance(address).then((newBalance) => {
-        const formattedNewBalance = newBalance.div(10 ** 8)
+        const usdChainlinkDecimals = 8
+        const formattedNewBalance = newBalance.div(10 ** usdChainlinkDecimals)
         setBalance(formattedNewBalance.toNumber())
       })
     }
