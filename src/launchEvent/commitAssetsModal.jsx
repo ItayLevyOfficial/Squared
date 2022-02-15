@@ -2,9 +2,16 @@ import { BigNumber } from 'ethers'
 import React, { useState } from 'react'
 import Modal from 'react-modal'
 import { ModalButton } from '../Products/ModalButtons'
-import { CloseButton, contentStyles, overlayStyles } from '../Products/ModalDisplay'
+import {
+  CloseButton,
+  contentStyles,
+  overlayStyles,
+} from '../Products/ModalDisplay'
 import { ModalInput } from '../Products/ModalInput'
 import { selectedChain } from './chains'
+import { useConnectWallet } from './useConnectWallet'
+import { useContract } from './useContract'
+import { erc20abi } from './erc20abi'
 
 const commitContentStyles = {
   ...contentStyles,
@@ -16,26 +23,39 @@ const mediumArticleLink = 'https://medium.com/puffpuffmoney'
 export const CommitAssetsModal = ({
   selectedToken,
   close,
-  isConnected,
-  connectWallet,
-  launchContract,
+  launchContract
 }) => {
   const isOpen = selectedToken !== null
   const tokenData = isOpen ? selectedChain.tokens[selectedToken] : null
   const [tokenAmount, setTokenAmount] = useState('')
+  const [signer, connectWallet, address] = useConnectWallet()
+  const isConnected = Boolean(address)
+  const erc20 = useContract(signer, selectedChain.tokens[1].address, erc20abi)
 
   const commitAssets = async () => {
     const amount = BigNumber.from(tokenAmount).mul(
       BigNumber.from('10').pow(BigNumber.from(tokenData.decimals))
     )
-    await launchContract.deposit(
-      {
-        token: tokenData.address,
-        amount: amount,
-      },
-      [],
-      { value: amount }
-    )
+    if (selectedToken === 0) {
+      await launchContract.deposit(
+        {
+          token: tokenData.address,
+          amount: amount,
+        },
+        [],
+        { value: amount }
+      )
+    } else {
+      await erc20.approve(selectedChain.launchContractAddress, amount)
+      await launchContract.deposit(
+        {
+          token: tokenData.address,
+          amount: amount,
+        },
+        [],
+        {}
+      )
+    }
   }
 
   const onClose = () => {
