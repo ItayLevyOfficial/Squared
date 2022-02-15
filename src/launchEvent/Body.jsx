@@ -33,6 +33,19 @@ export const Body = ({ className = '', launchContract, address }) => {
     }
   }, [address, depositedToken, launchContract])
 
+  useEffect(() => {
+    const handleDeposit = () => {
+      return (depositor, tokenInfo) => {
+        console.log({ depositor, tokenInfo })
+      }
+    }
+    if (launchContract) {
+      launchContract.on('Deposited', handleDeposit())
+      return () => launchContract.remove(handleDeposit)
+    }
+
+  }, [launchContract])
+
   return (
     <div className={`flex space-x-32 -mt-20 ${className}`}>
       <AccountStatus
