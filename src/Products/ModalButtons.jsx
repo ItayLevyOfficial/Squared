@@ -1,6 +1,6 @@
 import React from 'react'
 
-export const ModalButton = ({ text, onClick }) => {
+export const ModalButton = ({ text, onClick, tokenAmount }) => {
   return (
     <button
       className="text-white border-transparent bg-primary hover:bg-opacity-95 rounded-lg p-2  w-5/12"
@@ -16,6 +16,7 @@ export const ModalButtons = ({
   selectedToken,
   isConnected,
   connectWallet,
+  commitAssets,
 }) => {
   return (
     <div className="w-full h-10 flex justify-center items-center space-x-4">

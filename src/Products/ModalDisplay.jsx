@@ -10,6 +10,8 @@ import { useContract } from '../launchEvent/useContract'
 import { useConnectWallet } from '../launchEvent/useConnectWallet'
 import { PoolAbi } from './PoolAbi'
 import { selectedChain } from '../launchEvent/chains'
+import { BigNumber } from 'ethers'
+import { erc20abi } from '../launchEvent/erc20abi'
 import React from 'react'
 Modal.setAppElement('#root')
 
@@ -56,10 +58,24 @@ export const ModalDisplay = ({ isOpen, close, selectedToken }) => {
     selectedChain.launchContractAddress,
     PoolAbi
   )
+  const tokenData = isOpen ? selectedChain.tokens[selectedToken] : null
   const [isOnWithdraw, setIsOnWithdraw] = useState(false)
+  const [tokenAmount, setTokenAmount] = useState('')
   const obj = StakingPoolsObject.find((el) => el.id === selectedToken)
   const isConnected = Boolean(address)
-  const commitAssets = () => {}
+  const erc20 = useContract(signer, selectedChain.tokens[1].address, erc20abi)
+
+  const commitAssets = async () => {
+    const amount = BigNumber.from(tokenAmount).mul(
+      BigNumber.from('10').pow(BigNumber.from(tokenData.decimals))
+    )
+    if (selectedToken === 0) {
+      await poolContract.deposit(amount)
+    } else {
+      await erc20.approve(selectedChain.launchContractAddress, amount)
+      await poolContract.deposit(amount)
+    }
+  }
 
   return (
     <Modal
@@ -81,10 +97,17 @@ export const ModalDisplay = ({ isOpen, close, selectedToken }) => {
           setIsOnWithdraw={setIsOnWithdraw}
           selectedToken={obj?.title}
         />
-        <ModalInput selectedToken={obj?.title} className="mt-10" />
+        <ModalInput
+          selectedToken={obj?.title}
+          className="mt-10"
+          value={tokenAmount}
+          handleChange={setTokenAmount}
+        />
         <ModalInfo selectedToken={obj?.title} isOnWithdraw={isOnWithdraw} />
         <br />
         <ModalButtons
+          tokenAmount={tokenAmount}
+          commitAssets={commitAssets}
           connectWallet={connectWallet}
           isConnected={isConnected}
           isOnWithdraw={isOnWithdraw}
