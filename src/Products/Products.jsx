@@ -1,14 +1,15 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { StakingPool } from './StakingPool'
 import { StakingPoolsObject } from './StakingPools'
 import { Information } from './Information'
 import { PageWrapper } from '../layouts/PageWrapper'
 import { ModalDisplay } from './ModalDisplay'
-
+import { provider, useConnectWallet } from '../launchEvent/useConnectWallet'
+import { ethers } from 'ethers'
 export const Products = () => {
+  const [signer, connectWallet, address] = useConnectWallet()
   const [isModalOpen, setIsOpen] = useState(false)
   const [selectedToken, setSelectedToken] = useState('')
-
   const open = (id) => {
     setIsOpen(true)
     setSelectedToken(id)
