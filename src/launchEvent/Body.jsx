@@ -16,9 +16,7 @@ export const Body = ({ className = '', launchContract, address }) => {
   useEffect(() => {
     const fetchBalance = async () => {
       if (launchContract && address) {
-        setDepositedToken(
-          (await launchContract.accountToken(address)).toString()
-        )
+        setDepositedToken(await launchContract.accountToken(address))
       }
     }
 
