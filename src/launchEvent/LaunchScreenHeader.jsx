@@ -44,10 +44,17 @@ export const LaunchScreenHeader = ({
 const TimeLeft = ({ className = '' }) => {
   const weekInMillis = 604800000
   const launchTime = selectedChain.launchTime
-  const remainTimeMillis = (launchTime + weekInMillis) - new Date().getTime()
-  const remainTimePercent = Math.round((remainTimeMillis / weekInMillis) * 12)
+  const remainTimeMillis = launchTime + weekInMillis - new Date().getTime()
+  const remainTimePercent =
+    12 - Math.round((remainTimeMillis / weekInMillis) * 12)
+  console.table({ remainTimePercent })
   const formattedRemainTime = convertMilliseconds(remainTimeMillis)
-  const innerProgressLength = `w-${remainTimePercent}/12`
+  const innerProgressLength =
+    remainTimePercent === 0
+      ? 'w-1/12'
+      : remainTimePercent === 12
+      ? 'w-11/12 '
+      : `w-${remainTimePercent}/12`
 
   return (
     <div className={`${className} flex flex-col items-center mr-10`}>
