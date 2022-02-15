@@ -12,8 +12,8 @@ export const StakingPoolsObject = [
     title: 'FUSD',
     apr: '6%',
     amount: '$2M',
-    swap: 'PUFF/fUSD',
-    button: 'Deposit fUSD',
+    swap: 'PUFF/FUSD',
+    button: 'Deposit FUSD',
   },
   {
     id: 3,

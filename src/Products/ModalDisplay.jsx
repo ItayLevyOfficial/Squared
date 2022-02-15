@@ -6,6 +6,10 @@ import { ModalOptions } from './ModalOptions'
 import { ModalInput } from './ModalInput'
 import { ModalButtons } from './ModalButtons'
 import { StakingPoolsObject } from './StakingPools'
+import { useContract } from '../launchEvent/useContract'
+import { useConnectWallet } from '../launchEvent/useConnectWallet'
+import { PoolAbi } from './PoolAbi'
+import { selectedChain } from '../launchEvent/chains'
 import React from 'react'
 Modal.setAppElement('#root')
 
@@ -46,8 +50,16 @@ export const CloseButton = ({ close }) => (
 )
 
 export const ModalDisplay = ({ isOpen, close, selectedToken }) => {
+  const [signer, connectWallet, address] = useConnectWallet()
+  const poolContract = useContract(
+    signer,
+    selectedChain.launchContractAddress,
+    PoolAbi
+  )
   const [isOnWithdraw, setIsOnWithdraw] = useState(false)
   const obj = StakingPoolsObject.find((el) => el.id === selectedToken)
+  const isConnected = Boolean(address)
+  const commitAssets = () => {}
 
   return (
     <Modal
@@ -72,7 +84,12 @@ export const ModalDisplay = ({ isOpen, close, selectedToken }) => {
         <ModalInput selectedToken={obj?.title} className="mt-10" />
         <ModalInfo selectedToken={obj?.title} isOnWithdraw={isOnWithdraw} />
         <br />
-        <ModalButtons isOnWithdraw={isOnWithdraw} selectedToken={obj?.title} />
+        <ModalButtons
+          connectWallet={connectWallet}
+          isConnected={isConnected}
+          isOnWithdraw={isOnWithdraw}
+          selectedToken={obj?.title}
+        />
         <br />
       </div>
     </Modal>
