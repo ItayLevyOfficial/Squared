@@ -23,7 +23,7 @@ export const CommitsNotAllowed = ({
       <CloseButton close={close} />
       <div className="flex flex-col items-center">
         <img src={errorIcon} alt=""/>
-        <p className="text-2xl mb-8 -mt-4 text-white font-medium">
+        <p className="text-center mt-8 w-5/6 text-lg text-white font-medium">
           In the launch event, you can only deposit either {depositedTokenName}{' '}
           or {tokenName}. Since you already committed {depositedTokenName},
           further deposits of {tokenName} are not allowed. Learn more
