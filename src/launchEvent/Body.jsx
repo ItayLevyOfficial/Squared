@@ -15,12 +15,12 @@ export const Body = ({ className = '', launchContract, address }) => {
 
   useEffect(() => {
     const fetchBalance = async () => {
-      if (launchContract && address) {
-        setDepositedToken(await launchContract.accountToken(address))
-      }
+      setDepositedToken(await launchContract.accountToken(address))
     }
 
-    fetchBalance()
+    if (launchContract && address) {
+      fetchBalance()
+    }
   }, [address, launchContract])
 
   useEffect(() => {
@@ -43,7 +43,6 @@ export const Body = ({ className = '', launchContract, address }) => {
       launchContract.on('Deposited', handleDeposit())
       return () => launchContract.remove(handleDeposit)
     }
-
   }, [launchContract])
 
   return (
