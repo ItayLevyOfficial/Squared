@@ -1,4 +1,4 @@
-export const PoolAbi = [
+export const EthPoolAbi = [
   {
     anonymous: false,
     inputs: [
@@ -221,7 +221,7 @@ export const PoolAbi = [
     ],
     name: 'deposit',
     outputs: [],
-    stateMutability: 'nonpayable',
+    stateMutability: 'payable',
     type: 'function',
   },
   {
@@ -239,7 +239,7 @@ export const PoolAbi = [
     ],
     name: 'depositFor',
     outputs: [],
-    stateMutability: 'nonpayable',
+    stateMutability: 'payable',
     type: 'function',
   },
   {
@@ -269,8 +269,8 @@ export const PoolAbi = [
   {
     inputs: [
       {
-        internalType: 'contract ERC20Upgradeable',
-        name: '_underlyer',
+        internalType: 'contract IWETH',
+        name: '_weth',
         type: 'address',
       },
       {
@@ -494,7 +494,7 @@ export const PoolAbi = [
     name: 'underlyer',
     outputs: [
       {
-        internalType: 'contract ERC20Upgradeable',
+        internalType: 'address',
         name: '',
         type: 'address',
       },
@@ -510,11 +510,29 @@ export const PoolAbi = [
     type: 'function',
   },
   {
+    inputs: [],
+    name: 'weth',
+    outputs: [
+      {
+        internalType: 'contract IWETH',
+        name: '',
+        type: 'address',
+      },
+    ],
+    stateMutability: 'view',
+    type: 'function',
+  },
+  {
     inputs: [
       {
         internalType: 'uint256',
         name: 'requestedAmount',
         type: 'uint256',
+      },
+      {
+        internalType: 'bool',
+        name: 'asEth',
+        type: 'bool',
       },
     ],
     name: 'withdraw',
@@ -534,5 +552,9 @@ export const PoolAbi = [
     ],
     stateMutability: 'view',
     type: 'function',
+  },
+  {
+    stateMutability: 'payable',
+    type: 'receive',
   },
 ]

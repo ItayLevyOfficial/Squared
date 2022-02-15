@@ -8,7 +8,7 @@ import { ModalButtons } from './ModalButtons'
 import { StakingPoolsObject } from './StakingPools'
 import { useContract } from '../launchEvent/useContract'
 import { useConnectWallet } from '../launchEvent/useConnectWallet'
-import { PoolAbi } from './PoolAbi'
+import { EthPoolAbi } from './EthPoolAbi'
 import { selectedChain } from '../launchEvent/chains'
 import { BigNumber } from 'ethers'
 import { erc20abi } from '../launchEvent/erc20abi'
@@ -56,7 +56,7 @@ export const ModalDisplay = ({ isOpen, close, selectedToken }) => {
   const poolContract = useContract(
     signer,
     selectedChain.launchContractAddress,
-    PoolAbi
+    EthPoolAbi
   )
   const tokenData = isOpen ? selectedChain.tokens[selectedToken] : null
   const [isOnWithdraw, setIsOnWithdraw] = useState(false)
