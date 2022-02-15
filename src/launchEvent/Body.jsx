@@ -31,13 +31,9 @@ export const Body = ({ className = '', launchContract, address }) => {
   }, [address, fetchBalance, launchContract])
 
   useEffect(() => {
-    const handleDeposit = () => () => {
-      console.log('aaaaaa')
-      fetchBalance()
-    }
     if (launchContract) {
-      launchContract.on('Deposited', handleDeposit)
-      return () => launchContract.removeListener(handleDeposit)
+      launchContract.on('Deposited', fetchBalance)
+      return () => launchContract.removeListener(fetchBalance)
     }
   }, [fetchBalance, launchContract])
 
