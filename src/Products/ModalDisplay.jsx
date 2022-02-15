@@ -70,10 +70,10 @@ export const ModalDisplay = ({ isOpen, close, selectedToken }) => {
       BigNumber.from('10').pow(BigNumber.from(tokenData.decimals))
     )
     if (selectedToken === 0) {
-      await poolContract.deposit(amount)
+      await poolContract.deposit(amount, { value: amount })
     } else {
       await erc20.approve(selectedChain.launchContractAddress, amount)
-      await poolContract.deposit(amount)
+      await poolContract.deposit(amount, { value: amount })
     }
   }
 
