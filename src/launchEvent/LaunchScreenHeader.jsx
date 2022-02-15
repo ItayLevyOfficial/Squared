@@ -46,15 +46,8 @@ const TimeLeft = ({ className = '' }) => {
   const launchTime = selectedChain.launchTime
   const remainTimeMillis = launchTime + weekInMillis - new Date().getTime()
   const remainTimePercent =
-    12 - Math.round((remainTimeMillis / weekInMillis) * 12)
-  console.table({ remainTimePercent })
+    100 - Math.round((remainTimeMillis / weekInMillis) * 100)
   const formattedRemainTime = convertMilliseconds(remainTimeMillis)
-  const innerProgressLength =
-    remainTimePercent === 0
-      ? 'w-1/12'
-      : remainTimePercent === 12
-      ? 'w-11/12 '
-      : `w-${remainTimePercent}/12`
 
   return (
     <div className={`${className} flex flex-col items-center mr-10`}>
@@ -65,7 +58,8 @@ const TimeLeft = ({ className = '' }) => {
       </h2>
       <div className={`bg-dark h-4 ${timeLeftBarWidth} rounded-md`}>
         <div
-          className={`bg-primary ${innerProgressLength} rounded-l-md h-full`}
+          className={`bg-primary rounded-md h-full`}
+          style={{ width: `${remainTimePercent}%` }}
         />
       </div>
     </div>
