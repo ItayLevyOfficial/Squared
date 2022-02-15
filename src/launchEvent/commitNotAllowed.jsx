@@ -1,8 +1,9 @@
 import React from 'react'
-import { Modal } from 'react-modal'
+import Modal from 'react-modal'
 import { overlayStyles } from '../Products/ModalDisplay'
 import { commitContentStyles } from './commitAssetsModal'
 import { CloseButton } from '../Products/ModalDisplay'
+import errorIcon from './icons/error.svg'
 
 export const CommitsNotAllowed = ({
   isOpen,
@@ -20,11 +21,14 @@ export const CommitsNotAllowed = ({
       }}
     >
       <CloseButton close={close} />
-      <h1 className="text-2xl mb-8 -mt-4 text-white font-medium">
-        In the launch event, you can only deposit either {depositedTokenName} or{' '}
-        {tokenName}. Since you already committed {depositedTokenName}, further deposits
-        of {tokenName} are not allowed. Learn more
-      </h1>
+      <div className="flex flex-col items-center">
+        <img src={errorIcon} alt=""/>
+        <p className="text-2xl mb-8 -mt-4 text-white font-medium">
+          In the launch event, you can only deposit either {depositedTokenName}{' '}
+          or {tokenName}. Since you already committed {depositedTokenName},
+          further deposits of {tokenName} are not allowed. Learn more
+        </p>
+      </div>
     </Modal>
   )
 }

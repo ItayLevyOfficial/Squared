@@ -49,7 +49,7 @@ export const Body = ({ className = '', launchContract, address }) => {
       />
       <div className="w-[0.5px] h-full bg-white" />
       <EventStatus />
-      {depositedToken === ethers.constants.AddressZero ||
+      {/* {depositedToken === ethers.constants.AddressZero &&
       depositedToken === selectedTokenAddress ? (
         <CommitAssetsModal
           selectedToken={selectedToken}
@@ -58,17 +58,24 @@ export const Body = ({ className = '', launchContract, address }) => {
         />
       ) : (
         <CommitsNotAllowed
-          isOpen={selectedToken}
-          tokenName={selectedChain.tokens[selectedToken].name}
-          depositedTokenName={selectedChain.tokens[selectedToken === 0 ? 1 : 0].name}
+          isOpen={Boolean(selectedToken)}
+          tokenName={selectedToken ? selectedChain.tokens[selectedToken]?.name : ''}
+          depositedTokenName={selectedToken ? selectedChain.tokens[selectedToken === 0 ? 1 : 0]?.name : ''}
           close={() => setSelectedToken(null)}
         />
-      )}
-      <CommitAssetsModal
+      )} */}
+
+        <CommitsNotAllowed
+          isOpen={selectedToken !== null}
+          tokenName={selectedToken ? selectedChain.tokens[selectedToken]?.name : ''}
+          depositedTokenName={selectedToken ? selectedChain.tokens[selectedToken === 0 ? 1 : 0]?.name : ''}
+          close={() => setSelectedToken(null)}
+        />
+      {/* <CommitAssetsModal
         selectedToken={selectedToken}
         close={() => setSelectedToken(null)}
         launchContract={launchContract}
-      />
+      /> */}
     </div>
   )
 }
