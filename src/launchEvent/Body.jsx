@@ -5,6 +5,7 @@ import { EventStatus } from './EventStatus'
 import { useEffect } from 'react'
 import { ethers } from 'ethers'
 import { selectedChain } from './chains'
+import { CommitsNotAllowed } from './commitNotAllowed'
 
 export const Body = ({ className = '', launchContract, address }) => {
   const [selectedToken, setSelectedToken] = useState(null)
@@ -37,24 +38,32 @@ export const Body = ({ className = '', launchContract, address }) => {
     }
   }, [fetchBalance, launchContract])
 
+  const selectedTokenAddress = selectedChain.tokens[0].address
   return (
     <div className={`flex space-x-32 -mt-20 ${className}`}>
       <AccountStatus
         amountCommitted={balance}
-        isNativeCommitted={depositedToken === selectedChain.tokens[0].address}
+        isNativeCommitted={depositedToken === selectedTokenAddress}
         handleNativeClick={() => setSelectedToken(0)}
         handleStableClick={() => setSelectedToken(1)}
       />
       <div className="w-[0.5px] h-full bg-white" />
       <EventStatus />
       {depositedToken === ethers.constants.AddressZero ||
-      depositedToken === selectedChain.tokens[selectedToken].address ? (
+      depositedToken === selectedTokenAddress ? (
         <CommitAssetsModal
           selectedToken={selectedToken}
           close={() => setSelectedToken(null)}
           launchContract={launchContract}
         />
-      ) : }
+      ) : (
+        <CommitsNotAllowed
+          isOpen={selectedToken}
+          tokenName={selectedChain.tokens[selectedToken].name}
+          depositedTokenName={selectedChain.tokens[selectedToken === 0 ? 1 : 0].name}
+          close={() => setSelectedToken(null)}
+        />
+      )}
       <CommitAssetsModal
         selectedToken={selectedToken}
         close={() => setSelectedToken(null)}
