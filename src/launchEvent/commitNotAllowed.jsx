@@ -20,10 +20,11 @@ export const CommitsNotAllowed = ({
       }}
     >
       <CloseButton close={close} />
-
-        <h1 className="text-2xl mb-8 -mt-4 text-white font-medium">
-          Commit {tokenData?.name}
-        </h1>
+      <h1 className="text-2xl mb-8 -mt-4 text-white font-medium">
+        In the launch event, you can only deposit either {depositedTokenName} or{' '}
+        {tokenName}. Since you already committed {depositedTokenName}, further deposits
+        of {tokenName} are not allowed. Learn more
+      </h1>
     </Modal>
   )
 }
