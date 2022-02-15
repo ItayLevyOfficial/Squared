@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useCallback, useState } from 'react'
 import { AccountStatus } from './AccountStatus'
 import { CommitAssetsModal } from './commitAssetsModal'
 import { EventStatus } from './EventStatus'
@@ -13,15 +13,15 @@ export const Body = ({ className = '', launchContract, address }) => {
   )
   const [balance, setBalance] = useState(0)
 
-  useEffect(() => {
-    const fetchBalance = async () => {
-      setDepositedToken(await launchContract.accountToken(address))
-    }
+  const fetchBalance = useCallback(async () => {
+    setDepositedToken(await launchContract.accountToken(address))
+  }, [address, launchContract])
 
+  useEffect(() => {
     if (launchContract && address) {
       fetchBalance()
     }
-  }, [address, launchContract])
+  }, [address, fetchBalance, launchContract])
 
   useEffect(() => {
     if (depositedToken !== ethers.constants.AddressZero) {
@@ -34,16 +34,14 @@ export const Body = ({ className = '', launchContract, address }) => {
   }, [address, depositedToken, launchContract])
 
   useEffect(() => {
-    const handleDeposit = () => {
-      return (depositor, tokenInfo) => {
-        console.log({ depositor, tokenInfo })
-      }
+    const handleDeposit = () => () => {
+      fetchBalance()
     }
     if (launchContract) {
       launchContract.on('Deposited', handleDeposit())
       return () => launchContract.remove(handleDeposit)
     }
-  }, [launchContract])
+  }, [fetchBalance, launchContract])
 
   return (
     <div className={`flex space-x-32 -mt-20 ${className}`}>
