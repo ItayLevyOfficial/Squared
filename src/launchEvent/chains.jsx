@@ -9,7 +9,7 @@ const chains = {
     chainName: 'hardhat',
     rpcUrls: ['http://127.0.0.1:8545/'],
     launchContractAddress: '0xd6e1afe5cA8D00A2EFC01B89997abE2De47fdfAf',
-    launchTime: 1644952469136,
+    launchTime: 1644612469136,
     tokens: [
       {
         name: 'ETH',

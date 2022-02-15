@@ -47,6 +47,14 @@ export const Body = ({ className = '', launchContract, address }) => {
       />
       <div className="w-[0.5px] h-full bg-white" />
       <EventStatus />
+      {depositedToken === ethers.constants.AddressZero ||
+      depositedToken === selectedChain.tokens[selectedToken].address ? (
+        <CommitAssetsModal
+          selectedToken={selectedToken}
+          close={() => setSelectedToken(null)}
+          launchContract={launchContract}
+        />
+      ) : }
       <CommitAssetsModal
         selectedToken={selectedToken}
         close={() => setSelectedToken(null)}
