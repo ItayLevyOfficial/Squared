@@ -20,6 +20,10 @@ const StatusBar = ({ percent, text, backgroundColorClass, className }) => (
   </div>
 )
 
+function numberWithCommas(x) {
+  return x.toString().replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ',')
+}
+
 export const EventStatus = ({ launchContract }) => {
   const [totalCommitments, setTotalCommitments] = useState(0)
   const [maxTotalCommitments, setMaxTotalCommitments] = useState(0)
@@ -52,15 +56,20 @@ export const EventStatus = ({ launchContract }) => {
 
   const soldPercent =
     Math.round(totalCommitments / (maxTotalCommitments / 2)) > 10
-  const minimumSoldDisplayed = 20
+  const minSoldDisplayed = 7
   const displayedPercent =
-    soldPercent > minimumSoldDisplayed ? soldPercent : minimumSoldDisplayed
+    soldPercent > minSoldDisplayed ? soldPercent : minSoldDisplayed
+  const totalCommitmentsDisplayed = numberWithCommas(
+    displayedPercent === minSoldDisplayed
+      ? Math.round((minSoldDisplayed / 100) * (maxTotalCommitments / 2))
+      : totalCommitments
+  )
 
   return (
     <div className="flex flex-col">
       <BodyHeaderText
         title="Event Status"
-        firstRow={`Total commitments: $${totalCommitments}`}
+        firstRow={`Total commitments: $${totalCommitmentsDisplayed}`}
         // secondRow={`Conversion rate: $${puffPrice.toFixed(2)}/PUFF`}
         secondRow={`Conversion rate: $${sqrdPrice}/SQRD`}
         marginBottomClass="mb-7"
