@@ -8,6 +8,7 @@ import { selectedChain } from '../launchEvent/chains'
 export const Products = () => {
   const [isModalOpen, setIsOpen] = useState(false)
   const [selectedToken, setSelectedToken] = useState(null)
+  const [tokenAmount, setTokenAmount] = useState('')
 
   const open = (id) => {
     setIsOpen(true)
@@ -17,6 +18,7 @@ export const Products = () => {
   const close = () => {
     setIsOpen(false)
     setSelectedToken(null)
+    setTokenAmount('')
   }
 
   return (
@@ -25,6 +27,8 @@ export const Products = () => {
         isOpen={isModalOpen}
         close={close}
         selectedToken={selectedToken}
+        setTokenAmount={setTokenAmount}
+        tokenAmount={tokenAmount}
       />
       <div className="w-full flex items-center justify-evenly overflow-x-scroll ">
         {selectedChain.tokens.map((el) => (
