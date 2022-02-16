@@ -30,7 +30,7 @@ export const LaunchEventScreen = () => {
 }
 
 export const ScreenPaddedContainer = (props) => (
-  <div className="w-screen h-screen bg-black flex flex-col items-center px-40 pt-10 pb-16">
+  <div className="w-screen h-screen bg-black flex flex-col items-center px-36 pt-10 pb-16">
     {props.children}
   </div>
 )

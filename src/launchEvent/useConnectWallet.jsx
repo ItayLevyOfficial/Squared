@@ -55,11 +55,3 @@ export const useConnectWallet = () => {
 
   return [signer, connectWallet, address]
 }
-
-//  Old Barry code, keeping it here for case we need to do extra work on chain change.
-//     const { chainId } = await provider.getNetwork()
-//     if (chainId === 122) {
-//       setAddress(await signer.getAddress())
-//     } else {
-//       setAddress()
-//     }
