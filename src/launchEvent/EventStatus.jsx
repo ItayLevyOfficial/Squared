@@ -70,7 +70,6 @@ export const EventStatus = ({ launchContract }) => {
       <BodyHeaderText
         title="Event Status"
         firstRow={`Total commitments: $${totalCommitmentsDisplayed}`}
-        // secondRow={`Conversion rate: $${puffPrice.toFixed(2)}/PUFF`}
         secondRow={`Conversion rate: $${sqrdPrice}/SQRD`}
         marginBottomClass="mb-7"
       />
