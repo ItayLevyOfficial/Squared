@@ -40,16 +40,20 @@ export const EventStatus = ({ launchContract }) => {
     }
   }, [launchContract])
 
+  const minimumSqrdPrice = '2.00'
+  const maximumSqrdPrice = '8.00'
   const sqrdPrice =
     totalCommitments < 6_000_000
-      ? '2.00'
+      ? minimumSqrdPrice
       : totalCommitments > 24_000_000
-      ? '8.00'
+      ? maximumSqrdPrice
       : (totalCommitments / selectedChain.launchTokensAmount).toFixed(2)
-  
-  const soldPercent = Math.round(totalCommitments / (maxTotalCommitments / 2)) > 10
+
+  const soldPercent =
+    Math.round(totalCommitments / (maxTotalCommitments / 2)) > 10
   const minimumSoldDisplayed = 20
-  const displayedPercent = soldPercent > minimumSoldDisplayed ? soldPercent : minimumSoldDisplayed
+  const displayedPercent =
+    soldPercent > minimumSoldDisplayed ? soldPercent : minimumSoldDisplayed
 
   return (
     <div className="flex flex-col">
@@ -61,7 +65,11 @@ export const EventStatus = ({ launchContract }) => {
         marginBottomClass="mb-7"
       />
       <div className="flex space-x-10">
-        <StatusBar percent={displayedPercent} text="Sold" backgroundColorClass="bg-dark" />
+        <StatusBar
+          percent={displayedPercent}
+          text="Sold"
+          backgroundColorClass="bg-dark"
+        />
         <StatusBar
           percent={100 - displayedPercent}
           text="Remaining"
