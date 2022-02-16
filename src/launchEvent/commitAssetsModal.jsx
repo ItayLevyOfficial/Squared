@@ -20,15 +20,12 @@ export const commitContentStyles = {
 
 const mediumArticleLink = 'https://medium.com/puffpuffmoney'
 
-<<<<<<< HEAD
-=======
 export const PurpleLink = ({ children, onClick }) => (
   <span className="text-primary underline cursor-pointer" onClick={onClick}>
     {children}
   </span>
 )
 
->>>>>>> master
 export const CommitAssetsModal = ({ selectedToken, close, launchContract }) => {
   const isOpen = selectedToken !== null
   const tokenData = isOpen ? selectedChain.tokens[selectedToken] : null

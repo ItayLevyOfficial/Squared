@@ -20,11 +20,6 @@ const chains = {
       {
         id: 1,
         name: 'USDC',
-<<<<<<< HEAD
-
-        address: '0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48',
-        decimals: '6',
-=======
         address: '0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48',
         decimals: '6',
       },
@@ -39,7 +34,6 @@ const chains = {
         name: 'PUFF VOLTAGE LP',
         address: '0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48', // replace with official address
         decimals: '6',
->>>>>>> master
       },
     ],
   },
