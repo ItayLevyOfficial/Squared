@@ -1,841 +1,841 @@
 export const launchContractAbi = [
   {
-    "inputs": [
+    inputs: [
       {
-        "internalType": "address",
-        "name": "_WETH",
-        "type": "address"
+        internalType: 'address',
+        name: '_WETH',
+        type: 'address',
       },
       {
-        "internalType": "address",
-        "name": "_treasury",
-        "type": "address"
+        internalType: 'address',
+        name: '_treasury',
+        type: 'address',
       },
       {
-        "internalType": "uint256",
-        "name": "_maxTotalValue",
-        "type": "uint256"
-      }
+        internalType: 'uint256',
+        name: '_maxTotalValue',
+        type: 'uint256',
+      },
     ],
-    "stateMutability": "nonpayable",
-    "type": "constructor"
+    stateMutability: 'nonpayable',
+    type: 'constructor',
   },
   {
-    "anonymous": false,
-    "inputs": [
+    anonymous: false,
+    inputs: [
       {
-        "indexed": false,
-        "internalType": "address",
-        "name": "claimer",
-        "type": "address"
+        indexed: false,
+        internalType: 'address',
+        name: 'claimer',
+        type: 'address',
       },
       {
-        "indexed": false,
-        "internalType": "address",
-        "name": "token",
-        "type": "address"
+        indexed: false,
+        internalType: 'address',
+        name: 'token',
+        type: 'address',
       },
       {
-        "indexed": false,
-        "internalType": "uint256",
-        "name": "assetsMoved",
-        "type": "uint256"
-      }
+        indexed: false,
+        internalType: 'uint256',
+        name: 'assetsMoved',
+        type: 'uint256',
+      },
     ],
-    "name": "AssetsFinalized",
-    "type": "event"
+    name: 'AssetsFinalized',
+    type: 'event',
   },
   {
-    "anonymous": false,
-    "inputs": [
+    anonymous: false,
+    inputs: [
       {
-        "indexed": false,
-        "internalType": "address",
-        "name": "depositor",
-        "type": "address"
+        indexed: false,
+        internalType: 'address',
+        name: 'depositor',
+        type: 'address',
       },
       {
-        "components": [
+        components: [
           {
-            "internalType": "address",
-            "name": "token",
-            "type": "address"
+            internalType: 'address',
+            name: 'token',
+            type: 'address',
           },
           {
-            "internalType": "uint256",
-            "name": "amount",
-            "type": "uint256"
-          }
+            internalType: 'uint256',
+            name: 'amount',
+            type: 'uint256',
+          },
         ],
-        "indexed": false,
-        "internalType": "struct IDefiRound.TokenData",
-        "name": "tokenInfo",
-        "type": "tuple"
-      }
+        indexed: false,
+        internalType: 'struct IDefiRound.TokenData',
+        name: 'tokenInfo',
+        type: 'tuple',
+      },
     ],
-    "name": "Deposited",
-    "type": "event"
+    name: 'Deposited',
+    type: 'event',
   },
   {
-    "anonymous": false,
-    "inputs": [
+    anonymous: false,
+    inputs: [
       {
-        "indexed": false,
-        "internalType": "address",
-        "name": "user",
-        "type": "address"
+        indexed: false,
+        internalType: 'address',
+        name: 'user',
+        type: 'address',
       },
       {
-        "indexed": false,
-        "internalType": "uint256",
-        "name": "amountTransferred",
-        "type": "uint256"
-      }
+        indexed: false,
+        internalType: 'uint256',
+        name: 'amountTransferred',
+        type: 'uint256',
+      },
     ],
-    "name": "GenesisTransfer",
-    "type": "event"
+    name: 'GenesisTransfer',
+    type: 'event',
   },
   {
-    "anonymous": false,
-    "inputs": [
+    anonymous: false,
+    inputs: [
       {
-        "indexed": true,
-        "internalType": "address",
-        "name": "previousOwner",
-        "type": "address"
+        indexed: true,
+        internalType: 'address',
+        name: 'previousOwner',
+        type: 'address',
       },
       {
-        "indexed": true,
-        "internalType": "address",
-        "name": "newOwner",
-        "type": "address"
-      }
+        indexed: true,
+        internalType: 'address',
+        name: 'newOwner',
+        type: 'address',
+      },
     ],
-    "name": "OwnershipTransferred",
-    "type": "event"
+    name: 'OwnershipTransferred',
+    type: 'event',
   },
   {
-    "anonymous": false,
-    "inputs": [
+    anonymous: false,
+    inputs: [
       {
-        "components": [
+        components: [
           {
-            "internalType": "address",
-            "name": "token",
-            "type": "address"
+            internalType: 'address',
+            name: 'token',
+            type: 'address',
           },
           {
-            "internalType": "uint256",
-            "name": "numerator",
-            "type": "uint256"
+            internalType: 'uint256',
+            name: 'numerator',
+            type: 'uint256',
           },
           {
-            "internalType": "uint256",
-            "name": "denominator",
-            "type": "uint256"
-          }
+            internalType: 'uint256',
+            name: 'denominator',
+            type: 'uint256',
+          },
         ],
-        "indexed": false,
-        "internalType": "struct IDefiRound.RateData[]",
-        "name": "ratesData",
-        "type": "tuple[]"
-      }
+        indexed: false,
+        internalType: 'struct IDefiRound.RateData[]',
+        name: 'ratesData',
+        type: 'tuple[]',
+      },
     ],
-    "name": "RatesPublished",
-    "type": "event"
+    name: 'RatesPublished',
+    type: 'event',
   },
   {
-    "anonymous": false,
-    "inputs": [
+    anonymous: false,
+    inputs: [
       {
-        "components": [
+        components: [
           {
-            "internalType": "address",
-            "name": "token",
-            "type": "address"
+            internalType: 'address',
+            name: 'token',
+            type: 'address',
           },
           {
-            "internalType": "address",
-            "name": "oracle",
-            "type": "address"
+            internalType: 'address',
+            name: 'oracle',
+            type: 'address',
           },
           {
-            "internalType": "address",
-            "name": "genesis",
-            "type": "address"
+            internalType: 'address',
+            name: 'genesis',
+            type: 'address',
           },
           {
-            "internalType": "uint256",
-            "name": "maxLimit",
-            "type": "uint256"
-          }
+            internalType: 'uint256',
+            name: 'maxLimit',
+            type: 'uint256',
+          },
         ],
-        "indexed": false,
-        "internalType": "struct IDefiRound.SupportedTokenData[]",
-        "name": "tokenData",
-        "type": "tuple[]"
-      }
+        indexed: false,
+        internalType: 'struct IDefiRound.SupportedTokenData[]',
+        name: 'tokenData',
+        type: 'tuple[]',
+      },
     ],
-    "name": "SupportedTokensAdded",
-    "type": "event"
+    name: 'SupportedTokensAdded',
+    type: 'event',
   },
   {
-    "anonymous": false,
-    "inputs": [
+    anonymous: false,
+    inputs: [
       {
-        "components": [
+        components: [
           {
-            "internalType": "address",
-            "name": "token",
-            "type": "address"
+            internalType: 'address',
+            name: 'token',
+            type: 'address',
           },
           {
-            "internalType": "uint256",
-            "name": "amount",
-            "type": "uint256"
-          }
+            internalType: 'uint256',
+            name: 'amount',
+            type: 'uint256',
+          },
         ],
-        "indexed": false,
-        "internalType": "struct IDefiRound.TokenData[]",
-        "name": "tokens",
-        "type": "tuple[]"
-      }
+        indexed: false,
+        internalType: 'struct IDefiRound.TokenData[]',
+        name: 'tokens',
+        type: 'tuple[]',
+      },
     ],
-    "name": "TreasuryTransfer",
-    "type": "event"
+    name: 'TreasuryTransfer',
+    type: 'event',
   },
   {
-    "anonymous": false,
-    "inputs": [
+    anonymous: false,
+    inputs: [
       {
-        "components": [
+        components: [
           {
-            "internalType": "bool",
-            "name": "enabled",
-            "type": "bool"
+            internalType: 'bool',
+            name: 'enabled',
+            type: 'bool',
           },
           {
-            "internalType": "bytes32",
-            "name": "root",
-            "type": "bytes32"
-          }
+            internalType: 'bytes32',
+            name: 'root',
+            type: 'bytes32',
+          },
         ],
-        "indexed": false,
-        "internalType": "struct IDefiRound.WhitelistSettings",
-        "name": "settings",
-        "type": "tuple"
-      }
+        indexed: false,
+        internalType: 'struct IDefiRound.WhitelistSettings',
+        name: 'settings',
+        type: 'tuple',
+      },
     ],
-    "name": "WhitelistConfigured",
-    "type": "event"
+    name: 'WhitelistConfigured',
+    type: 'event',
   },
   {
-    "anonymous": false,
-    "inputs": [
+    anonymous: false,
+    inputs: [
       {
-        "indexed": false,
-        "internalType": "address",
-        "name": "withdrawer",
-        "type": "address"
+        indexed: false,
+        internalType: 'address',
+        name: 'withdrawer',
+        type: 'address',
       },
       {
-        "components": [
+        components: [
           {
-            "internalType": "address",
-            "name": "token",
-            "type": "address"
+            internalType: 'address',
+            name: 'token',
+            type: 'address',
           },
           {
-            "internalType": "uint256",
-            "name": "amount",
-            "type": "uint256"
-          }
+            internalType: 'uint256',
+            name: 'amount',
+            type: 'uint256',
+          },
         ],
-        "indexed": false,
-        "internalType": "struct IDefiRound.TokenData",
-        "name": "tokenInfo",
-        "type": "tuple"
+        indexed: false,
+        internalType: 'struct IDefiRound.TokenData',
+        name: 'tokenInfo',
+        type: 'tuple',
       },
       {
-        "indexed": false,
-        "internalType": "bool",
-        "name": "asETH",
-        "type": "bool"
-      }
+        indexed: false,
+        internalType: 'bool',
+        name: 'asETH',
+        type: 'bool',
+      },
     ],
-    "name": "Withdrawn",
-    "type": "event"
+    name: 'Withdrawn',
+    type: 'event',
   },
   {
-    "inputs": [],
-    "name": "WETH",
-    "outputs": [
+    inputs: [],
+    name: 'WETH',
+    outputs: [
       {
-        "internalType": "address",
-        "name": "",
-        "type": "address"
-      }
+        internalType: 'address',
+        name: '',
+        type: 'address',
+      },
     ],
-    "stateMutability": "view",
-    "type": "function"
+    stateMutability: 'view',
+    type: 'function',
   },
   {
-    "inputs": [
+    inputs: [
       {
-        "internalType": "address",
-        "name": "account",
-        "type": "address"
-      }
+        internalType: 'address',
+        name: 'account',
+        type: 'address',
+      },
     ],
-    "name": "accountBalance",
-    "outputs": [
+    name: 'accountBalance',
+    outputs: [
       {
-        "internalType": "uint256",
-        "name": "value",
-        "type": "uint256"
-      }
+        internalType: 'uint256',
+        name: 'value',
+        type: 'uint256',
+      },
     ],
-    "stateMutability": "view",
-    "type": "function"
+    stateMutability: 'view',
+    type: 'function',
   },
   {
-    "inputs": [
+    inputs: [
       {
-        "internalType": "address",
-        "name": "account",
-        "type": "address"
-      }
+        internalType: 'address',
+        name: 'account',
+        type: 'address',
+      },
     ],
-    "name": "accountToken",
-    "outputs": [
+    name: 'accountToken',
+    outputs: [
       {
-        "internalType": "address",
-        "name": "token",
-        "type": "address"
-      }
+        internalType: 'address',
+        name: 'token',
+        type: 'address',
+      },
     ],
-    "stateMutability": "view",
-    "type": "function"
+    stateMutability: 'view',
+    type: 'function',
   },
   {
-    "inputs": [
+    inputs: [
       {
-        "components": [
+        components: [
           {
-            "internalType": "address",
-            "name": "token",
-            "type": "address"
+            internalType: 'address',
+            name: 'token',
+            type: 'address',
           },
           {
-            "internalType": "address",
-            "name": "oracle",
-            "type": "address"
+            internalType: 'address',
+            name: 'oracle',
+            type: 'address',
           },
           {
-            "internalType": "address",
-            "name": "genesis",
-            "type": "address"
+            internalType: 'address',
+            name: 'genesis',
+            type: 'address',
           },
           {
-            "internalType": "uint256",
-            "name": "maxLimit",
-            "type": "uint256"
-          }
+            internalType: 'uint256',
+            name: 'maxLimit',
+            type: 'uint256',
+          },
         ],
-        "internalType": "struct IDefiRound.SupportedTokenData[]",
-        "name": "tokensToSupport",
-        "type": "tuple[]"
-      }
+        internalType: 'struct IDefiRound.SupportedTokenData[]',
+        name: 'tokensToSupport',
+        type: 'tuple[]',
+      },
     ],
-    "name": "addSupportedTokens",
-    "outputs": [],
-    "stateMutability": "nonpayable",
-    "type": "function"
+    name: 'addSupportedTokens',
+    outputs: [],
+    stateMutability: 'nonpayable',
+    type: 'function',
   },
   {
-    "inputs": [
+    inputs: [
       {
-        "components": [
+        components: [
           {
-            "internalType": "bool",
-            "name": "enabled",
-            "type": "bool"
+            internalType: 'bool',
+            name: 'enabled',
+            type: 'bool',
           },
           {
-            "internalType": "bytes32",
-            "name": "root",
-            "type": "bytes32"
-          }
+            internalType: 'bytes32',
+            name: 'root',
+            type: 'bytes32',
+          },
         ],
-        "internalType": "struct IDefiRound.WhitelistSettings",
-        "name": "settings",
-        "type": "tuple"
-      }
+        internalType: 'struct IDefiRound.WhitelistSettings',
+        name: 'settings',
+        type: 'tuple',
+      },
     ],
-    "name": "configureWhitelist",
-    "outputs": [],
-    "stateMutability": "nonpayable",
-    "type": "function"
+    name: 'configureWhitelist',
+    outputs: [],
+    stateMutability: 'nonpayable',
+    type: 'function',
   },
   {
-    "inputs": [],
-    "name": "currentStage",
-    "outputs": [
+    inputs: [],
+    name: 'currentStage',
+    outputs: [
       {
-        "internalType": "enum IDefiRound.STAGES",
-        "name": "",
-        "type": "uint8"
-      }
+        internalType: 'enum IDefiRound.STAGES',
+        name: '',
+        type: 'uint8',
+      },
     ],
-    "stateMutability": "view",
-    "type": "function"
+    stateMutability: 'view',
+    type: 'function',
   },
   {
-    "inputs": [
+    inputs: [
       {
-        "components": [
+        components: [
           {
-            "internalType": "address",
-            "name": "token",
-            "type": "address"
+            internalType: 'address',
+            name: 'token',
+            type: 'address',
           },
           {
-            "internalType": "uint256",
-            "name": "amount",
-            "type": "uint256"
-          }
+            internalType: 'uint256',
+            name: 'amount',
+            type: 'uint256',
+          },
         ],
-        "internalType": "struct IDefiRound.TokenData",
-        "name": "tokenInfo",
-        "type": "tuple"
+        internalType: 'struct IDefiRound.TokenData',
+        name: 'tokenInfo',
+        type: 'tuple',
       },
       {
-        "internalType": "bytes32[]",
-        "name": "proof",
-        "type": "bytes32[]"
-      }
+        internalType: 'bytes32[]',
+        name: 'proof',
+        type: 'bytes32[]',
+      },
     ],
-    "name": "deposit",
-    "outputs": [],
-    "stateMutability": "payable",
-    "type": "function"
+    name: 'deposit',
+    outputs: [],
+    stateMutability: 'payable',
+    type: 'function',
   },
   {
-    "inputs": [
+    inputs: [
       {
-        "internalType": "bool",
-        "name": "depositToGenesis",
-        "type": "bool"
-      }
+        internalType: 'bool',
+        name: 'depositToGenesis',
+        type: 'bool',
+      },
     ],
-    "name": "finalizeAssets",
-    "outputs": [],
-    "stateMutability": "nonpayable",
-    "type": "function"
+    name: 'finalizeAssets',
+    outputs: [],
+    stateMutability: 'nonpayable',
+    type: 'function',
   },
   {
-    "inputs": [
+    inputs: [
       {
-        "internalType": "address",
-        "name": "account",
-        "type": "address"
-      }
+        internalType: 'address',
+        name: 'account',
+        type: 'address',
+      },
     ],
-    "name": "getAccountData",
-    "outputs": [
+    name: 'getAccountData',
+    outputs: [
       {
-        "components": [
+        components: [
           {
-            "internalType": "address",
-            "name": "token",
-            "type": "address"
+            internalType: 'address',
+            name: 'token',
+            type: 'address',
           },
           {
-            "internalType": "uint256",
-            "name": "initialDeposit",
-            "type": "uint256"
+            internalType: 'uint256',
+            name: 'initialDeposit',
+            type: 'uint256',
           },
           {
-            "internalType": "uint256",
-            "name": "currentBalance",
-            "type": "uint256"
+            internalType: 'uint256',
+            name: 'currentBalance',
+            type: 'uint256',
           },
           {
-            "internalType": "uint256",
-            "name": "effectiveAmt",
-            "type": "uint256"
+            internalType: 'uint256',
+            name: 'effectiveAmt',
+            type: 'uint256',
           },
           {
-            "internalType": "uint256",
-            "name": "ineffectiveAmt",
-            "type": "uint256"
+            internalType: 'uint256',
+            name: 'ineffectiveAmt',
+            type: 'uint256',
           },
           {
-            "internalType": "uint256",
-            "name": "actualTokeReceived",
-            "type": "uint256"
-          }
+            internalType: 'uint256',
+            name: 'actualTokeReceived',
+            type: 'uint256',
+          },
         ],
-        "internalType": "struct IDefiRound.AccountDataDetails[]",
-        "name": "data",
-        "type": "tuple[]"
-      }
+        internalType: 'struct IDefiRound.AccountDataDetails[]',
+        name: 'data',
+        type: 'tuple[]',
+      },
     ],
-    "stateMutability": "view",
-    "type": "function"
+    stateMutability: 'view',
+    type: 'function',
   },
   {
-    "inputs": [
+    inputs: [
       {
-        "internalType": "address[]",
-        "name": "tokens",
-        "type": "address[]"
-      }
+        internalType: 'address[]',
+        name: 'tokens',
+        type: 'address[]',
+      },
     ],
-    "name": "getGenesisPools",
-    "outputs": [
+    name: 'getGenesisPools',
+    outputs: [
       {
-        "internalType": "address[]",
-        "name": "genesisAddresses",
-        "type": "address[]"
-      }
+        internalType: 'address[]',
+        name: 'genesisAddresses',
+        type: 'address[]',
+      },
     ],
-    "stateMutability": "view",
-    "type": "function"
+    stateMutability: 'view',
+    type: 'function',
   },
   {
-    "inputs": [],
-    "name": "getMaxTotalValue",
-    "outputs": [
+    inputs: [],
+    name: 'getMaxTotalValue',
+    outputs: [
       {
-        "internalType": "uint256",
-        "name": "",
-        "type": "uint256"
-      }
+        internalType: 'uint256',
+        name: '',
+        type: 'uint256',
+      },
     ],
-    "stateMutability": "view",
-    "type": "function"
+    stateMutability: 'view',
+    type: 'function',
   },
   {
-    "inputs": [
+    inputs: [
       {
-        "internalType": "uint256",
-        "name": "balance",
-        "type": "uint256"
+        internalType: 'uint256',
+        name: 'balance',
+        type: 'uint256',
       },
       {
-        "internalType": "address",
-        "name": "token",
-        "type": "address"
-      }
+        internalType: 'address',
+        name: 'token',
+        type: 'address',
+      },
     ],
-    "name": "getRateAdjustedAmounts",
-    "outputs": [
+    name: 'getRateAdjustedAmounts',
+    outputs: [
       {
-        "internalType": "uint256",
-        "name": "",
-        "type": "uint256"
+        internalType: 'uint256',
+        name: '',
+        type: 'uint256',
       },
       {
-        "internalType": "uint256",
-        "name": "",
-        "type": "uint256"
+        internalType: 'uint256',
+        name: '',
+        type: 'uint256',
       },
       {
-        "internalType": "uint256",
-        "name": "",
-        "type": "uint256"
-      }
+        internalType: 'uint256',
+        name: '',
+        type: 'uint256',
+      },
     ],
-    "stateMutability": "view",
-    "type": "function"
+    stateMutability: 'view',
+    type: 'function',
   },
   {
-    "inputs": [
+    inputs: [
       {
-        "internalType": "address[]",
-        "name": "tokens",
-        "type": "address[]"
-      }
+        internalType: 'address[]',
+        name: 'tokens',
+        type: 'address[]',
+      },
     ],
-    "name": "getRates",
-    "outputs": [
+    name: 'getRates',
+    outputs: [
       {
-        "components": [
+        components: [
           {
-            "internalType": "address",
-            "name": "token",
-            "type": "address"
+            internalType: 'address',
+            name: 'token',
+            type: 'address',
           },
           {
-            "internalType": "uint256",
-            "name": "numerator",
-            "type": "uint256"
+            internalType: 'uint256',
+            name: 'numerator',
+            type: 'uint256',
           },
           {
-            "internalType": "uint256",
-            "name": "denominator",
-            "type": "uint256"
-          }
+            internalType: 'uint256',
+            name: 'denominator',
+            type: 'uint256',
+          },
         ],
-        "internalType": "struct IDefiRound.RateData[]",
-        "name": "rates",
-        "type": "tuple[]"
-      }
+        internalType: 'struct IDefiRound.RateData[]',
+        name: 'rates',
+        type: 'tuple[]',
+      },
     ],
-    "stateMutability": "view",
-    "type": "function"
+    stateMutability: 'view',
+    type: 'function',
   },
   {
-    "inputs": [],
-    "name": "getSupportedTokens",
-    "outputs": [
+    inputs: [],
+    name: 'getSupportedTokens',
+    outputs: [
       {
-        "internalType": "address[]",
-        "name": "tokens",
-        "type": "address[]"
-      }
+        internalType: 'address[]',
+        name: 'tokens',
+        type: 'address[]',
+      },
     ],
-    "stateMutability": "view",
-    "type": "function"
+    stateMutability: 'view',
+    type: 'function',
   },
   {
-    "inputs": [
+    inputs: [
       {
-        "internalType": "address[]",
-        "name": "tokens",
-        "type": "address[]"
-      }
+        internalType: 'address[]',
+        name: 'tokens',
+        type: 'address[]',
+      },
     ],
-    "name": "getTokenOracles",
-    "outputs": [
+    name: 'getTokenOracles',
+    outputs: [
       {
-        "internalType": "address[]",
-        "name": "oracleAddresses",
-        "type": "address[]"
-      }
+        internalType: 'address[]',
+        name: 'oracleAddresses',
+        type: 'address[]',
+      },
     ],
-    "stateMutability": "view",
-    "type": "function"
+    stateMutability: 'view',
+    type: 'function',
   },
   {
-    "inputs": [],
-    "name": "lastLookExpiration",
-    "outputs": [
+    inputs: [],
+    name: 'lastLookExpiration',
+    outputs: [
       {
-        "internalType": "uint256",
-        "name": "",
-        "type": "uint256"
-      }
+        internalType: 'uint256',
+        name: '',
+        type: 'uint256',
+      },
     ],
-    "stateMutability": "view",
-    "type": "function"
+    stateMutability: 'view',
+    type: 'function',
   },
   {
-    "inputs": [],
-    "name": "overSubscriptionRate",
-    "outputs": [
+    inputs: [],
+    name: 'overSubscriptionRate',
+    outputs: [
       {
-        "internalType": "uint256",
-        "name": "overNumerator",
-        "type": "uint256"
+        internalType: 'uint256',
+        name: 'overNumerator',
+        type: 'uint256',
       },
       {
-        "internalType": "uint256",
-        "name": "overDenominator",
-        "type": "uint256"
-      }
+        internalType: 'uint256',
+        name: 'overDenominator',
+        type: 'uint256',
+      },
     ],
-    "stateMutability": "view",
-    "type": "function"
+    stateMutability: 'view',
+    type: 'function',
   },
   {
-    "inputs": [],
-    "name": "owner",
-    "outputs": [
+    inputs: [],
+    name: 'owner',
+    outputs: [
       {
-        "internalType": "address",
-        "name": "",
-        "type": "address"
-      }
+        internalType: 'address',
+        name: '',
+        type: 'address',
+      },
     ],
-    "stateMutability": "view",
-    "type": "function"
+    stateMutability: 'view',
+    type: 'function',
   },
   {
-    "inputs": [
+    inputs: [
       {
-        "components": [
+        components: [
           {
-            "internalType": "address",
-            "name": "token",
-            "type": "address"
+            internalType: 'address',
+            name: 'token',
+            type: 'address',
           },
           {
-            "internalType": "uint256",
-            "name": "numerator",
-            "type": "uint256"
+            internalType: 'uint256',
+            name: 'numerator',
+            type: 'uint256',
           },
           {
-            "internalType": "uint256",
-            "name": "denominator",
-            "type": "uint256"
-          }
+            internalType: 'uint256',
+            name: 'denominator',
+            type: 'uint256',
+          },
         ],
-        "internalType": "struct IDefiRound.RateData[]",
-        "name": "ratesData",
-        "type": "tuple[]"
+        internalType: 'struct IDefiRound.RateData[]',
+        name: 'ratesData',
+        type: 'tuple[]',
       },
       {
-        "components": [
+        components: [
           {
-            "internalType": "uint256",
-            "name": "overNumerator",
-            "type": "uint256"
+            internalType: 'uint256',
+            name: 'overNumerator',
+            type: 'uint256',
           },
           {
-            "internalType": "uint256",
-            "name": "overDenominator",
-            "type": "uint256"
-          }
+            internalType: 'uint256',
+            name: 'overDenominator',
+            type: 'uint256',
+          },
         ],
-        "internalType": "struct IDefiRound.OversubscriptionRate",
-        "name": "oversubRate",
-        "type": "tuple"
+        internalType: 'struct IDefiRound.OversubscriptionRate',
+        name: 'oversubRate',
+        type: 'tuple',
       },
       {
-        "internalType": "uint256",
-        "name": "lastLookDuration",
-        "type": "uint256"
-      }
+        internalType: 'uint256',
+        name: 'lastLookDuration',
+        type: 'uint256',
+      },
     ],
-    "name": "publishRates",
-    "outputs": [],
-    "stateMutability": "nonpayable",
-    "type": "function"
+    name: 'publishRates',
+    outputs: [],
+    stateMutability: 'nonpayable',
+    type: 'function',
   },
   {
-    "inputs": [],
-    "name": "renounceOwnership",
-    "outputs": [],
-    "stateMutability": "nonpayable",
-    "type": "function"
+    inputs: [],
+    name: 'renounceOwnership',
+    outputs: [],
+    stateMutability: 'nonpayable',
+    type: 'function',
   },
   {
-    "inputs": [
+    inputs: [
       {
-        "internalType": "address",
-        "name": "",
-        "type": "address"
-      }
+        internalType: 'address',
+        name: '',
+        type: 'address',
+      },
     ],
-    "name": "totalSupply",
-    "outputs": [
+    name: 'totalSupply',
+    outputs: [
       {
-        "internalType": "uint256",
-        "name": "",
-        "type": "uint256"
-      }
+        internalType: 'uint256',
+        name: '',
+        type: 'uint256',
+      },
     ],
-    "stateMutability": "view",
-    "type": "function"
+    stateMutability: 'view',
+    type: 'function',
   },
   {
-    "inputs": [],
-    "name": "totalValue",
-    "outputs": [
+    inputs: [],
+    name: 'totalValue',
+    outputs: [
       {
-        "internalType": "uint256",
-        "name": "",
-        "type": "uint256"
-      }
+        internalType: 'uint256',
+        name: '',
+        type: 'uint256',
+      },
     ],
-    "stateMutability": "view",
-    "type": "function"
+    stateMutability: 'view',
+    type: 'function',
   },
   {
-    "inputs": [
+    inputs: [
       {
-        "internalType": "address",
-        "name": "newOwner",
-        "type": "address"
-      }
+        internalType: 'address',
+        name: 'newOwner',
+        type: 'address',
+      },
     ],
-    "name": "transferOwnership",
-    "outputs": [],
-    "stateMutability": "nonpayable",
-    "type": "function"
+    name: 'transferOwnership',
+    outputs: [],
+    stateMutability: 'nonpayable',
+    type: 'function',
   },
   {
-    "inputs": [],
-    "name": "transferToTreasury",
-    "outputs": [],
-    "stateMutability": "nonpayable",
-    "type": "function"
+    inputs: [],
+    name: 'transferToTreasury',
+    outputs: [],
+    stateMutability: 'nonpayable',
+    type: 'function',
   },
   {
-    "inputs": [],
-    "name": "treasury",
-    "outputs": [
+    inputs: [],
+    name: 'treasury',
+    outputs: [
       {
-        "internalType": "address",
-        "name": "",
-        "type": "address"
-      }
+        internalType: 'address',
+        name: '',
+        type: 'address',
+      },
     ],
-    "stateMutability": "view",
-    "type": "function"
+    stateMutability: 'view',
+    type: 'function',
   },
   {
-    "inputs": [],
-    "name": "whitelistSettings",
-    "outputs": [
+    inputs: [],
+    name: 'whitelistSettings',
+    outputs: [
       {
-        "internalType": "bool",
-        "name": "enabled",
-        "type": "bool"
+        internalType: 'bool',
+        name: 'enabled',
+        type: 'bool',
       },
       {
-        "internalType": "bytes32",
-        "name": "root",
-        "type": "bytes32"
-      }
+        internalType: 'bytes32',
+        name: 'root',
+        type: 'bytes32',
+      },
     ],
-    "stateMutability": "view",
-    "type": "function"
+    stateMutability: 'view',
+    type: 'function',
   },
   {
-    "inputs": [
+    inputs: [
       {
-        "components": [
+        components: [
           {
-            "internalType": "address",
-            "name": "token",
-            "type": "address"
+            internalType: 'address',
+            name: 'token',
+            type: 'address',
           },
           {
-            "internalType": "uint256",
-            "name": "amount",
-            "type": "uint256"
-          }
+            internalType: 'uint256',
+            name: 'amount',
+            type: 'uint256',
+          },
         ],
-        "internalType": "struct IDefiRound.TokenData",
-        "name": "tokenInfo",
-        "type": "tuple"
+        internalType: 'struct IDefiRound.TokenData',
+        name: 'tokenInfo',
+        type: 'tuple',
       },
       {
-        "internalType": "bool",
-        "name": "asETH",
-        "type": "bool"
-      }
+        internalType: 'bool',
+        name: 'asETH',
+        type: 'bool',
+      },
     ],
-    "name": "withdraw",
-    "outputs": [],
-    "stateMutability": "nonpayable",
-    "type": "function"
+    name: 'withdraw',
+    outputs: [],
+    stateMutability: 'nonpayable',
+    type: 'function',
   },
   {
-    "stateMutability": "payable",
-    "type": "receive"
-  }
+    stateMutability: 'payable',
+    type: 'receive',
+  },
 ]

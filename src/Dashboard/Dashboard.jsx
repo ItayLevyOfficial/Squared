@@ -1,9 +1,9 @@
 import { useState } from 'react'
 import { LiquidityPool } from '../products/LiquidityPool'
 import { Balance } from './Balance'
-import { StakingPoolsObject } from '../products/StakingPools'
 import { PageWrapper } from '../layouts/PageWrapper'
 import { ModalDisplay } from '../products/ModalDisplay'
+import { selectedChain } from '../launchEvent/chains'
 
 export const Dashboard = () => {
   const [isModalOpen, setIsOpen] = useState(false)
@@ -27,7 +27,7 @@ export const Dashboard = () => {
       />
       <Balance />
       <div className="px-6 w-full">
-        {StakingPoolsObject.map((el) => (
+        {selectedChain.tokens.map((el) => (
           <LiquidityPool el={el} key={el.id} openModal={() => open(el.id)} />
         ))}
       </div>
