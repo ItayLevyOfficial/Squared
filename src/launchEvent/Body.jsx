@@ -38,7 +38,8 @@ export const Body = ({ className = '', launchContract, address }) => {
     }
   }, [fetchBalance, launchContract])
 
-  const selectedTokenAddress = selectedChain.tokens[0].address
+  const selectedTokenAddress = selectedChain.tokens[selectedToken]?.address
+
   return (
     <div className={`flex space-x-32 -mt-20 ${className}`}>
       <AccountStatus
@@ -70,18 +71,6 @@ export const Body = ({ className = '', launchContract, address }) => {
           close={() => setSelectedToken(null)}
         />
       )}
-
-      {/* <CommitsNotAllowed
-          isOpen={selectedToken !== null}
-          tokenName={selectedToken ? selectedChain.tokens[selectedToken]?.name : ''}
-          depositedTokenName={selectedToken ? selectedChain.tokens[selectedToken === 0 ? 1 : 0]?.name : ''}
-          close={() => setSelectedToken(null)}
-        /> */}
-      {/* <CommitAssetsModal
-        selectedToken={selectedToken}
-        close={() => setSelectedToken(null)}
-        launchContract={launchContract}
-      /> */}
     </div>
   )
 }
