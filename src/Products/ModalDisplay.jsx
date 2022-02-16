@@ -5,7 +5,6 @@ import { useState } from 'react'
 import { ModalOptions } from './ModalOptions'
 import { ModalInput } from './ModalInput'
 import { ModalButtons } from './ModalButtons'
-import { StakingPoolsObject } from './StakingPools'
 import { useContract } from '../launchEvent/useContract'
 import { useConnectWallet } from '../launchEvent/useConnectWallet'
 import { EthPoolAbi } from './EthPoolAbi'
@@ -61,7 +60,6 @@ export const ModalDisplay = ({ isOpen, close, selectedToken }) => {
   const tokenData = isOpen ? selectedChain.tokens[selectedToken] : null
   const [isOnWithdraw, setIsOnWithdraw] = useState(false)
   const [tokenAmount, setTokenAmount] = useState('')
-  const obj = StakingPoolsObject.find((el) => el.id === selectedToken)
   const isConnected = Boolean(address)
   const erc20 = useContract(signer, selectedChain.tokens[1].address, erc20abi)
 
@@ -69,6 +67,7 @@ export const ModalDisplay = ({ isOpen, close, selectedToken }) => {
     const amount = BigNumber.from(tokenAmount).mul(
       BigNumber.from('10').pow(BigNumber.from(tokenData.decimals))
     )
+
     if (selectedToken === 0) {
       await poolContract.deposit(amount, { value: amount })
     } else {
@@ -88,22 +87,26 @@ export const ModalDisplay = ({ isOpen, close, selectedToken }) => {
     >
       <CloseButton close={close} />
       <h1 className="text-2xl mb-4 -mt-4 text-white flex justify-center">
-        {obj?.title}
+        {tokenData?.name}
       </h1>
 
       <div className="border-white border rounded-lg bg-transparent w-full h-96 flex flex-col overflow-hidden">
         <ModalOptions
           isOnWithdraw={isOnWithdraw}
           setIsOnWithdraw={setIsOnWithdraw}
-          selectedToken={obj?.title}
+          selectedToken={tokenData?.name}
         />
         <ModalInput
-          selectedToken={obj?.title}
+          selectedToken={tokenData?.name}
           className="mt-10"
           value={tokenAmount}
           handleChange={setTokenAmount}
         />
-        <ModalInfo selectedToken={obj?.title} isOnWithdraw={isOnWithdraw} />
+        <ModalInfo
+          selectedToken={tokenData?.name}
+          isOnWithdraw={isOnWithdraw}
+        />
+
         <br />
         <ModalButtons
           tokenAmount={tokenAmount}
@@ -111,7 +114,7 @@ export const ModalDisplay = ({ isOpen, close, selectedToken }) => {
           connectWallet={connectWallet}
           isConnected={isConnected}
           isOnWithdraw={isOnWithdraw}
-          selectedToken={obj?.title}
+          selectedToken={tokenData?.name}
         />
         <br />
       </div>

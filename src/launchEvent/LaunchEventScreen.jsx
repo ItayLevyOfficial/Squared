@@ -3,7 +3,6 @@ import { Body } from './Body'
 import { selectedChain } from './chains'
 import { launchContractAbi } from './defiRoundAbi'
 import { Footer } from './Footer'
-import Dragon from './icons/dragon.svg'
 import { LaunchScreenHeader } from './LaunchScreenHeader'
 import { useConnectWallet } from './useConnectWallet'
 import { useContract } from './useContract'
@@ -23,14 +22,9 @@ export const LaunchEventScreen = () => {
           address={walletAddress}
           connectWallet={connectWallet}
         />
-        <Body launchContract={launchContract} address={walletAddress}/>
+        <Body launchContract={launchContract} address={walletAddress} />
         <Footer />
       </div>
-      <img
-        src={Dragon}
-        alt=""
-        className="fixed bottom-6 left-6 min-w-[200px] min-h-[200px] h-2/12 w-2/12"
-      />
     </ScreenPaddedContainer>
   )
 }
