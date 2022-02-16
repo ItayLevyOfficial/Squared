@@ -1,5 +1,5 @@
 import { BodyHeaderText } from './AccountStatus'
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 
 const StatusBar = ({ percent, text, backgroundColorClass, className }) => (
   <div className={`flex flex-col h-36 ${className}`}>
@@ -20,14 +20,22 @@ const StatusBar = ({ percent, text, backgroundColorClass, className }) => (
 
 export const EventStatus = ({ launchContract }) => {
   const [totalCommitments, setTotalCommitments] = useState(0)
-  const puffPrice = 9
+
+  useEffect(() => {
+    if (launchContract) {
+      launchContract.totalValue().then((response) => {
+        console.log({ response })
+      })
+    }
+  }, [launchContract])
 
   return (
     <div className="flex flex-col">
       <BodyHeaderText
         title="Event Status"
         firstRow={`Total commitments: $${totalCommitments}`}
-        secondRow={`Conversion rate: $${puffPrice.toFixed(2)}/PUFF`}
+        // secondRow={`Conversion rate: $${puffPrice.toFixed(2)}/PUFF`}
+        secondRow={`Conversion rate: $${5}/PUFF`}
         marginBottomClass="mb-7"
       />
       <div className="flex space-x-10">
