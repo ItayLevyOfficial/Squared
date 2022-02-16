@@ -11,14 +11,27 @@ const chains = {
     launchContractAddress: '0x8A93d247134d91e0de6f96547cB0204e5BE8e5D8',
     tokens: [
       {
+        id: 0,
         name: 'ETH',
         address: '0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2',
         decimals: '18',
       },
       {
+        id: 1,
         name: 'USDC',
-
         address: '0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48',
+        decimals: '6',
+      },
+      {
+        id: 2,
+        name: 'PUFF',
+        address: '0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48', // replace with official address
+        decimals: '6',
+      },
+      {
+        id: 3,
+        name: 'PUFF VOLTAGE LP',
+        address: '0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48', // replace with official address
         decimals: '6',
       },
     ],
