@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 import { StakingPool } from './StakingPool'
 import { Information } from './Information'
 import { PageWrapper } from '../layouts/PageWrapper'
