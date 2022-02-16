@@ -3,7 +3,7 @@ import MetamaskIcon from './icons/metamask.svg'
 import { convertMilliseconds } from './convertMillis'
 import React from 'react'
 import { selectedChain } from './chains'
-
+import logo from './icons/logo.svg'
 const timeLeftBarWidth = 'w-[580px]'
 
 export const LaunchScreenHeader = ({
@@ -14,6 +14,7 @@ export const LaunchScreenHeader = ({
   <div className={`flex flex-col items-center w-full ${className}`}>
     <div className={`flex items-center w-full justify-between mb-6`}>
       <div className="flex">
+        <img src={logo}/>
         <div className="w-[0.5px] h-50 bg-primary" />
         <div className="w-5" />
         <div className="flex flex-col space-y-2 font-bold tracking-widest">
