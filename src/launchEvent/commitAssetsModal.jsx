@@ -13,18 +13,20 @@ import { useConnectWallet } from './useConnectWallet'
 import { useContract } from './useContract'
 import { erc20abi } from './erc20abi'
 
-const commitContentStyles = {
+export const commitContentStyles = {
   ...contentStyles,
   height: '400px',
 }
 
 const mediumArticleLink = 'https://medium.com/puffpuffmoney'
 
-export const CommitAssetsModal = ({
-  selectedToken,
-  close,
-  launchContract
-}) => {
+export const PurpleLink = ({ children, onClick }) => (
+  <span className="text-primary underline cursor-pointer" onClick={onClick}>
+    {children}
+  </span>
+)
+
+export const CommitAssetsModal = ({ selectedToken, close, launchContract }) => {
   const isOpen = selectedToken !== null
   const tokenData = isOpen ? selectedChain.tokens[selectedToken] : null
   const [tokenAmount, setTokenAmount] = useState('')
@@ -86,12 +88,9 @@ export const CommitAssetsModal = ({
         <p className="w-10/12 text-center mb-8">
           You will be able to withdraw your assets during the last look
           period.&nbsp;
-          <span
-            className="text-primary underline cursor-pointer"
-            onClick={() => window.open(mediumArticleLink)}
-          >
+          <PurpleLink onClick={() => window.open(mediumArticleLink)}>
             Learn more
-          </span>
+          </PurpleLink>
         </p>
         <ModalButton
           text={isConnected ? 'Deposit' : 'Connect Wallet'}

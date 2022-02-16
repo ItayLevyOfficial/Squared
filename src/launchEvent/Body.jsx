@@ -5,9 +5,12 @@ import { EventStatus } from './EventStatus'
 import { useEffect } from 'react'
 import { ethers } from 'ethers'
 import { selectedChain } from './chains'
+import { CommitsNotAllowed } from './commitNotAllowed'
+
+export const formatBigUsd = (bigUsd) => bigUsd.div(10 ** 8).toNumber()
 
 export const Body = ({ className = '', launchContract, address }) => {
-  const [selectedToken, setSelectedToken] = useState(null)
+  const [selectedTokenIndex, setSelectedToken] = useState(null)
   const [depositedToken, setDepositedToken] = useState(
     ethers.constants.AddressZero
   )
@@ -18,9 +21,7 @@ export const Body = ({ className = '', launchContract, address }) => {
     setDepositedToken(accountToken)
     if (accountToken !== ethers.constants.AddressZero) {
       const newBalance = await launchContract.accountBalance(address)
-      const usdChainlinkDecimals = 8
-      const formattedNewBalance = newBalance.div(10 ** usdChainlinkDecimals)
-      setBalance(formattedNewBalance.toNumber())
+      setBalance(formatBigUsd(newBalance))
     }
   }, [address, launchContract])
 
@@ -37,21 +38,36 @@ export const Body = ({ className = '', launchContract, address }) => {
     }
   }, [fetchBalance, launchContract])
 
+  const selectedToken = selectedChain.tokens[selectedTokenIndex]
+  const selectedTokenAddress = selectedToken?.address
+
   return (
     <div className={`flex space-x-32 -mt-20 ${className}`}>
       <AccountStatus
         amountCommitted={balance}
-        isNativeCommitted={depositedToken === selectedChain.tokens[0].address}
+        isNativeCommitted={depositedToken === selectedToken?.address}
         handleNativeClick={() => setSelectedToken(0)}
         handleStableClick={() => setSelectedToken(1)}
       />
       <div className="w-[0.5px] h-full bg-white" />
-      <EventStatus />
-      <CommitAssetsModal
-        selectedToken={selectedToken}
-        close={() => setSelectedToken(null)}
-        launchContract={launchContract}
-      />
+      <EventStatus launchContract={launchContract} />
+      {depositedToken === ethers.constants.AddressZero ||
+      depositedToken === selectedTokenAddress ? (
+        <CommitAssetsModal
+          selectedToken={selectedTokenIndex}
+          close={() => setSelectedToken(null)}
+          launchContract={launchContract}
+        />
+      ) : (
+        <CommitsNotAllowed
+          isOpen={selectedTokenIndex !== null}
+          tokenName={selectedToken?.name ?? ''}
+          depositedTokenName={
+            selectedChain.tokens[selectedTokenIndex === 0 ? 1 : 0]?.name ?? ''
+          }
+          close={() => setSelectedToken(null)}
+        />
+      )}
     </div>
   )
 }
