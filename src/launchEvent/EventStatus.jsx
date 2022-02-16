@@ -1,6 +1,6 @@
 import { BodyHeaderText } from './AccountStatus'
 import React, { useState, useEffect } from 'react'
-import { formatBigUsd } from './Body';
+import { formatBigUsd } from './Body'
 
 const StatusBar = ({ percent, text, backgroundColorClass, className }) => (
   <div className={`flex flex-col h-36 ${className}`}>
@@ -21,6 +21,16 @@ const StatusBar = ({ percent, text, backgroundColorClass, className }) => (
 
 export const EventStatus = ({ launchContract }) => {
   const [totalCommitments, setTotalCommitments] = useState(0)
+  const [maxTotalCommitments, setMaxTotalCommitments] = useState(0)
+
+  useEffect(() => {
+    if (launchContract) {
+      launchContract.getMaxTotalValue().then((response) => {
+        const formattedNumber = formatBigUsd(response)
+        setMaxTotalCommitments(formattedNumber)
+      })
+    }
+  }, [launchContract])
 
   useEffect(() => {
     if (launchContract) {
