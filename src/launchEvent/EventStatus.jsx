@@ -40,13 +40,14 @@ export const EventStatus = ({ launchContract }) => {
     }
   }, [launchContract])
 
-  const minimumSqrdPrice = '2.00'
-  const maximumSqrdPrice = '8.00'
+  const minSqrdPrice = '2.00'
+  const maxSqrdPrice = '8.00'
+  const minSqrdSold = 6000000
   const sqrdPrice =
-    totalCommitments < 6_000_000
-      ? minimumSqrdPrice
-      : totalCommitments > 24_000_000
-      ? maximumSqrdPrice
+    totalCommitments < minSqrdSold
+      ? minSqrdPrice
+      : totalCommitments > maxTotalCommitments / 2
+      ? maxSqrdPrice
       : (totalCommitments / selectedChain.launchTokensAmount).toFixed(2)
 
   const soldPercent =
