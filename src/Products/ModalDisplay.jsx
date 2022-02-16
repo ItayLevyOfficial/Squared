@@ -5,7 +5,12 @@ import { useState } from 'react'
 import { ModalOptions } from './ModalOptions'
 import { ModalInput } from './ModalInput'
 import { ModalButtons } from './ModalButtons'
-import { StakingPoolsObject } from './StakingPools'
+import { useContract } from '../launchEvent/useContract'
+import { useConnectWallet } from '../launchEvent/useConnectWallet'
+import { EthPoolAbi } from './EthPoolAbi'
+import { selectedChain } from '../launchEvent/chains'
+import { BigNumber } from 'ethers'
+import { erc20abi } from '../launchEvent/erc20abi'
 import React from 'react'
 Modal.setAppElement('#root')
 
@@ -46,8 +51,30 @@ export const CloseButton = ({ close }) => (
 )
 
 export const ModalDisplay = ({ isOpen, close, selectedToken }) => {
+  const [signer, connectWallet, address] = useConnectWallet()
+  const poolContract = useContract(
+    signer,
+    selectedChain.launchContractAddress,
+    EthPoolAbi
+  )
+  const tokenData = isOpen ? selectedChain.tokens[selectedToken] : null
   const [isOnWithdraw, setIsOnWithdraw] = useState(false)
-  const obj = StakingPoolsObject.find((el) => el.id === selectedToken)
+  const [tokenAmount, setTokenAmount] = useState('')
+  const isConnected = Boolean(address)
+  const erc20 = useContract(signer, selectedChain.tokens[1].address, erc20abi)
+
+  const commitAssets = async () => {
+    const amount = BigNumber.from(tokenAmount).mul(
+      BigNumber.from('10').pow(BigNumber.from(tokenData.decimals))
+    )
+
+    if (selectedToken === 0) {
+      await poolContract.deposit(amount, { value: amount })
+    } else {
+      await erc20.approve(selectedChain.launchContractAddress, amount)
+      await poolContract.deposit(amount, { value: amount })
+    }
+  }
 
   return (
     <Modal
@@ -60,19 +87,34 @@ export const ModalDisplay = ({ isOpen, close, selectedToken }) => {
     >
       <CloseButton close={close} />
       <h1 className="text-2xl mb-4 -mt-4 text-white flex justify-center">
-        {obj?.title}
+        {tokenData?.name}
       </h1>
 
       <div className="border-white border rounded-lg bg-transparent w-full h-96 flex flex-col overflow-hidden">
         <ModalOptions
           isOnWithdraw={isOnWithdraw}
           setIsOnWithdraw={setIsOnWithdraw}
-          selectedToken={obj?.title}
+          selectedToken={tokenData?.name}
         />
-        <ModalInput selectedToken={obj?.title} className="mt-10" />
-        <ModalInfo selectedToken={obj?.title} isOnWithdraw={isOnWithdraw} />
+        <ModalInput
+          selectedToken={tokenData?.name}
+          className="mt-10"
+          value={tokenAmount}
+          handleChange={setTokenAmount}
+        />
+        <ModalInfo
+          selectedToken={tokenData?.name}
+          isOnWithdraw={isOnWithdraw}
+        />
         <br />
-        <ModalButtons isOnWithdraw={isOnWithdraw} selectedToken={obj?.title} />
+        <ModalButtons
+          tokenAmount={tokenAmount}
+          commitAssets={commitAssets}
+          connectWallet={connectWallet}
+          isConnected={isConnected}
+          isOnWithdraw={isOnWithdraw}
+          selectedToken={tokenData?.name}
+        />
         <br />
       </div>
     </Modal>
