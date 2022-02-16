@@ -60,13 +60,9 @@ export const Body = ({ className = '', launchContract, address }) => {
       ) : (
         <CommitsNotAllowed
           isOpen={selectedToken !== null}
-          tokenName={
-            selectedToken ? selectedChain.tokens[selectedToken]?.name : ''
-          }
+          tokenName={selectedChain.tokens[selectedToken]?.name ?? ''}
           depositedTokenName={
-            selectedToken
-              ? selectedChain.tokens[selectedToken === 0 ? 1 : 0]?.name
-              : ''
+            selectedChain.tokens[selectedToken === 0 ? 1 : 0]?.name ?? ''
           }
           close={() => setSelectedToken(null)}
         />
