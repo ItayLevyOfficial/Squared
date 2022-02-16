@@ -3,6 +3,7 @@ import MediumIcon from './icons/medium.svg'
 import DocsIcon from './icons/docs.svg'
 import DiscordIcon from './icons/discord.svg'
 import GithubIcon from './icons/github.svg'
+import React from 'react'
 
 const FooterIcon = ({ src, url }) => (
   <img
