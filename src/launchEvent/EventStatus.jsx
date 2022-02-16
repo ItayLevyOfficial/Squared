@@ -1,7 +1,7 @@
 import { BodyHeaderText } from './AccountStatus'
 import React, { useState, useEffect } from 'react'
 import { formatBigUsd } from './Body'
-import { selectedChain } from './chains';
+import { selectedChain } from './chains'
 
 const StatusBar = ({ percent, text, backgroundColorClass, className }) => (
   <div className={`flex flex-col h-36 ${className}`}>
@@ -40,8 +40,16 @@ export const EventStatus = ({ launchContract }) => {
     }
   }, [launchContract])
 
-  const sqrdPrice = totalCommitments < 6_000_000 ? '2.00' : totalCommitments > 24_000_000 ? '8.00' :
-   (totalCommitments / selectedChain.launchTokensAmount).toFixed(2) 
+  const sqrdPrice =
+    totalCommitments < 6_000_000
+      ? '2.00'
+      : totalCommitments > 24_000_000
+      ? '8.00'
+      : (totalCommitments / selectedChain.launchTokensAmount).toFixed(2)
+  
+  const soldPercent = Math.round(totalCommitments / (maxTotalCommitments / 2)) > 10
+  const minimumSoldDisplayed = 20
+  const displayedPercent = soldPercent > minimumSoldDisplayed ? soldPercent : minimumSoldDisplayed
 
   return (
     <div className="flex flex-col">
@@ -53,9 +61,9 @@ export const EventStatus = ({ launchContract }) => {
         marginBottomClass="mb-7"
       />
       <div className="flex space-x-10">
-        <StatusBar percent={64} text="Sold" backgroundColorClass="bg-dark" />
+        <StatusBar percent={displayedPercent} text="Sold" backgroundColorClass="bg-dark" />
         <StatusBar
-          percent={36}
+          percent={100 - displayedPercent}
           text="Remaining"
           backgroundColorClass="bg-primary"
         />
