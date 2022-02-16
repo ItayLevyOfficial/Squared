@@ -7,6 +7,8 @@ import { ethers } from 'ethers'
 import { selectedChain } from './chains'
 import { CommitsNotAllowed } from './commitNotAllowed'
 
+export const formatBigUsd = (bigUsd) => bigUsd.div(10 ** 8).toNumber()
+
 export const Body = ({ className = '', launchContract, address }) => {
   const [selectedTokenIndex, setSelectedToken] = useState(null)
   const [depositedToken, setDepositedToken] = useState(
@@ -19,9 +21,7 @@ export const Body = ({ className = '', launchContract, address }) => {
     setDepositedToken(accountToken)
     if (accountToken !== ethers.constants.AddressZero) {
       const newBalance = await launchContract.accountBalance(address)
-      const usdChainlinkDecimals = 8
-      const formattedNewBalance = newBalance.div(10 ** usdChainlinkDecimals)
-      setBalance(formattedNewBalance.toNumber())
+      setBalance(formatBigUsd(newBalance))
     }
   }, [address, launchContract])
 
@@ -50,7 +50,7 @@ export const Body = ({ className = '', launchContract, address }) => {
         handleStableClick={() => setSelectedToken(1)}
       />
       <div className="w-[0.5px] h-full bg-white" />
-      <EventStatus />
+      <EventStatus launchContract={launchContract} />
       {depositedToken === ethers.constants.AddressZero ||
       depositedToken === selectedTokenAddress ? (
         <CommitAssetsModal

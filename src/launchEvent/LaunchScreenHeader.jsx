@@ -17,7 +17,7 @@ export const LaunchScreenHeader = ({
         <div className="w-[0.5px] h-50 bg-primary" />
         <div className="w-5" />
         <div className="flex flex-col space-y-2 font-bold tracking-widest">
-          <h1 className="text-white text-5xl font-basic font-semibold">PUFF</h1>
+          <h1 className="text-white text-5xl font-basic font-semibold tracking-wide">Squared</h1>
           <div className="flex items-center">
             <h2 className="text-primary text-xl font-normal mr-1.5">
               TAKE OFF EVENT
