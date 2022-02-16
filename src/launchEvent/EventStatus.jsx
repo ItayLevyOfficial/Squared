@@ -25,9 +25,8 @@ export const EventStatus = ({ launchContract }) => {
 
   useEffect(() => {
     if (launchContract) {
-      launchContract.getMaxTotalValue().then((response) => {
-        const formattedNumber = formatBigUsd(response)
-        setMaxTotalCommitments(formattedNumber)
+      launchContract.getMaxTotalValue().then((maxTotalValue) => {
+        setMaxTotalCommitments(formatBigUsd(maxTotalValue))
       })
     }
   }, [launchContract])
