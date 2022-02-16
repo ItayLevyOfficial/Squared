@@ -111,7 +111,6 @@ export const ModalDisplay = ({
           selectedToken={tokenData?.name}
           isOnWithdraw={isOnWithdraw}
         />
-
         <br />
         <ModalButtons
           tokenAmount={tokenAmount}
