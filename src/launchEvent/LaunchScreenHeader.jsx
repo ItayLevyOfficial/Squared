@@ -2,10 +2,15 @@ import { AddressButton } from '../Layouts/Header'
 import MetamaskIcon from './icons/metamask.svg'
 import { convertMilliseconds } from './convertMillis'
 import React from 'react'
+import { selectedChain } from './chains'
 
 const timeLeftBarWidth = 'w-[580px]'
 
-export const LaunchScreenHeader = ({ address, connectWallet, className = '' }) => (
+export const LaunchScreenHeader = ({
+  address,
+  connectWallet,
+  className = '',
+}) => (
   <div className={`flex flex-col items-center w-full ${className}`}>
     <div className={`flex items-center w-full justify-between mb-6`}>
       <div className="flex">
@@ -23,7 +28,7 @@ export const LaunchScreenHeader = ({ address, connectWallet, className = '' }) =
       <TimeLeft />
       <div className="flex items-center">
         <img src={MetamaskIcon} className="mr-4" alt="" />
-        <AddressButton address={address} connectWallet={connectWallet}/>
+        <AddressButton address={address} connectWallet={connectWallet} />
       </div>
     </div>
     <p
@@ -36,11 +41,13 @@ export const LaunchScreenHeader = ({ address, connectWallet, className = '' }) =
   </div>
 )
 
-const TimeLeft = ({ remainTimeMillis = 276480000, className = '' }) => {
+const TimeLeft = ({ className = '' }) => {
   const weekInMillis = 604800000
-  const remainTimePercent = Math.round((remainTimeMillis / weekInMillis) * 12)
+  const launchTime = selectedChain.launchTime
+  const remainTimeMillis = launchTime + weekInMillis - new Date().getTime()
+  const remainTimePercent =
+    100 - Math.round((remainTimeMillis / weekInMillis) * 100)
   const formattedRemainTime = convertMilliseconds(remainTimeMillis)
-  const innerProgressLength = `w-${remainTimePercent}/12`
 
   return (
     <div className={`${className} flex flex-col items-center mr-10`}>
@@ -51,7 +58,8 @@ const TimeLeft = ({ remainTimeMillis = 276480000, className = '' }) => {
       </h2>
       <div className={`bg-dark h-4 ${timeLeftBarWidth} rounded-md`}>
         <div
-          className={`bg-primary ${innerProgressLength} rounded-l-md h-full`}
+          className={`bg-primary rounded-md h-full`}
+          style={{ width: `${remainTimePercent}%` }}
         />
       </div>
     </div>
