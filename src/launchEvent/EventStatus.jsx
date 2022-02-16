@@ -1,5 +1,6 @@
 import { BodyHeaderText } from './AccountStatus'
 import React, { useState, useEffect } from 'react'
+import { formatBigUsd } from './Body';
 
 const StatusBar = ({ percent, text, backgroundColorClass, className }) => (
   <div className={`flex flex-col h-36 ${className}`}>
@@ -24,7 +25,7 @@ export const EventStatus = ({ launchContract }) => {
   useEffect(() => {
     if (launchContract) {
       launchContract.totalValue().then((response) => {
-        console.log({ response })
+        setTotalCommitments(formatBigUsd(response))
       })
     }
   }, [launchContract])
