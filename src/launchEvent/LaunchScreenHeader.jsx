@@ -3,7 +3,7 @@ import MetamaskIcon from './icons/metamask.svg'
 import { convertMilliseconds } from './convertMillis'
 import React from 'react'
 import { selectedChain } from './chains'
-
+import Logo from './icons/logo.svg'
 const timeLeftBarWidth = 'w-[580px]'
 
 export const LaunchScreenHeader = ({
@@ -13,13 +13,17 @@ export const LaunchScreenHeader = ({
 }) => (
   <div className={`flex flex-col items-center w-full ${className}`}>
     <div className={`flex items-center w-full justify-between mb-6`}>
-      <div className="flex">
-        <div className="w-[0.5px] h-50 bg-primary" />
-        <div className="w-5" />
+      <div className="flex flex-none mr-5">
+        <img src={Logo} width={60} />
+        <div className="w-5 flex-none" />
+        <div className="w-[0.5px] h-50 bg-primary float-none" />
+        <div className="w-5 float-none" />
         <div className="flex flex-col space-y-2 font-bold tracking-widest">
-          <h1 className="text-white text-5xl font-basic font-semibold tracking-wide">Squared</h1>
+          <h1 className="text-white text-4xl font-basic font-semibold tracking-wide">
+            SQUARED
+          </h1>
           <div className="flex items-center">
-            <h2 className="text-primary text-xl font-normal mr-1.5">
+            <h2 className="text-primary text-lg font-normal mr-1.5">
               TAKE OFF EVENT
             </h2>
           </div>
@@ -34,8 +38,8 @@ export const LaunchScreenHeader = ({
     <p
       className={`${timeLeftBarWidth} text-center font-medium text-base tracking-wider leading-relaxed`}
     >
-      Puff's take-off event has arrived. It's the first time users can buy PUFF
-      to fill our liquidity reserve.&nbsp;
+      Squared's take-off event has arrived. It's the first time users can buy
+      SQRD to fill our liquidity reserve.&nbsp;
       <a className="text-primary underline">Learn more</a>
     </p>
   </div>
@@ -56,9 +60,9 @@ const TimeLeft = ({ className = '' }) => {
       >
         {`${formattedRemainTime.d} DAYS ${formattedRemainTime.h} HOURS ${formattedRemainTime.m} MINUTES REMAIN`}
       </h2>
-      <div className={`bg-dark h-4 ${timeLeftBarWidth} rounded-md`}>
+      <div className={`bg-lightPrimary h-4 ${timeLeftBarWidth} rounded-md`}>
         <div
-          className={`bg-primary rounded-md h-full`}
+          className={`bg-darkPrimary rounded-md h-full`}
           style={{ width: `${remainTimePercent}%` }}
         />
       </div>
