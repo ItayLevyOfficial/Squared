@@ -30,7 +30,7 @@ export const AddressButton = ({ address, connectWallet }) =>
   ) : (
     <AddressContainer
       onClick={connectWallet}
-      className="bg-primary hover:bg-opacity-95"
+      className="bg-darkPrimary hover:bg-opacity-95"
     >
       Connect
     </AddressContainer>

@@ -60,6 +60,7 @@ export const ModalDisplay = ({
 }) => {
   const tokenData = isOpen ? selectedChain?.tokens[selectedTokenIndex] : null
   const [isOnWithdraw, setIsOnWithdraw] = useState(false)
+
   const [signer, connectWallet, address] = useConnectWallet()
   const isConnected = Boolean(address)
   const ethPoolContract = useContract(

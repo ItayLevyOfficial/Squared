@@ -1,14 +1,14 @@
-import BNBIcon from './icons/BNB.svg'
-import BUSDIcon from './icons/busd.svg'
 import React from 'react'
 import { selectedChain } from './chains'
 
-const DepositButton = ({ tokenName, iconSrc, className = '', onClick }) => (
+const DepositButton = ({ tokenName, icon, className = '', onClick }) => (
   <button
-    className={`w-80 py-3 font-medium text-lg rounded-xl flex ${className} hover:bg-opacity-95`}
+    className={`w-80 py-3 font-medium items-center text-lg rounded-xl flex ${className} hover:bg-opacity-95`}
     onClick={onClick}
   >
-    <img src={iconSrc} alt="" className="ml-8 mr-4" />
+    <div className="w-8" />
+    {icon}
+    <div className="w-4" />
     Deposit / Withdraw&nbsp;{tokenName}
   </button>
 )
@@ -50,13 +50,13 @@ export const AccountStatus = ({
       />
       <DepositButton
         backgroundColorClass=""
-        iconSrc={BNBIcon}
+        icon={selectedChain.tokens[0].icon}
         tokenName={nativeTokenName}
-        className="mb-5 bg-[#F3BA2F]"
+        className="mb-5 bg-darkPrimary"
         onClick={handleNativeClick}
       />
       <DepositButton
-        iconSrc={BUSDIcon}
+        icon={selectedChain.tokens[1].icon}
         tokenName={stableTokenName}
         onClick={handleStableClick}
         className="bg-white text-black"
