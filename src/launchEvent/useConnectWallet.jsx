@@ -4,22 +4,22 @@ import { useEffect } from 'react'
 import { ethers } from 'ethers'
 import { selectedChain } from './chains'
 
-export const provider = new ethers.providers.Web3Provider(window.ethereum)
+export const provider = window.ethereum ? new ethers.providers.Web3Provider(window.ethereum) : null
 
 export const useConnectWallet = () => {
-  const [signer, setSigner] = useState(provider.getSigner())
+  const [signer, setSigner] = useState(provider?.getSigner())
   const [address, setAddress] = useState(null)
 
   const connectWallet = async () => {
     try {
-      await window.ethereum.request({
+      await window.ethereum?.request({
         method: 'wallet_switchEthereumChain',
         params: [{ chainId: selectedChain.chainId }],
       })
     } catch (switchError) {
       if (switchError.code === 4902) {
         try {
-          await window.ethereum.request({
+          await window.ethereum?.request({
             method: 'wallet_addEthereumChain',
             params: [
               {
@@ -47,10 +47,11 @@ export const useConnectWallet = () => {
   }, [signer])
 
   useEffect(() => {
-    const handleChainChange = () => window.location.reload()
-
-    window.ethereum.on('chainChanged', handleChainChange)
-    return () => window.ethereum.removeListener(handleChainChange)
+    if (window.ethereum) {
+      const handleChainChange = () => window.location.reload()
+      window.ethereum.on('chainChanged', handleChainChange)
+      return () => window.ethereum.removeListener(handleChainChange)
+    }
   }, [])
 
   return [signer, connectWallet, address]
