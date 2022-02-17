@@ -33,7 +33,7 @@ const chains = {
         decimals: '6',
       },
       {
-        name: 'SQRD VOLTAGE LP',
+        name: 'SQRD PANCAKE LP',
         symbol: 'SQRD_LP',
         address: '0x927b167526bAbB9be047421db732C663a0b77B11',
         decimals: '6',
