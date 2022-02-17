@@ -31,8 +31,8 @@ export const Products = () => {
         tokenAmount={tokenAmount}
       />
       <div className="w-full flex items-center justify-evenly overflow-x-scroll ">
-        {selectedChain.tokens.map((el) => (
-          <StakingPool el={el} key={el.id} openModal={() => open(el.id)} />
+        {selectedChain.tokens.map((el, index) => (
+          <StakingPool el={el} key={index} openModal={() => open(index)} />
         ))}
       </div>
       <Information />

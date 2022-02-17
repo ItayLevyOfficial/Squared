@@ -77,7 +77,6 @@ export const ModalDisplay = ({
     selectedChain.tokens[1].address,
     erc20abi
   )
-
   const erc20Sqrd = useContract(
     signer,
     selectedChain.tokens[2].address,
@@ -93,36 +92,20 @@ export const ModalDisplay = ({
     const amount = BigNumber.from(tokenAmount).mul(
       BigNumber.from('10').pow(BigNumber.from(tokenData.decimals))
     )
-
     if (selectedTokenIndex === 0) {
-      // await ethPoolContract.initialize(
-      //   tokenData.address,
-      //   selectedChain.managerContractAddress,
-      //   tokenData.name,
-      //   tokenData.symbol
-      // )
       await ethPoolContract.deposit(amount, { value: amount })
     } else {
       switch (selectedTokenIndex) {
         case 1:
           await erc20Usdc.approve(selectedChain.poolContractAddress, amount)
-
           break
         case 2:
           await erc20Sqrd.approve(selectedChain.poolContractAddress, amount)
-
           break
         default:
           await erc20SqrdLp.approve(selectedChain.poolContractAddress, amount)
-
           break
       }
-      // await poolContract.initialize(
-      //   tokenData.address,
-      //   selectedChain.managerContractAddress,
-      //   tokenData.name,
-      //   tokenData.symbol
-      // )
       await poolContract.deposit(amount)
     }
   }
