@@ -17,27 +17,23 @@ const localChainConfig = {
   tokens: [
     {
       name: 'ETH',
-      symbol: 'ETH',
       address: '0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2',
       decimals: '18',
       icon: <EthereumIcon />,
     },
     {
       name: 'USDC',
-      symbol: 'USDC',
       address: '0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48',
       decimals: '6',
       icon: <Usdc />,
     },
     {
       name: 'SQRD',
-      symbol: 'SQRD',
       address: '0x32EEce76C2C2e8758584A83Ee2F522D4788feA0f',
       decimals: '6',
     },
     {
       name: 'SQRD PANCAKE LP',
-      symbol: 'SQRD_LP',
       address: '0x927b167526bAbB9be047421db732C663a0b77B11',
       decimals: '6',
     },
