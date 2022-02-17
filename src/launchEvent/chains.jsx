@@ -10,7 +10,7 @@ const chains = {
     rpcUrls: ['http://127.0.0.1:8545/'],
     launchContractAddress: '0xb9bEECD1A582768711dE1EE7B0A1d582D9d72a6C',
     poolContractAddress: '0xa6e99A4ED7498b3cdDCBB61a6A607a4925Faa1B7',
-    ethPoolContractAddress: '0xb9bEECD1A582768711dE1EE7B0A1d582D9d72a6C',
+    ethPoolContractAddress: '0x40918Ba7f132E0aCba2CE4de4c4baF9BD2D7D849',
     managerContractAddress: '0xfcDB4564c18A9134002b9771816092C9693622e3',
     launchTime: 1644612469136,
     tokens: [

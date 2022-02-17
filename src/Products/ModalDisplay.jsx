@@ -108,6 +108,7 @@ export const ModalDisplay = ({
       }
       await poolContract.deposit(amount)
     }
+    close()
   }
 
   return (
