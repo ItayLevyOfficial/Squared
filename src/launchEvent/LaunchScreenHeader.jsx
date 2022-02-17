@@ -20,7 +20,7 @@ export const LaunchScreenHeader = ({
         <div className="w-5" />
         <div className="flex flex-col space-y-2 font-bold tracking-widest">
           <h1 className="text-white text-4xl font-basic font-semibold tracking-wide">
-            Squared
+            SQUARED
           </h1>
           <div className="flex items-center">
             <h2 className="text-primary text-lg font-normal mr-1.5">
