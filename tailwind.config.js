@@ -18,12 +18,12 @@ module.exports = {
         fadeIn: 'fadeIn 2s ease-in',
       },
       colors: {
-        black: '#000000',
-        dark: '#232334',
-        lightDark: '#454258',
-        primary: '#BC6FF1',
+        black: '#0A0A0A',
+        dark: '#151515',
+        lightPrimary: '#FBFCD4',
+        primary: '#FFDD03',
         white: '#ffffff',
-        gold: '#FFD700',
+        darkPrimary: '#FBC403',
       },
       fontFamily: {
         baloo: ['"Baloo 2"', 'sans-serif'],
