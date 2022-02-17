@@ -8,7 +8,7 @@ export const EthereumIcon = () => (
     fill="none"
     xmlns="http://www.w3.org/2000/svg"
   >
-    <g clip-path="url(#clip0_108_6)">
+    <g clipPath="url(#clip0_108_6)">
       <path
         opacity="0.6"
         d="M10.7741 12.931L0.0323486 17.8139L10.7741 24.157L21.5115 17.8139L10.7741 12.931Z"
