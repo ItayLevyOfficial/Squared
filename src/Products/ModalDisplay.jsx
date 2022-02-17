@@ -8,6 +8,7 @@ import { ModalButtons } from './ModalButtons'
 import { useContract } from '../launchEvent/useContract'
 import { useConnectWallet } from '../launchEvent/useConnectWallet'
 import { EthPoolAbi } from './EthPoolAbi'
+import { PoolAbi } from './PoolAbi'
 import { selectedChain } from '../launchEvent/chains'
 import { BigNumber } from 'ethers'
 import { erc20abi } from '../launchEvent/erc20abi'
@@ -53,31 +54,47 @@ export const CloseButton = ({ close }) => (
 export const ModalDisplay = ({
   isOpen,
   close,
-  selectedToken,
+  selectedTokenIndex,
   tokenAmount,
   setTokenAmount,
 }) => {
+  const [isOnWithdraw, setIsOnWithdraw] = useState(false)
   const [signer, connectWallet, address] = useConnectWallet()
-  const poolContract = useContract(
+  const isConnected = Boolean(address)
+  const ethPoolContract = useContract(
     signer,
-    selectedChain.launchContractAddress,
+    selectedChain.ethPoolContractAddress,
     EthPoolAbi
   )
-  const tokenData = isOpen ? selectedChain.tokens[selectedToken] : null
-  const [isOnWithdraw, setIsOnWithdraw] = useState(false)
-  const isConnected = Boolean(address)
-  const erc20 = useContract(signer, selectedChain.tokens[1].address, erc20abi)
+  const poolContract = useContract(
+    signer,
+    selectedChain.poolContractAddress,
+    PoolAbi
+  )
+  const erc20 = useContract(signer, tokenData?.address, erc20abi)
+  const tokenData = isOpen ? selectedChain.tokens[selectedTokenIndex] : null
 
   const commitAssets = async () => {
     const amount = BigNumber.from(tokenAmount).mul(
       BigNumber.from('10').pow(BigNumber.from(tokenData.decimals))
     )
-
-    if (selectedToken === 0) {
-      await poolContract.deposit(amount, { value: amount })
+    if (selectedTokenIndex === 0) {
+      await ethPoolContract.initialize(
+        tokenData.address,
+        selectedChain.managerContractAddress,
+        tokenData.name,
+        tokenData.symbol
+      )
+      await ethPoolContract.deposit(amount, { value: amount })
     } else {
-      await erc20.approve(selectedChain.launchContractAddress, amount)
-      await poolContract.deposit(amount, { value: amount })
+      await erc20.approve(selectedChain.poolContractAddress, amount)
+      await poolContract.initialize(
+        tokenData.address,
+        selectedChain.managerContractAddress,
+        tokenData.name,
+        tokenData.symbol
+      )
+      await poolContract.deposit(amount)
     }
   }
 
@@ -99,16 +116,16 @@ export const ModalDisplay = ({
         <ModalOptions
           isOnWithdraw={isOnWithdraw}
           setIsOnWithdraw={setIsOnWithdraw}
-          selectedToken={tokenData?.name}
+          selectedTokenIndex={tokenData?.name}
         />
         <ModalInput
-          selectedToken={tokenData?.name}
+          selectedTokenIndex={tokenData?.name}
           className="mt-10"
           value={tokenAmount}
           handleChange={setTokenAmount}
         />
         <ModalInfo
-          selectedToken={tokenData?.name}
+          selectedTokenIndex={tokenData?.name}
           isOnWithdraw={isOnWithdraw}
         />
         <br />
@@ -118,7 +135,7 @@ export const ModalDisplay = ({
           connectWallet={connectWallet}
           isConnected={isConnected}
           isOnWithdraw={isOnWithdraw}
-          selectedToken={tokenData?.name}
+          selectedTokenIndex={tokenData?.name}
         />
         <br />
       </div>
