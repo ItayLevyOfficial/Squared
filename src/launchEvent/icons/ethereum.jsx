@@ -2,29 +2,36 @@ import React from 'react'
 
 export const EthereumIcon = () => (
   <svg
-    width="654"
-    height="1063"
-    viewBox="0 0 654 1063"
+    width="22"
+    height="35"
+    viewBox="0 0 22 35"
     fill="none"
     xmlns="http://www.w3.org/2000/svg"
   >
-    <path
-      opacity="0.6"
-      d="M327.064 392.732L0.983398 541.033L327.064 733.682L653.017 541.033L327.064 392.732Z"
-      fill="white"
-    />
-    <path
-      d="M0.983398 541.033L327.064 733.682V0L0.983398 541.033Z"
-      fill="white"
-    />
-    <path d="M327.064 0V733.682L653.017 541.033L327.064 0Z" fill="white" />
-    <path
-      d="M0.983398 602.813L327.064 1062.2V795.463L0.983398 602.813Z"
-      fill="white"
-    />
-    <path
-      d="M327.064 795.463V1062.2L653.273 602.813L327.064 795.463Z"
-      fill="white"
-    />
+    <g clip-path="url(#clip0_108_6)">
+      <path
+        opacity="0.6"
+        d="M10.7741 12.931L0.0323486 17.8139L10.7741 24.157L21.5115 17.8139L10.7741 12.931Z"
+        fill="white"
+      />
+      <path
+        d="M0.0323486 17.8139L10.774 24.157V0L0.0323486 17.8139Z"
+        fill="white"
+      />
+      <path d="M10.774 0V24.157L21.5115 17.8139L10.774 0Z" fill="white" />
+      <path
+        d="M0.0323486 19.8481L10.774 34.9736V26.1912L0.0323486 19.8481Z"
+        fill="white"
+      />
+      <path
+        d="M10.774 26.1912V34.9736L21.52 19.8481L10.774 26.1912Z"
+        fill="white"
+      />
+    </g>
+    <defs>
+      <clipPath id="clip0_108_6">
+        <rect width="21.544" height="35" fill="white" />
+      </clipPath>
+    </defs>
   </svg>
 )
