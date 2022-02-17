@@ -1,4 +1,5 @@
-<svg
+import React from "react"
+export const Busd = () => <svg
   width="30"
   height="31"
   viewBox="0 0 30 31"
