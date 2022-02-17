@@ -52,7 +52,7 @@ export const AccountStatus = ({
         backgroundColorClass=""
         iconSrc={BNBIcon}
         tokenName={nativeTokenName}
-        className="mb-5 bg-[#F3BA2F]"
+        className="mb-5 bg-darkPrimary"
         onClick={handleNativeClick}
       />
       <DepositButton
