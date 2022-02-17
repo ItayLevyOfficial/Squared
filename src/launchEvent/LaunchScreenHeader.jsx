@@ -60,9 +60,9 @@ const TimeLeft = ({ className = '' }) => {
       >
         {`${formattedRemainTime.d} DAYS ${formattedRemainTime.h} HOURS ${formattedRemainTime.m} MINUTES REMAIN`}
       </h2>
-      <div className={`bg-dark h-4 ${timeLeftBarWidth} rounded-md`}>
+      <div className={`bg-lightPrimary h-4 ${timeLeftBarWidth} rounded-md`}>
         <div
-          className={`bg-primary rounded-md h-full`}
+          className={`bg-darkPrimary rounded-md h-full`}
           style={{ width: `${remainTimePercent}%` }}
         />
       </div>
