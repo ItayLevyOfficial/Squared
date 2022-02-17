@@ -1,11 +1,9 @@
-import { Bnb } from './icons/BNB.jsx'
 import React from 'react'
 import { selectedChain } from './chains'
-import { Busd } from './icons/busd'
 
 const DepositButton = ({ tokenName, icon, className = '', onClick }) => (
   <button
-    className={`w-80 py-3 font-medium text-lg rounded-xl flex ${className} hover:bg-opacity-95`}
+    className={`w-80 py-3 font-medium items-center text-lg rounded-xl flex ${className} hover:bg-opacity-95`}
     onClick={onClick}
   >
     <div className="w-8" />
@@ -52,13 +50,13 @@ export const AccountStatus = ({
       />
       <DepositButton
         backgroundColorClass=""
-        icon={<Bnb />}
+        icon={selectedChain.tokens[0].icon}
         tokenName={nativeTokenName}
         className="mb-5 bg-darkPrimary"
         onClick={handleNativeClick}
       />
       <DepositButton
-        icon={<Busd />}
+        icon={selectedChain.tokens[1].icon}
         tokenName={stableTokenName}
         onClick={handleStableClick}
         className="bg-white text-black"
