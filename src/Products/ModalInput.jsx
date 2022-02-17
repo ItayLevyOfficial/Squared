@@ -13,7 +13,7 @@ export const ModalInput = ({
     >
       <button onClick={handleMaxClick}
         className="px-2 -ml-4 h-6 flex justify-center items-center border-transparent
-       bg-primary text-white hover:bg-opacity-90 rounded-lg"
+       bg-darkPrimary text-white hover:bg-opacity-90 rounded-lg"
       >
         MAX
       </button>
