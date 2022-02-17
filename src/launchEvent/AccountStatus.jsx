@@ -1,5 +1,4 @@
-import BNBIcon from './icons/BNB.svg'
-// import BUSDIcon from './icons/busd.svg'
+import { Bnb } from './icons/BNB.jsx'
 import React from 'react'
 import { selectedChain } from './chains'
 import { Busd } from './icons/busd'
@@ -53,13 +52,13 @@ export const AccountStatus = ({
       />
       <DepositButton
         backgroundColorClass=""
-        icon={<Busd/>}
+        icon={<Bnb />}
         tokenName={nativeTokenName}
         className="mb-5 bg-darkPrimary"
         onClick={handleNativeClick}
       />
       <DepositButton
-        icon={<Busd/>}
+        icon={<Busd />}
         tokenName={stableTokenName}
         onClick={handleStableClick}
         className="bg-white text-black"
