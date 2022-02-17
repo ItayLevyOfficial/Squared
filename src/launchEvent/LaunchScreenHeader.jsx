@@ -38,7 +38,7 @@ export const LaunchScreenHeader = ({
     <p
       className={`${timeLeftBarWidth} text-center font-medium text-base tracking-wider leading-relaxed`}
     >
-      Puff's take-off event has arrived. It's the first time users can buy PUFF
+      Squared's take-off event has arrived. It's the first time users can buy SQRD
       to fill our liquidity reserve.&nbsp;
       <a className="text-primary underline">Learn more</a>
     </p>
