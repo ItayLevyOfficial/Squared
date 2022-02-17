@@ -10,6 +10,7 @@ const chains = {
     rpcUrls: ['http://127.0.0.1:8545/'],
     launchContractAddress: '0x8A93d247134d91e0de6f96547cB0204e5BE8e5D8',
     launchTime: 1644612469136,
+    launchTokensAmount: 3_000_000,
     tokens: [
       {
         id: 0,
