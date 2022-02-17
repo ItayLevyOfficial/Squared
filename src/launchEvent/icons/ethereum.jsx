@@ -2,7 +2,7 @@ import React from 'react'
 
 export const EthereumIcon = () => (
   <svg
-    width="22"
+    width="30"
     height="35"
     viewBox="0 0 22 35"
     fill="none"
