@@ -20,7 +20,7 @@ export const LaunchScreenHeader = ({
         <div className="w-5" />
         <div className="flex flex-col space-y-2 font-bold tracking-widest">
           <h1 className="text-white text-4xl font-basic font-semibold tracking-wide">
-            Squared
+            SQUARED
           </h1>
           <div className="flex items-center">
             <h2 className="text-primary text-lg font-normal mr-1.5">
@@ -38,7 +38,7 @@ export const LaunchScreenHeader = ({
     <p
       className={`${timeLeftBarWidth} text-center font-medium text-base tracking-wider leading-relaxed`}
     >
-      Puff's take-off event has arrived. It's the first time users can buy PUFF
+      Squared's take-off event has arrived. It's the first time users can buy SQRD
       to fill our liquidity reserve.&nbsp;
       <a className="text-primary underline">Learn more</a>
     </p>
@@ -60,9 +60,9 @@ const TimeLeft = ({ className = '' }) => {
       >
         {`${formattedRemainTime.d} DAYS ${formattedRemainTime.h} HOURS ${formattedRemainTime.m} MINUTES REMAIN`}
       </h2>
-      <div className={`bg-dark h-4 ${timeLeftBarWidth} rounded-md`}>
+      <div className={`bg-lightPrimary h-4 ${timeLeftBarWidth} rounded-md`}>
         <div
-          className={`bg-primary rounded-md h-full`}
+          className={`bg-darkPrimary rounded-md h-full`}
           style={{ width: `${remainTimePercent}%` }}
         />
       </div>

@@ -17,7 +17,7 @@ export const LaunchEventScreen = () => {
 
   return (
     <ScreenPaddedContainer>
-      <div className="flex flex-col items-center justify-between w-full max-w-screen-xl h-full">
+      <div className="flex flex-col items-center justify-between w-full max-w-screen-2xl h-full">
         <LaunchScreenHeader
           address={walletAddress}
           connectWallet={connectWallet}
