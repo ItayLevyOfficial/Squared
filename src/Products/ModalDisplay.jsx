@@ -50,7 +50,13 @@ export const CloseButton = ({ close }) => (
   </div>
 )
 
-export const ModalDisplay = ({ isOpen, close, selectedToken }) => {
+export const ModalDisplay = ({
+  isOpen,
+  close,
+  selectedToken,
+  tokenAmount,
+  setTokenAmount,
+}) => {
   const [signer, connectWallet, address] = useConnectWallet()
   const poolContract = useContract(
     signer,
@@ -59,7 +65,6 @@ export const ModalDisplay = ({ isOpen, close, selectedToken }) => {
   )
   const tokenData = isOpen ? selectedChain.tokens[selectedToken] : null
   const [isOnWithdraw, setIsOnWithdraw] = useState(false)
-  const [tokenAmount, setTokenAmount] = useState('')
   const isConnected = Boolean(address)
   const erc20 = useContract(signer, selectedChain.tokens[1].address, erc20abi)
 
