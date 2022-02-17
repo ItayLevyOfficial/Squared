@@ -1,8 +1,8 @@
 import { useState } from 'react'
-const delay = (ms) => new Promise((resolve) => setTimeout(resolve, ms))
 import { useEffect } from 'react'
 import { ethers } from 'ethers'
 import { selectedChain } from './chains'
+const delay = (ms) => new Promise((resolve) => setTimeout(resolve, ms))
 
 export const provider = window.ethereum ? new ethers.providers.Web3Provider(window.ethereum) : null
 
