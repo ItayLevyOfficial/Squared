@@ -17,7 +17,7 @@ export const Products = () => {
 
   const close = () => {
     setIsOpen(false)
-    setSelectedTokenIndex(null)
+    setSelectedToken(null)
     setTokenAmount('')
   }
 

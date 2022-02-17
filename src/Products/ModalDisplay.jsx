@@ -58,6 +58,7 @@ export const ModalDisplay = ({
   tokenAmount,
   setTokenAmount,
 }) => {
+  const tokenData = isOpen ? selectedChain?.tokens[selectedTokenIndex] : null
   const [isOnWithdraw, setIsOnWithdraw] = useState(false)
   const [signer, connectWallet, address] = useConnectWallet()
   const isConnected = Boolean(address)
@@ -71,29 +72,57 @@ export const ModalDisplay = ({
     selectedChain.poolContractAddress,
     PoolAbi
   )
-  const erc20 = useContract(signer, tokenData?.address, erc20abi)
-  const tokenData = isOpen ? selectedChain.tokens[selectedTokenIndex] : null
+  const erc20Usdc = useContract(
+    signer,
+    selectedChain.tokens[1].address,
+    erc20abi
+  )
+
+  const erc20Sqrd = useContract(
+    signer,
+    selectedChain.tokens[2].address,
+    erc20abi
+  )
+  const erc20SqrdLp = useContract(
+    signer,
+    selectedChain.tokens[3].address,
+    erc20abi
+  )
 
   const commitAssets = async () => {
     const amount = BigNumber.from(tokenAmount).mul(
       BigNumber.from('10').pow(BigNumber.from(tokenData.decimals))
     )
+
     if (selectedTokenIndex === 0) {
-      await ethPoolContract.initialize(
-        tokenData.address,
-        selectedChain.managerContractAddress,
-        tokenData.name,
-        tokenData.symbol
-      )
+      // await ethPoolContract.initialize(
+      //   tokenData.address,
+      //   selectedChain.managerContractAddress,
+      //   tokenData.name,
+      //   tokenData.symbol
+      // )
       await ethPoolContract.deposit(amount, { value: amount })
     } else {
-      await erc20.approve(selectedChain.poolContractAddress, amount)
-      await poolContract.initialize(
-        tokenData.address,
-        selectedChain.managerContractAddress,
-        tokenData.name,
-        tokenData.symbol
-      )
+      switch (selectedTokenIndex) {
+        case 1:
+          await erc20Usdc.approve(selectedChain.poolContractAddress, amount)
+
+          break
+        case 2:
+          await erc20Sqrd.approve(selectedChain.poolContractAddress, amount)
+
+          break
+        default:
+          await erc20SqrdLp.approve(selectedChain.poolContractAddress, amount)
+
+          break
+      }
+      // await poolContract.initialize(
+      //   tokenData.address,
+      //   selectedChain.managerContractAddress,
+      //   tokenData.name,
+      //   tokenData.symbol
+      // )
       await poolContract.deposit(amount)
     }
   }
