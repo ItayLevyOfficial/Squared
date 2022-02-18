@@ -41,7 +41,6 @@ export const Body = ({ className = '', launchContract, address }) => {
   const selectedToken = selectedChain.tokens[selectedTokenIndex]
   const selectedTokenAddress = selectedToken?.address
 
-  console.table({depositedToken, selectedTokenAddress: selectedToken?.address})
   return (
     <div className={`flex space-x-32 -mt-20 ${className}`}>
       <AccountStatus
