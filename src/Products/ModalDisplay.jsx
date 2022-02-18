@@ -12,8 +12,6 @@ import { PoolAbi } from './ABIs/PoolAbi'
 import { selectedChain } from '../launchEvent/chains'
 import { BigNumber } from 'ethers'
 import { erc20abi } from '../launchEvent/erc20abi'
-import { FakeSqrdLpAbi } from './ABIs/FakeSqrdLpAbi'
-import { FakeSqrdAbi } from './ABIs/FakeSqrdAbi'
 import React from 'react'
 Modal.setAppElement('#root')
 
