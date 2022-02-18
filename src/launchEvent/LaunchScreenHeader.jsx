@@ -3,7 +3,7 @@ import MetamaskIcon from './icons/metamask.svg'
 import { convertMilliseconds } from './convertMillis'
 import React from 'react'
 import { selectedChain } from './chains'
-import Logo  from './icons/logo.svg'
+import Logo from './icons/logo.svg'
 const timeLeftBarWidth = 'w-[580px]'
 
 export const LaunchScreenHeader = ({
@@ -13,11 +13,11 @@ export const LaunchScreenHeader = ({
 }) => (
   <div className={`flex flex-col items-center w-full ${className}`}>
     <div className={`flex items-center w-full justify-between mb-6`}>
-      <div className="flex">
-        <img src={Logo} width={60}/>
-        <div className="w-5" />
-        <div className="w-[0.5px] h-50 bg-primary" />
-        <div className="w-5" />
+      <div className="flex flex-none mr-5">
+        <img src={Logo} width={60} />
+        <div className="w-5 flex-none" />
+        <div className="w-[0.5px] h-50 bg-primary float-none" />
+        <div className="w-5 float-none" />
         <div className="flex flex-col space-y-2 font-bold tracking-widest">
           <h1 className="text-white text-4xl font-basic font-semibold tracking-wide">
             SQUARED
@@ -38,8 +38,8 @@ export const LaunchScreenHeader = ({
     <p
       className={`${timeLeftBarWidth} text-center font-medium text-base tracking-wider leading-relaxed`}
     >
-      Squared's take-off event has arrived. It's the first time users can buy SQRD
-      to fill our liquidity reserve.&nbsp;
+      Squared's take-off event has arrived. It's the first time users can buy
+      SQRD to fill our liquidity reserve.&nbsp;
       <a className="text-primary underline">Learn more</a>
     </p>
   </div>
