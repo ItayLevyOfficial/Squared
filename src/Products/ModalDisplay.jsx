@@ -7,11 +7,13 @@ import { ModalInput } from './ModalInput'
 import { ModalButtons } from './ModalButtons'
 import { useContract } from '../launchEvent/useContract'
 import { useConnectWallet } from '../launchEvent/useConnectWallet'
-import { EthPoolAbi } from './EthPoolAbi'
-import { PoolAbi } from './PoolAbi'
+import { EthPoolAbi } from './ABIs/EthPoolAbi'
+import { PoolAbi } from './ABIs/PoolAbi'
 import { selectedChain } from '../launchEvent/chains'
 import { BigNumber } from 'ethers'
 import { erc20abi } from '../launchEvent/erc20abi'
+import { FakeSqrdLpAbi } from './ABIs/FakeSqrdLpAbi'
+import { FakeSqrdAbi } from './ABIs/FakeSqrdAbi'
 import React from 'react'
 Modal.setAppElement('#root')
 
@@ -81,12 +83,12 @@ export const ModalDisplay = ({
   const erc20Sqrd = useContract(
     signer,
     selectedChain.tokens[2].address,
-    erc20abi
+    FakeSqrdAbi
   )
   const erc20SqrdLp = useContract(
     signer,
     selectedChain.tokens[3].address,
-    erc20abi
+    FakeSqrdLpAbi
   )
 
   const commitAssets = async () => {
@@ -101,7 +103,7 @@ export const ModalDisplay = ({
           await erc20Usdc.approve(selectedChain.poolContractAddress, amount)
           break
         case 2:
-          await erc20Sqrd.approve(selectedChain.poolContractAddress, amount)
+          await erc20Sqrd.approve(selectedChain.sqrdPoolContractAddress, amount)
           break
         default:
           await erc20SqrdLp.approve(selectedChain.poolContractAddress, amount)
