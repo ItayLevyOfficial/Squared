@@ -45,11 +45,11 @@ const chains = {
     // rpcUrls: ['https://rpc.fuse.io/'],
   },
   bsc: {
-    rpcUrls: ['https://data-seed-prebsc-1-s1.binance.org:8545/'],
+    rpcUrls: ['https://data-seed-prebsc-1-s1.binance.org:8545'],
     launchContractAddress: '0xe6315fd1BAb71B51D1ccCC8a2481C9098fBe2984',
     launchTime: 1644923469136,
     launchTokensAmount: 3_000_000,
-    chainName: 'BSC',
+    chainName: 'Binance Smart Chain Testnet',
     chainId: '0x61',
     tokens: [
       {
@@ -69,4 +69,4 @@ const chains = {
   ethereum: localChainConfig,
 }
 
-export const selectedChain = chains.
+export const selectedChain = chains.bsc
