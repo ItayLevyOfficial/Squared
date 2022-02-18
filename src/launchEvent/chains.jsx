@@ -9,8 +9,7 @@ const localChainConfig = {
   chainName: 'hardhat',
   rpcUrls: ['http://127.0.0.1:8545/'],
   launchContractAddress: '0xb9bEECD1A582768711dE1EE7B0A1d582D9d72a6C',
-  poolContractAddress: '0x19cEcCd6942ad38562Ee10bAfd44776ceB67e923',
-  sqrdPoolContractAddress: '0x6c2d83262ff84cbadb3e416d527403135d757892',
+  usdcPoolContractAddress: '0x40a42Baf86Fc821f972Ad2aC878729063CeEF403',
   ethPoolContractAddress: '0xB2b580ce436E6F77A5713D80887e14788Ef49c9A',
   launchTime: 1644612469136,
   launchTokensAmount: 3_000_000,
@@ -23,13 +22,13 @@ const localChainConfig = {
     },
     {
       name: 'USDC',
-      address: '0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48',
+      address: '0x02b0B4EFd909240FCB2Eb5FAe060dC60D112E3a4',
       decimals: '6',
       icon: <Usdc />,
     },
     {
       name: 'SQRD',
-      address: '0x5FeaeBfB4439F3516c74939A9D04e95AFE82C4ae',
+      address: '0x986aaa537b8cc170761FDAC6aC4fc7F9d8a20A8C',
       decimals: '6',
     },
     {

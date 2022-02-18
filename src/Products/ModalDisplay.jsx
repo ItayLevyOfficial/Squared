@@ -70,25 +70,15 @@ export const ModalDisplay = ({
     selectedChain.ethPoolContractAddress,
     EthPoolAbi
   )
-  const poolContract = useContract(
-    signer,
-    selectedChain.poolContractAddress,
-    PoolAbi
-  )
   const erc20Usdc = useContract(
     signer,
     selectedChain.tokens[1].address,
     erc20abi
   )
-  const erc20Sqrd = useContract(
+  const usdcPoolContract = useContract(
     signer,
-    selectedChain.tokens[2].address,
-    FakeSqrdAbi
-  )
-  const erc20SqrdLp = useContract(
-    signer,
-    selectedChain.tokens[3].address,
-    FakeSqrdLpAbi
+    selectedChain.usdcPoolContractAddress,
+    PoolAbi
   )
 
   const commitAssets = async () => {
@@ -100,16 +90,16 @@ export const ModalDisplay = ({
     } else {
       switch (selectedTokenIndex) {
         case 1:
-          await erc20Usdc.approve(selectedChain.poolContractAddress, amount)
+          await erc20Usdc.approve(selectedChain.usdcPoolContractAddress, amount)
+          await usdcPoolContract.deposit(amount)
           break
         case 2:
-          await erc20Sqrd.approve(selectedChain.sqrdPoolContractAddress, amount)
+          // await erc20Sqrd.approve(selectedChain.poolContractAddress, amount)
           break
         default:
-          await erc20SqrdLp.approve(selectedChain.poolContractAddress, amount)
+          // await erc20SqrdLp.approve(selectedChain.poolContractAddress, amount)
           break
       }
-      await poolContract.deposit(amount)
     }
     close()
   }
