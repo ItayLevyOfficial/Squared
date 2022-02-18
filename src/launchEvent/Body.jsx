@@ -34,7 +34,7 @@ export const Body = ({ className = '', launchContract, address }) => {
   useEffect(() => {
     if (launchContract) {
       launchContract.on('Deposited', fetchBalance)
-      return () => launchContract.removeListener(fetchBalance)
+      return () => launchContract.removeListener('Deposited', fetchBalance)
     }
   }, [fetchBalance, launchContract])
 

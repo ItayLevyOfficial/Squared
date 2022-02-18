@@ -50,7 +50,7 @@ export const useConnectWallet = () => {
     if (window.ethereum) {
       const handleChainChange = () => window.location.reload()
       window.ethereum.on('chainChanged', handleChainChange)
-      return () => window.ethereum.removeListener(handleChainChange)
+      return () => window.ethereum.removeListener('chainChanged', handleChainChange)
     }
   }, [])
 
