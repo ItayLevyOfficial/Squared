@@ -21,7 +21,7 @@ const chains = {
       {
         id: 1,
         name: 'USDC',
-        address: '0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48',
+        address: '0xb9bEECD1A582768711dE1EE7B0A1d582D9d72a6C',
         decimals: '6',
       },
       {
