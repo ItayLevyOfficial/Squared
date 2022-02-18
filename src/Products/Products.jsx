@@ -7,18 +7,18 @@ import { selectedChain } from '../launchEvent/chains'
 
 export const Products = () => {
   const [isModalOpen, setIsOpen] = useState(false)
-  const [selectedTokenIndex, setSelectedToken] = useState(null)
+  const [selectedTokenIndex, setSelectedTokenIndex] = useState(null)
 
   const [tokenAmount, setTokenAmount] = useState('')
 
   const open = (id) => {
     setIsOpen(true)
-    setSelectedToken(id)
+    setSelectedTokenIndex(id)
   }
 
   const close = () => {
     setIsOpen(false)
-    setSelectedToken(null)
+    setSelectedTokenIndex(null)
     setTokenAmount('')
   }
 
