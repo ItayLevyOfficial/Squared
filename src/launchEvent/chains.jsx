@@ -52,8 +52,18 @@ const chains = {
     chainName: 'BSC',
     chainId: '0x61',
     tokens: [
-      { name: 'BNB', icon: <Bnb /> },
-      { name: 'BUSD', icon: <Busd /> },
+      {
+        name: 'BNB',
+        icon: <Bnb />,
+        decimals: 8,
+        address: '0xbb4CdB9CBd36B01bD1cBaEBF2De08d9173bc095c',
+      },
+      {
+        name: 'BUSD',
+        icon: <Busd />,
+        decimals: 18,
+        address: '0x4Fabb145d64652a948d72533023f6E7A623C7C53',
+      },
     ],
   },
   ethereum: localChainConfig,
