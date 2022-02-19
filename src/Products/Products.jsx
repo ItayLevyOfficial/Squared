@@ -7,17 +7,18 @@ import { selectedChain } from '../launchEvent/chains'
 
 export const Products = () => {
   const [isModalOpen, setIsOpen] = useState(false)
-  const [selectedToken, setSelectedToken] = useState(null)
+  const [selectedTokenIndex, setSelectedTokenIndex] = useState(null)
+
   const [tokenAmount, setTokenAmount] = useState('')
 
   const open = (id) => {
     setIsOpen(true)
-    setSelectedToken(id)
+    setSelectedTokenIndex(id)
   }
 
   const close = () => {
     setIsOpen(false)
-    setSelectedToken(null)
+    setSelectedTokenIndex(null)
     setTokenAmount('')
   }
 
@@ -26,13 +27,13 @@ export const Products = () => {
       <ModalDisplay
         isOpen={isModalOpen}
         close={close}
-        selectedToken={selectedToken}
+        selectedTokenIndex={selectedTokenIndex}
         setTokenAmount={setTokenAmount}
         tokenAmount={tokenAmount}
       />
       <div className="w-full flex items-center justify-evenly overflow-x-scroll ">
-        {selectedChain.tokens.map((el) => (
-          <StakingPool el={el} key={el.id} openModal={() => open(el.id)} />
+        {selectedChain.tokens.map((el, index) => (
+          <StakingPool el={el} key={index} openModal={() => open(index)} />
         ))}
       </div>
       <Information />

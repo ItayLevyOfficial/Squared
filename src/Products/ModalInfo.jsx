@@ -1,7 +1,7 @@
 import React from 'react'
-import { ModalLine } from './ModalLine';
+import { ModalLine } from './ModalLine'
 
-export const ModalInfo = ({ isOnWithdraw, selectedToken }) => {
+export const ModalInfo = ({ isOnWithdraw, selectedTokenIndex }) => {
   return (
     <div className="text-white text-sm mt-6">
       {isOnWithdraw ? (
@@ -9,18 +9,18 @@ export const ModalInfo = ({ isOnWithdraw, selectedToken }) => {
           <ModalLine
             title="Deposited"
             amount="0.00"
-            selectedToken={selectedToken}
+            selectedTokenIndex={selectedTokenIndex}
           />
           <br />
           <ModalLine
             title="Requested Withdrawal"
             amount="0.00"
-            selectedToken={selectedToken}
+            selectedTokenIndex={selectedTokenIndex}
           />
           <ModalLine
             title="Available for Withdrawal"
             amount="0.00"
-            selectedToken={selectedToken}
+            selectedTokenIndex={selectedTokenIndex}
           />
           <br /> <br />
           <div className="w-full flex flex-col items-center text-xs">
@@ -38,7 +38,7 @@ export const ModalInfo = ({ isOnWithdraw, selectedToken }) => {
           <ModalLine
             title="Deposited"
             amount="0.00"
-            selectedToken={selectedToken}
+            selectedTokenIndex={selectedTokenIndex}
           />
           <br /> <br />
           <div className="w-full flex flex-col items-center text-xs">

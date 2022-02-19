@@ -1,10 +1,11 @@
 import Video from './icons/landing.mp4'
 import { Footer } from '../launchEvent/Footer'
 import React from 'react'
-import { useNavigate } from "react-router-dom"
+import { useNavigate } from 'react-router-dom'
 
 const PuffLogo = ({ className = '' }) => (
-  <svg className={className}
+  <svg
+    className={className}
     width="560"
     height="560"
     viewBox="0 0 560 560"
@@ -23,17 +24,24 @@ export const Home = () => {
 
   return (
     <div className="w-screen h-screen">
-      <video src={Video} autoPlay muted className="absolute h-screen w-screen object-cover -z-20" loop/>
-      <div className="absolute w-screen h-screen bg-[#000000] -z-10 opacity-80"/>
+      <video
+        src={Video}
+        autoPlay
+        muted
+        className="absolute h-screen w-screen object-cover -z-20"
+        loop
+      />
+      <div className="absolute w-screen h-screen bg-[#000000] -z-10 opacity-80" />
       <div className="flex flex-col justify-between items-center h-full w-full z-20 py-14 animate-fadeIn relative">
         <div className="flex flex-col items-center">
-          <PuffLogo className="h-48 w-48 object-cover mb-12 mt-8"/>
+          <PuffLogo className="h-48 w-48 object-cover mb-12 mt-8" />
           <h1 className="text-7xl -tracking-wider font-bold mb-3">PUFF</h1>
           <h2 className="text-gold text-3xl font-light mb-10 tracking-wide">
             Sustainable Liquidity for Long Tail Assets
           </h2>
           <button
-            type="button" onClick={() => navigate('/launch')}
+            type="button"
+            onClick={() => navigate('/launch')}
             className="py-5 px-10 bg-[#000] hover:text-gold rounded-xl text-xl tracking-wider"
           >
             Enter the Dragon
@@ -44,4 +52,3 @@ export const Home = () => {
     </div>
   )
 }
-

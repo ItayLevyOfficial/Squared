@@ -8,6 +8,8 @@ const localChainConfig = {
   chainId: '0x539',
   chainName: 'hardhat',
   rpcUrls: ['http://127.0.0.1:8545/'],
+  usdcPoolContractAddress: '0x40a42Baf86Fc821f972Ad2aC878729063CeEF403',
+  ethPoolContractAddress: '0xB2b580ce436E6F77A5713D80887e14788Ef49c9A',
   launchContractAddress: '0x8A93d247134d91e0de6f96547cB0204e5BE8e5D8',
   launchTime: 1644923469136,
   launchTokensAmount: 3_000_000,
@@ -26,12 +28,12 @@ const localChainConfig = {
     },
     {
       name: 'SQRD',
-      address: '0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48', // replace with official address
+      address: '0x986aaa537b8cc170761FDAC6aC4fc7F9d8a20A8C',
       decimals: '6',
     },
     {
-      name: 'SQRD UNISWAP LP',
-      address: '0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48', // replace with official address
+      name: 'SQRD PANCAKE LP',
+      address: '0x6C2d83262fF84cBaDb3e416D527403135D757892',
       decimals: '6',
     },
   ],

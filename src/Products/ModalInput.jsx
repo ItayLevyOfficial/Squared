@@ -1,7 +1,7 @@
 import React from 'react'
 
 export const ModalInput = ({
-  selectedToken,
+  selectedTokenIndex,
   className = '',
   value,
   handleChange,
@@ -11,7 +11,8 @@ export const ModalInput = ({
     <div
       className={`self-center w-10/12 h-10 bg-dark flex justify-between items-center rounded-lg p-6 ${className} `}
     >
-      <button onClick={handleMaxClick}
+      <button
+        onClick={handleMaxClick}
         className="px-2 -ml-4 h-6 flex justify-center items-center border-transparent
        bg-darkPrimary text-white hover:bg-opacity-90 rounded-lg"
       >
@@ -26,7 +27,7 @@ export const ModalInput = ({
         value={value}
       />
       <div className=" text-white text-sm -mr-4 w-auto right-0 ">
-        {selectedToken}
+        {selectedTokenIndex}
       </div>
     </div>
   )
