@@ -6,6 +6,25 @@ import { selectedChain } from './chains'
 import Logo from './icons/logo.svg'
 const timeLeftBarWidth = 'w-[580px]'
 
+const BrandingSection = () => (
+  <div className="flex flex-none mr-5 h-fit">
+    <img src={Logo} width={60} />
+    <div className="w-5 flex-none" />
+    <div className="w-[0.5px] h-50 bg-primary float-none" />
+    <div className="w-5 float-none" />
+    <div className="flex flex-col space-y-2 font-bold tracking-widest">
+      <h1 className="text-white text-4xl font-basic font-semibold tracking-wide">
+        SQUARED
+      </h1>
+      <div className="flex items-center">
+        <h2 className="text-primary text-lg font-normal mr-1.5">
+          TAKE OFF EVENT
+        </h2>
+      </div>
+    </div>
+  </div>
+)
+
 export const LaunchScreenHeader = ({
   address,
   connectWallet,
@@ -13,22 +32,7 @@ export const LaunchScreenHeader = ({
 }) => (
   <div className={`flex flex-col items-center w-full ${className}`}>
     <div className={`flex items-center w-full justify-between mb-6`}>
-      <div className="flex flex-none mr-5">
-        <img src={Logo} width={60} />
-        <div className="w-5 flex-none" />
-        <div className="w-[0.5px] h-50 bg-primary float-none" />
-        <div className="w-5 float-none" />
-        <div className="flex flex-col space-y-2 font-bold tracking-widest">
-          <h1 className="text-white text-4xl font-basic font-semibold tracking-wide">
-            SQUARED
-          </h1>
-          <div className="flex items-center">
-            <h2 className="text-primary text-lg font-normal mr-1.5">
-              TAKE OFF EVENT
-            </h2>
-          </div>
-        </div>
-      </div>
+      <BrandingSection/>
       <TimeLeft />
       <div className="flex items-center">
         <img src={MetamaskIcon} className="mr-4" alt="" />
