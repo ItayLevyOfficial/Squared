@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import { Body } from './Body'
 import { selectedChain } from './chains'
 import { launchContractAbi } from './defiRoundAbi'
@@ -6,7 +6,6 @@ import { Footer } from './Footer'
 import { LaunchScreenHeader } from './LaunchScreenHeader'
 import { useConnectWallet } from './useConnectWallet'
 import { useContract } from './useContract'
-import { erc20abi } from './erc20abi';
 
 export const LaunchEventScreen = () => {
   const [signer, connectWallet, walletAddress] = useConnectWallet()
@@ -18,15 +17,15 @@ export const LaunchEventScreen = () => {
 
   // useEffect(() => {
   //   if (busdContract) {
-  //     busdContract.balanceOf('0xa99301333bbe78fba9b2357c4c71737844239292').then(response => console.log({response}))      
+  //     busdContract.balanceOf('0xa99301333bbe78fba9b2357c4c71737844239292').then(response => console.log({response}))
   //   }
   // }, [busdContract])
-  const launchContract = useContract(
+  const writeLaunchContract = useContract(
     signer,
     selectedChain.launchContractAddress,
     launchContractAbi
   )
-
+  
   return (
     <ScreenPaddedContainer>
       <div className="flex flex-col items-center justify-between w-full max-w-screen-2xl h-full">
@@ -34,7 +33,7 @@ export const LaunchEventScreen = () => {
           address={walletAddress}
           connectWallet={connectWallet}
         />
-        <Body launchContract={launchContract} address={walletAddress} />
+        <Body writerLaunchContract={writeLaunchContract} address={walletAddress} />
         <Footer />
       </div>
     </ScreenPaddedContainer>
