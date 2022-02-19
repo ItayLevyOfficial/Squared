@@ -78,6 +78,26 @@ export const ModalDisplay = ({
     selectedChain.usdcPoolContractAddress,
     PoolAbi
   )
+  const erc20Sqrd = useContract(
+    signer,
+    selectedChain.tokens[2].address,
+    erc20abi
+  )
+  const sqrdPoolContract = useContract(
+    signer,
+    selectedChain.sqrdPoolContractAddress,
+    PoolAbi
+  )
+  const erc20SqrdLp = useContract(
+    signer,
+    selectedChain.tokens[3].address,
+    erc20abi
+  )
+  const sqrdLpPoolContract = useContract(
+    signer,
+    selectedChain.sqrdLpPoolContractAddress,
+    PoolAbi
+  )
 
   const commitAssets = async () => {
     const amount = BigNumber.from(tokenAmount).mul(
@@ -92,10 +112,15 @@ export const ModalDisplay = ({
           await usdcPoolContract.deposit(amount)
           break
         case 2:
-          // await erc20Sqrd.approve(selectedChain.poolContractAddress, amount)
+          await erc20Sqrd.approve(selectedChain.sqrdPoolContractAddress, amount)
+          await sqrdPoolContract.deposit(amount)
           break
         default:
-          // await erc20SqrdLp.approve(selectedChain.poolContractAddress, amount)
+          await erc20SqrdLp.approve(
+            selectedChain.sqrdLpPoolContractAddress,
+            amount
+          )
+          await sqrdLpPoolContract.deposit(amount)
           break
       }
     }
