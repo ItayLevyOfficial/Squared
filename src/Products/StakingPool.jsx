@@ -17,7 +17,7 @@ export const StakingPool = ({ el, openModal }) => {
 
       <button
         onClick={() => openModal(name)}
-        className=" bg-lightDark hover:text-gold w-11/12 text-sm p-2 text-md rounded-lg"
+        className=" bg-darkPrimary text-black w-11/12 text-sm p-2 text-md rounded-lg"
       >
         Deposit {name}
       </button>
