@@ -7,7 +7,7 @@ import Logo from './icons/logo.svg'
 const timeLeftBarWidth = 'w-[580px]'
 
 export const LaunchScreenHeader = ({ address, connectWallet }) => (
-  <div className={`flex w-full justify-between mb-6`}>
+  <div className={`flex w-full justify-between`}>
     <BrandingSection />
     <MiddleSection />
     <AddressSection address={address} connectWallet={connectWallet} />
@@ -47,7 +47,7 @@ const MiddleSection = () => (
 )
 
 const AddressSection = ({ connectWallet, address }) => (
-  <div className="flex items-center h-fit">
+  <div className="flex items-center h-fit ">
     <img src={MetamaskIcon} className="mr-4" alt="" />
     <AddressButton address={address} connectWallet={connectWallet} />
   </div>
