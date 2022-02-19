@@ -47,9 +47,8 @@ const MiddleSection = () => (
 )
 
 const AddressSection = ({ connectWallet, address }) => (
-  <div className="flex items-center h-fit ">
-    <div className='flex-none w-[135px]'/>
-    <img src={MetamaskIcon} className="mr-4" alt="" />
+  <div className="flex items-center h-fit w-44 justify-between flex-shrink-0">
+    <img src={MetamaskIcon} alt=""/>
     <AddressButton address={address} connectWallet={connectWallet} />
   </div>
 )
