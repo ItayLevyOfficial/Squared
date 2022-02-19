@@ -59,7 +59,7 @@ export const Body = ({ className = '', writeLaunchContract, address }) => {
         handleStableClick={() => setSelectedToken(1)}
       />
       <div className="w-[0.5px] h-full bg-white" />
-      <EventStatus launchContract={writeLaunchContract} />
+      <EventStatus launchContract={readLaunchContract} />
       {depositedToken === ethers.constants.AddressZero ||
       depositedToken === selectedTokenAddress ? (
         <CommitAssetsModal
