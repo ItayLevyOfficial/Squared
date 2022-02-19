@@ -25,23 +25,26 @@ const BrandingSection = () => (
   </div>
 )
 
+const MiddleSection = () => (
+  <div className={`flex flex-col items-center w-full`}>
+    <TimeLeft className="mb-6" />
+    <p
+      className={`${timeLeftBarWidth} text-center font-medium text-base tracking-wider leading-relaxed`}
+    >
+      Squared's take-off event has arrived. It's the first time users can buy
+      SQRD to fill our liquidity reserve.&nbsp;
+      <a className="text-primary underline">Learn more</a>
+    </p>
+  </div>
+)
+
 export const LaunchScreenHeader = ({
   address,
   connectWallet,
-  className = '',
 }) => (
   <div className={`flex w-full justify-between mb-6`}>
     <BrandingSection />
-    <div className={`flex flex-col items-center w-full ${className}`}>
-      <TimeLeft className='mb-6'/>
-      <p
-        className={`${timeLeftBarWidth} text-center font-medium text-base tracking-wider leading-relaxed`}
-      >
-        Squared's take-off event has arrived. It's the first time users can buy
-        SQRD to fill our liquidity reserve.&nbsp;
-        <a className="text-primary underline">Learn more</a>
-      </p>
-    </div>
+    <MiddleSection />
     <div className="flex items-center h-fit">
       <img src={MetamaskIcon} className="mr-4" alt="" />
       <AddressButton address={address} connectWallet={connectWallet} />
