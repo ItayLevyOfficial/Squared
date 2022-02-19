@@ -4,7 +4,9 @@ import { ethers } from 'ethers'
 import { selectedChain } from './chains'
 const delay = (ms) => new Promise((resolve) => setTimeout(resolve, ms))
 
-export const provider = window.ethereum ? new ethers.providers.Web3Provider(window.ethereum) : null
+export const provider = window.ethereum
+  ? new ethers.providers.Web3Provider(window.ethereum)
+  : null
 
 export const useConnectWallet = () => {
   const [signer, setSigner] = useState(provider?.getSigner())
@@ -39,7 +41,6 @@ export const useConnectWallet = () => {
     await provider.send('eth_requestAccounts', [])
     setSigner(provider.getSigner())
   }
-
   useEffect(() => {
     if (signer) {
       signer.getAddress().then((newAddress) => setAddress(newAddress))
@@ -50,7 +51,8 @@ export const useConnectWallet = () => {
     if (window.ethereum) {
       const handleChainChange = () => window.location.reload()
       window.ethereum.on('chainChanged', handleChainChange)
-      return () => window.ethereum.removeListener('chainChanged', handleChainChange)
+      return () =>
+        window.ethereum.removeListener('chainChanged', handleChainChange)
     }
   }, [])
 
