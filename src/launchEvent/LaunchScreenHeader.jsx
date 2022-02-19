@@ -33,7 +33,7 @@ export const LaunchScreenHeader = ({
   <div className={`flex w-full justify-between mb-6`}>
     <BrandingSection />
     <div className={`flex flex-col items-center w-full ${className}`}>
-      <TimeLeft />
+      <TimeLeft className='mb-6'/>
       <p
         className={`${timeLeftBarWidth} text-center font-medium text-base tracking-wider leading-relaxed`}
       >
@@ -42,7 +42,7 @@ export const LaunchScreenHeader = ({
         <a className="text-primary underline">Learn more</a>
       </p>
     </div>
-    <div className="flex items-center">
+    <div className="flex items-center h-fit">
       <img src={MetamaskIcon} className="mr-4" alt="" />
       <AddressButton address={address} connectWallet={connectWallet} />
     </div>
@@ -58,7 +58,7 @@ const TimeLeft = ({ className = '' }) => {
   const formattedRemainTime = convertMilliseconds(remainTimeMillis)
 
   return (
-    <div className={`${className} flex flex-col items-center mr-10`}>
+    <div className={`${className} flex flex-col items-center`}>
       <h2
         className={`text-white text-lg tracking-wide font-light font-number mb-4`}
       >
