@@ -24,7 +24,7 @@ export const Sidenav = () => {
     <div className="sticky h-screen top-0 mr-6  w-52 bg-dark text-white flex flex-col space-y-6 items-start px-6 pt-6">
       <div className="w-full flex flex-col justify-center items-center">
         <PuffLogo className="h-24 w-24 object-cover my-2" />
-        <h1 className="text-3xl">PUFF</h1>
+        <h1 className="text-3xl">SQUARED</h1>
       </div>
 
       <div className="flex cursor-pointer group space-x-2 items-center ">
