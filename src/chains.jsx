@@ -7,6 +7,7 @@ import { Busd } from './launchEvent/icons/busd'
 const localChainConfig = {
   chainId: '0x539',
   chainName: 'hardhat',
+  approvalTime: 5,
   rpcUrls: ['http://127.0.0.1:8545/'],
   launchContractAddress: '0x8A93d247134d91e0de6f96547cB0204e5BE8e5D8',
   usdcPoolContractAddress: '0x32EEce76C2C2e8758584A83Ee2F522D4788feA0f',

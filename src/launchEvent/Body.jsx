@@ -52,7 +52,8 @@ export const Body = ({ className = '', writeLaunchContract, address }) => {
   const selectedToken = selectedChain.tokens[selectedTokenIndex]
   const selectedTokenAddress = selectedToken?.address
 
-  const depositedTokenName = selectedChain.tokens[selectedTokenIndex === 0 ? 1 : 0]?.name ?? ''
+  const depositedTokenName =
+    selectedChain.tokens[selectedTokenIndex === 0 ? 1 : 0]?.name ?? ''
   const tokenName = selectedToken?.name ?? ''
   return (
     <div className={`flex space-x-32 -mt-20 ${className}`}>
@@ -70,6 +71,14 @@ export const Body = ({ className = '', writeLaunchContract, address }) => {
           header="Request Sent Successfully"
           isOpen={showSuccessModal}
           close={() => setShowSuccessModal(false)}
+          footer={
+            <>
+              Transactions on the {selectedChain.name} chain usually completed within {' '}
+              {selectedChain.approvalTime} minutes. Your
+              transaction hash is {} & you can check the status on{' '}
+              <PrimaryLink>Etherscan</PrimaryLink>
+            </>
+          }
         />
       ) : depositedToken === ethers.constants.AddressZero ||
         depositedToken === selectedTokenAddress ? (

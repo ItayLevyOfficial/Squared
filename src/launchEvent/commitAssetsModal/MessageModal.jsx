@@ -9,18 +9,9 @@ import { PrimaryLink } from './commitAssetsModal'
 export const MessageModal = ({
   icon = <img src={errorIcon} alt="" />,
   header = 'Commit not allowed',
+  footer = '',
   isOpen,
-  tokenName,
-  depositedTokenName,
   close,
-  footer = (
-    <>
-      In the launch event, you can only deposit either {depositedTokenName} or{' '}
-      {tokenName}. Since you already committed {depositedTokenName}, further
-      deposits of {tokenName} are not allowed.{' '}
-      <PrimaryLink>Learn more</PrimaryLink>
-    </>
-  ),
 }) => {
   return (
     <Modal
