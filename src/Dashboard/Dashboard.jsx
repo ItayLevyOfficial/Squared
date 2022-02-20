@@ -36,7 +36,7 @@ export const Dashboard = () => {
           <StakingPool el={el} key={index} openModal={() => open(index)} />
         ))}
       </div>
-      <div className="w-full p-6 flex -mt-20 justify-center">
+      <div className="w-full flex -mt-20">
         <InformationBox
           title="BALANCE"
           heading1="ETH :"
@@ -54,7 +54,7 @@ export const Dashboard = () => {
           heading1="EARNED :"
           heading2="AVAILABLE :"
           heading3={
-            <button className="bg-darkPrimary text-white w-[180px] text-md p-2 text-md rounded-lg opacity-70 mt-6">
+            <button className="bg-darkPrimary text-white w-[180px] text-md p-2 text-md rounded-lg opacity-50 mt-6">
               Claim SQRD
             </button>
           }
