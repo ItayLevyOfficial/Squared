@@ -43,7 +43,10 @@ export const useConnectWallet = () => {
   }
   useEffect(() => {
     if (signer) {
-      signer.getAddress().then((newAddress) => setAddress(newAddress))
+      signer
+        .getAddress()
+        .then((newAddress) => setAddress(newAddress))
+        .catch((error) => console.error({ error }))
     }
   }, [signer])
 

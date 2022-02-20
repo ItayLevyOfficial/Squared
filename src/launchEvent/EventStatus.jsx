@@ -32,17 +32,21 @@ export const EventStatus = ({ launchContract }) => {
 
   useEffect(() => {
     if (launchContract) {
-      launchContract.getMaxTotalValue().then((maxTotalValue) => {
-        setMaxTotalCommitments(formatBigUsd(maxTotalValue))
-      })
+      launchContract
+        .getMaxTotalValue()
+        .then((maxTotalValue) => {
+          setMaxTotalCommitments(formatBigUsd(maxTotalValue))
+        }).catch((error) => console.error({ error }))
     }
   }, [launchContract])
 
   useEffect(() => {
     if (launchContract) {
-      launchContract.totalValue().then((response) => {
-        setTotalCommitments(formatBigUsd(response))
-      })
+      launchContract
+        .totalValue()
+        .then((response) => {
+          setTotalCommitments(formatBigUsd(response))
+        }).catch((error) => console.error({ error }))
     }
   }, [launchContract])
 

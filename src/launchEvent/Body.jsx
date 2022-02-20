@@ -26,11 +26,15 @@ export const Body = ({ className = '', writeLaunchContract, address }) => {
   )
 
   const fetchBalance = useCallback(async () => {
-    const accountToken = await readLaunchContract.accountToken(address)
-    setDepositedToken(accountToken)
-    if (accountToken !== ethers.constants.AddressZero) {
-      const newBalance = await readLaunchContract.accountBalance(address)
-      setBalance(formatBigUsd(newBalance))
+    try {
+      const accountToken = await readLaunchContract.accountToken(address)
+      setDepositedToken(accountToken)
+      if (accountToken !== ethers.constants.AddressZero) {
+        const newBalance = await readLaunchContract.accountBalance(address)
+        setBalance(formatBigUsd(newBalance))
+      }
+    } catch (error) {
+      console.error({ error })
     }
   }, [address, readLaunchContract])
 
