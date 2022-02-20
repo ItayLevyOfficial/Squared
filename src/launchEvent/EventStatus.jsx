@@ -30,13 +30,16 @@ export const EventStatus = ({ launchContract }) => {
   const [totalCommitments, setTotalCommitments] = useState(0)
   const [maxTotalCommitments, setMaxTotalCommitments] = useState(0)
 
+  console.table({ totalCommitments, maxTotalCommitments })
+
   useEffect(() => {
     if (launchContract) {
       launchContract
         .getMaxTotalValue()
         .then((maxTotalValue) => {
           setMaxTotalCommitments(formatBigUsd(maxTotalValue))
-        }).catch((error) => console.error({ error }))
+        })
+        .catch((error) => console.error({ error }))
     }
   }, [launchContract])
 
@@ -45,8 +48,10 @@ export const EventStatus = ({ launchContract }) => {
       launchContract
         .totalValue()
         .then((response) => {
+          console.log('got there')
           setTotalCommitments(formatBigUsd(response))
-        }).catch((error) => console.error({ error }))
+        })
+        .catch((error) => console.error({ error }))
     }
   }, [launchContract])
 
