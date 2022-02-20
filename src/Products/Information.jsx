@@ -2,7 +2,7 @@ export const InformationBox = (props) => {
   return (
     <div className="w-full h-42 text-white rounded-xl flex flex-col items-center">
       <div className="flex flex-col items-start space-y-2">
-        <div className="font-medium text-2xl mb-2">{props.title}</div>
+        <div className="font-bold text-2xl mb-2">{props.title}</div>
         <div className="flex text-lg justify-start ">
           <div>{props.heading1} </div>
           <div className="ml-4">{props.content1}</div>
