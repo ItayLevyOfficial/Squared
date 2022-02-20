@@ -8,7 +8,7 @@ export const PageWrapper = ({ children }) => {
   const [signer, connectWallet, address] = useConnectWallet()
 
   return (
-    <div className="flex flex-col justify-between h-screen">
+    <div className="flex flex-col justify-between h-screen pb-6">
       <div className="flex h-full">
         <Sidenav />
         <div className="flex flex-col items-between justify-between -ml- w-10/12 max-w-main min-h-full overflow-y-scroll ">
