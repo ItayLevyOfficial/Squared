@@ -38,20 +38,23 @@ export const Dashboard = (props) => {
       </div>
       <div className="flex -mt-20 w-10/12">
         <InformationBox title={'BALANCE'}>
-          <InformationLine heading={'ETH :'} content={props.ethBalance} />
-          <InformationLine heading={'USDC :'} content={props.usdcBalance} />
-          <InformationLine heading={'SQRD :'} content={props.sqrdBalance} />
+          <InformationLine heading={'ETH :'} children={props.ethBalance} />
+          <InformationLine heading={'USDC :'} children={props.usdcBalance} />
+          <InformationLine heading={'SQRD :'} children={props.sqrdBalance} />
           <InformationLine
             heading={'SQRD LP :'}
-            content={props.sqrdLpBalance}
+            children={props.sqrdLpBalance}
           />
         </InformationBox>
         <div className="w-[0.5px] h-42 bg-white" />
         <InformationBox title={'REWARDS'}>
-          <InformationLine heading={'EARNED :'} content={props.earnedBalance} />
+          <InformationLine
+            heading={'EARNED :'}
+            children={props.earnedBalance}
+          />
           <InformationLine
             heading={'AVAILABLE :'}
-            content={props.availableBalance}
+            children={props.availableBalance}
           />
           <InformationLine
             heading={
