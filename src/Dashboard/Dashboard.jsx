@@ -39,14 +39,14 @@ export const Dashboard = () => {
       <div className="w-full p-6 flex -mt-20 justify-center">
         <InformationBox
           title="BALANCE"
-          heading1="ETH :"
-          heading2="USDC :"
-          heading3="SQRD :"
-          heading4="SQRD LP :"
-          content1=" $1,500"
-          content2=" $3,000"
-          content3=" $50,000"
-          content4=" $10,000"
+          heading1="ETH:"
+          heading2="USDC:"
+          heading3="SQRD:"
+          heading4="SQRD LP:"
+          content1="$1,500"
+          content2="$3,000"
+          content3="$50,000"
+          content4="$10,000"
         />
         <div className="w-[0.5px] h-full bg-white" />
         <InformationBox
