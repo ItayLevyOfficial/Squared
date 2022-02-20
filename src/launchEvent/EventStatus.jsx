@@ -30,8 +30,6 @@ export const EventStatus = ({ launchContract }) => {
   const [totalCommitments, setTotalCommitments] = useState(0)
   const [maxTotalCommitments, setMaxTotalCommitments] = useState(0)
 
-  console.table({ totalCommitments, maxTotalCommitments })
-
   useEffect(() => {
     if (launchContract) {
       launchContract
