@@ -36,6 +36,7 @@ export const Dashboard = () => {
           <StakingPool el={el} key={index} openModal={() => open(index)} />
         ))}
       </div>
+
       <div className="w-full flex -mt-20">
         <InformationBox
           title="BALANCE"

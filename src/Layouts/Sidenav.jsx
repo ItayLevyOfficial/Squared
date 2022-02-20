@@ -13,8 +13,7 @@ export const Sidenav = () => {
           <div className="w-full flex flex-col justify-center items-center">
             <div className="flex flex-none mr-5 items-center">
               <img src={Logo} width={60} />
-
-              <div className="w-5 float-none" />
+              <div className="w-5 flex-none" />
               <div className="flex flex-col space-y-2 font-bold tracking-widest">
                 <h1 className="text-white text-4xl font-basic font-semibold tracking-wide">
                   SQUARED
@@ -23,7 +22,7 @@ export const Sidenav = () => {
             </div>
           </div>
 
-          <div className="pt-6 space-y-8">
+          <div className="pt-12 space-y-6">
             <div className="flex cursor-pointer group space-x-2 items-center ">
               <LibraryIcon
                 className={`h-6 text-white ${
