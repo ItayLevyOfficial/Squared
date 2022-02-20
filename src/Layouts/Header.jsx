@@ -1,13 +1,6 @@
-import { useLocation } from 'react-router-dom'
-import React from 'react'
-
 export const Header = (props) => {
-  const { pathname } = useLocation()
   return (
-    <nav className="flex flex-wrap h-20 items-center justify-between w-full px-6 mt-6">
-      <div className="block text-white opacity-90 text-3xl">
-        {pathname == '/assets' ? 'Assets' : 'Dashboard'}
-      </div>
+    <nav className="flex flex-wrap h-20 items-center justify-end w-full px-4 mt-7">
       <AddressButton {...props} />
     </nav>
   )
@@ -24,7 +17,7 @@ const AddressContainer = ({ children, className, onClick }) => (
 
 export const AddressButton = ({ address, connectWallet }) =>
   address ? (
-    <AddressContainer className="border-solid border-[0.5px] border-white font-number">
+    <AddressContainer className="border-solid border-[0.5px] border-white  font-number">
       {`${address.slice(0, 7)}...`}
     </AddressContainer>
   ) : (

@@ -34,7 +34,7 @@ const localChainConfig = {
       decimals: '6',
     },
     {
-      name: 'SQRD PANCAKE LP',
+      name: 'SQRD LP',
       address: '0x0ed64d01D0B4B655E410EF1441dD677B695639E7',
       decimals: '6',
     },
