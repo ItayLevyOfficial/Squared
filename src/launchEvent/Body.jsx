@@ -5,7 +5,7 @@ import { EventStatus } from './EventStatus'
 import { useEffect } from 'react'
 import { ethers } from 'ethers'
 import { selectedChain } from '../chains'
-import { CommitsNotAllowed } from './commitAssetsModal/commitNotAllowed'
+import { MessageModal } from './commitAssetsModal/commitNotAllowed'
 import { useContract } from './utils'
 import { launchContractAbi } from './abis/defiRoundAbi'
 import { provider } from './useConnectWallet'
@@ -17,7 +17,7 @@ export const Body = ({ className = '', writeLaunchContract, address }) => {
   const [depositedToken, setDepositedToken] = useState(
     ethers.constants.AddressZero
   )
-  const [showSuccessModal, setShowSuccessModal] = useState(false)
+  const [showSuccessModal, setShowSuccessModal] = useState(true)
   const [balance, setBalance] = useState(0)
 
   const readLaunchContract = useContract(
@@ -61,15 +61,20 @@ export const Body = ({ className = '', writeLaunchContract, address }) => {
       />
       <div className="w-[0.5px] h-full bg-white" />
       <EventStatus launchContract={readLaunchContract} />
-      {depositedToken === ethers.constants.AddressZero ||
-      depositedToken === selectedTokenAddress ? (
+      {showSuccessModal ? (
+        <MessageModal
+          isOpen={showSuccessModal}
+          close={() => setShowSuccessModal(false)}
+        />
+      ) : depositedToken === ethers.constants.AddressZero ||
+        depositedToken === selectedTokenAddress ? (
         <CommitAssetsModal
           selectedToken={selectedTokenIndex}
           close={() => setSelectedToken(null)}
           launchContract={writeLaunchContract}
         />
       ) : (
-        <CommitsNotAllowed
+        <MessageModal
           isOpen={selectedTokenIndex !== null}
           tokenName={selectedToken?.name ?? ''}
           depositedTokenName={

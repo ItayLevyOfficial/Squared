@@ -6,7 +6,7 @@ import { CloseButton } from '../../Products/ModalDisplay'
 import errorIcon from '../icons/error.svg'
 import { PurpleLink } from './commitAssetsModal'
 
-export const CommitsNotAllowed = ({
+export const MessageModal = ({
   isOpen,
   tokenName,
   depositedTokenName,
