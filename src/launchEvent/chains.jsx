@@ -25,6 +25,7 @@ const localChainConfig = {
     {
       name: 'USDC',
       address: '0xfcDB4564c18A9134002b9771816092C9693622e3',
+
       decimals: '6',
       icon: <Usdc />,
     },
@@ -49,11 +50,25 @@ const chains = {
     // rpcUrls: ['https://rpc.fuse.io/'],
   },
   bsc: {
-    ...localChainConfig,
-    chainName: 'BSC',
+    rpcUrls: ['https://speedy-nodes-nyc.moralis.io/2f032afc060e364659b8758a/bsc/testnet'],
+    launchContractAddress: '0xe6315fd1BAb71B51D1ccCC8a2481C9098fBe2984',
+    launchTime: 1644923469136,
+    launchTokensAmount: 3_000_000,
+    chainName: 'Binance Smart Chain Testnet',
+    chainId: '0x61',
     tokens: [
-      { ...localChainConfig.tokens[0], name: 'BNB', icon: <Bnb /> },
-      { ...localChainConfig.tokens[1], name: 'BUSD', icon: <Busd /> },
+      {
+        name: 'BNB',
+        icon: <Bnb />,
+        decimals: 8,
+        address: '0xbb4CdB9CBd36B01bD1cBaEBF2De08d9173bc095c',
+      },
+      {
+        name: 'BUSD',
+        icon: <Busd />,
+        decimals: 18,
+        address: '0x4Fabb145d64652a948d72533023f6E7A623C7C53',
+      },
     ],
   },
   ethereum: localChainConfig,
