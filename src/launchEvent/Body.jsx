@@ -18,7 +18,7 @@ export const Body = ({ className = '', writeLaunchContract, address }) => {
   const [depositedToken, setDepositedToken] = useState(
     ethers.constants.AddressZero
   )
-  const [showSuccessModal, setShowSuccessModal] = useState(true)
+  const [transactionHash, setTransactionHash] = useState('0xe8195...')
   const [balance, setBalance] = useState(0)
 
   const readLaunchContract = useContract(
@@ -65,18 +65,21 @@ export const Body = ({ className = '', writeLaunchContract, address }) => {
       />
       <div className="w-[0.5px] h-full bg-white" />
       <EventStatus launchContract={readLaunchContract} />
-      {showSuccessModal ? (
+      {transactionHash ? (
         <MessageModal
           icon={<SuccessIcon />}
           header="Request Sent Successfully"
-          isOpen={showSuccessModal}
-          close={() => setShowSuccessModal(false)}
+          isOpen={Boolean(transactionHash)}
+          close={() => setTransactionHash(null)}
           footer={
             <>
-              Transactions on the {selectedChain.name} chain usually completed within {' '}
-              {selectedChain.approvalTime} minutes. Your
-              transaction hash is {} & you can check the status on{' '}
-              <PrimaryLink>Etherscan</PrimaryLink>
+              Transactions on the {selectedChain.name} chain usually completed
+              within {selectedChain.approvalTime} minutes. Your transaction hash
+              is{' '}
+              <span className="font-number bg-dark py-1 px-2 text-sm rounded-lg">
+                {transactionHash}
+              </span>{' '}
+              & you can check the status on <PrimaryLink>Etherscan</PrimaryLink>
             </>
           }
         />
