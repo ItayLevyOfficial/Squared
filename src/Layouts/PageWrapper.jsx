@@ -8,7 +8,7 @@ export const PageWrapper = ({ children }) => {
   const [signer, connectWallet, address] = useConnectWallet()
 
   return (
-    <div className="w-screen h-screen bg-black flex  px-16 pt-10 pb-6">
+    <div className="w-screen h-screen bg-black flex px-16 ">
       <Sidenav />
       <div className="flex flex-col w-full ">
         <Header connectWallet={connectWallet} address={address} />
