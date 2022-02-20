@@ -36,7 +36,7 @@ export const Dashboard = () => {
           <StakingPool el={el} key={index} openModal={() => open(index)} />
         ))}
       </div>
-      <div className="w-full p-6 flex -mt-20 justify-center">
+      <div className="flex -mt-20 w-10/12">
         <InformationBox
           title="BALANCE"
           heading1="ETH:"
@@ -48,7 +48,7 @@ export const Dashboard = () => {
           content3="$50,000"
           content4="$10,000"
         />
-        <div className="w-[0.5px] h-full bg-white" />
+        <div className="w-[0.5px] h-42 bg-white" />
         <InformationBox
           title="REWARDS"
           heading1="EARNED :"

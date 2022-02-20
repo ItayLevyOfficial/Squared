@@ -13,7 +13,7 @@ const localChainConfig = {
   sqrdPoolContractAddress: '0x6C2d83262fF84cBaDb3e416D527403135D757892',
   sqrdLpPoolContractAddress: '0x4bf010f1b9beDA5450a8dD702ED602A104ff65EE',
   ethPoolContractAddress: '0xCA8c8688914e0F7096c920146cd0Ad85cD7Ae8b9',
-  launchTime: 1644612469136,
+  launchTime: 1644912469136,
   launchTokensAmount: 3_000_000,
   tokens: [
     {
