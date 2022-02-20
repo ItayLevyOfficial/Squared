@@ -16,10 +16,10 @@ export const PageWrapper = ({ children }) => {
           <div className="flex flex-col justify-evenly items-center w-[900px] h-full ">
             {children}
           </div>
+          <div className="w-full flex justify-center items-end mb-10 ">
+            <Footer />
+          </div>
         </div>
-      </div>
-      <div className="w-full flex justify-center items-end mb-10 ">
-        <Footer />
       </div>
     </div>
   )
