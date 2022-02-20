@@ -4,8 +4,11 @@ import { PageWrapper } from '../layouts/PageWrapper'
 import { ModalDisplay } from '../products/ModalDisplay'
 import { selectedChain } from '../chains'
 import { InformationBox } from '../products/Information'
+import { provider } from '../launchEvent/useConnectWallet'
 
 export const Dashboard = () => {
+  const balance = provider.getBalance(selectedChain.ethPoolContractAddress)
+  console.log(balance)
   const [isModalOpen, setIsOpen] = useState(false)
   const [selectedTokenIndex, setSelectedTokenIndex] = useState(null)
 
