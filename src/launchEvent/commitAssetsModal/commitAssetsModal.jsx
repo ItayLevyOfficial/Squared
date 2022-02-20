@@ -1,17 +1,17 @@
 import { BigNumber } from 'ethers'
 import React, { useState } from 'react'
 import Modal from 'react-modal'
-import { ModalButton } from '../Products/ModalButtons'
+import { ModalButton } from '../../Products/ModalButtons'
 import {
   CloseButton,
   contentStyles,
   overlayStyles,
-} from '../Products/ModalDisplay'
-import { ModalInput } from '../Products/ModalInput'
-import { selectedChain } from './chains'
-import { useConnectWallet } from './useConnectWallet'
-import { useContract } from './useContract'
-import { erc20abi } from './erc20abi'
+} from '../../Products/ModalDisplay'
+import { ModalInput } from '../../Products/ModalInput'
+import { selectedChain } from '../../chains'
+import { useConnectWallet } from '../useConnectWallet'
+import { useContract } from '../useContract'
+import { erc20abi } from '../abis/erc20abi'
 
 export const commitContentStyles = {
   ...contentStyles,

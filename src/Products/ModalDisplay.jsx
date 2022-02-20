@@ -8,10 +8,10 @@ import { ModalButtons } from './ModalButtons'
 import { useContract } from '../launchEvent/useContract'
 import { useConnectWallet } from '../launchEvent/useConnectWallet'
 import { EthPoolAbi } from './ABIs/EthPoolAbi'
-import { PoolAbi } from './ABIs/PoolAbi'
+import { PoolAbi } from './ABIs../chains
 import { selectedChain } from '../launchEvent/chains'
 import { BigNumber } from 'ethers'
-import { erc20abi } from '../launchEvent/erc20abi'
+import { erc20abi } from '../launchEvent/abis/erc20abi'
 import React from 'react'
 Modal.setAppElement('#root')
 

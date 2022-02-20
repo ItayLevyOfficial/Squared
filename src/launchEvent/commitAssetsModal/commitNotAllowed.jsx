@@ -1,8 +1,8 @@
 import React from 'react'
 import Modal from 'react-modal'
-import { overlayStyles } from '../Products/ModalDisplay'
+import { overlayStyles } from '../../Products/ModalDisplay'
 import { commitContentStyles } from './commitAssetsModal'
-import { CloseButton } from '../Products/ModalDisplay'
+import { CloseButton } from '../../Products/ModalDisplay'
 import errorIcon from './icons/error.svg'
 import { PurpleLink } from './commitAssetsModal'
 
