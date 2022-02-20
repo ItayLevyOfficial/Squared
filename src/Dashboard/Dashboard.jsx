@@ -7,8 +7,6 @@ import { InformationBox } from '../products/Information'
 import { provider } from '../launchEvent/useConnectWallet'
 
 export const Dashboard = () => {
-  const balance = provider.getBalance(selectedChain.ethPoolContractAddress)
-  console.log(balance)
   const [isModalOpen, setIsOpen] = useState(false)
   const [selectedTokenIndex, setSelectedTokenIndex] = useState(null)
 
@@ -24,6 +22,9 @@ export const Dashboard = () => {
     setSelectedTokenIndex(null)
     setTokenAmount('')
   }
+
+  const balance = provider.getBalance(selectedChain.ethPoolContractAddress)
+  console.log(balance)
 
   return (
     <PageWrapper>
