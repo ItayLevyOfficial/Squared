@@ -48,7 +48,7 @@ const chains = {
   },
   bsc: {
     rpcUrls: ['https://speedy-nodes-nyc.moralis.io/2f032afc060e364659b8758a/bsc/testnet'],
-    launchContractAddress: '0x9622e688a7362C65D3a6A4548e363b53300660EB',
+    launchContractAddress: '0x55349Fc1E6c75bAae95f68C024E2a0769C860ad3',
     launchTime: 1644923469136,
     launchTokensAmount: 3_000_000,
     chainName: 'Binance Smart Chain Testnet',
