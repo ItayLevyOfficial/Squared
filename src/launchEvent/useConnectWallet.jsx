@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { useEffect } from 'react'
 import { ethers } from 'ethers'
-import { selectedChain } from './chains'
+import { selectedChain } from '../chains'
 const delay = (ms) => new Promise((resolve) => setTimeout(resolve, ms))
 
 export const provider = window.ethereum

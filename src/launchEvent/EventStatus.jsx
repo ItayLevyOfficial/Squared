@@ -1,7 +1,7 @@
 import { BodyHeaderText } from './AccountStatus'
 import React, { useState, useEffect } from 'react'
 import { formatBigUsd } from './Body'
-import { selectedChain } from './chains'
+import { selectedChain } from '../chains'
 
 const StatusBar = ({ percent, text, backgroundColorClass, className }) => (
   <div className={`flex flex-col h-36 ${className}`}>

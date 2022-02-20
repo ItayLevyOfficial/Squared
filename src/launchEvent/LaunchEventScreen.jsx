@@ -1,11 +1,11 @@
 import React from 'react'
 import { Body } from './Body'
-import { selectedChain } from './chains'
-import { launchContractAbi } from './defiRoundAbi'
+import { selectedChain } from '../chains'
+import { launchContractAbi } from './abis/defiRoundAbi'
 import { Footer } from './Footer'
 import { LaunchScreenHeader } from './LaunchScreenHeader'
 import { useConnectWallet } from './useConnectWallet'
-import { useContract } from './useContract'
+import { useContract } from './utils'
 
 export const LaunchEventScreen = () => {
   const [signer, connectWallet, walletAddress] = useConnectWallet()

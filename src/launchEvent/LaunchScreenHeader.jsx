@@ -1,8 +1,8 @@
 import { AddressButton } from '../Layouts/Header'
 import MetamaskIcon from './icons/metamask.svg'
-import { convertMilliseconds } from './convertMillis'
+import { convertMilliseconds } from './utils'
 import React from 'react'
-import { selectedChain } from './chains'
+import { selectedChain } from '../chains'
 import Logo from './icons/logo.svg'
 const timeLeftBarWidth = 'w-[580px]'
 

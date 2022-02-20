@@ -2,7 +2,7 @@ import { useState } from 'react'
 import { StakingPool } from '../products/StakingPool'
 import { PageWrapper } from '../layouts/PageWrapper'
 import { ModalDisplay } from '../products/ModalDisplay'
-import { selectedChain } from '../launchEvent/chains'
+import { selectedChain } from '../chains'
 import { InformationBox } from '../products/Information'
 
 export const Dashboard = () => {
