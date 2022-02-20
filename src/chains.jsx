@@ -16,6 +16,7 @@ const localChainConfig = {
   ethPoolContractAddress: '0xCA8c8688914e0F7096c920146cd0Ad85cD7Ae8b9',
   launchTime: 1645112469136,
   launchTokensAmount: 3_000_000,
+  scan: { name: 'Etherscan', url: 'https://etherscan.io/' },
   tokens: [
     {
       name: 'ETH',

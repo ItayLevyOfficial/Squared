@@ -1,4 +1,4 @@
-import { faCopy } from '@fortawesome/free-solid-svg-icons'
+import { faCheck, faCopy } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { ethers } from 'ethers'
 import React, { useCallback, useEffect, useState } from 'react'
@@ -25,6 +25,7 @@ export const Body = ({ className = '', writeLaunchContract, address }) => {
   const [transactionHash, setTransactionHash] = useState(
     '0xe8195739bc5b4e4ea947ff9cb66befdf203418e937d097b0c6faf100d4390dad'
   )
+  const [txCopied, setTxCopied] = useState(false)
   const [balance, setBalance] = useState(0)
 
   const readLaunchContract = useContract(
@@ -84,10 +85,13 @@ export const Body = ({ className = '', writeLaunchContract, address }) => {
               transaction hash is{'  '}
               <span
                 className="font-number bg-dark py-1 px-2 text-sm rounded-lg cursor-pointer"
-                onClick={() => copy(transactionHash)}
+                onClick={() => {
+                  copy(transactionHash)
+                  setTxCopied(true)
+                }}
               >
                 {transactionHash.slice(0, 7)}... &nbsp;
-                <FontAwesomeIcon icon={faCopy} />
+                <FontAwesomeIcon icon={txCopied ? faCheck : faCopy} />
               </span>
               {'  '}
               and you can check its status on{' '}
