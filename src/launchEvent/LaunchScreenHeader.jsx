@@ -6,35 +6,36 @@ import { selectedChain } from './chains'
 import Logo from './icons/logo.svg'
 const timeLeftBarWidth = 'w-[580px]'
 
-export const LaunchScreenHeader = ({
-  address,
-  connectWallet,
-  className = '',
-}) => (
-  <div className={`flex flex-col items-center w-full ${className}`}>
-    <div className={`flex items-center w-full justify-between mb-6`}>
-      <div className="flex flex-none mr-5">
-        <img src={Logo} width={60} />
-        <div className="w-5 flex-none" />
-        <div className="w-[0.5px] h-50 bg-primary float-none" />
-        <div className="w-5 float-none" />
-        <div className="flex flex-col space-y-2 font-bold tracking-widest">
-          <h1 className="text-white text-4xl font-basic font-semibold tracking-wide">
-            SQUARED
-          </h1>
-          <div className="flex items-center">
-            <h2 className="text-primary text-lg font-normal mr-1.5">
-              TAKE OFF EVENT
-            </h2>
-          </div>
-        </div>
-      </div>
-      <TimeLeft />
+export const LaunchScreenHeader = ({ address, connectWallet }) => (
+  <div className={`flex w-full justify-between`}>
+    <BrandingSection />
+    <MiddleSection />
+    <AddressSection address={address} connectWallet={connectWallet} />
+  </div>
+)
+
+const BrandingSection = () => (
+  <div className="flex flex-none h-fit">
+    <img src={Logo} width={60} />
+    <div className="w-5 flex-none" />
+    <div className="w-[0.5px] h-50 bg-primary float-none" />
+    <div className="w-5 float-none" />
+    <div className="flex flex-col space-y-2 font-bold tracking-widest">
+      <h1 className="text-white text-4xl font-basic font-semibold tracking-wide">
+        SQUARED
+      </h1>
       <div className="flex items-center">
-        <img src={MetamaskIcon} className="mr-4" alt="" />
-        <AddressButton address={address} connectWallet={connectWallet} />
+        <h2 className="text-primary text-lg font-normal mr-1.5">
+          TAKE OFF EVENT
+        </h2>
       </div>
     </div>
+  </div>
+)
+
+const MiddleSection = () => (
+  <div className={`flex flex-col items-center w-full`}>
+    <TimeLeft className="mb-6" />
     <p
       className={`${timeLeftBarWidth} text-center font-medium text-base tracking-wider leading-relaxed`}
     >
@@ -42,6 +43,13 @@ export const LaunchScreenHeader = ({
       SQRD to fill our liquidity reserve.&nbsp;
       <a className="text-primary underline">Learn more</a>
     </p>
+  </div>
+)
+
+const AddressSection = ({ connectWallet, address }) => (
+  <div className="flex items-center h-fit w-44 justify-end flex-shrink-0">
+    <img src={MetamaskIcon} alt="" className='mr-4'/>
+    <AddressButton address={address} connectWallet={connectWallet} />
   </div>
 )
 
@@ -54,7 +62,7 @@ const TimeLeft = ({ className = '' }) => {
   const formattedRemainTime = convertMilliseconds(remainTimeMillis)
 
   return (
-    <div className={`${className} flex flex-col items-center mr-10`}>
+    <div className={`${className} flex flex-col items-center`}>
       <h2
         className={`text-white text-lg tracking-wide font-light font-number mb-4`}
       >

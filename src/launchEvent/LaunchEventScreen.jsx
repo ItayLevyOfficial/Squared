@@ -9,12 +9,12 @@ import { useContract } from './useContract'
 
 export const LaunchEventScreen = () => {
   const [signer, connectWallet, walletAddress] = useConnectWallet()
-  const launchContract = useContract(
+  const writeLaunchContract = useContract(
     signer,
     selectedChain.launchContractAddress,
     launchContractAbi
   )
-
+  
   return (
     <ScreenPaddedContainer>
       <div className="flex flex-col items-center justify-between w-full max-w-screen-2xl h-full">
@@ -22,7 +22,7 @@ export const LaunchEventScreen = () => {
           address={walletAddress}
           connectWallet={connectWallet}
         />
-        <Body launchContract={launchContract} address={walletAddress} />
+        <Body writerLaunchContract={writeLaunchContract} address={walletAddress} />
         <Footer />
       </div>
     </ScreenPaddedContainer>
@@ -30,7 +30,7 @@ export const LaunchEventScreen = () => {
 }
 
 export const ScreenPaddedContainer = (props) => (
-  <div className="w-screen h-screen bg-black flex flex-col items-center px-36 pt-10 pb-16">
+  <div className="w-screen h-screen bg-black flex flex-col items-center px-16 pt-10 pb-16">
     {props.children}
   </div>
 )
