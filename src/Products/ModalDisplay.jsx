@@ -141,7 +141,7 @@ export const ModalDisplay = ({
         {tokenData?.name}
       </h1>
 
-      <div className="border-white border rounded-lg bg-transparent w-full h-96 flex flex-col overflow-hidden">
+      <div className="border-white  bg-transparent w-full h-96 flex flex-col overflow-hidden">
         <ModalOptions
           isOnWithdraw={isOnWithdraw}
           setIsOnWithdraw={setIsOnWithdraw}

@@ -10,7 +10,7 @@ export const ModalOptions = ({
     return (
       <button
         disabled={isDisabled}
-        className={`flex justify-center w-full py-1 text-white ${
+        className={`flex justify-center w-full py-1 border rounded-xl text-white ${
           isOnWithdraw === boolean
             ? 'bg-dark opacity-100'
             : 'bg-black  opacity-70'
