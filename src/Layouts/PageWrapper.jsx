@@ -11,7 +11,7 @@ export const PageWrapper = ({ children }) => {
     <div className="flex flex-col justify-between h-screen pb-6">
       <div className="flex h-full">
         <Sidenav />
-        <div className="flex flex-col items-between justify-between w-10/12 max-w-main min-h-full overflow-y-scroll ">
+        <div className="flex flex-col items-between justify-between max-w-main min-h-full overflow-y-scroll ">
           <Header connectWallet={connectWallet} address={address} />
           <div className="flex flex-col justify-evenly items-center w-[900px] h-full ">
             {children}
