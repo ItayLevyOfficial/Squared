@@ -13,8 +13,7 @@ export const Sidenav = () => {
           <div className="w-full flex flex-col justify-center items-center">
             <div className="flex flex-none mr-5 items-center">
               <img src={Logo} width={60} />
-              <div className="w-5 flex-none" />
-              <div className="w-[0.5px] h-50 bg-primary float-none" />
+
               <div className="w-5 float-none" />
               <div className="flex flex-col space-y-2 font-bold tracking-widest">
                 <h1 className="text-white text-4xl font-basic font-semibold tracking-wide">
@@ -34,7 +33,7 @@ export const Sidenav = () => {
 
               <a
                 href="/assets"
-                className={`text-white ${
+                className={`text-white font-medium  text-lg ${
                   pathname !== '/assets' && 'opacity-40'
                 }`}
               >
@@ -50,7 +49,7 @@ export const Sidenav = () => {
               />
               <a
                 href="/dashboard"
-                className={`text-white ${
+                className={`text-white font-medium text-lg ${
                   pathname !== '/dashboard' && 'opacity-40'
                 }`}
               >
