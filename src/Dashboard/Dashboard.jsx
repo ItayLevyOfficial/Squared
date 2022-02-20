@@ -26,10 +26,10 @@ export const Dashboard = () => {
         selectedToken={selectedToken}
       />
       <Balance />
-      <div className="px-6 w-full">
-        {selectedChain.tokens.map((el) => (
+      <div className=" w-full">
+        {/* {selectedChain.tokens.map((el) => (
           <LiquidityPool el={el} key={el.id} openModal={() => open(el.id)} />
-        ))}
+        ))} */}
       </div>
     </PageWrapper>
   )
