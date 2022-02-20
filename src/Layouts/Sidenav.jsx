@@ -25,7 +25,7 @@ export const Sidenav = () => {
   const { pathname } = useLocation()
 
   return (
-    <div className="h-full mr-6  flex flex-col justify-evenly font-medium">
+    <div className="h-full flex flex-col font-medium">
       <div className="h-10" />
       <div className="flex flex-col justify-between h-full">
         <div className="h-full space-y-6 items-start px-6 rounded-2xl">
