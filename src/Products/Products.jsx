@@ -32,7 +32,7 @@ export const Products = () => {
         tokenAmount={tokenAmount}
       />
 
-      <div className="w-full flex items-center justify-evenly overflow-x-scroll -mt-20">
+      <div className="w-full flex items-center justify-evenly -mt-20">
         {selectedChain.tokens.map((el, index) => (
           <StakingPool el={el} key={index} openModal={() => open(index)} />
         ))}

@@ -1,8 +1,8 @@
-const InformationBox = (props) => {
+export const InformationBox = (props) => {
   return (
-    <div className="w-full border border-dark h-56  text-white rounded-xl flex flex-col items-center p-4  -mb-4">
-      <div className="flex flex-col items-start  space-y-2">
-        <div className="font-medium text-2xl  mb-6">{props.title}</div>
+    <div className="w-full h-48 text-white rounded-xl flex flex-col items-center">
+      <div className="flex flex-col items-start space-y-2">
+        <div className="font-medium text-2xl mb-4">{props.title}</div>
         <div className="flex text-lg justify-start ">
           <div>{props.heading1} : </div>
           <div className="ml-4">{props.content1}</div>
@@ -20,14 +20,14 @@ const InformationBox = (props) => {
   )
 }
 
-export const Information = ({ title }) => {
+export const Information = () => {
   return (
-    <div className="w-full p-6 flex -mt-20 justify-center">
+    <div className="flex -mt-20 w-10/12">
       <InformationBox
         title="VALUE LOCKED"
         heading1="SQRD TVL"
         heading2="ASSET TVL"
-        heading3="TOTAL VALUE LOCKED"
+        heading3="TVL"
         content1=" $23,300,000"
         content2=" $70,500,000"
         content3=" $93,800,000"
@@ -41,7 +41,7 @@ export const Information = ({ title }) => {
         content1=" CYCLE ZERO-0"
         content2=" 01D 12H 45M"
         content3=" $22.86"
-      />{' '}
+      />
     </div>
   )
 }
