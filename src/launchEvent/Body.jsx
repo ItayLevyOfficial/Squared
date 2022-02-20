@@ -20,7 +20,7 @@ export const Body = ({ className = '', writeLaunchContract, address }) => {
   const [depositedToken, setDepositedToken] = useState(
     ethers.constants.AddressZero
   )
-  const [transactionHash, setTransactionHash] = useState('0xe8195...')
+  const [transactionHash, setTransactionHash] = useState('0xe8195739bc5b4e4ea947ff9cb66befdf203418e937d097b0c6faf100d4390dad')
   const [balance, setBalance] = useState(0)
 
   const readLaunchContract = useContract(
@@ -75,13 +75,13 @@ export const Body = ({ className = '', writeLaunchContract, address }) => {
           close={() => setTransactionHash(null)}
           footer={
             <>
-              Transactions on the {selectedChain.name} chain usually completed
+              Transactions on the {selectedChain.chainName} chain usually completed
               within {selectedChain.approvalTime} minutes. Your transaction hash
               is{'  '}
               <span className="font-number bg-dark py-1 px-2 text-sm rounded-lg cursor-pointer">
-                {transactionHash} &nbsp;<FontAwesomeIcon icon={faCopy}/>
+                {transactionHash.slice(0, 7)}... &nbsp;<FontAwesomeIcon icon={faCopy}/>
               </span>{'  '}
-              & you can check the status on <PrimaryLink>Etherscan</PrimaryLink>
+              and you can check its status on <PrimaryLink>Etherscan</PrimaryLink>.
             </>
           }
         />
