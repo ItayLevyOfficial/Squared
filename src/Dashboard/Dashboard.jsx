@@ -36,25 +36,26 @@ export const Dashboard = () => {
           <StakingPool el={el} key={index} openModal={() => open(index)} />
         ))}
       </div>
-      <div className="flex -mt-20 w-10/12">
+
+      <div className="w-full flex -mt-20">
         <InformationBox
           title="BALANCE"
-          heading1="ETH:"
-          heading2="USDC:"
-          heading3="SQRD:"
-          heading4="SQRD LP:"
-          content1="$1,500"
-          content2="$3,000"
-          content3="$50,000"
-          content4="$10,000"
+          heading1="ETH :"
+          heading2="USDC :"
+          heading3="SQRD :"
+          heading4="SQRD LP :"
+          content1=" $1,500"
+          content2=" $3,000"
+          content3=" $50,000"
+          content4=" $10,000"
         />
-        <div className="w-[0.5px] h-42 bg-white" />
+        <div className="w-[0.5px] h-full bg-white" />
         <InformationBox
           title="REWARDS"
           heading1="EARNED :"
           heading2="AVAILABLE :"
           heading3={
-            <button className="bg-darkPrimary text-white w-[180px] text-md p-2 text-md rounded-lg opacity-70 mt-6">
+            <button className="bg-darkPrimary text-white w-[180px] text-md p-2 text-md rounded-lg opacity-50 mt-6">
               Claim SQRD
             </button>
           }
