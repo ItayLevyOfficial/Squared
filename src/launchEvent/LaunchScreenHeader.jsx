@@ -50,13 +50,18 @@ const AddressSection = ({ connectWallet, address }) => (
     <AddressButton address={address} connectWallet={connectWallet} />
   </div>
 )
+const weekInMillis = 604800000
 
-const TimeLeft = ({ className = '' }) => {
-  const weekInMillis = 604800000
-  const launchTime = selectedChain.launchTime
-  const remainTimeMillis = launchTime + weekInMillis - new Date().getTime()
+const TimeLeft = ({
+  className = '',
+  timeLeftData = {
+    startTime: selectedChain.launchTime,
+    length: weekInMillis,
+  },
+}) => {
+  const remainTimeMillis = timeLeftData.startTime + timeLeftData.length - new Date().getTime()
   const remainTimePercent =
-    100 - Math.round((remainTimeMillis / weekInMillis) * 100)
+    100 - Math.round((remainTimeMillis / timeLeftData.length) * 100)
   const formattedRemainTime = convertMilliseconds(remainTimeMillis)
 
   return (
@@ -64,7 +69,9 @@ const TimeLeft = ({ className = '' }) => {
       <h2
         className={`text-white text-lg tracking-wide font-light font-number mb-4`}
       >
-        {`${formattedRemainTime.d} DAYS ${formattedRemainTime.h} HOURS ${formattedRemainTime.m} MINUTES REMAIN`}
+        {`${formattedRemainTime.d > 0 ? `${formattedRemainTime.d} DAYS` : ''} ${
+          formattedRemainTime.h
+        } HOURS ${formattedRemainTime.m} MINUTES REMAIN`}
       </h2>
       <div className={`bg-lightPrimary h-4 ${timeLeftBarWidth} rounded-md`}>
         <div

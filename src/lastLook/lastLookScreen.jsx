@@ -19,7 +19,8 @@ export const LastLookScreen = () => {
   return (
     <ScreenPaddedContainer>
       <div className="flex flex-col items-center justify-between w-full max-w-screen-2xl h-full">
-        <LaunchScreenHeader phase='LAST LOOK PERIOD'
+        <LaunchScreenHeader
+          phase="LAST LOOK PERIOD"
           address={walletAddress}
           connectWallet={connectWallet}
         />
