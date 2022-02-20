@@ -7,7 +7,7 @@ import errorIcon from '../icons/error.svg'
 import { PurpleLink } from './commitAssetsModal'
 
 export const MessageModal = ({
-  icon = <img src={errorIcon} alt="" />,
+  icon = <img src={errorIcon} alt="" />,  
   isOpen,
   tokenName,
   depositedTokenName,

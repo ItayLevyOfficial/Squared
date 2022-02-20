@@ -5,10 +5,11 @@ import { EventStatus } from './EventStatus'
 import { useEffect } from 'react'
 import { ethers } from 'ethers'
 import { selectedChain } from '../chains'
-import { MessageModal } from './commitAssetsModal/commitNotAllowed'
+import { MessageModal } from './commitAssetsModal/MessageModal'
 import { useContract } from './utils'
 import { launchContractAbi } from './abis/defiRoundAbi'
 import { provider } from './useConnectWallet'
+import { SuccessIcon } from './icons/success'
 
 export const formatBigUsd = (bigUsd) => bigUsd.div(10 ** 8).toNumber()
 
@@ -62,7 +63,7 @@ export const Body = ({ className = '', writeLaunchContract, address }) => {
       <div className="w-[0.5px] h-full bg-white" />
       <EventStatus launchContract={readLaunchContract} />
       {showSuccessModal ? (
-        <MessageModal
+        <MessageModal icon={<SuccessIcon />}
           isOpen={showSuccessModal}
           close={() => setShowSuccessModal(false)}
         />
