@@ -95,7 +95,10 @@ export const Body = ({ className = '', writeLaunchContract, address }) => {
               </span>
               {'  '}
               and you can check its status on{' '}
-              <PrimaryLink>Etherscan</PrimaryLink>.
+              <PrimaryLink onClick={() => window.open(selectedChain.scan.url)}>
+                {selectedChain.scan.name}
+              </PrimaryLink>
+              .
             </>
           }
         />
