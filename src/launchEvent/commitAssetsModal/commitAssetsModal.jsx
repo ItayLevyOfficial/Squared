@@ -20,7 +20,7 @@ export const commitContentStyles = {
 
 const mediumArticleLink = 'https://medium.com/puffpuffmoney'
 
-export const PurpleLink = ({ children, onClick }) => (
+export const PrimaryLink = ({ children, onClick }) => (
   <span className="text-primary underline cursor-pointer" onClick={onClick}>
     {children}
   </span>
@@ -88,9 +88,9 @@ export const CommitAssetsModal = ({ selectedToken, close, launchContract }) => {
         <p className="w-10/12 text-center mb-8">
           You will be able to withdraw your assets during the last look
           period.&nbsp;
-          <PurpleLink onClick={() => window.open(mediumArticleLink)}>
+          <PrimaryLink onClick={() => window.open(mediumArticleLink)}>
             Learn more
-          </PurpleLink>
+          </PrimaryLink>
         </p>
         <ModalButton
           text={isConnected ? 'Deposit' : 'Connect Wallet'}

@@ -10,7 +10,7 @@ import { useContract } from './utils'
 import { launchContractAbi } from './abis/defiRoundAbi'
 import { provider } from './useConnectWallet'
 import { SuccessIcon } from './icons/success'
-
+import { PrimaryLink } from './commitAssetsModal/commitAssetsModal'
 export const formatBigUsd = (bigUsd) => bigUsd.div(10 ** 8).toNumber()
 
 export const Body = ({ className = '', writeLaunchContract, address }) => {
@@ -52,6 +52,8 @@ export const Body = ({ className = '', writeLaunchContract, address }) => {
   const selectedToken = selectedChain.tokens[selectedTokenIndex]
   const selectedTokenAddress = selectedToken?.address
 
+  const depositedTokenName = selectedChain.tokens[selectedTokenIndex === 0 ? 1 : 0]?.name ?? ''
+  const tokenName = selectedToken?.name ?? ''
   return (
     <div className={`flex space-x-32 -mt-20 ${className}`}>
       <AccountStatus
@@ -65,6 +67,7 @@ export const Body = ({ className = '', writeLaunchContract, address }) => {
       {showSuccessModal ? (
         <MessageModal
           icon={<SuccessIcon />}
+          header="Request Sent Successfully"
           isOpen={showSuccessModal}
           close={() => setShowSuccessModal(false)}
         />
@@ -78,9 +81,13 @@ export const Body = ({ className = '', writeLaunchContract, address }) => {
       ) : (
         <MessageModal
           isOpen={selectedTokenIndex !== null}
-          tokenName={selectedToken?.name ?? ''}
-          depositedTokenName={
-            selectedChain.tokens[selectedTokenIndex === 0 ? 1 : 0]?.name ?? ''
+          footer={
+            <>
+              In the launch event, you can only deposit either{' '}
+              {depositedTokenName} or {tokenName}. Since you already committed{' '}
+              {depositedTokenName}, further deposits of {tokenName} are not
+              allowed. <PrimaryLink>Learn more</PrimaryLink>
+            </>
           }
           close={() => setSelectedToken(null)}
         />
