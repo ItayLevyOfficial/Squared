@@ -6,15 +6,15 @@ import { selectedChain } from './chains'
 import Logo from './icons/logo.svg'
 const timeLeftBarWidth = 'w-[580px]'
 
-export const LaunchScreenHeader = ({ address, connectWallet }) => (
+export const LaunchScreenHeader = ({ address, connectWallet, phase }) => (
   <div className={`flex w-full justify-between`}>
-    <BrandingSection />
+    <BrandingSection phase={phase} />
     <MiddleSection />
     <AddressSection address={address} connectWallet={connectWallet} />
   </div>
 )
 
-const BrandingSection = () => (
+const BrandingSection = ({ phase = 'TAKE OFF EVENT' }) => (
   <div className="flex flex-none h-fit">
     <img src={Logo} width={60} />
     <div className="w-5 flex-none" />
@@ -25,9 +25,7 @@ const BrandingSection = () => (
         SQUARED
       </h1>
       <div className="flex items-center">
-        <h2 className="text-primary text-lg font-normal mr-1.5">
-          TAKE OFF EVENT
-        </h2>
+        <h2 className="text-primary text-lg font-normal mr-1.5">{phase}</h2>
       </div>
     </div>
   </div>
@@ -48,7 +46,7 @@ const MiddleSection = () => (
 
 const AddressSection = ({ connectWallet, address }) => (
   <div className="flex items-center h-fit w-44 justify-end flex-shrink-0">
-    <img src={MetamaskIcon} alt="" className='mr-4'/>
+    <img src={MetamaskIcon} alt="" className="mr-4" />
     <AddressButton address={address} connectWallet={connectWallet} />
   </div>
 )
