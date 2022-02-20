@@ -1,6 +1,6 @@
 export const InformationBox = (props) => {
   return (
-    <div className="w-full h-48 text-white rounded-xl flex flex-col items-center">
+    <div className="w-full h-42 text-white rounded-xl flex flex-col items-center">
       <div className="flex flex-col items-start space-y-2">
         <div className="font-medium text-2xl mb-4">{props.title}</div>
         <div className="flex text-lg justify-start ">
@@ -32,7 +32,7 @@ export const Information = () => {
         content2=" $70,500,000"
         content3=" $93,800,000"
       />
-      <div className="w-[0.5px] h-full bg-white" />
+      <div className="w-[0.5px] h-42 bg-white" />
       <InformationBox
         title="CURRENT CYCLE"
         heading1="THIS CYCLE"
