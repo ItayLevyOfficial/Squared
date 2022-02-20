@@ -24,7 +24,7 @@ export const ModalOptions = ({
 
   return (
     <div
-      className={`w-full flex justify-between border-b border-white cursor-pointer ${className}}`}
+      className={`w-full flex justify-between border-b-2 border-white cursor-pointer ${className}}`}
     >
       <Option optionName="DEPOSIT" boolean={false} isDisabled={!isOnWithdraw} />
       <Option optionName="WITHDRAW" boolean={true} isDisabled={isOnWithdraw} />

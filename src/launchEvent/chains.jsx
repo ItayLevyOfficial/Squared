@@ -25,7 +25,6 @@ const localChainConfig = {
     {
       name: 'USDC',
       address: '0xfcDB4564c18A9134002b9771816092C9693622e3',
-
       decimals: '6',
       icon: <Usdc />,
     },
@@ -35,7 +34,7 @@ const localChainConfig = {
       decimals: '6',
     },
     {
-      name: 'SQRD PANCAKE LP',
+      name: 'SQRD LP',
       address: '0x0ed64d01D0B4B655E410EF1441dD677B695639E7',
       decimals: '6',
     },
@@ -50,7 +49,9 @@ const chains = {
     // rpcUrls: ['https://rpc.fuse.io/'],
   },
   bsc: {
-    rpcUrls: ['https://speedy-nodes-nyc.moralis.io/2f032afc060e364659b8758a/bsc/testnet'],
+    rpcUrls: [
+      'https://speedy-nodes-nyc.moralis.io/2f032afc060e364659b8758a/bsc/testnet',
+    ],
     launchContractAddress: '0xe6315fd1BAb71B51D1ccCC8a2481C9098fBe2984',
     launchTime: 1644923469136,
     launchTokensAmount: 3_000_000,

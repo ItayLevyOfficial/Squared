@@ -33,6 +33,9 @@ module.exports = {
         main: '112rem',
       },
     },
+    borderWidth: {
+      min: '0.5px',
+    },
   },
   plugins: [],
 }

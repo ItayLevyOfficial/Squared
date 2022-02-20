@@ -10,7 +10,7 @@ const FooterIcon = ({ src, url }) => (
     src={src}
     alt=""
     className="opacity-70 hover:opacity-100"
-    onClick={() => (window.open(url))}
+    onClick={() => window.open(url)}
   />
 )
 
@@ -24,7 +24,7 @@ export const Footer = () => (
   <div className="flex items-center space-x-9">
     <FooterIcon src={TwitterIcon} url={twitter} />
     <FooterIcon src={MediumIcon} url={medium} />
-    <FooterIcon src={DocsIcon} url={docs}/>
+    <FooterIcon src={DocsIcon} url={docs} />
     <FooterIcon src={DiscordIcon} url={discord} />
     <FooterIcon src={GithubIcon} url={github} />
   </div>
