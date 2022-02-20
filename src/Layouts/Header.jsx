@@ -1,6 +1,10 @@
+import MetamaskIcon from '../launchEvent/icons/metamask.svg'
+
 export const Header = (props) => {
   return (
     <nav className="flex flex-wrap h-20 items-center justify-end w-full px-4 mt-7">
+      <img src={MetamaskIcon} alt="" className="mr-4" />
+
       <AddressButton {...props} />
     </nav>
   )
