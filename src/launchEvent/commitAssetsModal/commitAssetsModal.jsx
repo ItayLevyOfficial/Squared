@@ -21,7 +21,7 @@ export const commitContentStyles = {
 const mediumArticleLink = 'https://medium.com/puffpuffmoney'
 
 export const PrimaryLink = ({ children, onClick }) => (
-  <span className="text-primary underline cursor-pointer" onClick={onClick}>
+  <span className="text-darkPrimary underline cursor-pointer" onClick={onClick}>
     {children}
   </span>
 )
