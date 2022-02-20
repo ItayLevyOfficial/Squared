@@ -12,6 +12,8 @@ import { provider } from './useConnectWallet'
 import { SuccessIcon } from './icons/success'
 import { PrimaryLink } from './commitAssetsModal/commitAssetsModal'
 export const formatBigUsd = (bigUsd) => bigUsd.div(10 ** 8).toNumber()
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faCoffee, faCopy } from '@fortawesome/free-solid-svg-icons'
 
 export const Body = ({ className = '', writeLaunchContract, address }) => {
   const [selectedTokenIndex, setSelectedToken] = useState(null)
@@ -75,10 +77,10 @@ export const Body = ({ className = '', writeLaunchContract, address }) => {
             <>
               Transactions on the {selectedChain.name} chain usually completed
               within {selectedChain.approvalTime} minutes. Your transaction hash
-              is{' '}
-              <span className="font-number bg-dark py-1 px-2 text-sm rounded-lg">
-                {transactionHash}
-              </span>{' '}
+              is{'  '}
+              <span className="font-number bg-dark py-1 px-2 text-sm rounded-lg cursor-pointer">
+                {transactionHash} &nbsp;<FontAwesomeIcon icon={faCopy}/>
+              </span>{'  '}
               & you can check the status on <PrimaryLink>Etherscan</PrimaryLink>
             </>
           }
