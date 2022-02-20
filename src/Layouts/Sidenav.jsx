@@ -34,7 +34,7 @@ export const Sidenav = () => {
 
               <a
                 href="/assets"
-                className={`text-white ${
+                className={`text-white font-medium  text-lg ${
                   pathname !== '/assets' && 'opacity-40'
                 }`}
               >
@@ -50,7 +50,7 @@ export const Sidenav = () => {
               />
               <a
                 href="/dashboard"
-                className={`text-white ${
+                className={`text-white font-medium text-lg ${
                   pathname !== '/dashboard' && 'opacity-40'
                 }`}
               >

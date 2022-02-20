@@ -55,7 +55,7 @@ export const Dashboard = () => {
           heading2="AVAILABLE :"
           heading3={
             <button className="bg-darkPrimary text-white w-[180px] text-md p-2 text-md rounded-lg opacity-70 mt-6">
-              CLAIM SQRD
+              Claim SQRD
             </button>
           }
           content1="0.00 SQRD"
