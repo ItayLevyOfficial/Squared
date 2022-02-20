@@ -8,6 +8,7 @@ import { PurpleLink } from './commitAssetsModal'
 
 export const MessageModal = ({
   icon = <img src={errorIcon} alt="" />,  
+  header = "Commit not allowed",
   isOpen,
   tokenName,
   depositedTokenName,
@@ -24,6 +25,7 @@ export const MessageModal = ({
     >
       <CloseButton close={close} />
       <div className="flex flex-col items-center">
+        <h1 className='text-2xl'>{header}</h1>
         {icon}
         <p className="text-center mt-8 w-5/6 text-lg text-white font-medium">
           In the launch event, you can only deposit either {depositedTokenName}{' '}

@@ -63,7 +63,8 @@ export const Body = ({ className = '', writeLaunchContract, address }) => {
       <div className="w-[0.5px] h-full bg-white" />
       <EventStatus launchContract={readLaunchContract} />
       {showSuccessModal ? (
-        <MessageModal icon={<SuccessIcon />}
+        <MessageModal
+          icon={<SuccessIcon />}
           isOpen={showSuccessModal}
           close={() => setShowSuccessModal(false)}
         />
