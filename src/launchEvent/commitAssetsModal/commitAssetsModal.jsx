@@ -39,7 +39,7 @@ export const CommitAssetsModal = ({ selectedToken, close, launchContract }) => {
       BigNumber.from('10').pow(BigNumber.from(tokenData.decimals))
     )
     if (selectedToken === 0) {
-      await launchContract.deposit(
+      const tx = await launchContract.deposit(
         {
           token: tokenData.address,
           amount: amount,
@@ -47,6 +47,8 @@ export const CommitAssetsModal = ({ selectedToken, close, launchContract }) => {
         [],
         { value: amount }
       )
+      const hash = tx.hash
+      console.table({hash})
     } else {
       await erc20.approve(selectedChain.launchContractAddress, amount)
       await launchContract.deposit(
@@ -76,7 +78,7 @@ export const CommitAssetsModal = ({ selectedToken, close, launchContract }) => {
     >
       <CloseButton close={onClose} />
       <div className="flex flex-col items-center">
-        <h1 className="text-2xl mb-8 -mt-4 text-white font-medium">
+        <h1 className="text-2xl mb-8 mt-3 text-white font-medium">
           Commit {tokenData?.name}
         </h1>
         <ModalInput
