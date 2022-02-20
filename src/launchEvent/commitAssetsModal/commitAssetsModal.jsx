@@ -10,7 +10,7 @@ import {
 import { ModalInput } from '../../Products/ModalInput'
 import { selectedChain } from '../../chains'
 import { useConnectWallet } from '../useConnectWallet'
-import { useContract } from '../useContract'
+import { useContract } from '../utils'
 import { erc20abi } from '../abis/erc20abi'
 
 export const commitContentStyles = {

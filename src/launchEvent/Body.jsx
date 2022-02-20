@@ -6,7 +6,7 @@ import { useEffect } from 'react'
 import { ethers } from 'ethers'
 import { selectedChain } from '../chains'
 import { CommitsNotAllowed } from './commitAssetsModal/commitNotAllowed'
-import { useContract } from './useContract'
+import { useContract } from './utils'
 import { launchContractAbi } from './abis/defiRoundAbi'
 import { provider } from './useConnectWallet'
 
