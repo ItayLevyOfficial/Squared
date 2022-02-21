@@ -16,7 +16,7 @@ export const PageToggle = () => {
   const { pathname } = useLocation()
 
   return (
-    <div className="flex items-center justify-center">
+    <div className="flex items-center justify-center space-x-6 mr-12">
       <PageToggleWrapper>
         <LibraryIcon
           className={`h-6 text-white ${pathname !== '/assets' && 'opacity-40'}`}
@@ -31,14 +31,9 @@ export const PageToggle = () => {
           Assets
         </a>
       </PageToggleWrapper>
-      <MinusIcon className="text-white h-6 font-thin" />
+      <div className="w-1.5 h-1.5 border bg-white rounded-full" />
 
       <PageToggleWrapper>
-        <BookOpenIcon
-          className={`h-6 text-white ${
-            pathname !== '/dashboard' && 'opacity-40'
-          }`}
-        />
         <a
           href="/dashboard"
           className={`text-white font-medium text-lg ${
@@ -46,7 +41,12 @@ export const PageToggle = () => {
           }`}
         >
           Dashboard
-        </a>
+        </a>{' '}
+        <BookOpenIcon
+          className={`h-6 text-white ${
+            pathname !== '/dashboard' && 'opacity-40'
+          }`}
+        />
       </PageToggleWrapper>
     </div>
   )
@@ -54,10 +54,12 @@ export const PageToggle = () => {
 
 export const Header = (props) => {
   return (
-    <nav className={`flex w-full justify-between`}>
+    <nav
+      className={`flex w-full justify-between items-center
+    `}
+    >
       <BrandingSection children={'CYCLE ZERO'} />
       <PageToggle />
-
       <div className="flex items-center h-fit w-44 justify-end flex-shrink-0">
         <img src={MetamaskIcon} alt="" className="mr-4" />
         <AddressButton {...props} />

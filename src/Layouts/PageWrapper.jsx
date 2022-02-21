@@ -9,7 +9,7 @@ export const PageWrapper = ({ children }) => {
   return (
     <ScreenPaddedContainer>
       <Header connectWallet={connectWallet} address={address} />
-      <div className="flex flex-col justify-evenly items-center w-full h-full ">
+      <div className="flex flex-col justify-evenly items-center w-10/12 h-full ">
         {children}
       </div>
       <Footer />
