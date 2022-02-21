@@ -27,13 +27,40 @@ export const PrimaryLink = ({ children, onClick }) => (
 export const CommitAssetsModal = ({
   selectedTokenIndex,
   close,
-  commitAssets,
+  handleSubmit,
 }) => {
   const isOpen = selectedTokenIndex !== null
   const tokenData = isOpen ? selectedChain.tokens[selectedTokenIndex] : null
   const [tokenAmount, setTokenAmount] = useState('')
   const [, connectWallet, address] = useConnectWallet()
   const isConnected = Boolean(address)
+
+  const modalData =
+    selectedChain.launchData.stage === 1
+      ? {
+          title: 'Commit',
+          paragraph: (
+            <>
+              You will be able to withdraw your assets during the last look
+              period.&nbsp;
+              <PrimaryLink onClick={() => window.open(mediumArticleLink)}>
+                Learn more
+              </PrimaryLink>
+            </>
+          ),
+        }
+      : {
+          title: 'Withdraw',
+          paragraph: (
+            <>
+              The Last Look gives participants the opportunity to withdraw funds
+              without making any swap for SQRD if they wish to opt out.&nbsp;
+              <PrimaryLink onClick={() => window.open(mediumArticleLink)}>
+                Learn more
+              </PrimaryLink>
+            </>
+          ),
+        }
 
   const onClose = () => {
     setTokenAmount('')
@@ -50,26 +77,21 @@ export const CommitAssetsModal = ({
       }}
     >
       <CloseButton close={onClose} />
-      <div className="flex flex-col items-center">
-        <ModalTitle className="mb-8 mt-2">Commit {tokenData?.name}</ModalTitle>
+      <div className="flex flex-col items-center space-y-8">
+        <ModalTitle className="mt-2">
+          {modalData.title}&nbsp;{tokenData?.name}
+        </ModalTitle>
         <ModalInput
           selectedToken={tokenData?.name}
-          className="mb-8"
           value={tokenAmount}
           handleChange={setTokenAmount}
         />
-        <ModalParagraph className="mb-8">
-          You will be able to withdraw your assets during the last look
-          period.&nbsp;
-          <PrimaryLink onClick={() => window.open(mediumArticleLink)}>
-            Learn more
-          </PrimaryLink>
-        </ModalParagraph>
-        <ModalButton 
-          text={isConnected ? 'Deposit' : 'Connect Wallet'}
+        <ModalParagraph>{modalData.paragraph}</ModalParagraph>
+        <ModalButton
+          text={isConnected ? modalData.title : 'Connect Wallet'}
           onClick={
             isConnected
-              ? () => commitAssets({ tokenAmount, selectedTokenIndex })
+              ? () => handleSubmit({ tokenAmount, selectedTokenIndex })
               : connectWallet
           }
         />

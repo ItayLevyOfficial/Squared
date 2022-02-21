@@ -47,7 +47,7 @@ export const LaunchScreenBody = ({ className = '' }) => {
         <CommitAssetsModal
           selectedTokenIndex={selectedTokenIndex}
           close={() => setSelectedToken(null)}
-          commitAssets={commitAssets}
+          handleSubmit={commitAssets} 
         />
       ) : (
         <ErrorModal
