@@ -23,10 +23,10 @@ export const LaunchScreenContext = () => {
       readLaunchContract?.currentStage().then((response) => setStage(response))
     }
   }, [readLaunchContract])
-  
+
   return (
     <StageContext.Provider value={stage + 1}>
-      <LaunchEventScreen />
+      {stage === null ? null : <LaunchEventScreen />}
     </StageContext.Provider>
   )
 }

@@ -4,7 +4,7 @@ import { Home } from './Home/Home'
 import React from 'react'
 import { Products } from './products/Products'
 import { Dashboard } from './dashboard/Dashboard'
-import { LaunchEventScreen } from './launchEvent/LaunchEventScreen'
+import { LaunchScreenContext } from './launchEvent/LaunchEventScreen'
 
 function App() {
   return (
@@ -12,7 +12,7 @@ function App() {
       <Router>
         <ScrollToTop>
           <Routes>
-            <Route path="/launch" element={<LaunchEventScreen />} />
+            <Route path="/launch" element={<LaunchScreenContext />} />
             <Route path="/assets" element={<Products />} />
             <Route path="/dashboard" element={<Dashboard />} />
             <Route path="/" element={<Home />} />
