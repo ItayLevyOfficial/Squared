@@ -1,26 +1,16 @@
 import { LibraryIcon, BookOpenIcon } from '@heroicons/react/outline'
 import { useLocation } from 'react-router-dom'
-import Logo from '../launchEvent/icons/logo.svg'
+import { BrandingSection } from '../launchEvent/LaunchScreenHeader'
 
 export const Sidenav = () => {
   const { pathname } = useLocation()
 
   return (
-    <div className="h-full mr-6  flex flex-col justify-evenly font-medium">
+    <div className="h-full flex flex-col font-medium">
       <div className="h-10" />
       <div className="flex flex-col justify-between h-full">
         <div className="h-full space-y-6 items-start px-6 rounded-2xl">
-          <div className="w-full flex flex-col justify-center items-center">
-            <div className="flex flex-none mr-5 items-center">
-              <img src={Logo} width={60} />
-              <div className="w-5 flex-none" />
-              <div className="flex flex-col space-y-2 font-bold tracking-widest">
-                <h1 className="text-white text-4xl font-basic font-semibold tracking-wide">
-                  SQUARED
-                </h1>
-              </div>
-            </div>
-          </div>
+          <BrandingSection children={'CYCLE ZERO-0'} />
 
           <div className="pt-12 space-y-6">
             <div className="flex cursor-pointer group space-x-2 items-center ">
