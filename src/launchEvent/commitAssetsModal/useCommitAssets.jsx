@@ -21,9 +21,10 @@ export const useCommitAssets = () => {
 
   const commitAssets = async ({ tokenAmount, selectedTokenIndex }) => {
     const tokenData = selectedChain.tokens[selectedTokenIndex]
-    const amount = BigNumber.from(tokenAmount).mul(
-      BigNumber.from('10').pow(BigNumber.from(tokenData.decimals))
-    )
+    const amount = parseNumberDecimals({
+      amount: tokenAmount,
+      decimals: tokenData.decimals,
+    })
     if (selectedTokenIndex === 0) {
       const tx = await launchContract.deposit(
         {
