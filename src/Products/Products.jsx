@@ -17,6 +17,8 @@ export const Products = () => {
     sqrdLpPoolContract,
   ] = usePoolContracts()
   const [, , address] = useConnectWallet()
+  const [assetsBalance, setAssetsBalance] = useState(0)
+  const [totalValueLocked, setTotalValueLocked] = useState(0)
   const [ethBalance, setEthBalance] = useState(0)
   const [usdcBalance, setUsdcBalance] = useState(0)
   const [sqrdBalance, setSqrdBalance] = useState(0)
@@ -34,6 +36,8 @@ export const Products = () => {
 
     const balanceSqrdLp = await sqrdLpPoolContract.balanceOf(address)
     setSqrdLpBalance(formatBigErc20(balanceSqrdLp))
+    setAssetsBalance(ethBalance + usdcBalance + sqrdLpBalance)
+    setTotalValueLocked(assetsBalance + sqrdBalance)
   }, [
     address,
     ethPoolContract,
@@ -92,7 +96,11 @@ export const Products = () => {
           />
         ))}
       </div>
-      <Information />
+      <Information
+        totalValueLocked={totalValueLocked}
+        sqrdBalance={sqrdBalance}
+        assetsBalance={assetsBalance}
+      />
     </PageWrapper>
   )
 }
