@@ -1,17 +1,14 @@
-import { BigNumber } from 'ethers'
 import React, { useState } from 'react'
 import Modal from 'react-modal'
+import { selectedChain } from '../../chains'
 import { ModalButton } from '../../Products/ModalButtons'
 import {
   CloseButton,
   contentStyles,
-  overlayStyles,
+  overlayStyles
 } from '../../Products/ModalDisplay'
 import { ModalInput } from '../../Products/ModalInput'
-import { selectedChain } from '../../chains'
 import { useConnectWallet } from '../useConnectWallet'
-import { useContract } from '../utils'
-import { erc20abi } from '../abis/erc20abi'
 
 export const commitContentStyles = {
   ...contentStyles,
@@ -26,7 +23,11 @@ export const PrimaryLink = ({ children, onClick }) => (
   </span>
 )
 
-export const CommitAssetsModal = ({ selectedTokenIndex, close, commitAssets }) => {
+export const CommitAssetsModal = ({
+  selectedTokenIndex,
+  close,
+  commitAssets,
+}) => {
   const isOpen = selectedTokenIndex !== null
   const tokenData = isOpen ? selectedChain.tokens[selectedTokenIndex] : null
   const [tokenAmount, setTokenAmount] = useState('')
@@ -67,7 +68,11 @@ export const CommitAssetsModal = ({ selectedTokenIndex, close, commitAssets }) =
         </p>
         <ModalButton
           text={isConnected ? 'Deposit' : 'Connect Wallet'}
-          onClick={isConnected ? () => commitAssets({tokenAmount, selectedTokenIndex}) : connectWallet}
+          onClick={
+            isConnected
+              ? () => commitAssets({ tokenAmount, selectedTokenIndex })
+              : connectWallet
+          }
         />
       </div>
     </Modal>
