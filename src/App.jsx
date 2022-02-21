@@ -5,7 +5,6 @@ import React from 'react'
 import { Products } from './products/Products'
 import { Dashboard } from './dashboard/Dashboard'
 import { LaunchEventScreen } from './launchEvent/LaunchEventScreen'
-import { LastLookScreen } from './lastLook/lastLookScreen'
 
 function App() {
   return (
@@ -13,7 +12,6 @@ function App() {
       <Router>
         <ScrollToTop>
           <Routes>
-            <Route path="/last-look" element={<LastLookScreen />} />
             <Route path="/launch" element={<LaunchEventScreen />} />
             <Route path="/assets" element={<Products />} />
             <Route path="/dashboard" element={<Dashboard />} />
