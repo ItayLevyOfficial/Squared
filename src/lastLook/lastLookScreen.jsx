@@ -26,8 +26,6 @@ export const LastLookScreen = () => {
             length: weekInMillis / 7,
           }}
           phase="LAST LOOK"
-          address={walletAddress}
-          connectWallet={connectWallet}
         />
         <Body
           writerLaunchContract={writeLaunchContract}
