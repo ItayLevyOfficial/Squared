@@ -7,14 +7,7 @@ import { useState } from 'react'
 import { useFetchBalance } from './usePoolContracts'
 
 export const Products = () => {
-  const [
-    sqrdLpBalance,
-    sqrdBalance,
-    ethBalance,
-    usdcBalance,
-    assetsBalance,
-    totalValueLocked,
-  ] = useFetchBalance()
+  const [sqrdBalance, assetsBalance, totalValueLocked] = useFetchBalance()
   const [isModalOpen, setIsOpen] = useState(false)
   const [selectedTokenIndex, setSelectedTokenIndex] = useState(null)
 
