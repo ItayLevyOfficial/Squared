@@ -24,10 +24,11 @@ export const PrimaryLink = ({ children, onClick }) => (
   </span>
 )
 
-export const CommitAssetsModal = ({
+export const CommandModal = ({
   selectedTokenIndex,
   close,
-  commitAssets,
+  handleSubmit,
+  isWithdraw,
 }) => {
   const isOpen = selectedTokenIndex !== null
   const tokenData = isOpen ? selectedChain.tokens[selectedTokenIndex] : null
@@ -50,26 +51,28 @@ export const CommitAssetsModal = ({
       }}
     >
       <CloseButton close={onClose} />
-      <div className="flex flex-col items-center">
-        <ModalTitle className="mb-8 mt-2">Commit {tokenData?.name}</ModalTitle>
+      <div className="flex flex-col items-center space-y-8">
+        <ModalTitle className="mt-2">
+          {isWithdraw ? 'Withdraw ' : 'Commit '} {tokenData?.name}
+        </ModalTitle>
         <ModalInput
           selectedToken={tokenData?.name}
-          className="mb-8"
           value={tokenAmount}
           handleChange={setTokenAmount}
         />
-        <ModalParagraph className="mb-8">
-          You will be able to withdraw your assets during the last look
-          period.&nbsp;
+        <ModalParagraph>
+          {isWithdraw
+            ? 'You are now allowed to withdraw your committed assets.'
+            : 'You will be able to withdraw your assets during the last look period. '}
           <PrimaryLink onClick={() => window.open(mediumArticleLink)}>
             Learn more
           </PrimaryLink>
         </ModalParagraph>
-        <ModalButton 
+        <ModalButton
           text={isConnected ? 'Deposit' : 'Connect Wallet'}
           onClick={
             isConnected
-              ? () => commitAssets({ tokenAmount, selectedTokenIndex })
+              ? () => handleSubmit({ tokenAmount, selectedTokenIndex })
               : connectWallet
           }
         />

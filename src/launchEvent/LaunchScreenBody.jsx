@@ -2,7 +2,7 @@ import { ethers } from 'ethers'
 import React, { useState } from 'react'
 import { selectedChain } from '../chains'
 import { AccountStatus } from './AccountStatus'
-import { CommitAssetsModal } from './commitAssetsModal/commitAssetsModal'
+import { CommandModal } from './commitAssetsModal/commitAssetsModal'
 import { ErrorModal, SuccessModal } from './commitAssetsModal/MessageModal'
 import { useCommitAssets } from './commitAssetsModal/useCommitAssets'
 import { LaunchEventStatus } from './EventStatus'
@@ -44,7 +44,7 @@ export const LaunchScreenBody = ({ className = '' }) => {
         />
       ) : depositedTokenAddress === ethers.constants.AddressZero ||
         depositedTokenAddress === selectedTokenAddress ? (
-        <CommitAssetsModal
+        <CommandModal
           selectedTokenIndex={selectedTokenIndex}
           close={() => setSelectedToken(null)}
           commitAssets={commitAssets}
