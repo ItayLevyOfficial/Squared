@@ -7,7 +7,14 @@ import { useState } from 'react'
 import { useFetchBalance } from './usePoolContracts'
 
 export const Products = () => {
-  const [totalValueLocked, sqrdBalance, assetsBalance] = useFetchBalance()
+  const [
+    assetsBalance,
+    sqrdLpBalance,
+    sqrdBalance,
+    ethBalance,
+    usdcBalance,
+    totalValueLocked,
+  ] = useFetchBalance()
 
   const [isModalOpen, setIsOpen] = useState(false)
   const [selectedTokenIndex, setSelectedTokenIndex] = useState(null)
@@ -35,15 +42,15 @@ export const Products = () => {
         tokenAmount={tokenAmount}
       />
 
-      <div className="w-full flex items-center justify-evenly -mt-32">
+      <div className="w-full flex items-center justify-evenly -mt-20">
         {selectedChain.tokens.map((el, index) => (
           <StakingPool el={el} key={index} openModal={() => open(index)} />
         ))}
       </div>
       <Information
-        totalValueLocked={totalValueLocked}
+        ethBalance={ethBalance}
+        usdcBalance={usdcBalance}
         sqrdBalance={sqrdBalance}
-        assetsBalance={assetsBalance}
       />
     </PageWrapper>
   )
