@@ -1,15 +1,23 @@
 import MetamaskIcon from '../launchEvent/icons/metamask.svg'
 import React from 'react'
-import { LibraryIcon, BookOpenIcon } from '@heroicons/react/outline'
+import { LibraryIcon, BookOpenIcon, MinusIcon } from '@heroicons/react/outline'
 import { useLocation } from 'react-router-dom'
 import { BrandingSection } from '../launchEvent/LaunchScreenHeader'
+
+export const PageToggleWrapper = ({ children }) => {
+  return (
+    <div className="flex cursor-pointer group space-x-2 items-center  p-2 ">
+      {children}
+    </div>
+  )
+}
 
 export const PageToggle = () => {
   const { pathname } = useLocation()
 
   return (
-    <div className="pt-12 space-y-6 flex items-center">
-      <div className="flex cursor-pointer group space-x-2 items-center ">
+    <div className="flex items-center justify-center">
+      <PageToggleWrapper>
         <LibraryIcon
           className={`h-6 text-white ${pathname !== '/assets' && 'opacity-40'}`}
         />
@@ -22,9 +30,10 @@ export const PageToggle = () => {
         >
           Assets
         </a>
-      </div>
+      </PageToggleWrapper>
+      <MinusIcon className="text-white h-6 font-thin" />
 
-      <div className="flex cursor-pointer group space-x-2 items-center">
+      <PageToggleWrapper>
         <BookOpenIcon
           className={`h-6 text-white ${
             pathname !== '/dashboard' && 'opacity-40'
@@ -38,14 +47,14 @@ export const PageToggle = () => {
         >
           Dashboard
         </a>
-      </div>
+      </PageToggleWrapper>
     </div>
   )
 }
 
 export const Header = (props) => {
   return (
-    <nav className="flex flex-wrap h-20 items-center justify-between w-full px-4 mt-7">
+    <nav className={`flex w-full justify-between`}>
       <BrandingSection children={'CYCLE ZERO'} />
       <PageToggle />
 
