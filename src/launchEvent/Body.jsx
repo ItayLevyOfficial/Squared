@@ -15,6 +15,7 @@ import { SuccessIcon } from './icons/success'
 import { provider } from './useConnectWallet'
 import { useContract } from './utils'
 import copy from 'copy-to-clipboard'
+import { useCommitAssets } from './commitAssetsModal/useCommitAssets'
 export const formatBigUsd = (bigUsd) => bigUsd.div(10 ** 8).toNumber()
 
 export const Body = ({ className = '', writeLaunchContract, address }) => {
@@ -22,11 +23,9 @@ export const Body = ({ className = '', writeLaunchContract, address }) => {
   const [depositedToken, setDepositedToken] = useState(
     ethers.constants.AddressZero
   )
-  const [transactionHash, setTransactionHash] = useState(
-    '0xe8195739bc5b4e4ea947ff9cb66befdf203418e937d097b0c6faf100d4390dad'
-  )
   const [txCopied, setTxCopied] = useState(false)
   const [balance, setBalance] = useState(0)
+  const [commitAssets, txHash, setTxHash] = useCommitAssets()
 
   const readLaunchContract = useContract(
     provider,
@@ -72,12 +71,15 @@ export const Body = ({ className = '', writeLaunchContract, address }) => {
       />
       <div className="w-[0.5px] h-full bg-white" />
       <EventStatus launchContract={readLaunchContract} />
-      {transactionHash ? (
+      {txHash && selectedToken ? (
         <MessageModal
           icon={<SuccessIcon />}
           header="Request Sent Successfully"
-          isOpen={Boolean(transactionHash)}
-          close={() => setTransactionHash(null)}
+          isOpen={Boolean(txHash)}
+          close={() => {
+            setTxHash(null)
+            setSelectedToken(null)
+          }}
           footer={
             <>
               Transactions on the {selectedChain.chainName} chain usually
@@ -86,11 +88,11 @@ export const Body = ({ className = '', writeLaunchContract, address }) => {
               <span
                 className="font-number bg-dark py-1 px-2 text-sm rounded-lg cursor-pointer"
                 onClick={() => {
-                  copy(transactionHash)
+                  copy(txHash)
                   setTxCopied(true)
                 }}
               >
-                {transactionHash.slice(0, 7)}... &nbsp;
+                {txHash.slice(0, 7)}... &nbsp;
                 <FontAwesomeIcon icon={txCopied ? faCheck : faCopy} />
               </span>
               {'  '}
@@ -107,7 +109,7 @@ export const Body = ({ className = '', writeLaunchContract, address }) => {
         <CommitAssetsModal
           selectedToken={selectedTokenIndex}
           close={() => setSelectedToken(null)}
-          launchContract={writeLaunchContract}
+          launchContract={writeLaunchContract} commitAssets={commitAssets}
         />
       ) : (
         <MessageModal

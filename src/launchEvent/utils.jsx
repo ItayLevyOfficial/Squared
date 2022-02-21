@@ -1,5 +1,7 @@
 import { useEffect, useState } from 'react'
 import { ethers } from 'ethers'
+import { BigNumber } from 'ethers'
+import { selectedChain } from '../chains';
 
 export function convertMilliseconds(milliseconds, format) {
   let days, hours, minutes, seconds, total_hours, total_minutes, total_seconds
@@ -37,3 +39,5 @@ export const useContract = (signer, contractAddress, abi) => {
 
   return contract
 }
+
+

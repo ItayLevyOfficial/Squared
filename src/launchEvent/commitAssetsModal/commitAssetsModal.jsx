@@ -26,41 +26,12 @@ export const PrimaryLink = ({ children, onClick }) => (
   </span>
 )
 
-export const CommitAssetsModal = ({ selectedToken, close, launchContract }) => {
+export const CommitAssetsModal = ({ selectedToken, close, commitAssets }) => {
   const isOpen = selectedToken !== null
   const tokenData = isOpen ? selectedChain.tokens[selectedToken] : null
   const [tokenAmount, setTokenAmount] = useState('')
-  const [signer, connectWallet, address] = useConnectWallet()
+  const [, connectWallet, address] = useConnectWallet()
   const isConnected = Boolean(address)
-  const erc20 = useContract(signer, selectedChain.tokens[1].address, erc20abi)
-
-  const commitAssets = async () => {
-    const amount = BigNumber.from(tokenAmount).mul(
-      BigNumber.from('10').pow(BigNumber.from(tokenData.decimals))
-    )
-    if (selectedToken === 0) {
-      const tx = await launchContract.deposit(
-        {
-          token: tokenData.address,
-          amount: amount,
-        },
-        [],
-        { value: amount }
-      )
-      const hash = tx.hash
-      console.table({hash})
-    } else {
-      await erc20.approve(selectedChain.launchContractAddress, amount)
-      await launchContract.deposit(
-        {
-          token: tokenData.address,
-          amount: amount,
-        },
-        [],
-        {}
-      )
-    }
-  }
 
   const onClose = () => {
     setTokenAmount('')
@@ -78,7 +49,7 @@ export const CommitAssetsModal = ({ selectedToken, close, launchContract }) => {
     >
       <CloseButton close={onClose} />
       <div className="flex flex-col items-center">
-        <h1 className="text-2xl mb-8 mt-3 text-white font-medium">
+        <h1 className="text-2xl mb-8 m text-white font-medium">
           Commit {tokenData?.name}
         </h1>
         <ModalInput
@@ -96,7 +67,7 @@ export const CommitAssetsModal = ({ selectedToken, close, launchContract }) => {
         </p>
         <ModalButton
           text={isConnected ? 'Deposit' : 'Connect Wallet'}
-          onClick={isConnected ? commitAssets : connectWallet}
+          onClick={isConnected ? () => commitAssets(tokenAmount) : connectWallet}
         />
       </div>
     </Modal>
