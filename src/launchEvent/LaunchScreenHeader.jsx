@@ -1,6 +1,7 @@
 import React from 'react'
 import { selectedChain } from '../chains'
 import { AddressButton } from '../Layouts/Header'
+import { PrimaryLink } from './commitAssetsModal/commitAssetsModal'
 import Logo from './icons/logo.svg'
 import MetamaskIcon from './icons/metamask.svg'
 import { useConnectWallet } from './useConnectWallet'
@@ -13,13 +14,21 @@ export const LaunchScreenHeader = ({
     startTime: selectedChain.launchTime,
     length: weekInMillis,
   },
+  paragraph = (
+    <>
+      {' '}
+      Squared's take-off event has arrived. It's the first time users can buy
+      SQRD to fill our liquidity reserve.&nbsp;
+      <PrimaryLink>Learn more</PrimaryLink>
+    </>
+  ),
 }) => {
   const [, connectWallet, address] = useConnectWallet()
 
   return (
     <div className={`flex w-full justify-between`}>
       <BrandingSection>{phase}</BrandingSection>
-      <MiddleSection timeLeftData={timeLeftData} />
+      <MiddleSection timeLeftData={timeLeftData} paragraph={paragraph} />
       <AddressSection address={address} connectWallet={connectWallet} />
     </div>
   )
@@ -42,15 +51,13 @@ export const BrandingSection = ({ children }) => (
   </div>
 )
 
-const MiddleSection = ({ timeLeftData }) => (
+const MiddleSection = ({ timeLeftData, paragraph }) => (
   <div className={`flex flex-col items-center w-full`}>
     <TimeLeft className="mb-6" timeLeftData={timeLeftData} />
     <p
       className={`${timeLeftBarWidth} text-center font-medium text-base tracking-wider leading-relaxed`}
     >
-      Squared's take-off event has arrived. It's the first time users can buy
-      SQRD to fill our liquidity reserve.&nbsp;
-      <a className="text-primary underline">Learn more</a>
+      {paragraph}
     </p>
   </div>
 )
