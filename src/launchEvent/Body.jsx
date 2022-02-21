@@ -3,15 +3,13 @@ import React, { useCallback, useEffect, useState } from 'react'
 import { selectedChain } from '../chains'
 import { launchContractAbi } from './abis/defiRoundAbi'
 import { AccountStatus } from './AccountStatus'
-import {
-  CommitAssetsModal,
-  PrimaryLink
-} from './commitAssetsModal/commitAssetsModal'
-import { MessageModal, SuccessModal } from './commitAssetsModal/MessageModal'
+import { CommitAssetsModal } from './commitAssetsModal/commitAssetsModal'
+import { ErrorModal, SuccessModal } from './commitAssetsModal/MessageModal'
 import { useCommitAssets } from './commitAssetsModal/useCommitAssets'
 import { EventStatus } from './EventStatus'
 import { provider } from './useConnectWallet'
 import { useContract } from './utils'
+
 export const formatBigUsd = (bigUsd) => bigUsd.div(10 ** 8).toNumber()
 
 export const Body = ({ className = '', writeLaunchContract, address }) => {
@@ -71,7 +69,8 @@ export const Body = ({ className = '', writeLaunchContract, address }) => {
           close={() => {
             setSelectedToken(null)
             setTxHash(null)
-          }} txHash={txHash}
+          }}
+          txHash={txHash}
         />
       ) : depositedToken === ethers.constants.AddressZero ||
         depositedToken === selectedTokenAddress ? (
@@ -82,17 +81,11 @@ export const Body = ({ className = '', writeLaunchContract, address }) => {
           commitAssets={commitAssets}
         />
       ) : (
-        <MessageModal
-          isOpen={selectedTokenIndex !== null}
-          footer={
-            <>
-              In the launch event, you can only deposit either{' '}
-              {depositedTokenName} or {tokenName}. Since you already committed{' '}
-              {depositedTokenName}, further deposits of {tokenName} are not
-              allowed. <PrimaryLink>Learn more</PrimaryLink>
-            </>
-          }
+        <ErrorModal
           close={() => setSelectedToken(null)}
+          isOpen={selectedTokenIndex !== null}
+          tokenName={tokenName}
+          depositedTokenName={depositedTokenName}
         />
       )}
     </div>

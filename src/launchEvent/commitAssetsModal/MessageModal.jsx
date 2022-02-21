@@ -70,7 +70,8 @@ export const SuccessModal = ({ txHash, close }) => {
     />
   )
 }
-const ErrorModal = ({ isOpen, tokenName, depositedTokenName, close }) => (
+
+export const ErrorModal = ({ isOpen, tokenName, depositedTokenName, close }) => (
   <MessageModal
     isOpen={isOpen}
     footer={
