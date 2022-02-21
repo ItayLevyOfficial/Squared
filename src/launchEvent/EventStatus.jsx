@@ -1,7 +1,6 @@
 import React, { useContext } from 'react'
 import { BodyHeaderText } from './AccountStatus'
 import { useEventData } from './useEventData'
-import { selectedChain } from '../chains'
 import { StageContext } from './LaunchEventScreen'
 
 export const StatusBar = ({
@@ -57,10 +56,9 @@ export const LaunchEventStatus = () => {
   const farmingPercent =
     farmingMoney > 0 ? Math.round((farmingMoney / totalCommitments) * 100) : 0
   const swapPercent = 100 - farmingPercent
-  const stage = useContext(StageContext)
-  console.table({stage})
+  const launchStage = useContext(StageContext)
   const secondStatusBarData =
-    selectedChain.launchData.stage === 1
+    launchStage === 1
       ? {
           percent: 100 - soldPercent,
           text: 'Remaining',
@@ -70,7 +68,7 @@ export const LaunchEventStatus = () => {
           text: 'Farming',
         }
   const firstStatusBarData =
-    selectedChain.launchData.stage === 1
+    launchStage === 1
       ? {
           percent: soldPercent,
           text: 'Sold',
@@ -84,7 +82,7 @@ export const LaunchEventStatus = () => {
     <div className="flex flex-col">
       <BodyHeaderText
         title={
-          selectedChain.launchData.stage === 1
+          launchStage === 1
             ? 'Event Status'
             : 'Event Summary'
         }
