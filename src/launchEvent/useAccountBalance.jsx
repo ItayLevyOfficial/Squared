@@ -7,7 +7,7 @@ import { provider, useConnectWallet } from './useConnectWallet'
 import { useContract } from './utils'
 
 export const useAccountBalance = () => {
-  const [, , address] = useConnectWallet()
+  const [, , walletAddress] = useConnectWallet()
   const [depositedToken, setDepositedToken] = useState(
     ethers.constants.AddressZero
   )
@@ -20,26 +20,36 @@ export const useAccountBalance = () => {
   )
 
   const fetchBalance = useCallback(async () => {
-    const accountToken = await readLaunchContract.accountToken(address)
+    const accountToken = await readLaunchContract.accountToken(walletAddress)
     setDepositedToken(accountToken)
     if (accountToken !== ethers.constants.AddressZero) {
-      const newBalance = await readLaunchContract.accountBalance(address)
+      const newBalance = await readLaunchContract.accountBalance(walletAddress)
       setBalance(formatBigUsd(newBalance))
     }
-  }, [address, readLaunchContract])
+  }, [walletAddress, readLaunchContract])
+
+  const fetchBalanceIfNeeded = useCallback(
+    async (address) => {
+      if (address === walletAddress) {
+        await fetchBalance()
+      }
+    },
+    [fetchBalance, walletAddress]
+  )
 
   useEffect(() => {
-    if (readLaunchContract && address) {
+    if (readLaunchContract && walletAddress) {
       fetchBalance()
     }
-  }, [address, fetchBalance, readLaunchContract])
+  }, [walletAddress, fetchBalance, readLaunchContract])
 
   useEffect(() => {
     if (readLaunchContract) {
-      readLaunchContract.on('Deposited', fetchBalance)
-      return () => readLaunchContract.removeListener('Deposited', fetchBalance)
+      readLaunchContract.on('Deposited', fetchBalanceIfNeeded)
+      return () =>
+        readLaunchContract.removeListener('Deposited', fetchBalanceIfNeeded)
     }
-  }, [fetchBalance, readLaunchContract])
+  }, [fetchBalanceIfNeeded, readLaunchContract])
 
   return [balance, depositedToken]
 }
