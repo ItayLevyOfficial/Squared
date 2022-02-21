@@ -1,8 +1,14 @@
 import React from 'react'
 import { BodyHeaderText } from './AccountStatus'
 import { useEventData } from './useEventData'
+import { selectedChain } from '../chains'
 
-export const StatusBar = ({ percent, text, backgroundColorClass, className }) => {
+export const StatusBar = ({
+  percent,
+  text,
+  backgroundColorClass,
+  className,
+}) => {
   const minEdgeValue = 4
   const maxEdgeValue = 100 - minEdgeValue
 
@@ -46,18 +52,28 @@ export const LaunchEventStatus = () => {
   let soldPercent = Math.round(
     (totalCommitments / (maxTotalCommitments / 2)) * 100
   )
+  const swapPercent = Math.round((totalCommitments / maxTotalCommitments) * 100)
+  const actualSwapPercent = swapPercent > 100 ? 100 : swapPercent
+  const farmingPercent = swapPercent > 100 ? swapPercent - 100 : 0
+
+  const firstStatusBarData = selectedChain.stage === 1 ? {
+    percent: soldPercent, text: 'Sold'
+  } : {
+    percent: actualSwapPercent,
+    text: 'Swap'
+  }
   return (
     <div className="flex flex-col">
       <BodyHeaderText
-        title="Event Status"
+        title={selectedChain.stage === 1 ? 'Event Status' : 'Event Summary'}
         firstRow={`Total commitments: $${numberWithCommas(totalCommitments)}`}
         secondRow={`Conversion rate: $${sqrdPrice}/SQRD`}
         marginBottomClass="mb-7"
       />
       <div className="flex space-x-10">
         <StatusBar
-          percent={soldPercent}
-          text="Sold"
+          percent={firstStatusBarData.percent}
+          text={firstStatusBarData.text}
           backgroundColorClass="bg-dark"
         />
         <StatusBar
