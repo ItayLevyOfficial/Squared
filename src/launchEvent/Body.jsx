@@ -14,11 +14,11 @@ export const formatBigUsd = (bigUsd) => bigUsd.div(10 ** 8).toNumber()
 
 export const Body = ({ className = '',  address }) => {
   const [selectedTokenIndex, setSelectedToken] = useState(null)
+  const [commitAssets, txHash, setTxHash] = useCommitAssets()
   const [depositedToken, setDepositedToken] = useState(
     ethers.constants.AddressZero
   )
   const [balance, setBalance] = useState(0)
-  const [commitAssets, txHash, setTxHash] = useCommitAssets()
 
   const readLaunchContract = useContract(
     provider,
