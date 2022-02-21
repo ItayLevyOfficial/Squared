@@ -9,7 +9,7 @@ import { convertMilliseconds } from './utils'
 const timeLeftBarWidth = 'w-[580px]'
 
 export const LaunchScreenHeader = ({
-  phase = 'TAKE OFF EVENT',
+  phase = selectedChain.launchData.stage === 1 ? 'TAKE OFF EVENT' : 'LAST LOOK',
   timeLeftData = {
     startTime: selectedChain.launchData.launchTime,
     length: weekInMillis,
