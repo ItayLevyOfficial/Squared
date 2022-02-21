@@ -1,8 +1,13 @@
-export const InformationLine = (props) => {
+export const InformationLine = ({
+  heading,
+  children,
+  classNameHeading,
+  classNameChildren,
+}) => {
   return (
     <div className="flex text-xl">
-      <div className={`${props.classNameHeading}`}>{props.heading} </div>
-      <div className={`${props.classNameChildren} ml-4`}>{props.children}</div>
+      <div className={`${classNameHeading}`}>{heading} </div>
+      <div className={`${classNameChildren} ml-4`}>{children}</div>
     </div>
   )
 }
