@@ -1,6 +1,6 @@
 import { faCheck, faCopy } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { copy } from 'copy-to-clipboard'
+import copy from 'copy-to-clipboard'
 import React, { useState } from 'react'
 import Modal from 'react-modal'
 import { selectedChain } from '../../chains'
@@ -21,7 +21,7 @@ export const ModalParagraph = ({ children, className }) => (
 
 export const MessageModal = ({
   icon = <img src={errorIcon} alt="" />,
-  header = 'Commit not allowed',
+  header,
   footer = '',
   isOpen,
   close,
@@ -56,7 +56,7 @@ export const SuccessModal = ({ txHash, close }) => {
       close={close}
       footer={
         <>
-          Transactions on the {selectedChain.chainName} chain are usually
+          Transactions on the {selectedChain.chainName} network are usually
           completed within {selectedChain.approvalTime} minutes. Your
           transaction hash is{'  '}
           <span
@@ -86,17 +86,23 @@ export const ErrorModal = ({
   tokenName,
   depositedTokenName,
   close,
-}) => (
-  <MessageModal
-    isOpen={isOpen}
-    footer={
-      <>
-        In the launch event, you can only deposit either {depositedTokenName} or{' '}
-        {tokenName}. Since you already committed {depositedTokenName}, further
-        deposits of {tokenName} are not allowed.{' '}
-        <PrimaryLink>Learn more</PrimaryLink>
-      </>
-    }
-    close={close}
-  />
-)
+}) => {
+  return (
+    <MessageModal
+      header={`${
+        selectedChain.launchData.stage === 1 ? 'Commit' : 'Withdraw'
+      } not allowed`}
+      isOpen={isOpen}
+      footer={
+        <>
+          In the launch event, you can only deposit either {depositedTokenName}{' '}
+          or {tokenName}. Since you already committed {depositedTokenName},
+          further{' '}
+          {selectedChain.launchData.stage === 1 ? 'deposits' : 'withdrawals'} of{' '}
+          {tokenName} are not allowed. <PrimaryLink>Learn more</PrimaryLink>
+        </>
+      }
+      close={close}
+    />
+  )
+}

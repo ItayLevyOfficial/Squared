@@ -81,7 +81,7 @@ export const LaunchEventStatus = () => {
   return (
     <div className="flex flex-col">
       <BodyHeaderText
-        title={selectedChain.stage === 1 ? 'Event Status' : 'Event Summary'}
+        title={selectedChain.launchData.stage === 1 ? 'Event Status' : 'Event Summary'}
         firstRow={`Total commitments: $${numberWithCommas(totalCommitments)}`}
         secondRow={`Conversion rate: $${sqrdPrice}/SQRD`}
         marginBottomClass="mb-7"
