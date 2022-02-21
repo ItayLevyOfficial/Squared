@@ -92,29 +92,26 @@ export const Dashboard = (props) => {
         ))}
       </div>
       <div className="flex -mt-20 w-10/12">
-        <InformationBox title={'YOUR BALANCE'}>
-          <InformationLine heading={'ETH :'}>{ethBalance} </InformationLine>
-          <InformationLine heading={'USDC :'}>
-            {usdcBalance.toFixed(1)}{' '}
+        <InformationBox title={'Your Balance'}>
+          <InformationLine>{`ETH : ${ethBalance}`} </InformationLine>
+          <InformationLine>
+            {`USDC : ${usdcBalance.toFixed(1)}`}
           </InformationLine>
-          <InformationLine heading={'SQRD :'}>
-            {sqrdBalance.toFixed(1)}{' '}
-          </InformationLine>
-          <InformationLine heading={'SQRD LP :'}>
-            {sqrdLpBalance.toFixed(1)}
+          <InformationLine>{`SQRD : ${sqrdBalance.toFixed(
+            1
+          )}`}</InformationLine>
+          <InformationLine>
+            {`SQRD LP : ${sqrdLpBalance.toFixed(1)}`}
           </InformationLine>
         </InformationBox>
         <div className="w-[0.5px] h-42 bg-white" />
-        <InformationBox title={'YOUR REWARDS'}>
-          <InformationLine heading={'EARNED :'}>0.0</InformationLine>
-          <InformationLine heading={'AVAILABLE :'}>0.0</InformationLine>
-          <InformationLine
-            heading={
-              <button className="bg-darkPrimary text-white w-[180px] text-md p-2 text-md rounded-lg opacity-50 mt-6">
-                Claim SQRD
-              </button>
-            }
-          />
+        <InformationBox title={'Your Rewards'}>
+          <InformationLine>{`EARNED : 0.0`}</InformationLine>
+          <InformationLine>{`AVAILABLE : 0.0`}</InformationLine>
+          <InformationLine />
+          <button className="bg-darkPrimary text-white w-[180px] text-md p-2 text-md rounded-lg opacity-50 mt-6">
+            Claim SQRD
+          </button>
         </InformationBox>
       </div>
     </PageWrapper>
