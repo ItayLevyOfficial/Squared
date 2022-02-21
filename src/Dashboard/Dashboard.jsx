@@ -11,9 +11,13 @@ import { PoolAbi } from '../products/ABIs/PoolAbi'
 import { useContract } from '../launchEvent/utils'
 import { provider } from '../launchEvent/useConnectWallet'
 
-export const formatBigUsd = (bigUsd) => bigUsd.div(10 ** 6).toNumber()
-
 export const Dashboard = (props) => {
+  const formatBigUsd = (bigUsd) => bigUsd.div(10 ** 6).toNumber()
+  const [, , address] = useConnectWallet()
+  const [ethBalance, setEthBalance] = useState(0)
+  const [usdcBalance, setUsdcBalance] = useState(0)
+  const [sqrdBalance, setSqrdBalance] = useState(0)
+  const [sqrdLpBalance, setSqrdLpBalance] = useState(0)
   const ethPoolContract = useContract(
     provider,
     selectedChain.tokens[0].ethPoolContractAddress,
@@ -34,11 +38,6 @@ export const Dashboard = (props) => {
     selectedChain.tokens[3].sqrdLpPoolContractAddress,
     PoolAbi
   )
-  const [signer, connectWallet, address] = useConnectWallet()
-  const [ethBalance, setEthBalance] = useState(0)
-  const [usdcBalance, setUsdcBalance] = useState(0)
-  const [sqrdBalance, setSqrdBalance] = useState(0)
-  const [sqrdLpBalance, setSqrdLpBalance] = useState(0)
 
   const fetchBalance = useCallback(async () => {
     const balanceEth = await ethPoolContract.balanceOf(address)
@@ -66,7 +65,6 @@ export const Dashboard = (props) => {
     }
   }, [
     address,
-    fetchBalance,
     ethPoolContract,
     usdcPoolContract,
     sqrdPoolContract,
