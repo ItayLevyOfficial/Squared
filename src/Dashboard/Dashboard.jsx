@@ -84,7 +84,7 @@ export const Dashboard = (props) => {
         ))}
       </div>
       <div className="flex -mt-20 w-10/12">
-        <InformationBox title={'BALANCE'}>
+        <InformationBox title={'YOUR BALANCE'}>
           <InformationLine heading={'ETH :'}>{ethBalance} </InformationLine>
           <InformationLine heading={'USDC :'}>
             {usdcBalance.toFixed(1)}{' '}
@@ -97,7 +97,7 @@ export const Dashboard = (props) => {
           </InformationLine>
         </InformationBox>
         <div className="w-[0.5px] h-42 bg-white" />
-        <InformationBox title={'REWARDS'}>
+        <InformationBox title={'YOUR REWARDS'}>
           <InformationLine heading={'EARNED :'}>0.0</InformationLine>
           <InformationLine heading={'AVAILABLE :'}>0.0</InformationLine>
           <InformationLine
