@@ -31,8 +31,10 @@ export const useConnectWallet = () => {
               },
             ],
           })
-          // Need this line because the browser need some time before launching the connect window again.
-          await delay(1_000)
+          await window.ethereum?.request({
+            method: 'wallet_switchEthereumChain',
+            params: [{ chainId: selectedChain.chainId }],
+          })
         } catch (addError) {
           console.error({ addError })
         }
