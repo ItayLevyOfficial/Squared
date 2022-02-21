@@ -70,3 +70,17 @@ export const SuccessModal = ({ txHash, close }) => {
     />
   )
 }
+const ErrorModal = ({ isOpen, tokenName, depositedTokenName, close }) => (
+  <MessageModal
+    isOpen={isOpen}
+    footer={
+      <>
+        In the launch event, you can only deposit either {depositedTokenName} or{' '}
+        {tokenName}. Since you already committed {depositedTokenName}, further
+        deposits of {tokenName} are not allowed.{' '}
+        <PrimaryLink>Learn more</PrimaryLink>
+      </>
+    }
+    close={close}
+  />
+)
