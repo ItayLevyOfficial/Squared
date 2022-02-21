@@ -9,6 +9,12 @@ import errorIcon from '../icons/error.svg'
 import { SuccessIcon } from '../icons/success'
 import { commitContentStyles, PrimaryLink } from './commitAssetsModal'
 
+export const ModalTitle = ({ children, className }) => (
+  <h1 className={`text-2xl font-medium ${className}`}>{children}</h1>
+)
+
+
+
 export const MessageModal = ({
   icon = <img src={errorIcon} alt="" />,
   header = 'Commit not allowed',
@@ -27,7 +33,7 @@ export const MessageModal = ({
     >
       <CloseButton close={close} />
       <div className="flex flex-col items-center">
-        <h1 className="text-2xl font-medium mt-2 mb-6">{header}</h1>
+        <ModalTitle className="mt-2 mb-6">{header}</ModalTitle>
         {icon}
         <p className="text-center mt-6 w-5/6 text-lg text-white">{footer}</p>
       </div>
@@ -71,7 +77,12 @@ export const SuccessModal = ({ txHash, close }) => {
   )
 }
 
-export const ErrorModal = ({ isOpen, tokenName, depositedTokenName, close }) => (
+export const ErrorModal = ({
+  isOpen,
+  tokenName,
+  depositedTokenName,
+  close,
+}) => (
   <MessageModal
     isOpen={isOpen}
     footer={

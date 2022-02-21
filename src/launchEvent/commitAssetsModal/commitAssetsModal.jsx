@@ -50,7 +50,7 @@ export const CommitAssetsModal = ({
     >
       <CloseButton close={onClose} />
       <div className="flex flex-col items-center">
-        <h1 className="text-2xl mb-8 m text-white font-medium">
+        <h1 className="text-2xl mb-8 mt-2 text-white font-medium">
           Commit {tokenData?.name}
         </h1>
         <ModalInput
