@@ -44,11 +44,9 @@ export const overlayStyles = {
 }
 
 export const CloseButton = ({ close }) => (
-  <div className="flex justify-end">
-    <button onClick={close}>
+    <button onClick={close} className='fixed right-5 top-5'>
       <XIcon className="h-6 text-white" />
     </button>
-  </div>
 )
 
 export const ModalDisplay = ({
