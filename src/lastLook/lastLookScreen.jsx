@@ -5,7 +5,7 @@ import { useConnectWallet } from '../launchEvent/useConnectWallet'
 import { useContract } from '../launchEvent/utils'
 import { ScreenPaddedContainer } from '../launchEvent/LaunchEventScreen'
 import { LaunchScreenHeader } from '../launchEvent/LaunchScreenHeader'
-import { Body } from '../launchEvent/Body'
+import { LaunchScreenBody } from '../launchEvent/Body'
 import { Footer } from '../launchEvent/Footer'
 import { weekInMillis } from '../launchEvent/LaunchScreenHeader'
 import { PrimaryLink } from '../launchEvent/commitAssetsModal/commitAssetsModal'
@@ -36,7 +36,7 @@ export const LastLookScreen = () => {
             </>
           }
         />
-        <Body
+        <LaunchScreenBody
           writerLaunchContract={writeLaunchContract}
           address={walletAddress}
         />

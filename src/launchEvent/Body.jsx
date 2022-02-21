@@ -10,7 +10,7 @@ import { useAccountBalance } from './useAccountBalance'
 
 export const formatBigUsd = (bigUsd) => bigUsd.div(10 ** 8).toNumber()
 
-export const Body = ({ className = '' }) => {
+export const LaunchScreenBody = ({ className = '' }) => {
   const [selectedTokenIndex, setSelectedToken] = useState(null)
   const [commitAssets, txHash, setTxHash] = useCommitAssets()
   const [balance, depositedTokenAddress] = useAccountBalance()
