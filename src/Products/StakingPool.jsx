@@ -1,5 +1,10 @@
+import { useFetchBalance } from './usePoolContracts'
+
 export const StakingPool = ({ el, openModal }) => {
   const { name } = el
+  const [sqrdLpBalance, sqrdBalance, ethBalance, usdcBalance] =
+    useFetchBalance()
+
   return (
     <div className="group w-56 h-full text-white border-transparent rounded-xl flex flex-col items-center justify-between p-2 flex-shrink-0">
       <div className="flex justify-start items-center space-x-4 mb-4">
@@ -10,8 +15,16 @@ export const StakingPool = ({ el, openModal }) => {
             <div className="text-sm ">APR :</div>
           </div>
           <div className="flex flex-col items-center justify-center">
-            <div className="text-sm">$4M</div>
-            <div className="text-sm">7%</div>
+            <div className="text-sm">
+              {name === 'ETH'
+                ? ethBalance
+                : name === 'USDC'
+                ? usdcBalance
+                : name === 'SQRD'
+                ? sqrdBalance
+                : sqrdLpBalance}
+            </div>
+            <div className="text-sm">0%</div>
           </div>
         </div>
       </div>

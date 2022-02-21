@@ -1,11 +1,14 @@
-import { useState } from 'react'
 import { StakingPool } from './StakingPool'
 import { Information } from './Information'
 import { PageWrapper } from '../layouts/PageWrapper'
 import { ModalDisplay } from './ModalDisplay'
 import { selectedChain } from '../chains'
+import { useState } from 'react'
+import { useFetchBalance } from './usePoolContracts'
 
 export const Products = () => {
+  const [totalValueLocked, sqrdBalance, assetsBalance] = useFetchBalance()
+
   const [isModalOpen, setIsOpen] = useState(false)
   const [selectedTokenIndex, setSelectedTokenIndex] = useState(null)
 
@@ -37,7 +40,11 @@ export const Products = () => {
           <StakingPool el={el} key={index} openModal={() => open(index)} />
         ))}
       </div>
-      <Information />
+      <Information
+        totalValueLocked={totalValueLocked}
+        sqrdBalance={sqrdBalance}
+        assetsBalance={assetsBalance}
+      />
     </PageWrapper>
   )
 }
