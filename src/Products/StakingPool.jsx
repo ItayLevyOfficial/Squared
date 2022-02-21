@@ -11,7 +11,7 @@ export const StakingPool = ({ el, openModal }) => {
           </div>
           <div className="flex flex-col items-center justify-center">
             <div className="text-sm">$4M</div>
-            <div className="text-sm">7%</div>
+            <div className="text-sm">0%</div>
           </div>
         </div>
       </div>
