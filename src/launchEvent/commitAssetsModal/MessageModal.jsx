@@ -1,6 +1,6 @@
 import { faCheck, faCopy } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { copy } from 'copy-to-clipboard'
+import copy from 'copy-to-clipboard'
 import React, { useState } from 'react'
 import Modal from 'react-modal'
 import { selectedChain } from '../../chains'
@@ -98,10 +98,8 @@ export const ErrorModal = ({
           In the launch event, you can only deposit either {depositedTokenName}{' '}
           or {tokenName}. Since you already committed {depositedTokenName},
           further{' '}
-          {selectedChain.launchData.stage === 1
-            ? 'deposits'
-            : 'withdrawals'} of {tokenName} are not allowed.{' '}
-          <PrimaryLink>Learn more</PrimaryLink>
+          {selectedChain.launchData.stage === 1 ? 'deposits' : 'withdrawals'} of{' '}
+          {tokenName} are not allowed. <PrimaryLink>Learn more</PrimaryLink>
         </>
       }
       close={close}
