@@ -1,11 +1,84 @@
-import { useState } from 'react'
 import { StakingPool } from '../products/StakingPool'
 import { PageWrapper } from '../layouts/PageWrapper'
 import { ModalDisplay } from '../products/ModalDisplay'
 import { selectedChain } from '../chains'
 import { InformationBox, InformationLine } from '../products/Information'
+import { ethers } from 'ethers'
+import { useEffect, useState, useCallback } from 'react'
+import { useConnectWallet } from '../launchEvent/useConnectWallet'
+import { EthPoolAbi } from '../products/ABIs/EthPoolAbi'
+import { PoolAbi } from '../products/ABIs/PoolAbi'
+import { useContract } from '../launchEvent/utils'
+import { provider } from '../launchEvent/useConnectWallet'
+
+export const formatBigUsd = (bigUsd) => bigUsd.div(10 ** 6).toNumber()
 
 export const Dashboard = (props) => {
+  const ethPoolContract = useContract(
+    provider,
+    selectedChain.ethPoolContractAddress,
+    EthPoolAbi
+  )
+  const usdcPoolContract = useContract(
+    provider,
+    selectedChain.usdcPoolContractAddress,
+    PoolAbi
+  )
+  const sqrdPoolContract = useContract(
+    provider,
+    selectedChain.sqrdPoolContractAddress,
+    PoolAbi
+  )
+  const sqrdLpPoolContract = useContract(
+    provider,
+    selectedChain.sqrdLpPoolContractAddress,
+    PoolAbi
+  )
+  const [signer, connectWallet, address] = useConnectWallet()
+  const [ethBalance, setEthBalance] = useState(0)
+  const [usdcBalance, setUsdcBalance] = useState(0)
+  const [sqrdBalance, setSqrdBalance] = useState(0)
+  const [sqrdLpBalance, setSqrdLpBalance] = useState(0)
+
+  const fetchBalance = useCallback(async () => {
+    const balanceEth = await ethPoolContract.balanceOf(address)
+    setEthBalance(ethers.utils.formatEther(balanceEth))
+
+    const balanceUsdc = await usdcPoolContract.balanceOf(address)
+    setUsdcBalance(formatBigUsd(balanceUsdc))
+
+    const balanceSqrd = await sqrdPoolContract.balanceOf(address)
+    setSqrdBalance(formatBigUsd(balanceSqrd))
+
+    const balanceSqrdLp = await sqrdLpPoolContract.balanceOf(address)
+    setSqrdLpBalance(formatBigUsd(balanceSqrdLp))
+  }, [
+    address,
+    ethPoolContract,
+    usdcPoolContract,
+    sqrdPoolContract,
+    sqrdLpPoolContract,
+  ])
+
+  useEffect(() => {
+    if (
+      ethPoolContract &&
+      usdcPoolContract &&
+      sqrdPoolContract &&
+      sqrdLpPoolContract &&
+      address
+    ) {
+      fetchBalance()
+    }
+  }, [
+    address,
+    fetchBalance,
+    ethPoolContract,
+    usdcPoolContract,
+    sqrdPoolContract,
+    sqrdLpPoolContract,
+  ])
+
   const [isModalOpen, setIsOpen] = useState(false)
   const [selectedTokenIndex, setSelectedTokenIndex] = useState(null)
   const [tokenAmount, setTokenAmount] = useState('')
@@ -37,13 +110,10 @@ export const Dashboard = (props) => {
       </div>
       <div className="flex -mt-20 w-10/12">
         <InformationBox title={'BALANCE'}>
-          <InformationLine heading={'ETH :'} children={props.ethBalance} />
-          <InformationLine heading={'USDC :'} children={props.usdcBalance} />
-          <InformationLine heading={'SQRD :'} children={props.sqrdBalance} />
-          <InformationLine
-            heading={'SQRD LP :'}
-            children={props.sqrdLpBalance}
-          />
+          <InformationLine heading={'ETH :'} children={ethBalance} />
+          <InformationLine heading={'USDC :'} children={usdcBalance} />
+          <InformationLine heading={'SQRD :'} children={sqrdBalance} />
+          <InformationLine heading={'SQRD LP :'} children={sqrdLpBalance} />
         </InformationBox>
         <div className="w-[0.5px] h-42 bg-white" />
         <InformationBox title={'REWARDS'}>
