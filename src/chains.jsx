@@ -13,7 +13,7 @@ const localChainConfig = {
     launchContractAddress: '0x8A93d247134d91e0de6f96547cB0204e5BE8e5D8',
     launchTime: 1645112469136,
     lastLookStart: 1645382384584,
-    stage: 1,
+    stage: 2,
     launchTokensAmount: 3_000_000,
   },
   scan: { name: 'Etherscan', url: 'https://etherscan.io/' },
