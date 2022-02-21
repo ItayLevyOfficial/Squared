@@ -11,7 +11,7 @@ const timeLeftBarWidth = 'w-[580px]'
 export const LaunchScreenHeader = ({
   phase = 'TAKE OFF EVENT',
   timeLeftData = {
-    startTime: selectedChain.launchTime,
+    startTime: selectedChain.launchData.launchTime,
     length: weekInMillis,
   },
   paragraph = (
@@ -77,7 +77,6 @@ const TimeLeft = ({ className = '', timeLeftData }) => {
     100 - Math.round((remainTimeMillis / timeLeftData.length) * 100)
   const formattedRemainTime = convertMilliseconds(remainTimeMillis)
 
-  console.log({ timeLeftData, formattedRemainTime })
   return (
     <div className={`${className} flex flex-col items-center`}>
       <h2

@@ -8,7 +8,7 @@ import { useContract } from './utils'
 export const useEventData = () => {
   const launchContract = useContract(
     provider,
-    selectedChain.launchContractAddress,
+    selectedChain.launchData.launchContractAddress,
     launchContractAbi
   )
   const [totalCommitments, setTotalCommitments] = useState(0)
@@ -38,7 +38,7 @@ export const useEventData = () => {
       ? minSqrdPrice
       : totalCommitments > maxTotalCommitments / 2
       ? maxSqrdPrice
-      : (totalCommitments / selectedChain.launchTokensAmount).toFixed(2)
+      : (totalCommitments / selectedChain.launchData.launchTokensAmount).toFixed(2)
 
   return [totalCommitments, maxTotalCommitments, sqrdPrice]
 }

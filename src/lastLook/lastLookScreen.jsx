@@ -15,7 +15,7 @@ export const LastLookScreen = () => {
   const [signer, , walletAddress] = useConnectWallet()
   const writeLaunchContract = useContract(
     signer,
-    selectedChain.launchContractAddress,
+    selectedChain.launchData.launchContractAddress,
     launchContractAbi
   )
 
@@ -24,7 +24,7 @@ export const LastLookScreen = () => {
       <div className="flex flex-col items-center justify-between w-full max-w-screen-2xl h-full">
         <LaunchScreenHeader
           timeLeftData={{
-            startTime: selectedChain.lastLookStart,
+            startTime: selectedChain.launchData.lastLookStart,
             length: weekInMillis / 7,
           }}
           phase="LAST LOOK"

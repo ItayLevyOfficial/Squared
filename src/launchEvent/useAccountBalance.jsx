@@ -15,7 +15,7 @@ export const useAccountBalance = () => {
 
   const readLaunchContract = useContract(
     provider,
-    selectedChain.launchContractAddress,
+    selectedChain.launchData.launchContractAddress,
     launchContractAbi
   )
 
