@@ -80,7 +80,15 @@ export const Dashboard = (props) => {
       />
       <div className="w-full flex items-center justify-evenly -mt-20">
         {selectedChain.tokens.map((el, index) => (
-          <StakingPool el={el} key={index} openModal={() => open(index)} />
+          <StakingPool
+            el={el}
+            key={index}
+            openModal={() => open(index)}
+            ethBalance={ethBalance}
+            usdcBalance={usdcBalance}
+            sqrdBalance={sqrdBalance}
+            sqrdLpBalance={sqrdLpBalance}
+          />
         ))}
       </div>
       <div className="flex -mt-20 w-10/12">
