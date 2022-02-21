@@ -1,9 +1,4 @@
-export const InformationLine = ({
-  heading,
-  children,
-  classNameHeading,
-  classNameChildren,
-}) => {
+export const InformationLine = ({ children, classNameChildren }) => {
   return (
     <div className="font-number text-lg mb-2 tracking-wider">
       <div className={`${classNameChildren}`}>{children}</div>
