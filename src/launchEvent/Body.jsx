@@ -8,9 +8,9 @@ import { launchContractAbi } from './abis/defiRoundAbi'
 import { AccountStatus } from './AccountStatus'
 import {
   CommitAssetsModal,
-  PrimaryLink
+  PrimaryLink,
 } from './commitAssetsModal/commitAssetsModal'
-import { MessageModal } from './commitAssetsModal/MessageModal'
+import { MessageModal, SuccessModal } from './commitAssetsModal/MessageModal'
 import { useCommitAssets } from './commitAssetsModal/useCommitAssets'
 import { EventStatus } from './EventStatus'
 import { SuccessIcon } from './icons/success'
@@ -72,44 +72,19 @@ export const Body = ({ className = '', writeLaunchContract, address }) => {
       <div className="w-[0.5px] h-full bg-white" />
       <EventStatus launchContract={readLaunchContract} />
       {txHash && selectedToken ? (
-        <MessageModal
-          icon={<SuccessIcon />}
-          header="Request Sent Successfully"
-          isOpen={Boolean(txHash)}
+        <SuccessModal
           close={() => {
-            setTxHash(null)
             setSelectedToken(null)
-          }}
-          footer={
-            <>
-              Transactions on the {selectedChain.chainName} chain are usually
-              completed within {selectedChain.approvalTime} minutes. Your
-              transaction hash is{'  '}
-              <span
-                className="font-number bg-dark py-1 px-2 text-sm rounded-lg cursor-pointer"
-                onClick={() => {
-                  copy(txHash)
-                  setTxCopied(true)
-                }}
-              >
-                {txHash.slice(0, 7)}... &nbsp;
-                <FontAwesomeIcon icon={txCopied ? faCheck : faCopy} />
-              </span>
-              {'  '}
-              and you can check its status on{' '}
-              <PrimaryLink onClick={() => window.open(selectedChain.scan.url)}>
-                {selectedChain.scan.name}
-              </PrimaryLink>
-              .
-            </>
-          }
+            setTxHash(null)
+          }} txHash={txHash}
         />
       ) : depositedToken === ethers.constants.AddressZero ||
         depositedToken === selectedTokenAddress ? (
         <CommitAssetsModal
           selectedTokenIndex={selectedTokenIndex}
           close={() => setSelectedToken(null)}
-          launchContract={writeLaunchContract} commitAssets={commitAssets}
+          launchContract={writeLaunchContract}
+          commitAssets={commitAssets}
         />
       ) : (
         <MessageModal
