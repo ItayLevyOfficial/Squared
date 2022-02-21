@@ -40,7 +40,7 @@ export const useConnectWallet = () => {
       }
     }
     await provider.send('eth_requestAccounts', [])
-    setSigner(provider.getSigner())
+    window.location.reload()
   }
 
   useEffect(() => {
