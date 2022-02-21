@@ -1,6 +1,6 @@
-import { BigNumber } from 'ethers'
 import React, { useState } from 'react'
 import Modal from 'react-modal'
+import { selectedChain } from '../../chains'
 import { ModalButton } from '../../Products/ModalButtons'
 import {
   CloseButton,
@@ -8,10 +8,8 @@ import {
   overlayStyles,
 } from '../../Products/ModalDisplay'
 import { ModalInput } from '../../Products/ModalInput'
-import { selectedChain } from '../../chains'
 import { useConnectWallet } from '../useConnectWallet'
-import { useContract } from '../utils'
-import { erc20abi } from '../abis/erc20abi'
+import { ModalParagraph, ModalTitle } from './MessageModal'
 
 export const commitContentStyles = {
   ...contentStyles,
@@ -20,45 +18,22 @@ export const commitContentStyles = {
 
 const mediumArticleLink = 'https://medium.com/puffpuffmoney'
 
-export const PurpleLink = ({ children, onClick }) => (
-  <span className="text-primary underline cursor-pointer" onClick={onClick}>
+export const PrimaryLink = ({ children, onClick }) => (
+  <span className="text-darkPrimary underline cursor-pointer" onClick={onClick}>
     {children}
   </span>
 )
 
-export const CommitAssetsModal = ({ selectedToken, close, launchContract }) => {
-  const isOpen = selectedToken !== null
-  const tokenData = isOpen ? selectedChain.tokens[selectedToken] : null
+export const CommitAssetsModal = ({
+  selectedTokenIndex,
+  close,
+  commitAssets,
+}) => {
+  const isOpen = selectedTokenIndex !== null
+  const tokenData = isOpen ? selectedChain.tokens[selectedTokenIndex] : null
   const [tokenAmount, setTokenAmount] = useState('')
-  const [signer, connectWallet, address] = useConnectWallet()
+  const [, connectWallet, address] = useConnectWallet()
   const isConnected = Boolean(address)
-  const erc20 = useContract(signer, selectedChain.tokens[1].address, erc20abi)
-
-  const commitAssets = async () => {
-    const amount = BigNumber.from(tokenAmount).mul(
-      BigNumber.from('10').pow(BigNumber.from(tokenData.decimals))
-    )
-    if (selectedToken === 0) {
-      await launchContract.deposit(
-        {
-          token: tokenData.address,
-          amount: amount,
-        },
-        [],
-        { value: amount }
-      )
-    } else {
-      await erc20.approve(selectedChain.launchContractAddress, amount)
-      await launchContract.deposit(
-        {
-          token: tokenData.address,
-          amount: amount,
-        },
-        [],
-        {}
-      )
-    }
-  }
 
   const onClose = () => {
     setTokenAmount('')
@@ -76,25 +51,27 @@ export const CommitAssetsModal = ({ selectedToken, close, launchContract }) => {
     >
       <CloseButton close={onClose} />
       <div className="flex flex-col items-center">
-        <h1 className="text-2xl mb-8 -mt-4 text-white font-medium">
-          Commit {tokenData?.name}
-        </h1>
+        <ModalTitle className="mb-8 mt-2">Commit {tokenData?.name}</ModalTitle>
         <ModalInput
           selectedToken={tokenData?.name}
           className="mb-8"
           value={tokenAmount}
           handleChange={setTokenAmount}
         />
-        <p className="w-10/12 text-center mb-8">
+        <ModalParagraph className="mb-8">
           You will be able to withdraw your assets during the last look
           period.&nbsp;
-          <PurpleLink onClick={() => window.open(mediumArticleLink)}>
+          <PrimaryLink onClick={() => window.open(mediumArticleLink)}>
             Learn more
-          </PurpleLink>
-        </p>
-        <ModalButton
+          </PrimaryLink>
+        </ModalParagraph>
+        <ModalButton 
           text={isConnected ? 'Deposit' : 'Connect Wallet'}
-          onClick={isConnected ? commitAssets : connectWallet}
+          onClick={
+            isConnected
+              ? () => commitAssets({ tokenAmount, selectedTokenIndex })
+              : connectWallet
+          }
         />
       </div>
     </Modal>

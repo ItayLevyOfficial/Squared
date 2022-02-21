@@ -1,4 +1,5 @@
 import MetamaskIcon from '../launchEvent/icons/metamask.svg'
+import React from 'react'
 
 export const Header = (props) => {
   return (
