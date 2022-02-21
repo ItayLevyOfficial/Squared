@@ -1,52 +1,19 @@
 import { ethers } from 'ethers'
-import React, { useCallback, useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import { selectedChain } from '../chains'
-import { launchContractAbi } from './abis/defiRoundAbi'
 import { AccountStatus } from './AccountStatus'
 import { CommitAssetsModal } from './commitAssetsModal/commitAssetsModal'
 import { ErrorModal, SuccessModal } from './commitAssetsModal/MessageModal'
 import { useCommitAssets } from './commitAssetsModal/useCommitAssets'
 import { EventStatus } from './EventStatus'
-import { provider } from './useConnectWallet'
-import { useContract } from './utils'
+import { useAccountBalance } from './useAccountBalance'
 
 export const formatBigUsd = (bigUsd) => bigUsd.div(10 ** 8).toNumber()
 
-export const Body = ({ className = '',  address }) => {
+export const Body = ({ className = '' }) => {
   const [selectedTokenIndex, setSelectedToken] = useState(null)
   const [commitAssets, txHash, setTxHash] = useCommitAssets()
-  const [depositedToken, setDepositedToken] = useState(
-    ethers.constants.AddressZero
-  )
-  const [balance, setBalance] = useState(0)
-
-  const readLaunchContract = useContract(
-    provider,
-    selectedChain.launchContractAddress,
-    launchContractAbi
-  )
-
-  const fetchBalance = useCallback(async () => {
-    const accountToken = await readLaunchContract.accountToken(address)
-    setDepositedToken(accountToken)
-    if (accountToken !== ethers.constants.AddressZero) {
-      const newBalance = await readLaunchContract.accountBalance(address)
-      setBalance(formatBigUsd(newBalance))
-    }
-  }, [address, readLaunchContract])
-
-  useEffect(() => {
-    if (readLaunchContract && address) {
-      fetchBalance()
-    }
-  }, [address, fetchBalance, readLaunchContract])
-
-  useEffect(() => {
-    if (readLaunchContract) {
-      readLaunchContract.on('Deposited', fetchBalance)
-      return () => readLaunchContract.removeListener('Deposited', fetchBalance)
-    }
-  }, [fetchBalance, readLaunchContract])
+  const [balance, depositedToken] = useAccountBalance()
 
   const selectedToken = selectedChain.tokens[selectedTokenIndex]
   const selectedTokenAddress = selectedToken?.address
