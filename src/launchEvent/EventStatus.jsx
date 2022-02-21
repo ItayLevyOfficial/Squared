@@ -64,15 +64,17 @@ export const EventStatus = () => {
       ? maxSqrdPrice
       : (totalCommitments / selectedChain.launchTokensAmount).toFixed(2)
 
-   let soldPercent =
-    Math.round((totalCommitments / (maxTotalCommitments / 2)) * 100)
-    soldPercent = 0
+  let soldPercent = Math.round(
+    (totalCommitments / (maxTotalCommitments / 2)) * 100
+  )
+  console.table({totalCommitments, maxTotalCommitments})
+  soldPercent = 0
 
   return (
     <div className="flex flex-col">
       <BodyHeaderText
         title="Event Status"
-        firstRow={`Total commitments: $${totalCommitments}`}
+        firstRow={`Total commitments: $${numberWithCommas(totalCommitments)}`}
         secondRow={`Conversion rate: $${sqrdPrice}/SQRD`}
         marginBottomClass="mb-7"
       />
