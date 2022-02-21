@@ -13,7 +13,11 @@ export const ModalTitle = ({ children, className }) => (
   <h1 className={`text-2xl font-medium ${className}`}>{children}</h1>
 )
 
-
+export const ModalParagraph = ({ children, className }) => (
+  <p className={`text-center w-5/6 text-lg text-white ${className}`}>
+    {children}
+  </p>
+)
 
 export const MessageModal = ({
   icon = <img src={errorIcon} alt="" />,
@@ -35,7 +39,7 @@ export const MessageModal = ({
       <div className="flex flex-col items-center">
         <ModalTitle className="mt-2 mb-6">{header}</ModalTitle>
         {icon}
-        <p className="text-center mt-6 w-5/6 text-lg text-white">{footer}</p>
+        <ModalParagraph className="mt-6">{footer}</ModalParagraph>
       </div>
     </Modal>
   )
