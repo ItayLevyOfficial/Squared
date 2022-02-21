@@ -21,7 +21,7 @@ export const ModalParagraph = ({ children, className }) => (
 
 export const MessageModal = ({
   icon = <img src={errorIcon} alt="" />,
-  header = 'Commit not allowed',
+  header,
   footer = '',
   isOpen,
   close,
@@ -86,17 +86,25 @@ export const ErrorModal = ({
   tokenName,
   depositedTokenName,
   close,
-}) => (
-  <MessageModal
-    isOpen={isOpen}
-    footer={
-      <>
-        In the launch event, you can only deposit either {depositedTokenName} or{' '}
-        {tokenName}. Since you already committed {depositedTokenName}, further
-        deposits of {tokenName} are not allowed.{' '}
-        <PrimaryLink>Learn more</PrimaryLink>
-      </>
-    }
-    close={close}
-  />
-)
+}) => {
+  return (
+    <MessageModal
+      header={`${
+        selectedChain.launchData.stage === 1 ? 'Commit' : 'Withdraw'
+      } not allowed`}
+      isOpen={isOpen}
+      footer={
+        <>
+          In the launch event, you can only deposit either {depositedTokenName}{' '}
+          or {tokenName}. Since you already committed {depositedTokenName},
+          further{' '}
+          {selectedChain.launchData.stage === 1
+            ? 'deposits'
+            : 'withdrawals'} of {tokenName} are not allowed.{' '}
+          <PrimaryLink>Learn more</PrimaryLink>
+        </>
+      }
+      close={close}
+    />
+  )
+}
