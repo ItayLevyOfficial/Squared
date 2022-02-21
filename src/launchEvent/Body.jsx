@@ -1,5 +1,6 @@
 import { faCheck, faCopy } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import copy from 'copy-to-clipboard'
 import { ethers } from 'ethers'
 import React, { useCallback, useEffect, useState } from 'react'
 import { selectedChain } from '../chains'
@@ -7,18 +8,17 @@ import { launchContractAbi } from './abis/defiRoundAbi'
 import { AccountStatus } from './AccountStatus'
 import {
   CommitAssetsModal,
-  PrimaryLink,
+  PrimaryLink
 } from './commitAssetsModal/commitAssetsModal'
 import { MessageModal } from './commitAssetsModal/MessageModal'
+import { useCommitAssets } from './commitAssetsModal/useCommitAssets'
 import { EventStatus } from './EventStatus'
 import { SuccessIcon } from './icons/success'
 import { provider } from './useConnectWallet'
 import { useContract } from './utils'
-import copy from 'copy-to-clipboard'
-import { useCommitAssets } from './commitAssetsModal/useCommitAssets'
 export const formatBigUsd = (bigUsd) => bigUsd.div(10 ** 8).toNumber()
 
-export const Body = ({ className = '', writeLaunchContract, address, signer }) => {
+export const Body = ({ className = '', writeLaunchContract, address }) => {
   const [selectedTokenIndex, setSelectedToken] = useState(null)
   const [depositedToken, setDepositedToken] = useState(
     ethers.constants.AddressZero
