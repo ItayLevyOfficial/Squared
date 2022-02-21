@@ -98,12 +98,8 @@ export const Dashboard = (props) => {
         </InformationBox>
         <div className="w-[0.5px] h-42 bg-white" />
         <InformationBox title={'REWARDS'}>
-          <InformationLine heading={'EARNED :'}>
-            {props.earnedBalance}
-          </InformationLine>
-          <InformationLine heading={'AVAILABLE :'}>
-            {props.availableBalance}
-          </InformationLine>
+          <InformationLine heading={'EARNED :'}>0.0</InformationLine>
+          <InformationLine heading={'AVAILABLE :'}>0.0</InformationLine>
           <InformationLine
             heading={
               <button className="bg-darkPrimary text-white w-[180px] text-md p-2 text-md rounded-lg opacity-50 mt-6">
