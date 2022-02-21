@@ -6,38 +6,21 @@ import { InformationBox, InformationLine } from '../products/Information'
 import { ethers } from 'ethers'
 import { useEffect, useState, useCallback } from 'react'
 import { useConnectWallet } from '../launchEvent/useConnectWallet'
-import { EthPoolAbi } from '../products/ABIs/EthPoolAbi'
-import { PoolAbi } from '../products/ABIs/PoolAbi'
-import { useContract } from '../launchEvent/utils'
-import { provider } from '../launchEvent/useConnectWallet'
+import { usePoolContracts } from '../products/usePoolContracts'
 
 export const Dashboard = (props) => {
+  const [
+    ethPoolContract,
+    usdcPoolContract,
+    sqrdPoolContract,
+    sqrdLpPoolContract,
+  ] = usePoolContracts()
   const formatBigErc20 = (bigUsd) => bigUsd.div(10 ** 6).toNumber()
   const [, , address] = useConnectWallet()
   const [ethBalance, setEthBalance] = useState(0)
   const [usdcBalance, setUsdcBalance] = useState(0)
   const [sqrdBalance, setSqrdBalance] = useState(0)
   const [sqrdLpBalance, setSqrdLpBalance] = useState(0)
-  const ethPoolContract = useContract(
-    provider,
-    selectedChain.tokens[0].ethPoolContractAddress,
-    EthPoolAbi
-  )
-  const usdcPoolContract = useContract(
-    provider,
-    selectedChain.tokens[1].usdcPoolContractAddress,
-    PoolAbi
-  )
-  const sqrdPoolContract = useContract(
-    provider,
-    selectedChain.tokens[2].sqrdPoolContractAddress,
-    PoolAbi
-  )
-  const sqrdLpPoolContract = useContract(
-    provider,
-    selectedChain.tokens[3].sqrdLpPoolContractAddress,
-    PoolAbi
-  )
 
   const fetchBalance = useCallback(async () => {
     const balanceEth = await ethPoolContract.balanceOf(address)
