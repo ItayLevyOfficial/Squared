@@ -18,7 +18,7 @@ import copy from 'copy-to-clipboard'
 import { useCommitAssets } from './commitAssetsModal/useCommitAssets'
 export const formatBigUsd = (bigUsd) => bigUsd.div(10 ** 8).toNumber()
 
-export const Body = ({ className = '', writeLaunchContract, address }) => {
+export const Body = ({ className = '', writeLaunchContract, address, signer }) => {
   const [selectedTokenIndex, setSelectedToken] = useState(null)
   const [depositedToken, setDepositedToken] = useState(
     ethers.constants.AddressZero
@@ -82,7 +82,7 @@ export const Body = ({ className = '', writeLaunchContract, address }) => {
           }}
           footer={
             <>
-              Transactions on the {selectedChain.chainName} chain usually
+              Transactions on the {selectedChain.chainName} chain are usually
               completed within {selectedChain.approvalTime} minutes. Your
               transaction hash is{'  '}
               <span
