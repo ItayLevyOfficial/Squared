@@ -2,10 +2,10 @@ import { useState } from 'react'
 import { StakingPool } from '../products/StakingPool'
 import { PageWrapper } from '../layouts/PageWrapper'
 import { ModalDisplay } from '../products/ModalDisplay'
-import { selectedChain } from '../launchEvent/chains'
-import { InformationBox } from '../products/Information'
+import { selectedChain } from '../chains'
+import { InformationBox, InformationLine } from '../products/Information'
 
-export const Dashboard = () => {
+export const Dashboard = (props) => {
   const [isModalOpen, setIsOpen] = useState(false)
   const [selectedTokenIndex, setSelectedTokenIndex] = useState(null)
 
@@ -36,31 +36,34 @@ export const Dashboard = () => {
           <StakingPool el={el} key={index} openModal={() => open(index)} />
         ))}
       </div>
-      <div className="w-full flex -mt-20">
-        <InformationBox
-          title="BALANCE"
-          heading1="ETH :"
-          heading2="USDC :"
-          heading3="SQRD :"
-          heading4="SQRD LP :"
-          content1=" $1,500"
-          content2=" $3,000"
-          content3=" $50,000"
-          content4=" $10,000"
-        />
-        <div className="w-[0.5px] h-full bg-white" />
-        <InformationBox
-          title="REWARDS"
-          heading1="EARNED :"
-          heading2="AVAILABLE :"
-          heading3={
-            <button className="bg-darkPrimary text-white w-[180px] text-md p-2 text-md rounded-lg opacity-50 mt-6">
-              Claim SQRD
-            </button>
-          }
-          content1="0.00 SQRD"
-          content2="0.00 SQRD"
-        />
+      <div className="flex -mt-20 w-10/12">
+        <InformationBox title={'BALANCE'}>
+          <InformationLine heading={'ETH :'} children={props.ethBalance} />
+          <InformationLine heading={'USDC :'} children={props.usdcBalance} />
+          <InformationLine heading={'SQRD :'} children={props.sqrdBalance} />
+          <InformationLine
+            heading={'SQRD LP :'}
+            children={props.sqrdLpBalance}
+          />
+        </InformationBox>
+        <div className="w-[0.5px] h-42 bg-white" />
+        <InformationBox title={'REWARDS'}>
+          <InformationLine
+            heading={'EARNED :'}
+            children={props.earnedBalance}
+          />
+          <InformationLine
+            heading={'AVAILABLE :'}
+            children={props.availableBalance}
+          />
+          <InformationLine
+            heading={
+              <button className="bg-darkPrimary text-white w-[180px] text-md p-2 text-md rounded-lg opacity-50 mt-6">
+                Claim SQRD
+              </button>
+            }
+          />
+        </InformationBox>
       </div>
     </PageWrapper>
   )

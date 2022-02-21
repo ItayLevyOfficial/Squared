@@ -1,20 +1,25 @@
-import { AddressButton } from '../Layouts/Header'
-import MetamaskIcon from './icons/metamask.svg'
-import { convertMilliseconds } from './convertMillis'
 import React from 'react'
-import { selectedChain } from './chains'
+import { selectedChain } from '../chains'
+import { AddressButton } from '../Layouts/Header'
 import Logo from './icons/logo.svg'
+import MetamaskIcon from './icons/metamask.svg'
+import { convertMilliseconds } from './utils'
 const timeLeftBarWidth = 'w-[580px]'
+import { useConnectWallet } from './useConnectWallet'
 
-export const LaunchScreenHeader = ({ address, connectWallet, phase }) => (
-  <div className={`flex w-full justify-between`}>
-    <BrandingSection phase={phase} />
-    <MiddleSection />
-    <AddressSection address={address} connectWallet={connectWallet} />
-  </div>
-)
+export const LaunchScreenHeader = () => {
+  const [, connectWallet, address] = useConnectWallet()
 
-const BrandingSection = ({ phase = 'TAKE OFF EVENT' }) => (
+  return (
+    <div className={`flex w-full justify-between`}>
+      <BrandingSection>TAKE OFF EVENT</BrandingSection>
+      <MiddleSection />
+      <AddressSection address={address} connectWallet={connectWallet} />
+    </div>
+  )
+}
+
+export const BrandingSection = ({ children }) => (
   <div className="flex flex-none h-fit">
     <img src={Logo} width={60} />
     <div className="w-5 flex-none" />
@@ -25,7 +30,7 @@ const BrandingSection = ({ phase = 'TAKE OFF EVENT' }) => (
         SQUARED
       </h1>
       <div className="flex items-center">
-        <h2 className="text-primary text-lg font-normal mr-1.5">{phase}</h2>
+        <h2 className="text-primary text-lg font-normal mr-1.5">{children}</h2>
       </div>
     </div>
   </div>

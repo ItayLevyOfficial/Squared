@@ -5,13 +5,13 @@ import { useState } from 'react'
 import { ModalOptions } from './ModalOptions'
 import { ModalInput } from './ModalInput'
 import { ModalButtons } from './ModalButtons'
-import { useContract } from '../launchEvent/useContract'
+import { useContract } from '../launchEvent/utils'
 import { useConnectWallet } from '../launchEvent/useConnectWallet'
 import { EthPoolAbi } from './ABIs/EthPoolAbi'
 import { PoolAbi } from './ABIs/PoolAbi'
-import { selectedChain } from '../launchEvent/chains'
+import { selectedChain } from '../chains'
 import { BigNumber } from 'ethers'
-import { erc20abi } from '../launchEvent/erc20abi'
+import { erc20abi } from '../launchEvent/abis/erc20abi'
 import React from 'react'
 Modal.setAppElement('#root')
 
@@ -44,11 +44,9 @@ export const overlayStyles = {
 }
 
 export const CloseButton = ({ close }) => (
-  <div className="flex justify-end">
-    <button onClick={close}>
+    <button onClick={close} className='fixed right-5 top-5'>
       <XIcon className="h-6 text-white" />
     </button>
-  </div>
 )
 
 export const ModalDisplay = ({

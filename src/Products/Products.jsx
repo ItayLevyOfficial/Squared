@@ -3,7 +3,7 @@ import { StakingPool } from './StakingPool'
 import { Information } from './Information'
 import { PageWrapper } from '../layouts/PageWrapper'
 import { ModalDisplay } from './ModalDisplay'
-import { selectedChain } from '../launchEvent/chains'
+import { selectedChain } from '../chains'
 
 export const Products = () => {
   const [isModalOpen, setIsOpen] = useState(false)

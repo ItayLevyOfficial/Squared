@@ -1,7 +1,10 @@
+import React, { useEffect, useState } from 'react'
+import { selectedChain } from '../chains'
+import { launchContractAbi } from './abis/defiRoundAbi'
 import { BodyHeaderText } from './AccountStatus'
-import React, { useState, useEffect } from 'react'
 import { formatBigUsd } from './Body'
-import { selectedChain } from './chains'
+import { provider } from './useConnectWallet'
+import { useContract } from './utils'
 
 const StatusBar = ({ percent, text, backgroundColorClass, className }) => (
   <div className={`flex flex-col h-36 ${className}`}>
@@ -26,7 +29,12 @@ function numberWithCommas(x) {
   return parts.join('.')
 }
 
-export const EventStatus = ({ launchContract }) => {
+export const EventStatus = () => {
+  const launchContract = useContract(
+    provider,
+    selectedChain.launchContractAddress,
+    launchContractAbi
+  )
   const [totalCommitments, setTotalCommitments] = useState(0)
   const [maxTotalCommitments, setMaxTotalCommitments] = useState(0)
 
