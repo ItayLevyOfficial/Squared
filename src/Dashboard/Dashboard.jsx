@@ -16,22 +16,22 @@ export const formatBigUsd = (bigUsd) => bigUsd.div(10 ** 6).toNumber()
 export const Dashboard = (props) => {
   const ethPoolContract = useContract(
     provider,
-    selectedChain.ethPoolContractAddress,
+    selectedChain.tokens[0].ethPoolContractAddress,
     EthPoolAbi
   )
   const usdcPoolContract = useContract(
     provider,
-    selectedChain.usdcPoolContractAddress,
+    selectedChain.tokens[1].usdcPoolContractAddress,
     PoolAbi
   )
   const sqrdPoolContract = useContract(
     provider,
-    selectedChain.sqrdPoolContractAddress,
+    selectedChain.tokens[2].sqrdPoolContractAddress,
     PoolAbi
   )
   const sqrdLpPoolContract = useContract(
     provider,
-    selectedChain.sqrdLpPoolContractAddress,
+    selectedChain.tokens[3].sqrdLpPoolContractAddress,
     PoolAbi
   )
   const [signer, connectWallet, address] = useConnectWallet()

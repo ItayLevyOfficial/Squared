@@ -65,7 +65,7 @@ export const ModalDisplay = ({
   const isConnected = Boolean(address)
   const ethPoolContract = useContract(
     signer,
-    selectedChain.ethPoolContractAddress,
+    selectedChain.tokens[0].ethPoolContractAddress,
     EthPoolAbi
   )
   const erc20Usdc = useContract(
@@ -75,7 +75,7 @@ export const ModalDisplay = ({
   )
   const usdcPoolContract = useContract(
     signer,
-    selectedChain.usdcPoolContractAddress,
+    selectedChain.tokens[1].usdcPoolContractAddress,
     PoolAbi
   )
   const erc20Sqrd = useContract(
@@ -85,7 +85,7 @@ export const ModalDisplay = ({
   )
   const sqrdPoolContract = useContract(
     signer,
-    selectedChain.sqrdPoolContractAddress,
+    selectedChain.tokens[2].sqrdPoolContractAddress,
     PoolAbi
   )
   const erc20SqrdLp = useContract(
@@ -95,7 +95,7 @@ export const ModalDisplay = ({
   )
   const sqrdLpPoolContract = useContract(
     signer,
-    selectedChain.sqrdLpPoolContractAddress,
+    selectedChain.tokens[3].sqrdLpPoolContractAddress,
     PoolAbi
   )
 
