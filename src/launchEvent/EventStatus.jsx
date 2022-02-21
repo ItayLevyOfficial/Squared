@@ -7,22 +7,38 @@ import { provider } from './useConnectWallet'
 import { useContract } from './utils'
 import { useEventData } from './useEventData'
 
-const StatusBar = ({ percent, text, backgroundColorClass, className }) => (
-  <div className={`flex flex-col h-36 ${className}`}>
-    <div className={`flex items-end flex-1`}>
-      <div className="bg-white h-full rounded-t-lg w-5" />
-      <div className="bg-white h-[0.5px] w-24" />
-    </div>
-    <div className={`flex`} style={{ height: `${percent}%` }}>
+const StatusBar = ({ percent, text, backgroundColorClass, className }) => {
+  const minEdgeValue = 4
+  const maxEdgeValue = 100 - minEdgeValue
+
+  return (
+    <div className={`flex flex-col h-36 ${className}`}>
+      <div className={`flex items-end flex-1`}>
+        <div className="bg-white h-full rounded-t-lg w-5" />
+        <div className="bg-white h-[0.5px] w-24" />
+      </div>
       <div
-        className={`bg-dark ${backgroundColorClass} h-full rounded-b-lg w-5 flex-none`}
-      />
-      <span className="font-number font-normal py-2 px-3">
-        {percent}% {text}
-      </span>
+        className={`flex`}
+        style={{
+          height: `${
+            percent > minEdgeValue
+              ? percent < maxEdgeValue
+                ? percent
+                : maxEdgeValue
+              : minEdgeValue
+          }%`,
+        }}
+      >
+        <div
+          className={`bg-dark ${backgroundColorClass} h-full rounded-b-lg w-5 flex-none`}
+        />
+        <span className="font-number font-normal py-2 px-3">
+          {percent}% {text}
+        </span>
+      </div>
     </div>
-  </div>
-)
+  )
+}
 
 function numberWithCommas(x) {
   var parts = x.toString().split('.')
@@ -33,33 +49,26 @@ function numberWithCommas(x) {
 export const EventStatus = () => {
   const [totalCommitments, maxTotalCommitments, sqrdPrice] = useEventData()
 
-  const soldPercent =
-    Math.round(totalCommitments / (maxTotalCommitments / 2)) > 10
-  const minSoldDisplayed = 7
-  const displayedPercent =
-    soldPercent > minSoldDisplayed ? soldPercent : minSoldDisplayed
-  const totalCommitmentsDisplayed = numberWithCommas(
-    displayedPercent === minSoldDisplayed
-      ? Math.round((minSoldDisplayed / 100) * (maxTotalCommitments / 2))
-      : totalCommitments
+  let soldPercent = Math.round(
+    (totalCommitments / (maxTotalCommitments / 2)) * 100
   )
 
   return (
     <div className="flex flex-col">
       <BodyHeaderText
         title="Event Status"
-        firstRow={`Total commitments: $${totalCommitmentsDisplayed}`}
+        firstRow={`Total commitments: $${numberWithCommas(totalCommitments)}`}
         secondRow={`Conversion rate: $${sqrdPrice}/SQRD`}
         marginBottomClass="mb-7"
       />
       <div className="flex space-x-10">
         <StatusBar
-          percent={displayedPercent}
+          percent={soldPercent}
           text="Sold"
           backgroundColorClass="bg-dark"
         />
         <StatusBar
-          percent={100 - displayedPercent}
+          percent={100 - soldPercent}
           text="Remaining"
           backgroundColorClass="bg-primary"
         />
