@@ -9,6 +9,7 @@ import {
 } from '../../Products/ModalDisplay'
 import { ModalInput } from '../../Products/ModalInput'
 import { useConnectWallet } from '../useConnectWallet'
+import { ModalTitle } from './MessageModal'
 
 export const commitContentStyles = {
   ...contentStyles,
@@ -50,9 +51,9 @@ export const CommitAssetsModal = ({
     >
       <CloseButton close={onClose} />
       <div className="flex flex-col items-center">
-        <h1 className="text-2xl mb-8 mt-2 text-white font-medium">
+        <ModalTitle className="mb-8 mt-2">
           Commit {tokenData?.name}
-        </h1>
+        </ModalTitle>
         <ModalInput
           selectedToken={tokenData?.name}
           className="mb-8"
