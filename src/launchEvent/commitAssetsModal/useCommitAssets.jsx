@@ -6,7 +6,7 @@ import { useState } from 'react'
 import { launchContractAbi } from '../abis/defiRoundAbi'
 import { useConnectWallet } from '../useConnectWallet'
 
-const parseNumberDecimals = ({ amount, decimals }) =>
+export const parseNumberDecimals = ({ amount, decimals }) =>
   BigNumber.from(amount).mul(BigNumber.from('10').pow(BigNumber.from(decimals)))
 
 export const useCommitAssets = () => {

@@ -12,6 +12,7 @@ import { selectedChain } from '../chains'
 import { BigNumber } from 'ethers'
 import { erc20abi } from '../launchEvent/abis/erc20abi'
 import React from 'react'
+import { parseNumberDecimals } from '../launchEvent/commitAssetsModal/useCommitAssets'
 Modal.setAppElement('#root')
 
 export const contentStyles = {
@@ -83,9 +84,10 @@ export const ModalDisplay = ({
   )
 
   const commitAssets = async () => {
-    const amount = BigNumber.from(tokenAmount).mul(
-      BigNumber.from('10').pow(BigNumber.from(tokenData.decimals))
-    )
+    const amount = parseNumberDecimals({
+      amount: tokenAmount,
+      decimals: tokenData.decimals,
+    })
     if (selectedTokenIndex === 0) {
       await ethPoolContract.deposit(amount, { value: amount })
     } else {
