@@ -9,7 +9,6 @@ export const PageWrapper = ({ children }) => {
 
   return (
     <div className="w-screen h-screen bg-black flex px-16 ">
-      <Sidenav />
       <div className="flex flex-col w-full ">
         <Header connectWallet={connectWallet} address={address} />
         <div className="flex flex-col justify-evenly items-center w-full h-full ">
