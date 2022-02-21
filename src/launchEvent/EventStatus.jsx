@@ -1,10 +1,10 @@
-import { BodyHeaderText } from './AccountStatus'
-import React, { useState, useEffect } from 'react'
-import { formatBigUsd } from './Body'
+import React, { useEffect, useState } from 'react'
 import { selectedChain } from '../chains'
-import { useContract } from './utils'
-import { provider } from './useConnectWallet'
 import { launchContractAbi } from './abis/defiRoundAbi'
+import { BodyHeaderText } from './AccountStatus'
+import { formatBigUsd } from './Body'
+import { provider } from './useConnectWallet'
+import { useContract } from './utils'
 
 const StatusBar = ({ percent, text, backgroundColorClass, className }) => {
   const minEdgeValue = 4
@@ -83,8 +83,6 @@ export const EventStatus = () => {
   let soldPercent = Math.round(
     (totalCommitments / (maxTotalCommitments / 2)) * 100
   )
-  console.table({ totalCommitments, maxTotalCommitments })
-  soldPercent = 0
 
   return (
     <div className="flex flex-col">
