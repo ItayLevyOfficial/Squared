@@ -64,16 +64,9 @@ export const EventStatus = () => {
       ? maxSqrdPrice
       : (totalCommitments / selectedChain.launchTokensAmount).toFixed(2)
 
-  const soldPercent =
+   let soldPercent =
     Math.round((totalCommitments / (maxTotalCommitments / 2)) * 100)
-  // const minSoldDisplayed = 7
-  // const displayedPercent =
-    // soldPercent > minSoldDisplayed ? soldPercent : minSoldDisplayed
-  // const totalCommitmentsDisplayed = numberWithCommas(
-    // displayedPercent === minSoldDisplayed
-      // ? Math.round((minSoldDisplayed / 100) * (maxTotalCommitments / 2))
-      // : totalCommitments
-  // )
+    soldPercent = 0
 
   return (
     <div className="flex flex-col">
