@@ -4,13 +4,25 @@ import React from 'react'
 import { useNavigate } from 'react-router-dom'
 
 const SquaredLogo = ({ className = '' }) => (
-  <svg className={className} width="486" height="486" viewBox="0 0 486 486" fill="none" xmlns="http://www.w3.org/2000/svg">
-<circle cx="243" cy="243" r="243" fill="black"/>
-<path d="M355 171L243 115L131 171V315L243 371L355 315V171Z" fill="#FBFCD4"/>
-<path d="M243 227L131 171V315L243 371L355 315V171L243 227Z" fill="#FFDD03"/>
-<path d="M243 227V371L355 315V171L243 227Z" fill="#FBC403"/>
-</svg>
-
+  <svg
+    className={className}
+    width="486"
+    height="486"
+    viewBox="0 0 486 486"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <circle cx="243" cy="243" r="243" fill="black" />
+    <path
+      d="M355 171L243 115L131 171V315L243 371L355 315V171Z"
+      fill="#FBFCD4"
+    />
+    <path
+      d="M243 227L131 171V315L243 371L355 315V171L243 227Z"
+      fill="#FFDD03"
+    />
+    <path d="M243 227V371L355 315V171L243 227Z" fill="#FBC403" />
+  </svg>
 )
 
 export const Home = () => {
