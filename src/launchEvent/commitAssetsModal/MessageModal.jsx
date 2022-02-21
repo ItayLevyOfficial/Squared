@@ -56,7 +56,7 @@ export const SuccessModal = ({ txHash, close }) => {
       close={close}
       footer={
         <>
-          Transactions on the {selectedChain.chainName} chain are usually
+          Transactions on the {selectedChain.chainName} network are usually
           completed within {selectedChain.approvalTime} minutes. Your
           transaction hash is{'  '}
           <span
