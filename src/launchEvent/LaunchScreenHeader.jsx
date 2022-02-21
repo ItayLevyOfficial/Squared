@@ -10,10 +10,6 @@ const timeLeftBarWidth = 'w-[580px]'
 
 export const LaunchScreenHeader = ({
   phase = selectedChain.launchData.stage === 1 ? 'TAKE OFF EVENT' : 'LAST LOOK',
-  timeLeftData = {
-    startTime: selectedChain.launchData.launchTime,
-    length: weekInMillis,
-  },
   paragraph = (
     <>
       {' '}
@@ -28,7 +24,7 @@ export const LaunchScreenHeader = ({
   return (
     <div className={`flex w-full justify-between`}>
       <BrandingSection>{phase}</BrandingSection>
-      <MiddleSection timeLeftData={timeLeftData} paragraph={paragraph} />
+      <MiddleSection paragraph={paragraph} />
       <AddressSection address={address} connectWallet={connectWallet} />
     </div>
   )
@@ -51,9 +47,9 @@ export const BrandingSection = ({ children }) => (
   </div>
 )
 
-const MiddleSection = ({ timeLeftData, paragraph }) => (
+const MiddleSection = ({ paragraph }) => (
   <div className={`flex flex-col items-center w-full`}>
-    <TimeLeft className="mb-6" timeLeftData={timeLeftData} />
+    <TimeLeft className="mb-6" />
     <p
       className={`${timeLeftBarWidth} text-center font-medium text-base tracking-wider leading-relaxed`}
     >
@@ -70,7 +66,17 @@ const AddressSection = ({ connectWallet, address }) => (
 )
 export const weekInMillis = 604800000
 
-const TimeLeft = ({ className = '', timeLeftData }) => {
+const TimeLeft = ({ className = '' }) => {
+  const timeLeftData =
+    selectedChain.stage === 1
+      ? {
+          startTime: selectedChain.launchData.launchTime,
+          length: weekInMillis,
+        }
+      : {
+          startTime: selectedChain.launchData.lastLookStart,
+          length: weekInMillis / 7,
+        }
   const remainTimeMillis =
     timeLeftData.startTime + timeLeftData.length - new Date().getTime()
   const remainTimePercent =
