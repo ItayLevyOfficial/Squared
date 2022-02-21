@@ -18,7 +18,7 @@ const twitter = 'https://twitter.com/puffpuffmoney'
 const medium = 'https://medium.com/@puffpuffmoney'
 const github = 'https://github.com/puffpuffmoney/puff_contracts'
 const discord = 'https://discord.gg/j7SstuFv7E'
-const docs = 'https://docs.puffpuff.money'
+const docs = 'https://docs.squared.finance'
 
 export const Footer = () => (
   <div className="flex items-center space-x-9">
