@@ -26,9 +26,9 @@ export const PrimaryLink = ({ children, onClick }) => (
   </span>
 )
 
-export const CommitAssetsModal = ({ selectedToken, close, commitAssets }) => {
-  const isOpen = selectedToken !== null
-  const tokenData = isOpen ? selectedChain.tokens[selectedToken] : null
+export const CommitAssetsModal = ({ selectedTokenIndex, close, commitAssets }) => {
+  const isOpen = selectedTokenIndex !== null
+  const tokenData = isOpen ? selectedChain.tokens[selectedTokenIndex] : null
   const [tokenAmount, setTokenAmount] = useState('')
   const [, connectWallet, address] = useConnectWallet()
   const isConnected = Boolean(address)
@@ -67,7 +67,7 @@ export const CommitAssetsModal = ({ selectedToken, close, commitAssets }) => {
         </p>
         <ModalButton
           text={isConnected ? 'Deposit' : 'Connect Wallet'}
-          onClick={isConnected ? () => commitAssets(tokenAmount) : connectWallet}
+          onClick={isConnected ? () => commitAssets({tokenAmount, selectedTokenIndex}) : connectWallet}
         />
       </div>
     </Modal>

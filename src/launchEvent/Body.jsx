@@ -107,7 +107,7 @@ export const Body = ({ className = '', writeLaunchContract, address }) => {
       ) : depositedToken === ethers.constants.AddressZero ||
         depositedToken === selectedTokenAddress ? (
         <CommitAssetsModal
-          selectedToken={selectedTokenIndex}
+          selectedTokenIndex={selectedTokenIndex}
           close={() => setSelectedToken(null)}
           launchContract={writeLaunchContract} commitAssets={commitAssets}
         />
