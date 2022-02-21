@@ -31,7 +31,7 @@ export const LastLookScreen = () => {
           paragraph={
             <>
               {' '}
-              Squared's last look period has arrived. Now users can to see the
+              Squared's last look period has arrived. Now users can see the
               final swap/farming ratio and withdraw their committed funds.
               &nbsp;
               <PrimaryLink>Learn more</PrimaryLink>
