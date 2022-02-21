@@ -35,9 +35,10 @@ export const Products = () => {
     setSqrdBalance(formatBigErc20(balanceSqrd))
 
     const balanceSqrdLp = await sqrdLpPoolContract.balanceOf(address)
+
     setSqrdLpBalance(formatBigErc20(balanceSqrdLp))
-    setAssetsBalance(ethBalance + usdcBalance + sqrdLpBalance)
-    setTotalValueLocked(assetsBalance + sqrdBalance)
+    setAssetsBalance(+ethBalance + +usdcBalance + +sqrdLpBalance)
+    setTotalValueLocked(+assetsBalance + +sqrdBalance)
   }, [
     address,
     ethPoolContract,

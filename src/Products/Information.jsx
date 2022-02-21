@@ -31,11 +31,15 @@ export const Information = ({
   return (
     <div className="flex -mt-20 w-10/12">
       <InformationBox title={'VALUE LOCKED'}>
-        <InformationLine heading={'SQRD TVL :'}>{sqrdBalance}</InformationLine>
-        <InformationLine heading={'ASSET TVL :'}>
-          {assetsBalance}
+        <InformationLine heading={'SQRD TVL :'}>
+          {sqrdBalance.toFixed(1)}
         </InformationLine>
-        <InformationLine heading={'TVL :'}>{totalValueLocked}</InformationLine>
+        <InformationLine heading={'ASSET TVL :'}>
+          {assetsBalance.toFixed(1)}
+        </InformationLine>
+        <InformationLine heading={'TVL :'}>
+          {totalValueLocked.toFixed(1)}
+        </InformationLine>
       </InformationBox>
       <div className="w-[0.5px] h-42 bg-white" />
       <InformationBox title={'CYCLE'}>
