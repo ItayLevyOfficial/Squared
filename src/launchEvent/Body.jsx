@@ -13,19 +13,22 @@ export const formatBigUsd = (bigUsd) => bigUsd.div(10 ** 8).toNumber()
 export const Body = ({ className = '' }) => {
   const [selectedTokenIndex, setSelectedToken] = useState(null)
   const [commitAssets, txHash, setTxHash] = useCommitAssets()
-  const [balance, depositedToken] = useAccountBalance()
+  const [balance, depositedTokenAddress] = useAccountBalance()
 
   const selectedToken = selectedChain.tokens[selectedTokenIndex]
   const selectedTokenAddress = selectedToken?.address
 
-  const depositedTokenName =
-    selectedChain.tokens[selectedTokenIndex === 0 ? 1 : 0]?.name ?? ''
+  const depositedTokenName = selectedChain.tokens.find(
+    (token) => token.address === depositedTokenAddress
+  )?.name
   const tokenName = selectedToken?.name ?? ''
   return (
     <div className={`flex space-x-32 -mt-20 ${className}`}>
       <AccountStatus
         amountCommitted={balance}
-        isNativeCommitted={depositedToken === selectedChain.tokens[0].address}
+        isNativeCommitted={
+          depositedTokenAddress === selectedChain.tokens[0].address
+        }
         handleNativeClick={() => setSelectedToken(0)}
         handleStableClick={() => setSelectedToken(1)}
       />
@@ -39,8 +42,8 @@ export const Body = ({ className = '' }) => {
           }}
           txHash={txHash}
         />
-      ) : depositedToken === ethers.constants.AddressZero ||
-        depositedToken === selectedTokenAddress ? (
+      ) : depositedTokenAddress === ethers.constants.AddressZero ||
+        depositedTokenAddress === selectedTokenAddress ? (
         <CommitAssetsModal
           selectedTokenIndex={selectedTokenIndex}
           close={() => setSelectedToken(null)}
