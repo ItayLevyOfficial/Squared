@@ -61,7 +61,7 @@ const AddressSection = ({ connectWallet, address }) => (
     <AddressButton address={address} connectWallet={connectWallet} />
   </div>
 )
-const weekInMillis = 604800000
+export const weekInMillis = 604800000
 
 const TimeLeft = ({ className = '', timeLeftData }) => {
   const remainTimeMillis =
@@ -70,6 +70,7 @@ const TimeLeft = ({ className = '', timeLeftData }) => {
     100 - Math.round((remainTimeMillis / timeLeftData.length) * 100)
   const formattedRemainTime = convertMilliseconds(remainTimeMillis)
 
+  console.log({ timeLeftData, formattedRemainTime })
   return (
     <div className={`${className} flex flex-col items-center`}>
       <h2

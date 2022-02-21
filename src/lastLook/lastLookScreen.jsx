@@ -7,6 +7,7 @@ import { ScreenPaddedContainer } from '../launchEvent/LaunchEventScreen'
 import { LaunchScreenHeader } from '../launchEvent/LaunchScreenHeader'
 import { Body } from '../launchEvent/Body'
 import { Footer } from '../launchEvent/Footer'
+import { weekInMillis } from '../launchEvent/LaunchScreenHeader'
 
 export const LastLookScreen = () => {
   const [signer, connectWallet, walletAddress] = useConnectWallet()
@@ -20,7 +21,11 @@ export const LastLookScreen = () => {
     <ScreenPaddedContainer>
       <div className="flex flex-col items-center justify-between w-full max-w-screen-2xl h-full">
         <LaunchScreenHeader
-          phase="LAST LOOK PERIOD"
+          timeLeftData={{
+            startTime: selectedChain.lastLookStart,
+            length: weekInMillis / 7,
+          }}
+          phase="LAST LOOK"
           address={walletAddress}
           connectWallet={connectWallet}
         />

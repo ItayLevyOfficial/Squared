@@ -13,6 +13,7 @@ const localChainConfig = {
   launchTime: 1645112469136,
   launchTokensAmount: 3_000_000,
   scan: { name: 'Etherscan', url: 'https://etherscan.io/' },
+  lastLookStart: 1645382384584, // TODO: calculate this value from the launch time + week in millis. Here for presentation.
   tokens: [
     {
       name: 'ETH',
