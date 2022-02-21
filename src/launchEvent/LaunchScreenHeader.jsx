@@ -3,17 +3,23 @@ import { selectedChain } from '../chains'
 import { AddressButton } from '../Layouts/Header'
 import Logo from './icons/logo.svg'
 import MetamaskIcon from './icons/metamask.svg'
+import { useConnectWallet } from './useConnectWallet'
 import { convertMilliseconds } from './utils'
 const timeLeftBarWidth = 'w-[580px]'
-import { useConnectWallet } from './useConnectWallet'
 
-export const LaunchScreenHeader = () => {
+export const LaunchScreenHeader = ({
+  phase = 'TAKE OFF EVENT',
+  timeLeftData = {
+    startTime: selectedChain.launchTime,
+    length: weekInMillis,
+  },
+}) => {
   const [, connectWallet, address] = useConnectWallet()
 
   return (
     <div className={`flex w-full justify-between`}>
-      <BrandingSection>TAKE OFF EVENT</BrandingSection>
-      <MiddleSection />
+      <BrandingSection>{phase}</BrandingSection>
+      <MiddleSection timeLeftData={timeLeftData} />
       <AddressSection address={address} connectWallet={connectWallet} />
     </div>
   )
@@ -36,9 +42,9 @@ export const BrandingSection = ({ children }) => (
   </div>
 )
 
-const MiddleSection = () => (
+const MiddleSection = ({ timeLeftData }) => (
   <div className={`flex flex-col items-center w-full`}>
-    <TimeLeft className="mb-6" />
+    <TimeLeft className="mb-6" timeLeftData={timeLeftData} />
     <p
       className={`${timeLeftBarWidth} text-center font-medium text-base tracking-wider leading-relaxed`}
     >
@@ -57,14 +63,9 @@ const AddressSection = ({ connectWallet, address }) => (
 )
 const weekInMillis = 604800000
 
-const TimeLeft = ({
-  className = '',
-  timeLeftData = {
-    startTime: selectedChain.launchTime,
-    length: weekInMillis,
-  },
-}) => {
-  const remainTimeMillis = timeLeftData.startTime + timeLeftData.length - new Date().getTime()
+const TimeLeft = ({ className = '', timeLeftData }) => {
+  const remainTimeMillis =
+    timeLeftData.startTime + timeLeftData.length - new Date().getTime()
   const remainTimePercent =
     100 - Math.round((remainTimeMillis / timeLeftData.length) * 100)
   const formattedRemainTime = convertMilliseconds(remainTimeMillis)
