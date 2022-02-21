@@ -41,7 +41,7 @@ export const BrandingSection = ({ children }) => (
 
 const MiddleSection = () => {
   const paragraph =
-    selectedChain.stage === 1 ? (
+    selectedChain.launchData.stage === 1 ? (
       <>
         {' '}
         Squared's take-off event has arrived. It's the first time users can buy
@@ -78,7 +78,7 @@ export const weekInMillis = 604800000
 
 const TimeLeft = ({ className = '' }) => {
   const timeLeftData =
-    selectedChain.stage === 1
+    selectedChain.launchData.stage === 1
       ? {
           startTime: selectedChain.launchData.launchTime,
           length: weekInMillis,

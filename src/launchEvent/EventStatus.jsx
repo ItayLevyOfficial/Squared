@@ -58,7 +58,7 @@ export const LaunchEventStatus = () => {
   const swapPercent = 100 - farmingPercent
 
   const secondStatusBarData =
-    selectedChain.stage === 1
+    selectedChain.launchData.stage === 1
       ? {
           percent: 100 - soldPercent,
           text: 'Remaining',
@@ -68,7 +68,7 @@ export const LaunchEventStatus = () => {
           text: 'Farming',
         }
   const firstStatusBarData =
-    selectedChain.stage === 1
+    selectedChain.launchData.stage === 1
       ? {
           percent: soldPercent,
           text: 'Sold',
