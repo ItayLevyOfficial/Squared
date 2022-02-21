@@ -1,8 +1,8 @@
-import { EthereumIcon } from './launchEvent/icons/ethereum'
 import React from 'react'
-import { Usdc } from './launchEvent/icons/usdc'
 import { Bnb } from './launchEvent/icons/BNB'
 import { Busd } from './launchEvent/icons/busd'
+import { EthereumIcon } from './launchEvent/icons/ethereum'
+import { Usdc } from './launchEvent/icons/usdc'
 
 const localChainConfig = {
   chainId: '0x539',
