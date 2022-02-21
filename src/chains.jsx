@@ -7,7 +7,7 @@ import { Usdc } from './launchEvent/icons/usdc'
 const localChainConfig = {
   chainId: '0x539',
   chainName: 'hardhat',
-  approvalTime: 5,
+  approvalTime: 1,
   rpcUrls: ['http://127.0.0.1:8545/'],
   launchData: {
     launchContractAddress: '0x8A93d247134d91e0de6f96547cB0204e5BE8e5D8',
