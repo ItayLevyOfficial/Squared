@@ -12,7 +12,7 @@ import { useContract } from './utils'
 
 export const formatBigUsd = (bigUsd) => bigUsd.div(10 ** 8).toNumber()
 
-export const Body = ({ className = '', writeLaunchContract, address }) => {
+export const Body = ({ className = '',  address }) => {
   const [selectedTokenIndex, setSelectedToken] = useState(null)
   const [depositedToken, setDepositedToken] = useState(
     ethers.constants.AddressZero
@@ -42,11 +42,11 @@ export const Body = ({ className = '', writeLaunchContract, address }) => {
   }, [address, fetchBalance, readLaunchContract])
 
   useEffect(() => {
-    if (writeLaunchContract) {
-      writeLaunchContract.on('Deposited', fetchBalance)
-      return () => writeLaunchContract.removeListener('Deposited', fetchBalance)
+    if (readLaunchContract) {
+      readLaunchContract.on('Deposited', fetchBalance)
+      return () => readLaunchContract.removeListener('Deposited', fetchBalance)
     }
-  }, [fetchBalance, writeLaunchContract])
+  }, [fetchBalance, readLaunchContract])
 
   const selectedToken = selectedChain.tokens[selectedTokenIndex]
   const selectedTokenAddress = selectedToken?.address
@@ -77,7 +77,6 @@ export const Body = ({ className = '', writeLaunchContract, address }) => {
         <CommitAssetsModal
           selectedTokenIndex={selectedTokenIndex}
           close={() => setSelectedToken(null)}
-          launchContract={writeLaunchContract}
           commitAssets={commitAssets}
         />
       ) : (

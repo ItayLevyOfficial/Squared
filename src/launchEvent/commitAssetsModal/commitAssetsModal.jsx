@@ -5,7 +5,7 @@ import { ModalButton } from '../../Products/ModalButtons'
 import {
   CloseButton,
   contentStyles,
-  overlayStyles
+  overlayStyles,
 } from '../../Products/ModalDisplay'
 import { ModalInput } from '../../Products/ModalInput'
 import { useConnectWallet } from '../useConnectWallet'

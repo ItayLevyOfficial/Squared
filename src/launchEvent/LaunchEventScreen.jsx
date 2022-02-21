@@ -22,7 +22,7 @@ export const LaunchEventScreen = () => {
           address={walletAddress}
           connectWallet={connectWallet}
         />
-        <Body writeLaunchContract={writeLaunchContract} address={walletAddress}/>
+        <Body address={walletAddress}/>
         <Footer />
       </div>
     </ScreenPaddedContainer>
