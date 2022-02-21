@@ -24,7 +24,6 @@ export const LaunchScreenContext = () => {
       readLaunchContract?.currentStage().then((response) => setStage(response))
     }
   }, [readLaunchContract])
-
   return (
     <StageContext.Provider value={stage + 1}>
       {[0, 1].includes(stage) ? <LaunchEventScreen /> : null}
