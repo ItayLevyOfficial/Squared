@@ -12,7 +12,7 @@ export const LastLookStatus = () => {
   return (
     <div className="flex flex-col">
       <BodyHeaderText
-        title="Launch Event Summary"
+        title="Event Summary"
         firstRow={`Total commitments: $${numberWithCommas(totalCommitments)}`}
         secondRow={`Conversion rate: $${sqrdPrice}/SQRD`}
         marginBottomClass="mb-7"

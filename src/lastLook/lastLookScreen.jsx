@@ -9,6 +9,7 @@ import { LaunchScreenBody } from '../launchEvent/LaunchScreenBody'
 import { Footer } from '../launchEvent/Footer'
 import { weekInMillis } from '../launchEvent/LaunchScreenHeader'
 import { PrimaryLink } from '../launchEvent/commitAssetsModal/commitAssetsModal'
+import { LastLookBody } from './lastLookBody'
 
 export const LastLookScreen = () => {
   const [signer, , walletAddress] = useConnectWallet()
@@ -30,16 +31,14 @@ export const LastLookScreen = () => {
           paragraph={
             <>
               {' '}
-              Squared's last look period has arrived. Now users can to see
-              the final swap/farming ratio and withdraw their committed funds. &nbsp;
+              Squared's last look period has arrived. Now users can to see the
+              final swap/farming ratio and withdraw their committed funds.
+              &nbsp;
               <PrimaryLink>Learn more</PrimaryLink>
             </>
           }
         />
-        <LaunchScreenBody
-          writerLaunchContract={writeLaunchContract}
-          address={walletAddress}
-        />
+        <LastLookBody />
         <Footer />
       </div>
     </ScreenPaddedContainer>
