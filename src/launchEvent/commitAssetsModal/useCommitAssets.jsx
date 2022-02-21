@@ -25,34 +25,39 @@ export const useCommitAssets = () => {
       amount: tokenAmount,
       decimals: tokenData.decimals,
     })
-    if (selectedTokenIndex === 0) {
-      const tx = await launchContract.deposit(
-        {
-          token: tokenData.address,
-          amount: amount,
-        },
-        [],
-        { value: amount }
-      )
-      setTxHash(tx.hash)
+    if (selectedChain.launchData.stage === 1) {
+      if (selectedTokenIndex === 0) {
+        const tx = await launchContract.deposit(
+          {
+            token: tokenData.address,
+            amount: amount,
+          },
+          [],
+          { value: amount }
+        )
+        setTxHash(tx.hash)
+      } else {
+        await erc20.approve(
+          selectedChain.launchData.launchContractAddress,
+          amount
+        )
+        const tx = await launchContract.deposit(
+          {
+            token: tokenData.address,
+            amount: amount,
+          },
+          [],
+          {}
+        )
+        setTxHash(tx.hash)
+      }
     } else {
-      await erc20.approve(
-        selectedChain.launchData.launchContractAddress,
-        amount
-      )
-      const tx = await launchContract.deposit(
-        {
-          token: tokenData.address,
-          amount: amount,
-        },
-        [],
-        {}
-      )
-      setTxHash(tx.hash)
+      if (selectedTokenIndex === 0) {
+        const tx = await launchContract.withdraw({token: tokenData.address, amount: amountÎ}, true)
+        setTxHash(tx.hash)
+      }
     }
   }
-
-  const withdraw = async ({ tokenAmount, selectedTokenIndex }) => {}
 
   return [commitAssets, txHash, setTxHash]
 }
