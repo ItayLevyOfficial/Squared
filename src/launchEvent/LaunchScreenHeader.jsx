@@ -10,21 +10,13 @@ const timeLeftBarWidth = 'w-[580px]'
 
 export const LaunchScreenHeader = ({
   phase = selectedChain.launchData.stage === 1 ? 'TAKE OFF EVENT' : 'LAST LOOK',
-  paragraph = (
-    <>
-      {' '}
-      Squared's take-off event has arrived. It's the first time users can buy
-      SQRD to fill our liquidity reserve.&nbsp;
-      <PrimaryLink>Learn more</PrimaryLink>
-    </>
-  ),
 }) => {
   const [, connectWallet, address] = useConnectWallet()
 
   return (
     <div className={`flex w-full justify-between`}>
       <BrandingSection>{phase}</BrandingSection>
-      <MiddleSection paragraph={paragraph} />
+      <MiddleSection />
       <AddressSection address={address} connectWallet={connectWallet} />
     </div>
   )
@@ -47,16 +39,34 @@ export const BrandingSection = ({ children }) => (
   </div>
 )
 
-const MiddleSection = ({ paragraph }) => (
-  <div className={`flex flex-col items-center w-full`}>
-    <TimeLeft className="mb-6" />
-    <p
-      className={`${timeLeftBarWidth} text-center font-medium text-base tracking-wider leading-relaxed`}
-    >
-      {paragraph}
-    </p>
-  </div>
-)
+const MiddleSection = () => {
+  const paragraph =
+    selectedChain.stage === 1 ? (
+      <>
+        {' '}
+        Squared's take-off event has arrived. It's the first time users can buy
+        SQRD to fill our liquidity reserve.&nbsp;
+        <PrimaryLink>Learn more</PrimaryLink>
+      </>
+    ) : (
+      <>
+        {' '}
+        Squared's last look period has arrived. Now users can see the final
+        swap/farming ratio and withdraw their committed funds. &nbsp;
+        <PrimaryLink>Learn more</PrimaryLink>
+      </>
+    )
+  return (
+    <div className={`flex flex-col items-center w-full`}>
+      <TimeLeft className="mb-6" />
+      <p
+        className={`${timeLeftBarWidth} text-center font-medium text-base tracking-wider leading-relaxed`}
+      >
+        {paragraph}
+      </p>
+    </div>
+  )
+}
 
 const AddressSection = ({ connectWallet, address }) => (
   <div className="flex items-center h-fit w-44 justify-end flex-shrink-0">
