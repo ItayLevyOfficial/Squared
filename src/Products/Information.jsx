@@ -30,15 +30,9 @@ export const Information = ({
   return (
     <div className="flex -mt-20 w-10/12">
       <InformationBox title={'Value Locked'}>
-        <InformationLine>{`SQRD TVL : ${sqrdBalance.toFixed(
-          1
-        )}`}</InformationLine>
-        <InformationLine>{`ASSETS TVL : ${assetsBalance.toFixed(
-          1
-        )}`}</InformationLine>
-        <InformationLine>{`TVL : ${totalValueLocked.toFixed(
-          1
-        )}`}</InformationLine>
+        <InformationLine>{`SQRD TVL : ${sqrdBalance}`}</InformationLine>
+        <InformationLine>{`ASSETS TVL : ${assetsBalance}`}</InformationLine>
+        <InformationLine>{`TVL : ${totalValueLocked}`}</InformationLine>
       </InformationBox>
       <div className="w-[0.5px] h-42 bg-white" />
       <InformationBox title={'Cycle'}>

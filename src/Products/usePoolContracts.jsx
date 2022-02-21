@@ -55,17 +55,16 @@ export const useFetchBalance = () => {
 
   const fetchBalance = useCallback(async () => {
     const balanceEth = await ethPoolContract.balanceOf(address)
-    setEthBalance(ethers.utils.formatEther(balanceEth))
+    setEthBalance(parseInt(ethers.utils.formatEther(balanceEth)))
 
     const balanceUsdc = await usdcPoolContract.balanceOf(address)
-    setUsdcBalance(formatBigErc20(balanceUsdc))
+    setUsdcBalance(parseInt(formatBigErc20(balanceUsdc)))
 
     const balanceSqrd = await sqrdPoolContract.balanceOf(address)
-    setSqrdBalance(formatBigErc20(balanceSqrd))
+    setSqrdBalance(parseInt(formatBigErc20(balanceSqrd)))
 
     const balanceSqrdLp = await sqrdLpPoolContract.balanceOf(address)
-
-    setSqrdLpBalance(formatBigErc20(balanceSqrdLp))
+    setSqrdLpBalance(parseInt(formatBigErc20(balanceSqrdLp)))
     setAssetsBalance(+ethBalance + +usdcBalance + +sqrdLpBalance)
     setTotalValueLocked(+assetsBalance + +sqrdBalance)
   }, [
@@ -89,12 +88,12 @@ export const useFetchBalance = () => {
   ])
 
   return [
-    assetsBalance,
-    sqrdLpBalance,
-    sqrdBalance,
-    ethBalance,
-    usdcBalance,
-    totalValueLocked,
-    assetsBalance,
+    parseInt(assetsBalance).toFixed(1),
+    parseInt(sqrdLpBalance).toFixed(1),
+    parseInt(sqrdBalance).toFixed(1),
+    parseInt(ethBalance).toFixed(1),
+    parseInt(usdcBalance).toFixed(1),
+    parseInt(totalValueLocked).toFixed(1),
+    parseInt(assetsBalance).toFixed(1),
   ]
 }
