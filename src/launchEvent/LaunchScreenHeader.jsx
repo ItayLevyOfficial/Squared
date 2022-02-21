@@ -5,14 +5,19 @@ import Logo from './icons/logo.svg'
 import MetamaskIcon from './icons/metamask.svg'
 import { convertMilliseconds } from './utils'
 const timeLeftBarWidth = 'w-[580px]'
+import { useConnectWallet } from './useConnectWallet'
 
-export const LaunchScreenHeader = ({ address, connectWallet }) => (
-  <div className={`flex w-full justify-between`}>
-    <BrandingSection children={'TAKE OFF EVENT'} />
-    <MiddleSection />
-    <AddressSection address={address} connectWallet={connectWallet} />
-  </div>
-)
+export const LaunchScreenHeader = () => {
+  const [, connectWallet, address] = useConnectWallet()
+
+  return (
+    <div className={`flex w-full justify-between`}>
+      <BrandingSection>TAKE OFF EVENT</BrandingSection>
+      <MiddleSection />
+      <AddressSection address={address} connectWallet={connectWallet} />
+    </div>
+  )
+}
 
 export const BrandingSection = ({ children }) => (
   <div className="flex flex-none h-fit">
