@@ -8,6 +8,7 @@ import { useEffect, useState, useCallback } from 'react'
 import { useConnectWallet } from '../launchEvent/useConnectWallet'
 import { usePoolContracts } from '../products/usePoolContracts'
 
+export const formatBigErc20 = (bigUsd) => bigUsd.div(10 ** 6).toNumber()
 export const Dashboard = (props) => {
   const [
     ethPoolContract,
@@ -15,7 +16,6 @@ export const Dashboard = (props) => {
     sqrdPoolContract,
     sqrdLpPoolContract,
   ] = usePoolContracts()
-  const formatBigErc20 = (bigUsd) => bigUsd.div(10 ** 6).toNumber()
   const [, , address] = useConnectWallet()
   const [ethBalance, setEthBalance] = useState(0)
   const [usdcBalance, setUsdcBalance] = useState(0)
