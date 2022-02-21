@@ -49,7 +49,18 @@ export const CommitAssetsModal = ({
             </>
           ),
         }
-      : {}
+      : {
+          title: 'Withdraw',
+          paragraph: (
+            <>
+              The Last Look gives participants the opportunity to withdraw funds
+              without making any swap for SQRD if they wish to opt out.&nbsp;
+              <PrimaryLink onClick={() => window.open(mediumArticleLink)}>
+                Learn more
+              </PrimaryLink>
+            </>
+          ),
+        }
 
   const onClose = () => {
     setTokenAmount('')
