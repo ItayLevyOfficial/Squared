@@ -22,22 +22,26 @@ export const InformationBox = ({ title, children }) => {
     </div>
   )
 }
+
 export const Information = (props) => {
   return (
     <div className="flex -mt-20 w-10/12">
       <InformationBox title={'VALUE LOCKED'}>
-        <InformationLine heading={'SQRD TVL :'} children={props.sqrdTVL} />
-        <InformationLine heading={'ASSET TVL :'} children={props.assetTVL} />
-        <InformationLine heading={'TVL :'} children={props.TVL} />
+        <InformationLine heading={'SQRD TVL :'}>
+          {props.sqrdTVL}
+        </InformationLine>
+        <InformationLine heading={'ASSET TVL :'}>
+          {props.assetTVL}
+        </InformationLine>
+        <InformationLine heading={'TVL :'}>{props.TVL}</InformationLine>
       </InformationBox>
       <div className="w-[0.5px] h-42 bg-white" />
       <InformationBox title={'CYCLE'}>
-        <InformationLine heading={'THIS CYCLE :'} children={props.cycleCount} />
-        <InformationLine
-          heading={'NEXT CYCLE :'}
-          children={props.timeToNewCycle}
-        />
-        <InformationLine heading={'SQRD PRICE :'} children={props.tokenPrice} />
+        <InformationLine heading={'THIS CYCLE :'}>CYCLE ZERO-0</InformationLine>
+        <InformationLine heading={'NEXT CYCLE :'}>
+          3 DAYS 9 HOURS 17 MINUTES
+        </InformationLine>
+        <InformationLine heading={'SQRD PRICE :'}>$0.00</InformationLine>
       </InformationBox>
     </div>
   )
