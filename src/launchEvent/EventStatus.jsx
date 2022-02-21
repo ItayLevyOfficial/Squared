@@ -5,6 +5,7 @@ import { BodyHeaderText } from './AccountStatus'
 import { formatBigUsd } from './Body'
 import { provider } from './useConnectWallet'
 import { useContract } from './utils'
+import { useEventData } from './useEventData'
 
 const StatusBar = ({ percent, text, backgroundColorClass, className }) => (
   <div className={`flex flex-col h-36 ${className}`}>
@@ -30,39 +31,7 @@ function numberWithCommas(x) {
 }
 
 export const EventStatus = () => {
-  const launchContract = useContract(
-    provider,
-    selectedChain.launchContractAddress,
-    launchContractAbi
-  )
-  const [totalCommitments, setTotalCommitments] = useState(0)
-  const [maxTotalCommitments, setMaxTotalCommitments] = useState(0)
-
-  useEffect(() => {
-    if (launchContract) {
-      launchContract.getMaxTotalValue().then((maxTotalValue) => {
-        setMaxTotalCommitments(formatBigUsd(maxTotalValue))
-      })
-    }
-  }, [launchContract])
-
-  useEffect(() => {
-    if (launchContract) {
-      launchContract.totalValue().then((response) => {
-        setTotalCommitments(formatBigUsd(response))
-      })
-    }
-  }, [launchContract])
-
-  const minSqrdPrice = '2.00'
-  const maxSqrdPrice = '8.00'
-  const minSqrdSold = 6000000
-  const sqrdPrice =
-    totalCommitments < minSqrdSold
-      ? minSqrdPrice
-      : totalCommitments > maxTotalCommitments / 2
-      ? maxSqrdPrice
-      : (totalCommitments / selectedChain.launchTokensAmount).toFixed(2)
+  const [totalCommitments, maxTotalCommitments, sqrdPrice] = useEventData()
 
   const soldPercent =
     Math.round(totalCommitments / (maxTotalCommitments / 2)) > 10
