@@ -1,5 +1,5 @@
 import React from 'react'
-import { LaunchScreenBody } from './Body'
+import { LaunchScreenBody } from './LaunchScreenBody'
 import { Footer } from './Footer'
 import { LaunchScreenHeader } from './LaunchScreenHeader'
 

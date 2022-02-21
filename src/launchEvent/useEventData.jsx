@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import { selectedChain } from '../chains'
 import { launchContractAbi } from './abis/defiRoundAbi'
-import { formatBigUsd } from './Body'
+import { formatBigUsd } from './LaunchScreenBody'
 import { provider } from './useConnectWallet'
 import { useContract } from './utils'
 
