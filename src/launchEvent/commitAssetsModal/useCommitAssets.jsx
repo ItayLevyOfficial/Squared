@@ -6,6 +6,9 @@ import { useState } from 'react'
 import { launchContractAbi } from '../abis/defiRoundAbi'
 import { useConnectWallet } from '../useConnectWallet'
 
+const parseNumberDecimals = ({ amount, decimals }) =>
+  BigNumber.from(amount).mul(BigNumber.from('10').pow(BigNumber.from(decimals)))
+
 export const useCommitAssets = () => {
   const [signer] = useConnectWallet()
   const erc20 = useContract(signer, selectedChain.tokens[1].address, erc20abi)
@@ -17,10 +20,7 @@ export const useCommitAssets = () => {
   )
 
   const commitAssets = async ({ tokenAmount, selectedTokenIndex }) => {
-    const tokenData =
-      selectedTokenIndex !== null
-        ? selectedChain.tokens[selectedTokenIndex]
-        : null
+    const tokenData = selectedChain.tokens[selectedTokenIndex]
     const amount = BigNumber.from(tokenAmount).mul(
       BigNumber.from('10').pow(BigNumber.from(tokenData.decimals))
     )
@@ -35,7 +35,10 @@ export const useCommitAssets = () => {
       )
       setTxHash(tx.hash)
     } else {
-      await erc20.approve(selectedChain.launchData.launchContractAddress, amount)
+      await erc20.approve(
+        selectedChain.launchData.launchContractAddress,
+        amount
+      )
       const tx = await launchContract.deposit(
         {
           token: tokenData.address,
@@ -47,6 +50,8 @@ export const useCommitAssets = () => {
       setTxHash(tx.hash)
     }
   }
+
+  const withdraw = async ({ tokenAmount, selectedTokenIndex }) => {}
 
   return [commitAssets, txHash, setTxHash]
 }
