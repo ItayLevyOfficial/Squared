@@ -7,8 +7,7 @@ import { ModalInput } from './ModalInput'
 import { ModalButtons } from './ModalButtons'
 import { useContract } from '../launchEvent/utils'
 import { useConnectWallet } from '../launchEvent/useConnectWallet'
-import { EthPoolAbi } from './ABIs/EthPoolAbi'
-import { PoolAbi } from './ABIs/PoolAbi'
+import { usePoolContracts } from './usePoolContracts'
 import { selectedChain } from '../chains'
 import { BigNumber } from 'ethers'
 import { erc20abi } from '../launchEvent/abis/erc20abi'
@@ -44,9 +43,9 @@ export const overlayStyles = {
 }
 
 export const CloseButton = ({ close }) => (
-    <button onClick={close} className='fixed right-5 top-5'>
-      <XIcon className="h-6 text-white" />
-    </button>
+  <button onClick={close} className="fixed right-5 top-5">
+    <XIcon className="h-6 text-white" />
+  </button>
 )
 
 export const ModalDisplay = ({
@@ -56,45 +55,31 @@ export const ModalDisplay = ({
   tokenAmount,
   setTokenAmount,
 }) => {
+  const [
+    ethPoolContract,
+    usdcPoolContract,
+    sqrdPoolContract,
+    sqrdLpPoolContract,
+  ] = usePoolContracts()
   const tokenData = isOpen ? selectedChain?.tokens[selectedTokenIndex] : null
   const [isOnWithdraw, setIsOnWithdraw] = useState(false)
 
   const [signer, connectWallet, address] = useConnectWallet()
   const isConnected = Boolean(address)
-  const ethPoolContract = useContract(
-    signer,
-    selectedChain.tokens[0].ethPoolContractAddress,
-    EthPoolAbi
-  )
   const erc20Usdc = useContract(
     signer,
     selectedChain.tokens[1].address,
     erc20abi
-  )
-  const usdcPoolContract = useContract(
-    signer,
-    selectedChain.tokens[1].usdcPoolContractAddress,
-    PoolAbi
   )
   const erc20Sqrd = useContract(
     signer,
     selectedChain.tokens[2].address,
     erc20abi
   )
-  const sqrdPoolContract = useContract(
-    signer,
-    selectedChain.tokens[2].sqrdPoolContractAddress,
-    PoolAbi
-  )
   const erc20SqrdLp = useContract(
     signer,
     selectedChain.tokens[3].address,
     erc20abi
-  )
-  const sqrdLpPoolContract = useContract(
-    signer,
-    selectedChain.tokens[3].sqrdLpPoolContractAddress,
-    PoolAbi
   )
 
   const commitAssets = async () => {
