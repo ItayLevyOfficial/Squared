@@ -110,21 +110,21 @@ export const Dashboard = (props) => {
       </div>
       <div className="flex -mt-20 w-10/12">
         <InformationBox title={'BALANCE'}>
-          <InformationLine heading={'ETH :'} children={ethBalance} />
-          <InformationLine heading={'USDC :'} children={usdcBalance} />
-          <InformationLine heading={'SQRD :'} children={sqrdBalance} />
-          <InformationLine heading={'SQRD LP :'} children={sqrdLpBalance} />
+          <InformationLine heading={'ETH :'}>{ethBalance} </InformationLine>
+          <InformationLine heading={'USDC :'}>{usdcBalance} </InformationLine>
+          <InformationLine heading={'SQRD :'}>{sqrdBalance} </InformationLine>
+          <InformationLine heading={'SQRD LP :'}>
+            {sqrdLpBalance}
+          </InformationLine>
         </InformationBox>
         <div className="w-[0.5px] h-42 bg-white" />
         <InformationBox title={'REWARDS'}>
-          <InformationLine
-            heading={'EARNED :'}
-            children={props.earnedBalance}
-          />
-          <InformationLine
-            heading={'AVAILABLE :'}
-            children={props.availableBalance}
-          />
+          <InformationLine heading={'EARNED :'}>
+            {props.earnedBalance}
+          </InformationLine>
+          <InformationLine heading={'AVAILABLE :'}>
+            {props.availableBalance}
+          </InformationLine>
           <InformationLine
             heading={
               <button className="bg-darkPrimary text-white w-[180px] text-md p-2 text-md rounded-lg opacity-50 mt-6">
