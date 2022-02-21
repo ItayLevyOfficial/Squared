@@ -77,17 +77,16 @@ export const CommitAssetsModal = ({
       }}
     >
       <CloseButton close={onClose} />
-      <div className="flex flex-col items-center">
-        <ModalTitle className="mb-8 mt-2">
+      <div className="flex flex-col items-center space-y-8">
+        <ModalTitle className="mt-2">
           {modalData.title}&nbsp;{tokenData?.name}
         </ModalTitle>
         <ModalInput
           selectedToken={tokenData?.name}
-          className="mb-8"
           value={tokenAmount}
           handleChange={setTokenAmount}
         />
-        <ModalParagraph className="mb-8">{modalData.paragraph}</ModalParagraph>
+        <ModalParagraph>{modalData.paragraph}</ModalParagraph>
         <ModalButton
           text={isConnected ? modalData.title : 'Connect Wallet'}
           onClick={
