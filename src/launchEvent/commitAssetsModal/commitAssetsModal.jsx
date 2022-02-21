@@ -65,7 +65,7 @@ export const CommitAssetsModal = ({
             Learn more
           </PrimaryLink>
         </ModalParagraph>
-        <ModalButton
+        <ModalButton 
           text={isConnected ? 'Deposit' : 'Connect Wallet'}
           onClick={
             isConnected
