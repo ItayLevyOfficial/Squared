@@ -61,13 +61,7 @@ export const Dashboard = (props) => {
   ])
 
   useEffect(() => {
-    if (
-      ethPoolContract &&
-      usdcPoolContract &&
-      sqrdPoolContract &&
-      sqrdLpPoolContract &&
-      address
-    ) {
+    if (address) {
       fetchBalance()
     }
   }, [
@@ -111,10 +105,14 @@ export const Dashboard = (props) => {
       <div className="flex -mt-20 w-10/12">
         <InformationBox title={'BALANCE'}>
           <InformationLine heading={'ETH :'}>{ethBalance} </InformationLine>
-          <InformationLine heading={'USDC :'}>{usdcBalance} </InformationLine>
-          <InformationLine heading={'SQRD :'}>{sqrdBalance} </InformationLine>
+          <InformationLine heading={'USDC :'}>
+            {usdcBalance.toFixed(1)}{' '}
+          </InformationLine>
+          <InformationLine heading={'SQRD :'}>
+            {sqrdBalance.toFixed(1)}{' '}
+          </InformationLine>
           <InformationLine heading={'SQRD LP :'}>
-            {sqrdLpBalance}
+            {sqrdLpBalance.toFixed(1)}
           </InformationLine>
         </InformationBox>
         <div className="w-[0.5px] h-42 bg-white" />
