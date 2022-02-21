@@ -2,7 +2,6 @@ import { useState } from 'react'
 import { useEffect } from 'react'
 import { ethers } from 'ethers'
 import { selectedChain } from '../chains'
-const delay = (ms) => new Promise((resolve) => setTimeout(resolve, ms))
 
 export const provider = window.ethereum
   ? new ethers.providers.Web3Provider(window.ethereum)
@@ -43,6 +42,7 @@ export const useConnectWallet = () => {
     await provider.send('eth_requestAccounts', [])
     setSigner(provider.getSigner())
   }
+
   useEffect(() => {
     if (signer) {
       signer.getAddress().then((newAddress) => setAddress(newAddress))

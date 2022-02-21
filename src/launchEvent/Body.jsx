@@ -30,7 +30,7 @@ export const Body = ({ className = '' }) => {
         handleStableClick={() => setSelectedToken(1)}
       />
       <div className="w-[0.5px] h-full bg-white" />
-      <EventStatus launchContract={readLaunchContract} />
+      <EventStatus />
       {txHash && selectedToken ? (
         <SuccessModal
           close={() => {

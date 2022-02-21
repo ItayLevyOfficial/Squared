@@ -1,18 +1,23 @@
-import { AddressButton } from '../Layouts/Header'
-import MetamaskIcon from './icons/metamask.svg'
-import { convertMilliseconds } from './utils'
 import React from 'react'
 import { selectedChain } from '../chains'
+import { AddressButton } from '../Layouts/Header'
 import Logo from './icons/logo.svg'
+import MetamaskIcon from './icons/metamask.svg'
+import { useConnectWallet } from './useConnectWallet'
+import { convertMilliseconds } from './utils'
 const timeLeftBarWidth = 'w-[580px]'
 
-export const LaunchScreenHeader = ({ address, connectWallet }) => (
-  <div className={`flex w-full justify-between`}>
-    <BrandingSection />
-    <MiddleSection />
-    <AddressSection address={address} connectWallet={connectWallet} />
-  </div>
-)
+export const LaunchScreenHeader = () => {
+  const [, connectWallet, address] = useConnectWallet()
+
+  return (
+    <div className={`flex w-full justify-between`}>
+      <BrandingSection />
+      <MiddleSection />
+      <AddressSection address={address} connectWallet={connectWallet} />
+    </div>
+  )
+}
 
 const BrandingSection = () => (
   <div className="flex flex-none h-fit">
@@ -48,7 +53,7 @@ const MiddleSection = () => (
 
 const AddressSection = ({ connectWallet, address }) => (
   <div className="flex items-center h-fit w-44 justify-end flex-shrink-0">
-    <img src={MetamaskIcon} alt="" className='mr-4'/>
+    <img src={MetamaskIcon} alt="" className="mr-4" />
     <AddressButton address={address} connectWallet={connectWallet} />
   </div>
 )
