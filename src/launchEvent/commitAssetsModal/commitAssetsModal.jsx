@@ -9,7 +9,7 @@ import {
 } from '../../Products/ModalDisplay'
 import { ModalInput } from '../../Products/ModalInput'
 import { useConnectWallet } from '../useConnectWallet'
-import { ModalTitle } from './MessageModal'
+import { ModalParagraph, ModalTitle } from './MessageModal'
 
 export const commitContentStyles = {
   ...contentStyles,
@@ -51,22 +51,20 @@ export const CommitAssetsModal = ({
     >
       <CloseButton close={onClose} />
       <div className="flex flex-col items-center">
-        <ModalTitle className="mb-8 mt-2">
-          Commit {tokenData?.name}
-        </ModalTitle>
+        <ModalTitle className="mb-8 mt-2">Commit {tokenData?.name}</ModalTitle>
         <ModalInput
           selectedToken={tokenData?.name}
           className="mb-8"
           value={tokenAmount}
           handleChange={setTokenAmount}
         />
-        <p className="w-10/12 text-center mb-8">
+        <ModalParagraph className="mb-8">
           You will be able to withdraw your assets during the last look
           period.&nbsp;
           <PrimaryLink onClick={() => window.open(mediumArticleLink)}>
             Learn more
           </PrimaryLink>
-        </p>
+        </ModalParagraph>
         <ModalButton
           text={isConnected ? 'Deposit' : 'Connect Wallet'}
           onClick={
