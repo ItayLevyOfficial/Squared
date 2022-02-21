@@ -14,7 +14,7 @@ const FooterIcon = ({ src, url }) => (
   />
 )
 
-const twitter = 'https://twitter.com/squared_defi'
+const twitter = 'https://twitter.com/squareddao'
 const medium = 'https://medium.com/@puffpuffmoney'
 const github = 'https://github.com/puffpuffmoney/puff_contracts'
 const discord = 'https://discord.gg/j7SstuFv7E'
