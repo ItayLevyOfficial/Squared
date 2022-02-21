@@ -27,18 +27,18 @@ export const Home = () => {
       />
       <div className="absolute w-screen h-screen bg-[#000000] -z-10 opacity-80" />
       <div className="flex flex-col justify-between items-center h-full w-full z-20 py-14 animate-fadeIn relative">
-        <div className="flex flex-col items-center">
-          <SquaredLogo className="h-48 w-48 object-cover mb-12 mt-8" />
-          <h1 className="text-7xl -tracking-wider font-bold mb-3">Squared</h1>
-          <h2 className="text-primary text-3xl font-light mb-10 tracking-wide">
+        <div className="flex flex-col items-center space-y-8 mt-5">
+          <SquaredLogo className="h-48 w-48 object-cover" />
+          <h1 className="text-7xl -tracking-wider font-bold">Squared</h1>
+          <h2 className="text-primary text-3xl font-light tracking-wide">
             Sustainable Liquidity for Long Tail Assets
           </h2>
           <button
             type="button"
             onClick={() => navigate('/launch')}
-            className="py-5 px-10 bg-[#000] hover:text-gold rounded-xl text-xl tracking-wider"
+            className="py-5 px-10 bg-black hover:text-primary rounded-xl text-xl tracking-wider"
           >
-            Enter App
+            Coming Soon
           </button>
         </div>
         <Footer />

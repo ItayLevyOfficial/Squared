@@ -1,10 +1,7 @@
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
-import { ScrollToTop } from './layouts/ScrollToTop'
-import { Home } from './Home/Home'
 import React from 'react'
-import { Products } from './products/Products'
-import { Dashboard } from './dashboard/Dashboard'
-import { LaunchEventScreen } from './launchEvent/LaunchEventScreen'
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
+import { Home } from './Home/Home'
+import { ScrollToTop } from './layouts/ScrollToTop'
 
 function App() {
   return (
@@ -12,10 +9,7 @@ function App() {
       <Router>
         <ScrollToTop>
           <Routes>
-            <Route path="/launch" element={<LaunchEventScreen />} />
-            <Route path="/assets" element={<Products />} />
-            <Route path="/dashboard" element={<Dashboard />} />
-            <Route path="/" element={<Home />} />
+            <Route path="*" element={<Home />} />
           </Routes>
         </ScrollToTop>
       </Router>
