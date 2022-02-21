@@ -1,10 +1,5 @@
-import React, { useEffect, useState } from 'react'
-import { selectedChain } from '../chains'
-import { launchContractAbi } from './abis/defiRoundAbi'
+import React from 'react'
 import { BodyHeaderText } from './AccountStatus'
-import { formatBigUsd } from './Body'
-import { provider } from './useConnectWallet'
-import { useContract } from './utils'
 import { useEventData } from './useEventData'
 
 const StatusBar = ({ percent, text, backgroundColorClass, className }) => {
@@ -46,13 +41,11 @@ function numberWithCommas(x) {
   return parts.join('.')
 }
 
-export const EventStatus = () => {
+export const LaunchEventStatus = () => {
   const [totalCommitments, maxTotalCommitments, sqrdPrice] = useEventData()
-
   let soldPercent = Math.round(
     (totalCommitments / (maxTotalCommitments / 2)) * 100
   )
-
   return (
     <div className="flex flex-col">
       <BodyHeaderText
@@ -70,6 +63,35 @@ export const EventStatus = () => {
         <StatusBar
           percent={100 - soldPercent}
           text="Remaining"
+          backgroundColorClass="bg-primary"
+        />
+      </div>
+    </div>
+  )
+}
+
+export const LastLookStatus = () => {
+  const [totalCommitments, maxTotalCommitments, sqrdPrice] = useEventData()
+  const swapPercent = Math.round((totalCommitments / maxTotalCommitments) * 100)
+  const actualSwapPercent = swapPercent > 100 ? 100 : swapPercent
+  const farmingPercent = swapPercent > 100 ? swapPercent - 100 : 0
+  return (
+    <div className="flex flex-col">
+      <BodyHeaderText
+        title="Launch Event Summary"
+        firstRow={`Total commitments: $${numberWithCommas(totalCommitments)}`}
+        secondRow={`Conversion rate: $${sqrdPrice}/SQRD`}
+        marginBottomClass="mb-7"
+      />
+      <div className="flex space-x-10">
+        <StatusBar
+          percent={actualSwapPercent}
+          text="Swap"
+          backgroundColorClass="bg-dark"
+        />
+        <StatusBar
+          percent={farmingPercent}
+          text="Farming"
           backgroundColorClass="bg-primary"
         />
       </div>
