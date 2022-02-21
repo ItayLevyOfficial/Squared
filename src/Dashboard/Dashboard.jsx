@@ -3,13 +3,11 @@ import { StakingPool } from '../products/StakingPool'
 import { PageWrapper } from '../layouts/PageWrapper'
 import { ModalDisplay } from '../products/ModalDisplay'
 import { selectedChain } from '../chains'
-import { provider } from '../launchEvent/useConnectWallet'
 import { InformationBox, InformationLine } from '../products/Information'
 
 export const Dashboard = (props) => {
   const [isModalOpen, setIsOpen] = useState(false)
   const [selectedTokenIndex, setSelectedTokenIndex] = useState(null)
-
   const [tokenAmount, setTokenAmount] = useState('')
 
   const open = (id) => {
@@ -22,9 +20,6 @@ export const Dashboard = (props) => {
     setSelectedTokenIndex(null)
     setTokenAmount('')
   }
-
-  const balance = provider.getBalance(selectedChain.ethPoolContractAddress)
-  console.log(balance)
 
   return (
     <PageWrapper>
