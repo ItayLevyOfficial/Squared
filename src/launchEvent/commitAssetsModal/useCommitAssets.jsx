@@ -3,9 +3,11 @@ import { selectedChain } from '../../chains'
 import { erc20abi } from '../abis/erc20abi'
 import { useContract } from '../utils'
 import { useState } from 'react'
-import { launchContractAbi } from '../abis/defiRoundAbi';
+import { launchContractAbi } from '../abis/defiRoundAbi'
+import { useConnectWallet } from '../useConnectWallet'
 
-export const useCommitAssets = (signer) => {
+export const useCommitAssets = () => {
+  const [signer] = useConnectWallet()
   const erc20 = useContract(signer, selectedChain.tokens[1].address, erc20abi)
   const [txHash, setTxHash] = useState()
   const launchContract = useContract(
@@ -14,10 +16,7 @@ export const useCommitAssets = (signer) => {
     launchContractAbi
   )
 
-  const commitAssets = async ({
-    tokenAmount,
-    selectedTokenIndex
-  }) => {
+  const commitAssets = async ({ tokenAmount, selectedTokenIndex }) => {
     const tokenData =
       selectedTokenIndex !== null
         ? selectedChain.tokens[selectedTokenIndex]
