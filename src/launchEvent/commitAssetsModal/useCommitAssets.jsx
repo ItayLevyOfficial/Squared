@@ -53,7 +53,7 @@ export const useCommitAssets = () => {
       }
     } else {
       if (selectedTokenIndex === 0) {
-        const tx = await launchContract.withdraw({token: tokenData.address, amount: amountÎ}, true)
+        const tx = await launchContract.withdraw({token: tokenData.address, amount: amount}, true)
         setTxHash(tx.hash)
       }
     }
