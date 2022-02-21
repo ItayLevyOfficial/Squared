@@ -1,16 +1,18 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { selectedChain } from '../chains'
 import { AddressButton } from '../Layouts/Header'
 import { PrimaryLink } from './commitAssetsModal/commitAssetsModal'
 import Logo from './icons/logo.svg'
 import MetamaskIcon from './icons/metamask.svg'
+import { StageContext } from './LaunchEventScreen'
 import { useConnectWallet } from './useConnectWallet'
 import { convertMilliseconds } from './utils'
+
 const timeLeftBarWidth = 'w-[580px]'
 
-export const LaunchScreenHeader = ({
-  phase = selectedChain.launchData.stage === 1 ? 'TAKE OFF EVENT' : 'LAST LOOK',
-}) => {
+export const LaunchScreenHeader = () => {
+  const launchStage = useContext(StageContext)
+  const phase = launchStage === 1 ? 'TAKE OFF EVENT' : 'LAST LOOK'
   const [, connectWallet, address] = useConnectWallet()
 
   return (
@@ -41,7 +43,7 @@ export const BrandingSection = ({ children }) => (
 
 const MiddleSection = () => {
   const paragraph =
-    selectedChain.launchData.stage === 1 ? (
+    launchStage === 1 ? (
       <>
         {' '}
         Squared's take-off event has arrived. It's the first time users can buy
@@ -78,7 +80,7 @@ export const weekInMillis = 604800000
 
 const TimeLeft = ({ className = '' }) => {
   const timeLeftData =
-    selectedChain.launchData.stage === 1
+    launchStage === 1
       ? {
           startTime: selectedChain.launchData.launchTime,
           length: weekInMillis,
