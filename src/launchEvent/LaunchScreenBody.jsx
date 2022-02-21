@@ -5,12 +5,12 @@ import { AccountStatus } from './AccountStatus'
 import { CommitAssetsModal } from './commitAssetsModal/commitAssetsModal'
 import { ErrorModal, SuccessModal } from './commitAssetsModal/MessageModal'
 import { useCommitAssets } from './commitAssetsModal/useCommitAssets'
-import { EventStatus } from './EventStatus'
+import { LaunchEventStatus } from './EventStatus'
 import { useAccountBalance } from './useAccountBalance'
 
 export const formatBigUsd = (bigUsd) => bigUsd.div(10 ** 8).toNumber()
 
-export const Body = ({ className = '' }) => {
+export const LaunchScreenBody = ({ className = '' }) => {
   const [selectedTokenIndex, setSelectedToken] = useState(null)
   const [commitAssets, txHash, setTxHash] = useCommitAssets()
   const [balance, depositedTokenAddress] = useAccountBalance()
@@ -33,7 +33,7 @@ export const Body = ({ className = '' }) => {
         handleStableClick={() => setSelectedToken(1)}
       />
       <div className="w-[0.5px] h-full bg-white" />
-      <EventStatus />
+      <LaunchEventStatus />
       {txHash && selectedToken ? (
         <SuccessModal
           close={() => {

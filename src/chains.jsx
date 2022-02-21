@@ -1,17 +1,21 @@
-import { EthereumIcon } from './launchEvent/icons/ethereum'
 import React from 'react'
-import { Usdc } from './launchEvent/icons/usdc'
 import { Bnb } from './launchEvent/icons/BNB'
 import { Busd } from './launchEvent/icons/busd'
+import { EthereumIcon } from './launchEvent/icons/ethereum'
+import { Usdc } from './launchEvent/icons/usdc'
 
 const localChainConfig = {
   chainId: '0x539',
   chainName: 'hardhat',
   approvalTime: 5,
   rpcUrls: ['http://127.0.0.1:8545/'],
-  launchContractAddress: '0x8A93d247134d91e0de6f96547cB0204e5BE8e5D8',
-  launchTime: 1645112469136,
-  launchTokensAmount: 3_000_000,
+  launchData: {
+    launchContractAddress: '0x8A93d247134d91e0de6f96547cB0204e5BE8e5D8',
+    launchTime: 1645112469136,
+    lastLookStart: 1645382384584,
+    stage: 1,
+    launchTokensAmount: 3_000_000,
+  },
   scan: { name: 'Etherscan', url: 'https://etherscan.io/' },
   tokens: [
     {

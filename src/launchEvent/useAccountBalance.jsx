@@ -2,7 +2,7 @@ import { ethers } from 'ethers'
 import { useCallback, useEffect, useState } from 'react'
 import { selectedChain } from '../chains'
 import { launchContractAbi } from './abis/defiRoundAbi'
-import { formatBigUsd } from './Body'
+import { formatBigUsd } from './LaunchScreenBody'
 import { provider, useConnectWallet } from './useConnectWallet'
 import { useContract } from './utils'
 
@@ -15,7 +15,7 @@ export const useAccountBalance = () => {
 
   const readLaunchContract = useContract(
     provider,
-    selectedChain.launchContractAddress,
+    selectedChain.launchData.launchContractAddress,
     launchContractAbi
   )
 

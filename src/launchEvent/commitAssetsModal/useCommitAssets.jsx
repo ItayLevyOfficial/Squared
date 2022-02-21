@@ -12,7 +12,7 @@ export const useCommitAssets = () => {
   const [txHash, setTxHash] = useState()
   const launchContract = useContract(
     signer,
-    selectedChain.launchContractAddress,
+    selectedChain.launchData.launchContractAddress,
     launchContractAbi
   )
 
@@ -35,7 +35,7 @@ export const useCommitAssets = () => {
       )
       setTxHash(tx.hash)
     } else {
-      await erc20.approve(selectedChain.launchContractAddress, amount)
+      await erc20.approve(selectedChain.launchData.launchContractAddress, amount)
       const tx = await launchContract.deposit(
         {
           token: tokenData.address,

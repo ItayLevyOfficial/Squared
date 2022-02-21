@@ -1,5 +1,5 @@
 import React from 'react'
-import { Body } from './Body'
+import { LaunchScreenBody } from './LaunchScreenBody'
 import { Footer } from './Footer'
 import { LaunchScreenHeader } from './LaunchScreenHeader'
 
@@ -7,7 +7,7 @@ export const LaunchEventScreen = () => (
   <ScreenPaddedContainer>
     <div className="flex flex-col items-center justify-between w-full max-w-screen-2xl h-full">
       <LaunchScreenHeader />
-      <Body />
+      <LaunchScreenBody />
       <Footer />
     </div>
   </ScreenPaddedContainer>

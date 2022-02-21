@@ -1,12 +1,14 @@
-import React, { useEffect, useState } from 'react'
-import { selectedChain } from '../chains'
-import { launchContractAbi } from './abis/defiRoundAbi'
+import React from 'react'
 import { BodyHeaderText } from './AccountStatus'
-import { formatBigUsd } from './Body'
-import { provider } from './useConnectWallet'
-import { useContract } from './utils'
+import { useEventData } from './useEventData'
+import { selectedChain } from '../chains'
 
-const StatusBar = ({ percent, text, backgroundColorClass, className }) => {
+export const StatusBar = ({
+  percent,
+  text,
+  backgroundColorClass,
+  className,
+}) => {
   const minEdgeValue = 4
   const maxEdgeValue = 100 - minEdgeValue
 
@@ -39,68 +41,60 @@ const StatusBar = ({ percent, text, backgroundColorClass, className }) => {
   )
 }
 
-function numberWithCommas(x) {
+export function numberWithCommas(x) {
   var parts = x.toString().split('.')
   parts[0] = parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, ',')
   return parts.join('.')
 }
 
-export const EventStatus = () => {
-  const launchContract = useContract(
-    provider,
-    selectedChain.launchContractAddress,
-    launchContractAbi
-  )
-  const [totalCommitments, setTotalCommitments] = useState(0)
-  const [maxTotalCommitments, setMaxTotalCommitments] = useState(0)
-
-  useEffect(() => {
-    if (launchContract) {
-      launchContract.getMaxTotalValue().then((maxTotalValue) => {
-        setMaxTotalCommitments(formatBigUsd(maxTotalValue))
-      })
-    }
-  }, [launchContract])
-
-  useEffect(() => {
-    if (launchContract) {
-      launchContract.totalValue().then((response) => {
-        setTotalCommitments(formatBigUsd(response))
-      })
-    }
-  }, [launchContract])
-
-  const minSqrdPrice = '2.00'
-  const maxSqrdPrice = '8.00'
-  const minSqrdSold = 6000000
-  const sqrdPrice =
-    totalCommitments < minSqrdSold
-      ? minSqrdPrice
-      : totalCommitments > maxTotalCommitments / 2
-      ? maxSqrdPrice
-      : (totalCommitments / selectedChain.launchTokensAmount).toFixed(2)
-
+export const LaunchEventStatus = () => {
+  const [totalCommitments, maxTotalCommitments, sqrdPrice] = useEventData()
   let soldPercent = Math.round(
     (totalCommitments / (maxTotalCommitments / 2)) * 100
   )
+  const farmingMoney = totalCommitments - maxTotalCommitments / 2
+  const farmingPercent =
+    farmingMoney > 0 ? Math.round((farmingMoney / totalCommitments) * 100) : 0
+  const swapPercent = 100 - farmingPercent
+
+  const secondStatusBarData =
+    selectedChain.launchData.stage === 1
+      ? {
+          percent: 100 - soldPercent,
+          text: 'Remaining',
+        }
+      : {
+          percent: farmingPercent,
+          text: 'Farming',
+        }
+  const firstStatusBarData =
+    selectedChain.launchData.stage === 1
+      ? {
+          percent: soldPercent,
+          text: 'Sold',
+        }
+      : {
+          percent: swapPercent,
+          text: 'Swap',
+        }
 
   return (
     <div className="flex flex-col">
       <BodyHeaderText
-        title="Event Status"
+        title={selectedChain.stage === 1 ? 'Event Status' : 'Event Summary'}
         firstRow={`Total commitments: $${numberWithCommas(totalCommitments)}`}
         secondRow={`Conversion rate: $${sqrdPrice}/SQRD`}
         marginBottomClass="mb-7"
       />
       <div className="flex space-x-10">
         <StatusBar
-          percent={soldPercent}
-          text="Sold"
+          percent={firstStatusBarData.percent}
+          text={firstStatusBarData.text}
           backgroundColorClass="bg-dark"
         />
         <StatusBar
-          percent={100 - soldPercent}
-          text="Remaining"
+          percent={secondStatusBarData.percent}
+          text={secondStatusBarData.text}
           backgroundColorClass="bg-primary"
         />
       </div>
