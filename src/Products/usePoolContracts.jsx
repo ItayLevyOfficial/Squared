@@ -3,6 +3,9 @@ import { PoolAbi } from '../products/ABIs/PoolAbi'
 import { useContract } from '../launchEvent/utils'
 import { useConnectWallet } from '../launchEvent/useConnectWallet'
 import { selectedChain } from '../chains'
+import { useEffect, useState, useCallback } from 'react'
+import { ethers } from 'ethers'
+import { formatBigErc20 } from '../dashboard/Dashboard'
 
 export const usePoolContracts = () => {
   const [signer, ,] = useConnectWallet()
@@ -32,5 +35,66 @@ export const usePoolContracts = () => {
     usdcPoolContract,
     sqrdPoolContract,
     sqrdLpPoolContract,
+  ]
+}
+
+export const useFetchBalance = () => {
+  const [
+    ethPoolContract,
+    usdcPoolContract,
+    sqrdPoolContract,
+    sqrdLpPoolContract,
+  ] = usePoolContracts()
+  const [, , address] = useConnectWallet()
+  const [assetsBalance, setAssetsBalance] = useState(0)
+  const [totalValueLocked, setTotalValueLocked] = useState(0)
+  const [ethBalance, setEthBalance] = useState(0)
+  const [usdcBalance, setUsdcBalance] = useState(0)
+  const [sqrdBalance, setSqrdBalance] = useState(0)
+  const [sqrdLpBalance, setSqrdLpBalance] = useState(0)
+
+  const fetchBalance = useCallback(async () => {
+    const balanceEth = await ethPoolContract.balanceOf(address)
+    setEthBalance(ethers.utils.formatEther(balanceEth))
+
+    const balanceUsdc = await usdcPoolContract.balanceOf(address)
+    setUsdcBalance(formatBigErc20(balanceUsdc))
+
+    const balanceSqrd = await sqrdPoolContract.balanceOf(address)
+    setSqrdBalance(formatBigErc20(balanceSqrd))
+
+    const balanceSqrdLp = await sqrdLpPoolContract.balanceOf(address)
+
+    setSqrdLpBalance(formatBigErc20(balanceSqrdLp))
+    setAssetsBalance(+ethBalance + +usdcBalance + +sqrdLpBalance)
+    setTotalValueLocked(+assetsBalance + +sqrdBalance)
+  }, [
+    address,
+    ethPoolContract,
+    usdcPoolContract,
+    sqrdPoolContract,
+    sqrdLpPoolContract,
+  ])
+
+  useEffect(() => {
+    if (address) {
+      fetchBalance()
+    }
+  }, [
+    address,
+    ethPoolContract,
+    usdcPoolContract,
+    sqrdPoolContract,
+    sqrdLpPoolContract,
+  ])
+
+  return [
+    assetsBalance,
+    sqrdLpBalance,
+    sqrdBalance,
+    ethBalance,
+    usdcBalance,
+    totalValueLocked,
+    assetsBalance,
   ]
 }
