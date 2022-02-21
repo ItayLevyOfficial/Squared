@@ -3,13 +3,14 @@ import { LaunchScreenBody } from './LaunchScreenBody'
 import { Footer } from './Footer'
 import { LaunchScreenHeader } from './LaunchScreenHeader'
 import { createContext } from 'react'
-const StageContext = createContext(1)
 import { useState } from 'react'
 import { useEffect } from 'react'
 import { provider } from './useConnectWallet'
 import { selectedChain } from '../chains'
 import { launchContractAbi } from './abis/defiRoundAbi'
 import { useContract } from './utils'
+
+export const StageContext = createContext(1)
 
 export const LaunchScreenContext = () => {
   const [stage, setStage] = useState()
@@ -26,7 +27,7 @@ export const LaunchScreenContext = () => {
 
   return (
     <StageContext.Provider value={stage + 1}>
-      {stage === null ? null : <LaunchEventScreen />}
+      {[0, 1].includes(stage) ? <LaunchEventScreen /> : null}
     </StageContext.Provider>
   )
 }
