@@ -43,15 +43,7 @@ export const Products = () => {
 
       <div className="w-full flex items-center justify-evenly -mt-32">
         {selectedChain.tokens.map((el, index) => (
-          <StakingPool
-            el={el}
-            key={index}
-            openModal={() => open(index)}
-            ethBalance={ethBalance}
-            usdcBalance={usdcBalance}
-            sqrdBalance={sqrdBalance}
-            sqrdLpBalance={sqrdLpBalance}
-          />
+          <StakingPool el={el} key={index} openModal={() => open(index)} />
         ))}
       </div>
       <Information
