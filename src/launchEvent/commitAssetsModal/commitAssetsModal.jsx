@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useContext } from 'react'
 import Modal from 'react-modal'
 import { selectedChain } from '../../chains'
 import { ModalButton } from '../../Products/ModalButtons'
@@ -10,6 +10,7 @@ import {
 import { ModalInput } from '../../Products/ModalInput'
 import { useConnectWallet } from '../useConnectWallet'
 import { ModalParagraph, ModalTitle } from './MessageModal'
+import { StageContext } from '../LaunchEventScreen'
 
 export const commitContentStyles = {
   ...contentStyles,
@@ -34,9 +35,10 @@ export const CommitAssetsModal = ({
   const [tokenAmount, setTokenAmount] = useState('')
   const [, connectWallet, address] = useConnectWallet()
   const isConnected = Boolean(address)
+  const launchStage = useContext(StageContext)
 
   const modalData =
-    selectedChain.launchData.stage === 1
+    launchStage === 1
       ? {
           title: 'Commit',
           paragraph: (

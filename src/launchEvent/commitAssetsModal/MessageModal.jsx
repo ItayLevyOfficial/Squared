@@ -1,12 +1,13 @@
 import { faCheck, faCopy } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import copy from 'copy-to-clipboard'
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import Modal from 'react-modal'
 import { selectedChain } from '../../chains'
 import { CloseButton, overlayStyles } from '../../Products/ModalDisplay'
 import errorIcon from '../icons/error.svg'
 import { SuccessIcon } from '../icons/success'
+import { StageContext } from '../LaunchEventScreen'
 import { commitContentStyles, PrimaryLink } from './commitAssetsModal'
 
 export const ModalTitle = ({ children, className }) => (
@@ -87,18 +88,16 @@ export const ErrorModal = ({
   depositedTokenName,
   close,
 }) => {
+  const launchStage = useContext(StageContext)
   return (
     <MessageModal
-      header={`${
-        selectedChain.launchData.stage === 1 ? 'Commit' : 'Withdraw'
-      } not allowed`}
+      header={`${launchStage === 1 ? 'Commit' : 'Withdraw'} not allowed`}
       isOpen={isOpen}
       footer={
         <>
           In the launch event, you can only deposit either {depositedTokenName}{' '}
           or {tokenName}. Since you already committed {depositedTokenName},
-          further{' '}
-          {selectedChain.launchData.stage === 1 ? 'deposits' : 'withdrawals'} of{' '}
+          further {launchStage === 1 ? 'deposits' : 'withdrawals'} of{' '}
           {tokenName} are not allowed. <PrimaryLink>Learn more</PrimaryLink>
         </>
       }

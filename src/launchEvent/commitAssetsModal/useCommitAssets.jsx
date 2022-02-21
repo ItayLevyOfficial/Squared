@@ -1,10 +1,11 @@
 import { BigNumber } from 'ethers'
+import { useContext, useState } from 'react'
 import { selectedChain } from '../../chains'
-import { erc20abi } from '../abis/erc20abi'
-import { useContract } from '../utils'
-import { useState } from 'react'
 import { launchContractAbi } from '../abis/defiRoundAbi'
+import { erc20abi } from '../abis/erc20abi'
+import { StageContext } from '../LaunchEventScreen'
 import { useConnectWallet } from '../useConnectWallet'
+import { useContract } from '../utils'
 
 export const parseNumberDecimals = ({ amount, decimals }) =>
   BigNumber.from(amount).mul(BigNumber.from('10').pow(BigNumber.from(decimals)))
@@ -18,6 +19,7 @@ export const useCommitAssets = () => {
     selectedChain.launchData.launchContractAddress,
     launchContractAbi
   )
+  const launchStage = useContext(StageContext)
 
   const commitAssets = async ({ tokenAmount, selectedTokenIndex }) => {
     const tokenData = selectedChain.tokens[selectedTokenIndex]
@@ -25,7 +27,7 @@ export const useCommitAssets = () => {
       amount: tokenAmount,
       decimals: tokenData.decimals,
     })
-    if (selectedChain.launchData.stage === 1) {
+    if (launchStage === 1) {
       if (selectedTokenIndex === 0) {
         const tx = await launchContract.deposit(
           {

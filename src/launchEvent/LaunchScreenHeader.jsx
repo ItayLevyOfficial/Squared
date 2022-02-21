@@ -42,6 +42,7 @@ export const BrandingSection = ({ children }) => (
 )
 
 const MiddleSection = () => {
+  const launchStage = useContext(StageContext)
   const paragraph =
     launchStage === 1 ? (
       <>
@@ -79,6 +80,7 @@ const AddressSection = ({ connectWallet, address }) => (
 export const weekInMillis = 604800000
 
 const TimeLeft = ({ className = '' }) => {
+  const launchStage = useContext(StageContext)
   const timeLeftData =
     launchStage === 1
       ? {
