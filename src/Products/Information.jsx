@@ -17,23 +17,19 @@ export const InformationBox = ({ title, children }) => {
   )
 }
 
-export const Information = ({
-  assetsBalance,
-  sqrdBalance,
-  totalValueLocked,
-}) => {
+export const Information = ({ ethBalance, usdcBalance, sqrdBalance }) => {
   return (
-    <div className="flex -mt-20 w-10/12">
+    <div className="flex -mt-20 h-[200px] w-10/12">
       <InformationBox title={'Value Locked'}>
-        <InformationLine>{`SQRD TVL : ${sqrdBalance}`}</InformationLine>
-        <InformationLine>{`ASSETS TVL : ${assetsBalance}`}</InformationLine>
-        <InformationLine>{`TVL : ${totalValueLocked}`}</InformationLine>
+        <InformationLine>{`ETH TVL: ${ethBalance}`}</InformationLine>
+        <InformationLine>{`USDC TVL: ${usdcBalance}`}</InformationLine>
+        <InformationLine>{`SQRD TVL: ${sqrdBalance}`}</InformationLine>
       </InformationBox>
-      <div className="w-[0.5px] h-42 bg-white" />
+      <div className="w-[0.5px] h-full bg-white" />
       <InformationBox title={'Cycle'}>
-        <InformationLine>{`THIS CYCLE : CYCLE ZERO-0`}</InformationLine>
-        <InformationLine>{`NEXT CYCLE : 3 DAYS 9 HOURS`}</InformationLine>
-        <InformationLine>{`SQRD PRICE : $0.00`}</InformationLine>
+        <InformationLine>{`This Cycle: CYCLE ZERO-0`}</InformationLine>
+        <InformationLine>{`Next Cycle: 3 DAYS 9 HOURS`}</InformationLine>
+        <InformationLine>{`SQRD Price: $0.00`}</InformationLine>
       </InformationBox>
     </div>
   )

@@ -8,7 +8,7 @@ import { useFetchBalance } from '../products/usePoolContracts'
 
 export const formatBigErc20 = (bigUsd) => bigUsd.div(10 ** 6).toNumber()
 export const Dashboard = () => {
-  const [sqrdLpBalance, sqrdBalance, ethBalance, usdcBalance, assetsBalance] =
+  const [, sqrdLpBalance, sqrdBalance, ethBalance, usdcBalance, ,] =
     useFetchBalance()
 
   const [isModalOpen, setIsOpen] = useState(false)
@@ -40,17 +40,17 @@ export const Dashboard = () => {
           <StakingPool el={el} key={index} openModal={() => open(index)} />
         ))}
       </div>
-      <div className="flex -mt-20 w-10/12">
+      <div className="flex -mt-20 h-[200px] w-10/12">
         <InformationBox title={'Your Balance'}>
-          <InformationLine>{`ETH : ${ethBalance}`} </InformationLine>
-          <InformationLine>{`USDC : ${usdcBalance}`}</InformationLine>
-          <InformationLine>{`SQRD : ${sqrdBalance}`}</InformationLine>
-          <InformationLine>{`SQRD LP : ${sqrdLpBalance}`}</InformationLine>
+          <InformationLine>{`ETH: ${ethBalance}`} </InformationLine>
+          <InformationLine>{`USDC: ${usdcBalance}`}</InformationLine>
+          <InformationLine>{`SQRD: ${sqrdBalance}`}</InformationLine>
+          <InformationLine>{`SQRD LP: ${sqrdLpBalance}`}</InformationLine>
         </InformationBox>
-        <div className="w-[0.5px] h-42 bg-white" />
+        <div className="w-[0.5px] h-full bg-white" />
         <InformationBox title={'Your Rewards'}>
-          <InformationLine>{`EARNED : 0.0`}</InformationLine>
-          <InformationLine>{`AVAILABLE : 0.0`}</InformationLine>
+          <InformationLine>{`Earned: 0.0`}</InformationLine>
+          <InformationLine>{`Available: 0.0`}</InformationLine>
           <InformationLine />
           <button className="bg-darkPrimary text-white w-[180px] text-md p-2 text-md rounded-lg opacity-50 mt-6">
             Claim SQRD
