@@ -108,16 +108,22 @@ export const ModalDisplay = ({
     } else {
       switch (selectedTokenIndex) {
         case 1:
-          await erc20Usdc.approve(selectedChain.usdcPoolContractAddress, amount)
+          await erc20Usdc.approve(
+            selectedChain.tokens[1].usdcPoolContractAddress,
+            amount
+          )
           await usdcPoolContract.deposit(amount)
           break
         case 2:
-          await erc20Sqrd.approve(selectedChain.sqrdPoolContractAddress, amount)
+          await erc20Sqrd.approve(
+            selectedChain.tokens[2].sqrdPoolContractAddress,
+            amount
+          )
           await sqrdPoolContract.deposit(amount)
           break
         default:
           await erc20SqrdLp.approve(
-            selectedChain.sqrdLpPoolContractAddress,
+            selectedChain.tokens[3].sqrdLpPoolContractAddress,
             amount
           )
           await sqrdLpPoolContract.deposit(amount)
