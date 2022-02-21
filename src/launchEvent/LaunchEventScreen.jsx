@@ -2,6 +2,34 @@ import React from 'react'
 import { LaunchScreenBody } from './LaunchScreenBody'
 import { Footer } from './Footer'
 import { LaunchScreenHeader } from './LaunchScreenHeader'
+import { createContext } from 'react'
+const StageContext = createContext(1)
+import { useState } from 'react'
+import { useEffect } from 'react'
+import { provider } from './useConnectWallet'
+import { selectedChain } from '../chains'
+import { launchContractAbi } from './abis/defiRoundAbi'
+import { useContract } from './utils'
+
+export const LaunchScreenContext = () => {
+  const [stage, setStage] = useState()
+  const readLaunchContract = useContract(
+    provider,
+    selectedChain.launchData.launchContractAddress,
+    launchContractAbi
+  )
+  useEffect(() => {
+    if (readLaunchContract) {
+      readLaunchContract?.currentStage().then((response) => setStage(response))
+    }
+  }, [readLaunchContract])
+  
+  return (
+    <StageContext.Provider value={stage + 1}>
+      <LaunchEventScreen />
+    </StageContext.Provider>
+  )
+}
 
 export const LaunchEventScreen = () => (
   <ScreenPaddedContainer>
