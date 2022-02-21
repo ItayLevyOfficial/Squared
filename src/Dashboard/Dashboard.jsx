@@ -12,7 +12,7 @@ import { useContract } from '../launchEvent/utils'
 import { provider } from '../launchEvent/useConnectWallet'
 
 export const Dashboard = (props) => {
-  const formatBigUsd = (bigUsd) => bigUsd.div(10 ** 6).toNumber()
+  const formatBigErc20 = (bigUsd) => bigUsd.div(10 ** 6).toNumber()
   const [, , address] = useConnectWallet()
   const [ethBalance, setEthBalance] = useState(0)
   const [usdcBalance, setUsdcBalance] = useState(0)
@@ -44,13 +44,13 @@ export const Dashboard = (props) => {
     setEthBalance(ethers.utils.formatEther(balanceEth))
 
     const balanceUsdc = await usdcPoolContract.balanceOf(address)
-    setUsdcBalance(formatBigUsd(balanceUsdc))
+    setUsdcBalance(formatBigErc20(balanceUsdc))
 
     const balanceSqrd = await sqrdPoolContract.balanceOf(address)
-    setSqrdBalance(formatBigUsd(balanceSqrd))
+    setSqrdBalance(formatBigErc20(balanceSqrd))
 
     const balanceSqrdLp = await sqrdLpPoolContract.balanceOf(address)
-    setSqrdLpBalance(formatBigUsd(balanceSqrdLp))
+    setSqrdLpBalance(formatBigErc20(balanceSqrdLp))
   }, [
     address,
     ethPoolContract,
