@@ -23,12 +23,12 @@ export const ModalButtons = ({
       {isConnected ? (
         isOnWithdraw ? (
           <>
-            <ModalButton text={`REQUEST WITHDRAWAL`} />
-            <ModalButton text={`WITHDRAW ${selectedTokenIndex}`} />
+            <ModalButton text={`Request Withdrawal`} />
+            <ModalButton text={`Withdraw ${selectedTokenIndex}`} />
           </>
         ) : (
           <ModalButton
-            text={`DEPOSIT ${selectedTokenIndex}`}
+            text={`Deposit ${selectedTokenIndex}`}
             onClick={commitAssets}
           />
         )
