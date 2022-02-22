@@ -1,5 +1,9 @@
 import { StakingPool } from './StakingPool'
-import { Information } from './Information'
+import {
+  InformationWrapper,
+  InformationBox,
+  InformationLine,
+} from './Information'
 import { PageWrapper } from '../layouts/PageWrapper'
 import { ModalDisplay } from './ModalDisplay'
 import { selectedChain } from '../chains'
@@ -55,11 +59,19 @@ export const Products = () => {
           <StakingPool el={el} key={index} openModal={() => open(index)} />
         ))}
       </StakingPoolWrapper>
-      <Information
-        ethBalance={ethBalance}
-        usdcBalance={usdcBalance}
-        sqrdBalance={sqrdBalance}
-      />
+      <InformationWrapper>
+        <InformationBox title={'Value Locked'}>
+          <InformationLine>{`ETH TVL: ${ethBalance}`}</InformationLine>
+          <InformationLine>{`USDC TVL: ${usdcBalance}`}</InformationLine>
+          <InformationLine>{`SQRD TVL: ${sqrdBalance}`}</InformationLine>
+        </InformationBox>
+        <div className="w-[0.5px] h-full bg-white" />
+        <InformationBox title={'Cycle'}>
+          <InformationLine>{`This Cycle: CYCLE ZERO-0`}</InformationLine>
+          <InformationLine>{`Next Cycle: 3 DAYS 9 HOURS`}</InformationLine>
+          <InformationLine>{`SQRD Price: $0.00`}</InformationLine>
+        </InformationBox>
+      </InformationWrapper>
     </PageWrapper>
   )
 }

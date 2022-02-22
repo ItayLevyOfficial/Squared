@@ -2,7 +2,11 @@ import { StakingPool } from '../products/StakingPool'
 import { PageWrapper } from '../layouts/PageWrapper'
 import { ModalDisplay } from '../products/ModalDisplay'
 import { selectedChain } from '../chains'
-import { InformationBox, InformationLine } from '../products/Information'
+import {
+  InformationBox,
+  InformationLine,
+  InformationWrapper,
+} from '../products/Information'
 import { useState } from 'react'
 import { useFetchBalance } from '../products/usePoolContracts'
 import { StakingPoolWrapper } from '../products/Products'
@@ -40,7 +44,7 @@ export const Dashboard = () => {
           <StakingPool el={el} key={index} openModal={() => open(index)} />
         ))}
       </StakingPoolWrapper>
-      <div className="flex -mt-20 h-[200px] w-10/12">
+      <InformationWrapper>
         <InformationBox title={'Your Balance'}>
           <InformationLine>{`ETH: ${ethBalance}`} </InformationLine>
           <InformationLine>{`USDC: ${usdcBalance}`}</InformationLine>
@@ -56,7 +60,7 @@ export const Dashboard = () => {
             Claim SQRD
           </button>
         </InformationBox>
-      </div>
+      </InformationWrapper>
     </PageWrapper>
   )
 }
