@@ -31,8 +31,6 @@ export const useFetchUserBalance = () => {
 
     const balanceSqrdLp = await sqrdLpPoolContract.balanceOf(address)
     setSqrdLpBalance(parseInt(formatBigErc20(balanceSqrdLp)))
-    setAssetsBalance(+ethBalance + +usdcBalance + +sqrdLpBalance)
-    setTotalValueLocked(parseInt(sqrdLpBalance) + parseInt(sqrdBalance))
   }, [
     address,
     ethPoolContract,
