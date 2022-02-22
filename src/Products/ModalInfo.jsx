@@ -3,7 +3,7 @@ import { ModalLine } from './ModalLine'
 import { useFetchUserBalance } from '../dashboard/useFetchUserBalance'
 
 export const ModalDeposited = ({ selectedTokenIndex }) => {
-  const [, sqrdLpBalance, sqrdBalance, ethBalance, usdcBalance, ,] =
+  const [ethBalance, usdcBalance, sqrdBalance, sqrdLpBalance] =
     useFetchUserBalance()
   return (
     <ModalLine
