@@ -5,7 +5,8 @@ import { useConnectWallet } from '../launchEvent/useConnectWallet'
 import { selectedChain } from '../chains'
 import { useEffect, useState, useCallback } from 'react'
 import { ethers } from 'ethers'
-import { formatBigErc20 } from '../dashboard/Dashboard'
+
+export const formatBigErc20 = (bigUsd) => bigUsd.div(10 ** 6).toNumber()
 
 export const usePoolContracts = () => {
   const [signer, ,] = useConnectWallet()

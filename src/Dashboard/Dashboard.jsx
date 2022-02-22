@@ -6,7 +6,6 @@ import { InformationBox, InformationLine } from '../products/Information'
 import { useState } from 'react'
 import { useFetchBalance } from '../products/usePoolContracts'
 
-export const formatBigErc20 = (bigUsd) => bigUsd.div(10 ** 6).toNumber()
 export const Dashboard = () => {
   const [, sqrdLpBalance, sqrdBalance, ethBalance, usdcBalance, ,] =
     useFetchBalance()
