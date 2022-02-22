@@ -19,8 +19,6 @@ export const useFetchPoolBalance = () => {
   const [usdcBalance, setUsdcBalance] = useState(0)
   const [sqrdBalance, setSqrdBalance] = useState(0)
   const [sqrdLpBalance, setSqrdLpBalance] = useState(0)
-  //   const [assetsBalance, setAssetsBalance] = useState(0)
-  //   const [totalValueLocked, setTotalValueLocked] = useState(0)
 
   const [signer, ,] = useConnectWallet()
   const erc20Usdc = useContract(
@@ -55,9 +53,6 @@ export const useFetchPoolBalance = () => {
       sqrdLpPoolContract.address
     )
     setSqrdLpBalance(parseInt(formatBigErc20(balanceSqrdLp)))
-
-    // setAssetsBalance(+ethBalance + +usdcBalance + +sqrdLpBalance)
-    // setTotalValueLocked(parseInt(sqrdLpBalance) + parseInt(sqrdBalance))
   }, [ethPoolContract, usdcPoolContract, sqrdPoolContract, sqrdLpPoolContract])
 
   useEffect(() => {
@@ -68,7 +63,5 @@ export const useFetchPoolBalance = () => {
     parseInt(usdcBalance).toFixed(1),
     parseInt(sqrdBalance).toFixed(1),
     parseInt(sqrdLpBalance).toFixed(1),
-    // parseInt(assetsBalance).toFixed(1),
-    // parseInt(totalValueLocked).toFixed(1),
   ]
 }
