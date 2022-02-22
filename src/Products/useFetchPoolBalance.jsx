@@ -39,8 +39,8 @@ export const useFetchPoolBalance = () => {
   )
 
   const fetchBalance = useCallback(async () => {
-    const balanceEth = await provider.getBalance(ethPoolContract.address)
-    setEthBalance(parseInt(ethers.utils.formatEther(balanceEth)))
+    // const balanceEth = await provider.getBalance(ethPoolContract.address)
+    // setEthBalance(parseInt(ethers.utils.formatEther(balanceEth)))
 
     const balanceUsdc = await erc20Usdc.balanceOf(usdcPoolContract.address)
     setUsdcBalance(parseInt(formatBigErc20(balanceUsdc)))
