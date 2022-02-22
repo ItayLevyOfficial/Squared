@@ -6,7 +6,7 @@ import { formatBigErc20 } from '../dashboard/useFetchUserBalance'
 import { useContract } from '../launchEvent/utils'
 import { selectedChain } from '../chains'
 import { erc20abi } from '../launchEvent/abis/erc20abi'
-
+import { provider } from '../launchEvent/useConnectWallet'
 export const useFetchPoolBalance = () => {
   const [
     ethPoolContract,
@@ -15,12 +15,12 @@ export const useFetchPoolBalance = () => {
     sqrdLpPoolContract,
   ] = usePoolContracts()
 
-  //   const [assetsBalance, setAssetsBalance] = useState(0)
-  //   const [totalValueLocked, setTotalValueLocked] = useState(0)
-  //   const [ethBalance, setEthBalance] = useState(0)
+  const [ethBalance, setEthBalance] = useState(0)
   const [usdcBalance, setUsdcBalance] = useState(0)
   const [sqrdBalance, setSqrdBalance] = useState(0)
   const [sqrdLpBalance, setSqrdLpBalance] = useState(0)
+  //   const [assetsBalance, setAssetsBalance] = useState(0)
+  //   const [totalValueLocked, setTotalValueLocked] = useState(0)
 
   const [signer, ,] = useConnectWallet()
   const erc20Usdc = useContract(
@@ -40,7 +40,9 @@ export const useFetchPoolBalance = () => {
   )
 
   const fetchBalance = useCallback(async () => {
-    // const balanceEth = await ethPoolContract.balanceOf(address)
+    // const balanceEth = await provider.getBalance(
+    //   selectedChain.tokens[0].ethPoolContractAddress
+    // )
     // setEthBalance(parseInt(ethers.utils.formatEther(balanceEth)))
 
     const balanceUsdc = await erc20Usdc.balanceOf(usdcPoolContract.address)
@@ -56,23 +58,13 @@ export const useFetchPoolBalance = () => {
 
     // setAssetsBalance(+ethBalance + +usdcBalance + +sqrdLpBalance)
     // setTotalValueLocked(parseInt(sqrdLpBalance) + parseInt(sqrdBalance))
-  }, [
-    // ethPoolContract,
-    usdcPoolContract,
-    sqrdPoolContract,
-    sqrdLpPoolContract,
-  ])
+  }, [ethPoolContract, usdcPoolContract, sqrdPoolContract, sqrdLpPoolContract])
 
   useEffect(() => {
     fetchBalance()
-  }, [
-    // ethPoolContract,
-    usdcPoolContract,
-    sqrdPoolContract,
-    sqrdLpPoolContract,
-  ])
+  }, [ethPoolContract, usdcPoolContract, sqrdPoolContract, sqrdLpPoolContract])
   return [
-    // parseInt(ethBalance).toFixed(1),
+    parseInt(ethBalance).toFixed(1),
     parseInt(usdcBalance).toFixed(1),
     parseInt(sqrdBalance).toFixed(1),
     parseInt(sqrdLpBalance).toFixed(1),

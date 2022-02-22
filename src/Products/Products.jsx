@@ -18,7 +18,8 @@ export const StakingPoolWrapper = ({ children }) => {
 }
 
 export const Products = () => {
-  const [usdcBalance, sqrdBalance] = useFetchPoolBalance()
+  const [ethBalance, usdcBalance, sqrdBalance, sqrdLpBalance] =
+    useFetchPoolBalance()
   const [isModalOpen, setIsOpen] = useState(false)
   const [selectedTokenIndex, setSelectedTokenIndex] = useState(null)
 
@@ -52,7 +53,7 @@ export const Products = () => {
       </StakingPoolWrapper>
       <InformationWrapper>
         <InformationBox title={'Value Locked'}>
-          <InformationLine>{`ETH TVL: `}</InformationLine>
+          <InformationLine>{`ETH TVL: ${ethBalance} `}</InformationLine>
           <InformationLine>{`USDC TVL: ${usdcBalance}`}</InformationLine>
           <InformationLine>{`SQRD TVL: ${sqrdBalance} `}</InformationLine>
         </InformationBox>

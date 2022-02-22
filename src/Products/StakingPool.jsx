@@ -2,7 +2,8 @@ import { useFetchPoolBalance } from './useFetchPoolBalance'
 
 export const StakingPool = ({ el, openModal }) => {
   const { name } = el
-  const [usdcBalance, sqrdBalance, sqrdLpBalance] = useFetchPoolBalance()
+  const [ethBalance, usdcBalance, sqrdBalance, sqrdLpBalance] =
+    useFetchPoolBalance()
 
   return (
     <div className="group w-56 h-full text-white border-transparent rounded-xl flex flex-col items-center justify-between p-2 flex-shrink-0">
