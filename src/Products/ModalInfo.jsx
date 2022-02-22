@@ -1,25 +1,42 @@
 import React from 'react'
 import { ModalLine } from './ModalLine'
+import { useFetchBalance } from './usePoolContracts'
 
 export const ModalInfo = ({ isOnWithdraw, selectedTokenIndex }) => {
+  const [
+    assetsBalance,
+    sqrdLpBalance,
+    sqrdBalance,
+    ethBalance,
+    usdcBalance,
+    totalValueLocked,
+  ] = useFetchBalance()
   return (
     <div className="text-white text-sm mt-6">
       {isOnWithdraw ? (
         <>
           <ModalLine
             title="Deposited"
-            amount="0.00"
+            amount={
+              selectedTokenIndex === 'ETH'
+                ? ethBalance
+                : selectedTokenIndex === 'USDC'
+                ? usdcBalance
+                : selectedTokenIndex === 'SQRD'
+                ? sqrdBalance
+                : sqrdLpBalance
+            }
             selectedTokenIndex={selectedTokenIndex}
           />
           <br />
           <ModalLine
             title="Requested Withdrawal"
-            amount="0.00"
+            amount="0.0"
             selectedTokenIndex={selectedTokenIndex}
           />
           <ModalLine
             title="Available for Withdrawal"
-            amount="0.00"
+            amount="0.0"
             selectedTokenIndex={selectedTokenIndex}
           />
           <br /> <br />
@@ -37,7 +54,15 @@ export const ModalInfo = ({ isOnWithdraw, selectedTokenIndex }) => {
         <>
           <ModalLine
             title="Deposited"
-            amount="0.00"
+            amount={
+              selectedTokenIndex === 'ETH'
+                ? ethBalance
+                : selectedTokenIndex === 'USDC'
+                ? usdcBalance
+                : selectedTokenIndex === 'SQRD'
+                ? sqrdBalance
+                : sqrdLpBalance
+            }
             selectedTokenIndex={selectedTokenIndex}
           />
           <br /> <br />
