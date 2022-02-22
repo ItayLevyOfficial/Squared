@@ -8,12 +8,12 @@ import {
   InformationWrapper,
 } from '../products/Information'
 import { useState } from 'react'
-import { useFetchBalance } from '../products/usePoolContracts'
+import { useFetchUserBalance } from './useFetchUserBalance'
 import { StakingPoolWrapper } from '../products/Products'
 
 export const Dashboard = () => {
   const [, sqrdLpBalance, sqrdBalance, ethBalance, usdcBalance, ,] =
-    useFetchBalance()
+    useFetchUserBalance()
 
   const [isModalOpen, setIsOpen] = useState(false)
   const [selectedTokenIndex, setSelectedTokenIndex] = useState(null)

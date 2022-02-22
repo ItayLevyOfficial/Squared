@@ -1,10 +1,10 @@
 import React from 'react'
 import { ModalLine } from './ModalLine'
-import { useFetchBalance } from './usePoolContracts'
+import { useFetchUserBalance } from '../dashboard/useFetchUserBalance'
 
 export const ModalDeposited = ({ selectedTokenIndex }) => {
   const [, sqrdLpBalance, sqrdBalance, ethBalance, usdcBalance, ,] =
-    useFetchBalance()
+    useFetchUserBalance()
   return (
     <ModalLine
       title="Deposited"
