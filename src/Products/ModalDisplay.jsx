@@ -128,7 +128,7 @@ export const ModalDisplay = ({
       }}
     >
       <CloseButton close={close} />
-      <h1 className="text-2xl mb-4 -mt-4 text-white flex justify-center">
+      <h1 className="text-2xl mb-4 text-white flex justify-center">
         {tokenData?.name}
       </h1>
 

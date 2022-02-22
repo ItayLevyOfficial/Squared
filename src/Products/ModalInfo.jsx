@@ -42,13 +42,14 @@ export const ModalInfo = ({ isOnWithdraw, selectedTokenIndex }) => {
           />
           <br /> <br />
           <div className="w-full flex flex-col items-center text-xs">
-            <span>Withdrawals from SQRD pools are subject to a cooldown</span>
+            <span>
+              Withdrawals from Squared pools are subject to a cooldown
+            </span>
 
             <span>
               Requested withdrawals become available at the beginning of next
               Cycle
             </span>
-            <span>( within 24h )</span>
           </div>
         </>
       )}
