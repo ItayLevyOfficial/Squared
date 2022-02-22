@@ -28,7 +28,9 @@ export const ModalButtons = ({
           </>
         ) : (
           <ModalButton
-            text={`Deposit ${selectedTokenIndex}`}
+            text={` ${
+              selectedTokenIndex === 'SQRD' ? 'Stake' : 'Deposit'
+            } ${selectedTokenIndex}`}
             onClick={commitAssets}
           />
         )
