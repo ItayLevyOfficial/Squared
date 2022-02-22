@@ -13,8 +13,7 @@ export const useFetchUserBalance = () => {
     sqrdLpPoolContract,
   ] = usePoolContracts()
   const [, , address] = useConnectWallet()
-  const [assetsBalance, setAssetsBalance] = useState(0)
-  const [totalValueLocked, setTotalValueLocked] = useState(0)
+
   const [ethBalance, setEthBalance] = useState(0)
   const [usdcBalance, setUsdcBalance] = useState(0)
   const [sqrdBalance, setSqrdBalance] = useState(0)
@@ -55,11 +54,9 @@ export const useFetchUserBalance = () => {
   ])
 
   return [
-    parseInt(assetsBalance).toFixed(1),
     parseInt(sqrdLpBalance).toFixed(1),
     parseInt(sqrdBalance).toFixed(1),
     parseInt(ethBalance).toFixed(1),
     parseInt(usdcBalance).toFixed(1),
-    parseInt(totalValueLocked).toFixed(1),
   ]
 }
