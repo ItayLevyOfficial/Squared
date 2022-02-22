@@ -54,9 +54,9 @@ export const useFetchUserBalance = () => {
   ])
 
   return [
-    parseInt(sqrdLpBalance).toFixed(1),
-    parseInt(sqrdBalance).toFixed(1),
     parseInt(ethBalance).toFixed(1),
     parseInt(usdcBalance).toFixed(1),
+    parseInt(sqrdBalance).toFixed(1),
+    parseInt(sqrdLpBalance).toFixed(1),
   ]
 }

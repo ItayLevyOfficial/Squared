@@ -12,7 +12,7 @@ import { useFetchUserBalance } from './useFetchUserBalance'
 import { StakingPoolWrapper } from '../products/Products'
 
 export const Dashboard = () => {
-  const [, sqrdLpBalance, sqrdBalance, ethBalance, usdcBalance, ,] =
+  const [ethBalance, usdcBalance, sqrdBalance, sqrdLpBalance] =
     useFetchUserBalance()
 
   const [isModalOpen, setIsOpen] = useState(false)
