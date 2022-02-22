@@ -38,7 +38,7 @@ export const StakingPool = ({ el, openModal }) => {
         onClick={() => openModal(name)}
         className="bg-darkPrimary hover:bg-opacity-95 text-white w-[180px] text-md p-2 text-md rounded-lg"
       >
-        Deposit/Withdraw
+        {name === 'SQRD' ? 'STAKE AND VOTE' : 'Deposit/Withdraw'}
       </button>
     </div>
   )
