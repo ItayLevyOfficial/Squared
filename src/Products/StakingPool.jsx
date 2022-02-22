@@ -1,5 +1,8 @@
+import { useFetchPoolBalance } from './useFetchPoolBalance'
+
 export const StakingPool = ({ el, openModal }) => {
   const { name } = el
+  const [usdcBalance, sqrdBalance, sqrdLpBalance] = useFetchPoolBalance()
 
   return (
     <div className="group w-56 h-full text-white border-transparent rounded-xl flex flex-col items-center justify-between p-2 flex-shrink-0">
@@ -12,14 +15,13 @@ export const StakingPool = ({ el, openModal }) => {
           </div>
           <div className="flex flex-col items-center justify-center">
             <div className="text-sm">
-              0.0
-              {/* {name === 'ETH'
-                ? ethBalance
+              {name === 'ETH'
+                ? 0.0
                 : name === 'USDC'
                 ? usdcBalance
                 : name === 'SQRD'
                 ? sqrdBalance
-                : sqrdLpBalance} */}
+                : sqrdLpBalance}
             </div>
             <div className="text-sm">0%</div>
           </div>

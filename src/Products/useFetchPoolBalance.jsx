@@ -6,6 +6,7 @@ import { formatBigErc20 } from '../dashboard/useFetchUserBalance'
 import { useContract } from '../launchEvent/utils'
 import { selectedChain } from '../chains'
 import { erc20abi } from '../launchEvent/abis/erc20abi'
+
 export const useFetchPoolBalance = () => {
   const [
     ethPoolContract,
