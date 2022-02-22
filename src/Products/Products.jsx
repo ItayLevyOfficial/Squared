@@ -8,7 +8,7 @@ import { PageWrapper } from '../layouts/PageWrapper'
 import { ModalDisplay } from './ModalDisplay'
 import { selectedChain } from '../chains'
 import { useState } from 'react'
-
+import { useFetchPoolBalance } from './useFetchPoolBalance'
 export const StakingPoolWrapper = ({ children }) => {
   return (
     <div className="w-full flex items-center justify-evenly -mt-20">
@@ -18,6 +18,8 @@ export const StakingPoolWrapper = ({ children }) => {
 }
 
 export const Products = () => {
+  const [usdcBalance] = useFetchPoolBalance()
+  console.log(usdcBalance)
   const [isModalOpen, setIsOpen] = useState(false)
   const [selectedTokenIndex, setSelectedTokenIndex] = useState(null)
 
@@ -52,7 +54,7 @@ export const Products = () => {
       <InformationWrapper>
         <InformationBox title={'Value Locked'}>
           <InformationLine>{`ETH TVL: `}</InformationLine>
-          <InformationLine>{`USDC TVL: `}</InformationLine>
+          <InformationLine>{`USDC TVL: ${usdcBalance}`}</InformationLine>
           <InformationLine>{`SQRD TVL: `}</InformationLine>
         </InformationBox>
         <div className="w-[0.5px] h-full bg-white" />
