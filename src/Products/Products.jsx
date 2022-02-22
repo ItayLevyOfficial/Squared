@@ -6,6 +6,14 @@ import { selectedChain } from '../chains'
 import { useState } from 'react'
 import { useFetchBalance } from './usePoolContracts'
 
+export const StakingPoolWrapper = ({ children }) => {
+  return (
+    <div className="w-full flex items-center justify-evenly -mt-20">
+      {children}
+    </div>
+  )
+}
+
 export const Products = () => {
   const [
     assetsBalance,
@@ -42,11 +50,11 @@ export const Products = () => {
         tokenAmount={tokenAmount}
       />
 
-      <div className="w-full flex items-center justify-evenly -mt-20">
+      <StakingPoolWrapper>
         {selectedChain.tokens.map((el, index) => (
           <StakingPool el={el} key={index} openModal={() => open(index)} />
         ))}
-      </div>
+      </StakingPoolWrapper>
       <Information
         ethBalance={ethBalance}
         usdcBalance={usdcBalance}

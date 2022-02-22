@@ -5,6 +5,7 @@ import { selectedChain } from '../chains'
 import { InformationBox, InformationLine } from '../products/Information'
 import { useState } from 'react'
 import { useFetchBalance } from '../products/usePoolContracts'
+import { StakingPoolWrapper } from '../products/Products'
 
 export const Dashboard = () => {
   const [, sqrdLpBalance, sqrdBalance, ethBalance, usdcBalance, ,] =
@@ -34,11 +35,11 @@ export const Dashboard = () => {
         setTokenAmount={setTokenAmount}
         tokenAmount={tokenAmount}
       />
-      <div className="w-full flex items-center justify-evenly -mt-20">
+      <StakingPoolWrapper>
         {selectedChain.tokens.map((el, index) => (
           <StakingPool el={el} key={index} openModal={() => open(index)} />
         ))}
-      </div>
+      </StakingPoolWrapper>
       <div className="flex -mt-20 h-[200px] w-10/12">
         <InformationBox title={'Your Balance'}>
           <InformationLine>{`ETH: ${ethBalance}`} </InformationLine>
