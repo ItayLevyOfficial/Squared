@@ -2,32 +2,32 @@ import React from 'react'
 import { ModalLine } from './ModalLine'
 import { useFetchBalance } from './usePoolContracts'
 
+export const ModalDeposited = ({ selectedTokenIndex }) => {
+  const [, sqrdLpBalance, sqrdBalance, ethBalance, usdcBalance, ,] =
+    useFetchBalance()
+  return (
+    <ModalLine
+      title="Deposited"
+      amount={
+        selectedTokenIndex === 'ETH'
+          ? ethBalance
+          : selectedTokenIndex === 'USDC'
+          ? usdcBalance
+          : selectedTokenIndex === 'SQRD'
+          ? sqrdBalance
+          : sqrdLpBalance
+      }
+      selectedTokenIndex={selectedTokenIndex}
+    />
+  )
+}
+
 export const ModalInfo = ({ isOnWithdraw, selectedTokenIndex }) => {
-  const [
-    assetsBalance,
-    sqrdLpBalance,
-    sqrdBalance,
-    ethBalance,
-    usdcBalance,
-    totalValueLocked,
-  ] = useFetchBalance()
   return (
     <div className="text-white text-sm mt-6">
       {isOnWithdraw ? (
         <>
-          <ModalLine
-            title="Deposited"
-            amount={
-              selectedTokenIndex === 'ETH'
-                ? ethBalance
-                : selectedTokenIndex === 'USDC'
-                ? usdcBalance
-                : selectedTokenIndex === 'SQRD'
-                ? sqrdBalance
-                : sqrdLpBalance
-            }
-            selectedTokenIndex={selectedTokenIndex}
-          />
+          <ModalDeposited selectedTokenIndex={selectedTokenIndex} />
           <br />
           <ModalLine
             title="Requested Withdrawal"
@@ -52,19 +52,7 @@ export const ModalInfo = ({ isOnWithdraw, selectedTokenIndex }) => {
         </>
       ) : (
         <>
-          <ModalLine
-            title="Deposited"
-            amount={
-              selectedTokenIndex === 'ETH'
-                ? ethBalance
-                : selectedTokenIndex === 'USDC'
-                ? usdcBalance
-                : selectedTokenIndex === 'SQRD'
-                ? sqrdBalance
-                : sqrdLpBalance
-            }
-            selectedTokenIndex={selectedTokenIndex}
-          />
+          <ModalDeposited selectedTokenIndex={selectedTokenIndex} />
           <br /> <br />
           <div className="w-full flex flex-col items-center text-xs">
             <span>
