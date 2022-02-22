@@ -5,7 +5,6 @@ export const ModalInput = ({
   className = '',
   value,
   handleChange,
-  handleMaxClick,
 }) => {
   return (
     <div
