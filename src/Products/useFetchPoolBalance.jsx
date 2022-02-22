@@ -6,7 +6,6 @@ import { useContract } from '../launchEvent/utils'
 import { selectedChain } from '../chains'
 import { erc20abi } from '../launchEvent/abis/erc20abi'
 import { ethers } from 'ethers'
-import { provider } from '../launchEvent/useConnectWallet'
 
 export const useFetchPoolBalance = () => {
   const [
@@ -22,6 +21,11 @@ export const useFetchPoolBalance = () => {
   const [sqrdLpBalance, setSqrdLpBalance] = useState(0)
 
   const [signer, ,] = useConnectWallet()
+  const erc20Eth = useContract(
+    signer,
+    selectedChain.tokens[0].address,
+    erc20abi
+  )
   const erc20Usdc = useContract(
     signer,
     selectedChain.tokens[1].address,
@@ -39,8 +43,8 @@ export const useFetchPoolBalance = () => {
   )
 
   const fetchBalance = useCallback(async () => {
-    // const balanceEth = await provider.getBalance(ethPoolContract.address)
-    // setEthBalance(parseInt(ethers.utils.formatEther(balanceEth)))
+    const balanceEth = await erc20Eth.balanceOf(ethPoolContract.address)
+    setEthBalance(parseInt(ethers.utils.formatEther(balanceEth)))
 
     const balanceUsdc = await erc20Usdc.balanceOf(usdcPoolContract.address)
     setUsdcBalance(parseInt(formatBigErc20(balanceUsdc)))
