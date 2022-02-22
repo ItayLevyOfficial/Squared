@@ -17,7 +17,7 @@ export const StakingPool = ({ el, openModal }) => {
           <div className="flex flex-col items-center justify-center">
             <div className="text-sm">
               {name === 'ETH'
-                ? 0.0
+                ? ethBalance
                 : name === 'USDC'
                 ? usdcBalance
                 : name === 'SQRD'
