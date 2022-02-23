@@ -15,7 +15,6 @@ import { NetworkModal } from '../launchEvent/commitAssetsModal/NetworkModal'
 export const Dashboard = () => {
   const [ethBalance, usdcBalance, sqrdBalance, sqrdLpBalance] =
     useFetchUserBalance()
-  const wrongNetwork = useNetworkModal()
 
   const [isModalOpen, setIsOpen] = useState(false)
   const [selectedTokenIndex, setSelectedTokenIndex] = useState(null)
