@@ -16,11 +16,11 @@ export const parseNumberDecimals = ({ amount, decimals }) => {
   if (decimalSide === 0) {
     return wholeSideFormatted
   } else {
-    const decimalSideWhole = Math.round(decimalSide * (10 ** 5))
+    const decimalSideWhole = Math.round(decimalSide * 10 ** 6)
     const formattedDecimalSide = BigNumber.from(decimalSideWhole).mul(
       BigNumber.from('10').pow(BigNumber.from(decimals - 6))
     )
-    return formattedDecimalSide + wholeSideFormatted
+    return formattedDecimalSide.add(wholeSideFormatted)
   }
 }
 

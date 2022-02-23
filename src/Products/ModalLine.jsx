@@ -1,6 +1,6 @@
 import React from 'react'
 
-export const ModalLine = ({ title, amount, selectedTokenIndex }) => {
+export const ModalLine = ({ title, amount, selectedTokenName }) => {
   return (
     <div className="w-full px-6 flex justify-between items-center">
       <span>{title}</span>
@@ -13,7 +13,7 @@ export const ModalLine = ({ title, amount, selectedTokenIndex }) => {
 
       <div className="flex justify-center items-center space-x-2">
         <div>{amount}</div>
-        <div className="flex">{selectedTokenIndex}</div>
+        <div className="flex">{selectedTokenName}</div>
       </div>
     </div>
   )

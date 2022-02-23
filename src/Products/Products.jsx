@@ -9,9 +9,10 @@ import { ModalDisplay } from './ModalDisplay'
 import { selectedChain } from '../chains'
 import { useState } from 'react'
 import { useFetchPoolBalance } from './useFetchPoolBalance'
-export const StakingPoolWrapper = ({ children }) => {
+
+export const StakingPoolWrapper = ({ children, className }) => {
   return (
-    <div className="w-full flex items-center justify-evenly -mt-20">
+    <div className={`w-full flex items-center justify-evenly ${className}`}>
       {children}
     </div>
   )
@@ -45,8 +46,7 @@ export const Products = () => {
         setTokenAmount={setTokenAmount}
         tokenAmount={tokenAmount}
       />
-
-      <StakingPoolWrapper>
+      <StakingPoolWrapper className={'-mt-32'}>
         {selectedChain.tokens.map((el, index) => (
           <StakingPool el={el} key={index} openModal={() => open(index)} />
         ))}

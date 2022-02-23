@@ -1,7 +1,7 @@
-import MetamaskIcon from '../launchEvent/icons/metamask.svg'
+import { BookOpenIcon, LibraryIcon } from '@heroicons/react/outline'
 import React from 'react'
-import { LibraryIcon, BookOpenIcon, MinusIcon } from '@heroicons/react/outline'
 import { useLocation } from 'react-router-dom'
+import MetamaskIcon from '../launchEvent/icons/metamask.svg'
 import { BrandingSection } from '../launchEvent/LaunchScreenHeader'
 
 export const PageToggleWrapper = ({ children }) => {
@@ -31,7 +31,7 @@ export const PageToggle = () => {
           Assets
         </a>
       </PageToggleWrapper>
-      <div className="w-1.5 h-1.5 border bg-white " />
+      <div className="w-1.5 h-1.5 border bg-white rounded-full" />
 
       <PageToggleWrapper>
         <a

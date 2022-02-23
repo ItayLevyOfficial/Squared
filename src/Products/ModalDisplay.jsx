@@ -1,17 +1,16 @@
-import Modal from 'react-modal'
-import { ModalInfo } from './ModalInfo'
 import { XIcon } from '@heroicons/react/outline'
-import { useState } from 'react'
-import { ModalOptions } from './ModalOptions'
-import { ModalInput } from './ModalInput'
-import { ModalButtons } from './ModalButtons'
-import { useContract } from '../launchEvent/utils'
-import { useConnectWallet } from '../launchEvent/useConnectWallet'
-import { usePoolContracts } from './usePoolContracts'
+import React, { useState } from 'react'
+import Modal from 'react-modal'
 import { selectedChain } from '../chains'
 import { erc20abi } from '../launchEvent/abis/erc20abi'
-import React from 'react'
 import { parseNumberDecimals } from '../launchEvent/commitAssetsModal/useCommitAssets'
+import { useConnectWallet } from '../launchEvent/useConnectWallet'
+import { useContract } from '../launchEvent/utils'
+import { ModalButtons } from './ModalButtons'
+import { ModalInfo } from './ModalInfo'
+import { ModalInput } from './ModalInput'
+import { ModalOptions } from './ModalOptions'
+import { usePoolContracts } from './usePoolContracts'
 Modal.setAppElement('#root')
 
 export const contentStyles = {
@@ -135,16 +134,16 @@ export const ModalDisplay = ({
         <ModalOptions
           isOnWithdraw={isOnWithdraw}
           setIsOnWithdraw={setIsOnWithdraw}
-          selectedTokenIndex={tokenData?.name}
+          selectedTokenName={tokenData?.name}
         />
         <ModalInput
-          selectedTokenIndex={tokenData?.name}
+          selectedTokenName={tokenData?.name}
           className="mt-10"
           value={tokenAmount}
           handleChange={setTokenAmount}
         />
         <ModalInfo
-          selectedTokenIndex={tokenData?.name}
+          selectedTokenName={tokenData?.name}
           isOnWithdraw={isOnWithdraw}
         />
         <br />
@@ -154,7 +153,7 @@ export const ModalDisplay = ({
           connectWallet={connectWallet}
           isConnected={isConnected}
           isOnWithdraw={isOnWithdraw}
-          selectedTokenIndex={tokenData?.name}
+          selectedTokenName={tokenData?.name}
         />
         <br />
       </div>
