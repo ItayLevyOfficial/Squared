@@ -27,7 +27,7 @@ const localChainConfig = {
     {
       name: 'USDC',
       usdcPoolContractAddress: '0xB0f05d25e41FbC2b52013099ED9616f1206Ae21B',
-      address: '0x40918Ba7f132E0aCba2CE4de4c4baF9BD2D7D849',
+      address: '0x8A93d247134d91e0de6f96547cB0204e5BE8e5D8',
       decimals: '6',
       icon: <Usdc />,
     },
