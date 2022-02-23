@@ -22,6 +22,9 @@ export const LaunchScreenContext = () => {
   useEffect(() => {
     if (readLaunchContract) {
       readLaunchContract?.currentStage().then((response) => setStage(response))
+      const handleRatesPublished = () => setStage(1)
+      readLaunchContract.on('RatesPublished', handleRatesPublished)
+      return () => {if (readLaunchContract) readLaunchContract.removeListener('RatesPublished', handleRatesPublished)}
     }
   }, [readLaunchContract])
   return (
