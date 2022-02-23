@@ -31,7 +31,7 @@ export const PageToggle = () => {
           Assets
         </a>
       </PageToggleWrapper>
-      <div className="w-1.5 h-1.5 border bg-white " />
+      <div className="w-1.5 h-1.5 border bg-white rounded-full" />
 
       <PageToggleWrapper>
         <a
