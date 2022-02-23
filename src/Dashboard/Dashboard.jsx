@@ -39,7 +39,7 @@ export const Dashboard = () => {
         setTokenAmount={setTokenAmount}
         tokenAmount={tokenAmount}
       />
-      <StakingPoolWrapper>
+      <StakingPoolWrapper className={'-mt-32'}>
         {selectedChain.tokens.map((el, index) => (
           <StakingPool el={el} key={index} openModal={() => open(index)} />
         ))}
