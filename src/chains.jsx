@@ -10,7 +10,7 @@ const localChainConfig = {
   approvalTime: 2,
   rpcUrls: ['http://127.0.0.1:8545/'],
   launchData: {
-    launchContractAddress: '0x8A93d247134d91e0de6f96547cB0204e5BE8e5D8',
+    launchContractAddress: '0xF32D39ff9f6Aa7a7A64d7a4F00a54826Ef791a55',
     launchTime: 1645545947422,
     lastLookStart: 1645545947422,
     launchTokensAmount: 3_000_000,
