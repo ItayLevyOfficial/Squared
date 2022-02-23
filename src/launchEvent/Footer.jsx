@@ -14,11 +14,11 @@ const FooterIcon = ({ src, url }) => (
   />
 )
 
-const twitter = 'https://twitter.com/puffpuffmoney'
-const medium = 'https://medium.com/@puffpuffmoney'
-const github = 'https://github.com/puffpuffmoney/puff_contracts'
+const twitter = 'https://twitter.com/squared_dao'
+const medium = 'https://squaredfinance.medium.com/'
+const github = 'https://github.com/squareddao/squared_contracts'
 const discord = 'https://discord.gg/j7SstuFv7E'
-const docs = 'https://docs.puffpuff.money'
+const docs = 'https://docs.squared.finance'
 
 export const Footer = () => (
   <div className="flex items-center space-x-9">
