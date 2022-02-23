@@ -83,4 +83,4 @@ const chains = {
   ethereum: localChainConfig,
 }
 
-export const selectedChain = chains.bsc
+export const selectedChain = chains.ethereum
