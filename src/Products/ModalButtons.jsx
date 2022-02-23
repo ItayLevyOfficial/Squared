@@ -13,7 +13,7 @@ export const ModalButton = ({ text, onClick }) => {
 
 export const ModalButtons = ({
   isOnWithdraw,
-  selectedTokenIndex,
+  selectedTokenName,
   isConnected,
   connectWallet,
   commitAssets,
@@ -23,12 +23,14 @@ export const ModalButtons = ({
       {isConnected ? (
         isOnWithdraw ? (
           <>
-            <ModalButton text={`REQUEST WITHDRAWAL`} />
-            <ModalButton text={`WITHDRAW ${selectedTokenIndex}`} />
+            <ModalButton text={`Request Withdrawal`} />
+            <ModalButton text={`Withdraw ${selectedTokenName}`} />
           </>
         ) : (
           <ModalButton
-            text={`DEPOSIT ${selectedTokenIndex}`}
+            text={` ${
+              selectedTokenName === 'SQRD' ? 'Stake' : 'Deposit'
+            } ${selectedTokenName}`}
             onClick={commitAssets}
           />
         )

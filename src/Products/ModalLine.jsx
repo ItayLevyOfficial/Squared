@@ -1,6 +1,6 @@
-import React from "react"
+import React from 'react'
 
-export const ModalLine = ({ title, amount, selectedToken }) => {
+export const ModalLine = ({ title, amount, selectedTokenName }) => {
   return (
     <div className="w-full px-6 flex justify-between items-center">
       <span>{title}</span>
@@ -13,9 +13,8 @@ export const ModalLine = ({ title, amount, selectedToken }) => {
 
       <div className="flex justify-center items-center space-x-2">
         <div>{amount}</div>
-        <div className="flex">{selectedToken}</div>
+        <div className="flex">{selectedTokenName}</div>
       </div>
     </div>
   )
 }
-

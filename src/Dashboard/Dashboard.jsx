@@ -2,14 +2,18 @@ import { StakingPool } from '../products/StakingPool'
 import { PageWrapper } from '../layouts/PageWrapper'
 import { ModalDisplay } from '../products/ModalDisplay'
 import { selectedChain } from '../chains'
-import { InformationBox, InformationLine } from '../products/Information'
+import {
+  InformationBox,
+  InformationLine,
+  InformationWrapper,
+} from '../products/Information'
 import { useState } from 'react'
-import { useFetchBalance } from '../products/usePoolContracts'
+import { useFetchUserBalance } from './useFetchUserBalance'
+import { StakingPoolWrapper } from '../products/Products'
 
-export const formatBigErc20 = (bigUsd) => bigUsd.div(10 ** 6).toNumber()
 export const Dashboard = () => {
-  const [, sqrdLpBalance, sqrdBalance, ethBalance, usdcBalance, ,] =
-    useFetchBalance()
+  const [ethBalance, usdcBalance, sqrdBalance, sqrdLpBalance] =
+    useFetchUserBalance()
 
   const [isModalOpen, setIsOpen] = useState(false)
   const [selectedTokenIndex, setSelectedTokenIndex] = useState(null)
@@ -35,12 +39,12 @@ export const Dashboard = () => {
         setTokenAmount={setTokenAmount}
         tokenAmount={tokenAmount}
       />
-      <div className="w-full flex items-center justify-evenly -mt-20">
+      <StakingPoolWrapper className={'-mt-32'}>
         {selectedChain.tokens.map((el, index) => (
           <StakingPool el={el} key={index} openModal={() => open(index)} />
         ))}
-      </div>
-      <div className="flex -mt-20 h-[200px] w-10/12">
+      </StakingPoolWrapper>
+      <InformationWrapper>
         <InformationBox title={'Your Balance'}>
           <InformationLine>{`ETH: ${ethBalance}`} </InformationLine>
           <InformationLine>{`USDC: ${usdcBalance}`}</InformationLine>
@@ -56,7 +60,7 @@ export const Dashboard = () => {
             Claim SQRD
           </button>
         </InformationBox>
-      </div>
+      </InformationWrapper>
     </PageWrapper>
   )
 }

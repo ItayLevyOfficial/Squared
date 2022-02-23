@@ -9,7 +9,12 @@ export const Home = () => {
   return (
     <div className="flex flex-col justify-between items-center w-screen h-screen z-20 py-20 animate-fadeIn relative">
       <div className="flex flex-col items-center">
-        <img src={Logo} className="object-cover mt-20 mb-6 animate-spin" style={{animationDuration: '30s'}}  width={150} />
+        <img
+          src={Logo}
+          className="object-cover mt-20 mb-6 animate-spin"
+          style={{ animationDuration: '30s' }}
+          width={150}
+        />
         <h1 className="text-8xl -tracking-wider font-bold mb-4">Squared</h1>
         <h2 className="text-primary text-3xl font-light mb-14 tracking-wide">
           Sustainable Liquidity for Long Tail Assets
