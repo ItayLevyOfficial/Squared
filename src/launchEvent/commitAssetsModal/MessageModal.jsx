@@ -105,3 +105,28 @@ export const ErrorModal = ({
     />
   )
 }
+
+export const NetworkModal = ({
+  icon = <img src={errorIcon} alt="" />,
+  isOpen,
+  close,
+}) => {
+  return (
+    <Modal
+      isOpen={isOpen}
+      onRequestClose={close}
+      style={{
+        overlay: overlayStyles,
+        content: commitContentStyles,
+      }}
+    >
+      <div className="flex flex-col items-center">
+        <ModalTitle className="mt-2 mb-10">Wrong Network</ModalTitle>
+        {icon}
+        <ModalParagraph className="mt-10">
+          Please switch to the {selectedChain.chainName} network.
+        </ModalParagraph>
+      </div>
+    </Modal>
+  )
+}

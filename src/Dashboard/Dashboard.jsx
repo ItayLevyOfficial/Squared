@@ -10,10 +10,13 @@ import {
 import { useState } from 'react'
 import { useFetchUserBalance } from './useFetchUserBalance'
 import { StakingPoolWrapper } from '../products/Products'
+import { NetworkModal } from '../launchEvent/commitAssetsModal/MessageModal'
+import { useNetworkModal } from '../launchEvent/useNetworkModal'
 
 export const Dashboard = () => {
   const [ethBalance, usdcBalance, sqrdBalance, sqrdLpBalance] =
     useFetchUserBalance()
+  const wrongNetwork = useNetworkModal()
 
   const [isModalOpen, setIsOpen] = useState(false)
   const [selectedTokenIndex, setSelectedTokenIndex] = useState(null)
@@ -61,6 +64,7 @@ export const Dashboard = () => {
           </button>
         </InformationBox>
       </InformationWrapper>
+      <NetworkModal isOpen={wrongNetwork} close={close} />
     </PageWrapper>
   )
 }
