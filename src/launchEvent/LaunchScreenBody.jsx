@@ -3,20 +3,14 @@ import React, { useState } from 'react'
 import { selectedChain } from '../chains'
 import { AccountStatus } from './AccountStatus'
 import { CommitAssetsModal } from './commitAssetsModal/commitAssetsModal'
-import {
-  ErrorModal,
-  NetworkModal,
-  SuccessModal,
-} from './commitAssetsModal/MessageModal'
+import { ErrorModal, SuccessModal } from './commitAssetsModal/MessageModal'
 import { useCommitAssets } from './commitAssetsModal/useCommitAssets'
 import { LaunchEventStatus } from './EventStatus'
 import { useAccountBalance } from './useAccountBalance'
-import { useNetworkModal } from './useNetworkModal'
-
+import { NetworkModal } from './commitAssetsModal/NetworkModal'
 export const formatBigUsd = (bigUsd) => bigUsd.div(10 ** 8).toNumber()
 
 export const LaunchScreenBody = ({ className = '' }) => {
-  const wrongNetwork = useNetworkModal()
   const [selectedTokenIndex, setSelectedToken] = useState(null)
   const [commitAssets, txHash, setTxHash] = useCommitAssets()
   const [balance, depositedTokenAddress] = useAccountBalance()
@@ -64,7 +58,7 @@ export const LaunchScreenBody = ({ className = '' }) => {
           depositedTokenName={depositedTokenName}
         />
       )}
-      <NetworkModal isOpen={wrongNetwork} close={close} />
+      <NetworkModal />
     </div>
   )
 }

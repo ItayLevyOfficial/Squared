@@ -9,8 +9,7 @@ import { ModalDisplay } from './ModalDisplay'
 import { selectedChain } from '../chains'
 import { useState } from 'react'
 import { useFetchPoolBalance } from './useFetchPoolBalance'
-import { NetworkModal } from '../launchEvent/commitAssetsModal/MessageModal'
-import { useNetworkModal } from '../launchEvent/useNetworkModal'
+import { NetworkModal } from '../launchEvent/commitAssetsModal/NetworkModal'
 
 export const StakingPoolWrapper = ({ children, className }) => {
   return (
@@ -21,7 +20,6 @@ export const StakingPoolWrapper = ({ children, className }) => {
 }
 
 export const Products = () => {
-  const wrongNetwork = useNetworkModal()
   const [ethBalance, usdcBalance, sqrdBalance, sqrdLpBalance] =
     useFetchPoolBalance()
 
@@ -68,7 +66,7 @@ export const Products = () => {
           <InformationLine>{`SQRD Price: $0.00`}</InformationLine>
         </InformationBox>
       </InformationWrapper>{' '}
-      <NetworkModal isOpen={wrongNetwork} close={close} />
+      <NetworkModal />
     </PageWrapper>
   )
 }
