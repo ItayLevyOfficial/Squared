@@ -1,12 +1,15 @@
-import React, { createContext, useCallback, useState } from 'react'
+import React, { useCallback } from 'react'
+import { LaunchScreenBody } from './LaunchScreenBody'
+import { Footer } from './Footer'
+import { LaunchScreenHeader } from './LaunchScreenHeader'
+import { createContext } from 'react'
+import { useState } from 'react'
+import { useEffect } from 'react'
+import { provider } from './useConnectWallet'
 import { selectedChain } from '../chains'
 import { launchContractAbi } from './abis/defiRoundAbi'
-import { Footer } from './Footer'
-import { LaunchScreenBody } from './LaunchScreenBody'
-import { LaunchScreenHeader } from './LaunchScreenHeader'
-import { provider } from './useConnectWallet'
-import { useEventListener } from './useEventListener'
 import { useContract } from './utils'
+import { useEventListener } from './useEventListener'
 
 export const StageContext = createContext(1)
 
@@ -25,6 +28,11 @@ export const LaunchScreenContext = () => {
     eventName: 'RatesPublished',
   })
 
+  useEffect(() => {
+    if (readLaunchContract) {
+      readLaunchContract?.currentStage().then((response) => setStage(response))
+    }
+  }, [readLaunchContract])
   return (
     <StageContext.Provider value={stage + 1}>
       {[0, 1].includes(stage) ? <LaunchEventScreen /> : null}
