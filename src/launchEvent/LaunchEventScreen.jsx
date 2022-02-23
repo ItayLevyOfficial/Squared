@@ -14,7 +14,7 @@ import { useEventListener } from './useEventListener'
 export const StageContext = createContext(1)
 
 export const LaunchScreenContext = () => {
-  const [stage, setStage] = useState()
+  const [stage, setStage] = useState(0)
   const readLaunchContract = useContract(
     provider,
     selectedChain.launchData.launchContractAddress,

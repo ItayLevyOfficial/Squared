@@ -9,6 +9,7 @@ import { ModalDisplay } from './ModalDisplay'
 import { selectedChain } from '../chains'
 import { useState } from 'react'
 import { useFetchPoolBalance } from './useFetchPoolBalance'
+import { NetworkModal } from '../launchEvent/commitAssetsModal/NetworkModal'
 
 export const StakingPoolWrapper = ({ children, className }) => {
   return (
@@ -21,6 +22,7 @@ export const StakingPoolWrapper = ({ children, className }) => {
 export const Products = () => {
   const [ethBalance, usdcBalance, sqrdBalance, sqrdLpBalance] =
     useFetchPoolBalance()
+
   const [isModalOpen, setIsOpen] = useState(false)
   const [selectedTokenIndex, setSelectedTokenIndex] = useState(null)
 
@@ -63,7 +65,8 @@ export const Products = () => {
           <InformationLine>{`Next Cycle: 3 DAYS 9 HOURS`}</InformationLine>
           <InformationLine>{`SQRD Price: $0.00`}</InformationLine>
         </InformationBox>
-      </InformationWrapper>
+      </InformationWrapper>{' '}
+      <NetworkModal />
     </PageWrapper>
   )
 }
