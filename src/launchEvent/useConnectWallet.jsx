@@ -1,8 +1,6 @@
-import { useState } from 'react'
-import { useEffect } from 'react'
 import { ethers } from 'ethers'
+import { useEffect, useState } from 'react'
 import { selectedChain } from '../chains'
-import { useEventListener } from './useEventListener';
 
 export const provider = window.ethereum
   ? new ethers.providers.Web3Provider(window.ethereum)
@@ -54,7 +52,6 @@ export const useConnectWallet = () => {
     }
   }, [signer])
 
-  
   useEffect(() => {
     if (window.ethereum) {
       const handleChainChange = () => window.location.reload()

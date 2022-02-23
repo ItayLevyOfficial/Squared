@@ -4,8 +4,8 @@ import { selectedChain } from '../chains'
 import { launchContractAbi } from './abis/defiRoundAbi'
 import { formatBigUsd } from './LaunchScreenBody'
 import { provider, useConnectWallet } from './useConnectWallet'
-import { useContract } from './utils'
 import { useEventListener } from './useEventListener'
+import { useContract } from './utils'
 
 export const useAccountBalance = () => {
   const [, , walletAddress] = useConnectWallet()
