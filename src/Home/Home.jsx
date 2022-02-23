@@ -24,7 +24,7 @@ export const Home = () => {
           onClick={() => navigate('/launch')}
           className="py-3 px-10 bg-dark hover:bg-opacity-80 hover:text-gold rounded-xl text-xl tracking-wider font-medium"
         >
-          Enter App
+          Coming Soon
         </button>
       </div>
       <Footer />
