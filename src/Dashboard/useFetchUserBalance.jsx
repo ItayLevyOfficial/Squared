@@ -3,7 +3,8 @@ import { ethers } from 'ethers'
 import { usePoolContracts } from '../products/usePoolContracts'
 import { useConnectWallet } from '../launchEvent/useConnectWallet'
 
-export const formatBigErc20 = (bigUsd) => bigUsd.div(10 ** 6).toNumber()
+export const formatBigErc20 = (bigNumber, decimals) =>
+  bigNumber.div(10 ** decimals).toNumber()
 
 export const useFetchUserBalance = () => {
   const [
@@ -24,13 +25,13 @@ export const useFetchUserBalance = () => {
     setEthBalance(parseInt(ethers.utils.formatEther(balanceEth)))
 
     const balanceUsdc = await usdcPoolContract.balanceOf(address)
-    setUsdcBalance(parseInt(formatBigErc20(balanceUsdc)))
+    setUsdcBalance(parseInt(formatBigErc20(balanceUsdc, 6)))
 
     const balanceSqrd = await sqrdPoolContract.balanceOf(address)
-    setSqrdBalance(parseInt(formatBigErc20(balanceSqrd)))
+    setSqrdBalance(parseInt(formatBigErc20(balanceSqrd, 6)))
 
     const balanceSqrdLp = await sqrdLpPoolContract.balanceOf(address)
-    setSqrdLpBalance(parseInt(formatBigErc20(balanceSqrdLp)))
+    setSqrdLpBalance(parseInt(formatBigErc20(balanceSqrdLp, 6)))
   }, [
     address,
     ethPoolContract,

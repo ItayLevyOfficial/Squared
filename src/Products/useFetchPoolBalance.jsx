@@ -47,15 +47,15 @@ export const useFetchPoolBalance = () => {
     setEthBalance(parseInt(ethers.utils.formatEther(balanceEth)))
 
     const balanceUsdc = await erc20Usdc.balanceOf(usdcPoolContract.address)
-    setUsdcBalance(parseInt(formatBigErc20(balanceUsdc)))
+    setUsdcBalance(parseInt(formatBigErc20(balanceUsdc, 6)))
 
     const balanceSqrd = await erc20Sqrd.balanceOf(sqrdPoolContract.address)
-    setSqrdBalance(parseInt(formatBigErc20(balanceSqrd)))
+    setSqrdBalance(parseInt(formatBigErc20(balanceSqrd, 6)))
 
     const balanceSqrdLp = await erc20SqrdLp.balanceOf(
       sqrdLpPoolContract.address
     )
-    setSqrdLpBalance(parseInt(formatBigErc20(balanceSqrdLp)))
+    setSqrdLpBalance(parseInt(formatBigErc20(balanceSqrdLp, 6)))
   }, [ethPoolContract, usdcPoolContract, sqrdPoolContract, sqrdLpPoolContract])
 
   useEffect(() => {
