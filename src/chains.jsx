@@ -11,8 +11,8 @@ const localChainConfig = {
   rpcUrls: ['http://127.0.0.1:8545/'],
   launchData: {
     launchContractAddress: '0x8A93d247134d91e0de6f96547cB0204e5BE8e5D8',
-    launchTime: 1645112469136,
-    lastLookStart: 1645450203022,
+    launchTime: 1645545947422,
+    lastLookStart: 1645545947422,
     launchTokensAmount: 3_000_000,
   },
   scan: { name: 'Etherscan', url: 'https://etherscan.io/' },
