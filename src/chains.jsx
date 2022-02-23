@@ -57,9 +57,12 @@ const chains = {
     rpcUrls: [
       'https://speedy-nodes-nyc.moralis.io/2f032afc060e364659b8758a/bsc/testnet',
     ],
-    launchContractAddress: '0xe6315fd1BAb71B51D1ccCC8a2481C9098fBe2984',
-    launchTime: 1644923469136,
-    launchTokensAmount: 3_000_000,
+    launchData: {
+      launchContractAddress: '0xe6315fd1BAb71B51D1ccCC8a2481C9098fBe2984',
+      launchTime: 1644923469136,
+      launchTokensAmount: 3_000_000,
+    },
+    ...localChainConfig,
     chainName: 'Binance Smart Chain Testnet',
     chainId: '0x61',
     tokens: [
@@ -80,4 +83,4 @@ const chains = {
   ethereum: localChainConfig,
 }
 
-export const selectedChain = chains.ethereum
+export const selectedChain = chains.bsc
