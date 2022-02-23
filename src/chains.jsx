@@ -58,12 +58,11 @@ const chains = {
       'https://speedy-nodes-nyc.moralis.io/2f032afc060e364659b8758a/bsc/testnet',
     ],
     launchData: {
-      launchContractAddress: '0xe3A287109d2E32df1880E4E9B3a33Dd5C55b0c40',
+      launchContractAddress: '0x533640cA95c1205DeE2D39C6c8aC161cE54069Ab',
       launchTime: 1644923469136,
       lastLookStart: 1645545947422,
       launchTokensAmount: 3_000_000,
     },
-    ...localChainConfig,
     chainName: 'Binance Smart Chain Testnet',
     chainId: '0x61',
     tokens: [
