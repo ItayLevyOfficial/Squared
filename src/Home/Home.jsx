@@ -9,7 +9,7 @@ export const Home = () => {
   return (
     <div className="flex flex-col justify-between items-center w-screen h-screen z-20 py-20 animate-fadeIn relative">
       <div className="flex flex-col items-center">
-        <img src={Logo} className="object-cover mt-10 mb-6" width={150} />
+        <img src={Logo} className="object-cover mt-20 mb-6 animate-spin" style={{animationDuration: '30s'}}  width={150} />
         <h1 className="text-8xl -tracking-wider font-bold mb-4">Squared</h1>
         <h2 className="text-primary text-3xl font-light mb-14 tracking-wide">
           Sustainable Liquidity for Long Tail Assets
@@ -17,7 +17,7 @@ export const Home = () => {
         <button
           type="button"
           onClick={() => navigate('/launch')}
-          className="py-3 px-10 bg-darkPrimary hover:text-gold rounded-xl text-xl tracking-wider font-medium"
+          className="py-3 px-10 bg-dark hover:bg-opacity-80 hover:text-gold rounded-xl text-xl tracking-wider font-medium"
         >
           Enter App
         </button>
