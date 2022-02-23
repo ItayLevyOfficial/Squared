@@ -2,7 +2,7 @@ import React from 'react'
 import { ModalLine } from './ModalLine'
 import { useFetchUserBalance } from '../dashboard/useFetchUserBalance'
 
-export const ModalDeposited = ({ selectedTokenName }) => {
+export const ModalDepositedLine = ({ selectedTokenName }) => {
   const [ethBalance, usdcBalance, sqrdBalance, sqrdLpBalance] =
     useFetchUserBalance()
   return (
@@ -27,7 +27,7 @@ export const ModalInfo = ({ isOnWithdraw, selectedTokenName }) => {
     <div className="text-white text-sm mt-6">
       {isOnWithdraw ? (
         <>
-          <ModalDeposited selectedTokenName={selectedTokenName} />
+          <ModalDepositedLine selectedTokenName={selectedTokenName} />
           <br />
           <ModalLine
             title="Requested Withdrawal"
@@ -52,7 +52,7 @@ export const ModalInfo = ({ isOnWithdraw, selectedTokenName }) => {
         </>
       ) : (
         <>
-          <ModalDeposited selectedTokenName={selectedTokenName} />
+          <ModalDepositedLine selectedTokenName={selectedTokenName} />
           <br /> <br />
           <div className="w-full flex flex-col items-center text-xs">
             <span>
