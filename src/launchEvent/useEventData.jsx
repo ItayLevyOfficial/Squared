@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useState, useCallback } from 'react'
 import { selectedChain } from '../chains'
 import { launchContractAbi } from './abis/defiRoundAbi'
 import { formatBigUsd } from './LaunchScreenBody'
@@ -35,7 +35,7 @@ export const useEventData = () => {
     eventName: 'Withdrawn',
     handler: fetchTotalCommitments,
   })
-  
+
   useEventListener({
     contract: launchContract,
     eventName: 'Deposited',
