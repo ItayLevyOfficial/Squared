@@ -58,8 +58,9 @@ const chains = {
       'https://speedy-nodes-nyc.moralis.io/2f032afc060e364659b8758a/bsc/testnet',
     ],
     launchData: {
-      launchContractAddress: '0xe6315fd1BAb71B51D1ccCC8a2481C9098fBe2984',
+      launchContractAddress: '0xe3A287109d2E32df1880E4E9B3a33Dd5C55b0c40',
       launchTime: 1644923469136,
+      lastLookStart: 1645545947422,
       launchTokensAmount: 3_000_000,
     },
     ...localChainConfig,
