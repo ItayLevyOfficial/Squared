@@ -13,7 +13,7 @@ import { useContract } from './utils'
 export const StageContext = createContext(1)
 
 export const LaunchScreenContext = () => {
-  const [stage, setStage] = useState()
+  const [stage, setStage] = useState(0)
   const readLaunchContract = useContract(
     provider,
     selectedChain.launchData.launchContractAddress,
@@ -21,10 +21,21 @@ export const LaunchScreenContext = () => {
   )
   useEffect(() => {
     if (readLaunchContract) {
-      readLaunchContract?.currentStage().then((response) => setStage(response))
-      const handleRatesPublished = () => setStage(1)
-      readLaunchContract.on('RatesPublished', handleRatesPublished)
-      return () => {if (readLaunchContract) readLaunchContract.removeListener('RatesPublished', handleRatesPublished)}
+      try {
+        readLaunchContract
+          ?.currentStage()
+          .then((response) => setStage(response))
+          .catch((error) => console.log(error))
+        const handleRatesPublished = () => setStage(1)
+        readLaunchContract.on('RatesPublished', handleRatesPublished)
+        return () => {
+          if (readLaunchContract)
+            readLaunchContract.removeListener(
+              'RatesPublished',
+              handleRatesPublished
+            )
+        }
+      } catch (error) {}
     }
   }, [readLaunchContract])
   return (
