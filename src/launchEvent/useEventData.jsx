@@ -1,8 +1,9 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useState, useCallback } from 'react'
 import { selectedChain } from '../chains'
 import { launchContractAbi } from './abis/defiRoundAbi'
 import { formatBigUsd } from './LaunchScreenBody'
 import { provider } from './useConnectWallet'
+import { useEventListener } from './useEventListener'
 import { useContract } from './utils'
 
 export const useEventData = () => {
@@ -21,6 +22,25 @@ export const useEventData = () => {
       })
     }
   }, [launchContract])
+  const fetchTotalCommitments = useCallback(() => {
+    if (launchContract) {
+      launchContract.totalValue().then((response) => {
+        setTotalCommitments(formatBigUsd(response))
+      })
+    }
+  }, [launchContract])
+  
+  useEventListener({
+    contract: launchContract,
+    eventName: 'Withdrawn',
+    handler: fetchTotalCommitments,
+  })
+
+  useEventListener({
+    contract: launchContract,
+    eventName: 'Deposited',
+    handler: fetchTotalCommitments,
+  })
 
   useEffect(() => {
     if (launchContract) {
@@ -38,7 +58,9 @@ export const useEventData = () => {
       ? minSqrdPrice
       : totalCommitments > maxTotalCommitments / 2
       ? maxSqrdPrice
-      : (totalCommitments / selectedChain.launchData.launchTokensAmount).toFixed(2)
+      : (
+          totalCommitments / selectedChain.launchData.launchTokensAmount
+        ).toFixed(2)
 
   return [totalCommitments, maxTotalCommitments, sqrdPrice]
 }

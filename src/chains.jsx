@@ -11,8 +11,9 @@ const localChainConfig = {
   rpcUrls: ['http://127.0.0.1:8545/'],
   launchData: {
     launchContractAddress: '0xF32D39ff9f6Aa7a7A64d7a4F00a54826Ef791a55',
-    launchTime: 1645112469136,
-    lastLookStart: 1645550203022,
+    launchTime: 1645545947422,
+    lastLookStart: 1645545947422,
+
     launchTokensAmount: 3_000_000,
   },
   scan: { name: 'Etherscan', url: 'https://etherscan.io/' },
@@ -27,7 +28,8 @@ const localChainConfig = {
     {
       name: 'USDC',
       usdcPoolContractAddress: '0xB0f05d25e41FbC2b52013099ED9616f1206Ae21B',
-      address: '0xb9bEECD1A582768711dE1EE7B0A1d582D9d72a6C',
+      address: '0x8A93d247134d91e0de6f96547cB0204e5BE8e5D8',
+
       decimals: '6',
       icon: <Usdc />,
     },

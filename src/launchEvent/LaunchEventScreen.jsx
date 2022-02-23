@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useCallback } from 'react'
 import { LaunchScreenBody } from './LaunchScreenBody'
 import { Footer } from './Footer'
 import { LaunchScreenHeader } from './LaunchScreenHeader'
@@ -9,6 +9,7 @@ import { provider } from './useConnectWallet'
 import { selectedChain } from '../chains'
 import { launchContractAbi } from './abis/defiRoundAbi'
 import { useContract } from './utils'
+import { useEventListener } from './useEventListener'
 
 export const StageContext = createContext(1)
 
@@ -19,23 +20,17 @@ export const LaunchScreenContext = () => {
     selectedChain.launchData.launchContractAddress,
     launchContractAbi
   )
+  const handleRatesPublished = useCallback(() => setStage(1), [])
+
+  useEventListener({
+    contract: readLaunchContract,
+    handler: handleRatesPublished,
+    eventName: 'RatesPublished',
+  })
+
   useEffect(() => {
     if (readLaunchContract) {
-      try {
-        readLaunchContract
-          ?.currentStage()
-          .then((response) => setStage(response))
-          .catch((error) => console.log(error))
-        const handleRatesPublished = () => setStage(1)
-        readLaunchContract.on('RatesPublished', handleRatesPublished)
-        return () => {
-          if (readLaunchContract)
-            readLaunchContract.removeListener(
-              'RatesPublished',
-              handleRatesPublished
-            )
-        }
-      } catch (error) {}
+      readLaunchContract?.currentStage().then((response) => setStage(response))
     }
   }, [readLaunchContract])
   return (

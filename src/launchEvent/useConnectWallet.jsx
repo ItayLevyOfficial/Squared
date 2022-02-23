@@ -1,6 +1,5 @@
-import { useState } from 'react'
-import { useEffect } from 'react'
 import { ethers } from 'ethers'
+import { useEffect, useState } from 'react'
 import { selectedChain } from '../chains'
 
 export const provider = window.ethereum
@@ -45,7 +44,11 @@ export const useConnectWallet = () => {
 
   useEffect(() => {
     if (signer) {
-      signer.getAddress().then((newAddress) => setAddress(newAddress))
+      try {
+        signer.getAddress().then((newAddress) => setAddress(newAddress))
+      } catch (error) {
+        console.error({ error })
+      }
     }
   }, [signer])
 

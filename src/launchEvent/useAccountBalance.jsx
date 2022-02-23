@@ -4,6 +4,7 @@ import { selectedChain } from '../chains'
 import { launchContractAbi } from './abis/defiRoundAbi'
 import { formatBigUsd } from './LaunchScreenBody'
 import { provider, useConnectWallet } from './useConnectWallet'
+import { useEventListener } from './useEventListener'
 import { useContract } from './utils'
 
 export const useAccountBalance = () => {
@@ -43,21 +44,17 @@ export const useAccountBalance = () => {
     }
   }, [walletAddress, fetchBalance, readLaunchContract])
 
-  useEffect(() => {
-    if (readLaunchContract) {
-      readLaunchContract.on('Deposited', fetchBalanceIfNeeded)
-      return () =>
-        readLaunchContract.removeListener('Deposited', fetchBalanceIfNeeded)
-    }
-  }, [fetchBalanceIfNeeded, readLaunchContract])
+  useEventListener({
+    contract: readLaunchContract,
+    eventName: 'Deposited',
+    handler: fetchBalance,
+  })
 
-  useEffect(() => {
-    if (readLaunchContract) {
-      readLaunchContract.on('Withdrawn', fetchBalanceIfNeeded)
-      return () =>
-        readLaunchContract.removeListener('Withdrawn', fetchBalanceIfNeeded)
-    }
-  }, [fetchBalanceIfNeeded, readLaunchContract])
+  useEventListener({
+    contract: readLaunchContract,
+    eventName: 'Withdrawn',
+    handler: fetchBalanceIfNeeded,
+  })
 
   return [balance, depositedToken]
 }
