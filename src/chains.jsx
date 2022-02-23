@@ -58,7 +58,7 @@ const chains = {
       'https://speedy-nodes-nyc.moralis.io/2f032afc060e364659b8758a/bsc/testnet',
     ],
     launchData: {
-      launchContractAddress: '0x533640cA95c1205DeE2D39C6c8aC161cE54069Ab',
+      launchContractAddress: '0x2B22E8545b2f49b1D06c5928Fb17141A95153d6c',
       launchTime: 1645567884179,
       lastLookStart: 1645567884179,
       launchTokensAmount: 3_000_000,
@@ -77,7 +77,7 @@ const chains = {
         name: 'BUSD',
         icon: <Busd />,
         decimals: 18,
-        address: '0xf7E4c17682bD0920De276fD2dCAbBb7f4e37cAb6',
+        address: '0x8301F2213c0eeD49a7E28Ae4c3e91722919B8B47',
       },
     ],
   },
