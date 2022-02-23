@@ -62,9 +62,9 @@ export const useFetchPoolBalance = () => {
     fetchBalance()
   }, [ethPoolContract, usdcPoolContract, sqrdPoolContract, sqrdLpPoolContract])
   return [
-    parseInt(ethBalance).toFixed(1),
-    parseInt(usdcBalance).toFixed(1),
-    parseInt(sqrdBalance).toFixed(1),
-    parseInt(sqrdLpBalance).toFixed(1),
+    parseInt(ethBalance),
+    parseInt(usdcBalance),
+    parseInt(sqrdBalance),
+    parseInt(sqrdLpBalance),
   ]
 }

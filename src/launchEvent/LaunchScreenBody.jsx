@@ -7,7 +7,7 @@ import { ErrorModal, SuccessModal } from './commitAssetsModal/MessageModal'
 import { useCommitAssets } from './commitAssetsModal/useCommitAssets'
 import { LaunchEventStatus } from './EventStatus'
 import { useAccountBalance } from './useAccountBalance'
-
+import { NetworkModal } from './commitAssetsModal/NetworkModal'
 export const formatBigUsd = (bigUsd) => bigUsd.div(10 ** 8).toNumber()
 
 export const LaunchScreenBody = ({ className = '' }) => {
@@ -22,6 +22,7 @@ export const LaunchScreenBody = ({ className = '' }) => {
     (token) => token.address === depositedTokenAddress
   )?.name
   const tokenName = selectedToken?.name ?? ''
+
   return (
     <div className={`flex space-x-32 ${className}`}>
       <AccountStatus
@@ -57,6 +58,7 @@ export const LaunchScreenBody = ({ className = '' }) => {
           depositedTokenName={depositedTokenName}
         />
       )}
+      <NetworkModal />
     </div>
   )
 }
