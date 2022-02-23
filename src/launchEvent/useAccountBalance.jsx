@@ -50,13 +50,11 @@ export const useAccountBalance = () => {
     handler: fetchBalance,
   })
 
-  useEffect(() => {
-    if (readLaunchContract) {
-      readLaunchContract.on('Withdrawn', fetchBalanceIfNeeded)
-      return () =>
-        readLaunchContract.removeListener('Withdrawn', fetchBalanceIfNeeded)
-    }
-  }, [fetchBalanceIfNeeded, readLaunchContract])
+  useEventListener({
+    contract: readLaunchContract,
+    eventName: 'Withdrawn',
+    handler: fetchBalanceIfNeeded,
+  })
 
   return [balance, depositedToken]
 }
