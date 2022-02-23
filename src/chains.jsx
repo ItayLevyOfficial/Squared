@@ -69,7 +69,7 @@ const chains = {
       {
         name: 'BNB',
         icon: <Bnb />,
-        decimals: 8,
+        decimals: 18,
         address: '0x094616F0BdFB0b526bD735Bf66Eca0Ad254ca81F',
       },
       {
