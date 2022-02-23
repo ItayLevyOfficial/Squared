@@ -23,7 +23,7 @@ export const LaunchScreenBody = ({ className = '' }) => {
   )?.name
   const tokenName = selectedToken?.name ?? ''
   return (
-    <div className={`flex space-x-32 -mt-20 ${className}`}>
+    <div className={`flex space-x-32 ${className}`}>
       <AccountStatus
         amountCommitted={balance}
         isNativeCommitted={
@@ -47,7 +47,7 @@ export const LaunchScreenBody = ({ className = '' }) => {
         <CommitAssetsModal
           selectedTokenIndex={selectedTokenIndex}
           close={() => setSelectedToken(null)}
-          handleSubmit={commitAssets} 
+          handleSubmit={commitAssets}
         />
       ) : (
         <ErrorModal

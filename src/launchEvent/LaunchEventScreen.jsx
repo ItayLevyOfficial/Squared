@@ -38,7 +38,7 @@ export const LaunchEventScreen = () => (
   <ScreenPaddedContainer>
     <div className="flex flex-col items-center justify-between w-full max-w-screen-2xl h-full">
       <LaunchScreenHeader />
-      <LaunchScreenBody />
+      <LaunchScreenBody className={'-mt-20'} />
       <Footer />
     </div>
   </ScreenPaddedContainer>

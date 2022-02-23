@@ -1,21 +1,26 @@
 import { StakingPool } from './StakingPool'
-import { Information } from './Information'
+import {
+  InformationWrapper,
+  InformationBox,
+  InformationLine,
+} from './Information'
 import { PageWrapper } from '../layouts/PageWrapper'
 import { ModalDisplay } from './ModalDisplay'
 import { selectedChain } from '../chains'
 import { useState } from 'react'
-import { useFetchBalance } from './usePoolContracts'
+import { useFetchPoolBalance } from './useFetchPoolBalance'
+
+export const StakingPoolWrapper = ({ children, className }) => {
+  return (
+    <div className={`w-full flex items-center justify-evenly ${className}`}>
+      {children}
+    </div>
+  )
+}
 
 export const Products = () => {
-  const [
-    assetsBalance,
-    sqrdLpBalance,
-    sqrdBalance,
-    ethBalance,
-    usdcBalance,
-    totalValueLocked,
-  ] = useFetchBalance()
-
+  const [ethBalance, usdcBalance, sqrdBalance, sqrdLpBalance] =
+    useFetchPoolBalance()
   const [isModalOpen, setIsOpen] = useState(false)
   const [selectedTokenIndex, setSelectedTokenIndex] = useState(null)
 
@@ -41,17 +46,24 @@ export const Products = () => {
         setTokenAmount={setTokenAmount}
         tokenAmount={tokenAmount}
       />
-
-      <div className="w-full flex items-center justify-evenly -mt-20">
+      <StakingPoolWrapper className={'-mt-32'}>
         {selectedChain.tokens.map((el, index) => (
           <StakingPool el={el} key={index} openModal={() => open(index)} />
         ))}
-      </div>
-      <Information
-        ethBalance={ethBalance}
-        usdcBalance={usdcBalance}
-        sqrdBalance={sqrdBalance}
-      />
+      </StakingPoolWrapper>
+      <InformationWrapper>
+        <InformationBox title={'Value Locked'}>
+          <InformationLine>{`ETH TVL: ${ethBalance} `}</InformationLine>
+          <InformationLine>{`USDC TVL: ${usdcBalance}`}</InformationLine>
+          <InformationLine>{`SQRD TVL: ${sqrdBalance} `}</InformationLine>
+        </InformationBox>
+        <div className="w-[0.5px] h-full bg-white" />
+        <InformationBox title={'Cycle'}>
+          <InformationLine>{`This Cycle: CYCLE ZERO-0`}</InformationLine>
+          <InformationLine>{`Next Cycle: 3 DAYS 9 HOURS`}</InformationLine>
+          <InformationLine>{`SQRD Price: $0.00`}</InformationLine>
+        </InformationBox>
+      </InformationWrapper>
     </PageWrapper>
   )
 }
