@@ -59,8 +59,8 @@ const chains = {
     ],
     launchData: {
       launchContractAddress: '0x533640cA95c1205DeE2D39C6c8aC161cE54069Ab',
-      launchTime: 1644923469136,
-      lastLookStart: 1645545947422,
+      launchTime: 1645567884179,
+      lastLookStart: 1645567884179,
       launchTokensAmount: 3_000_000,
     },
     chainName: 'Binance Smart Chain Testnet',
