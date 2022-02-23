@@ -63,6 +63,7 @@ const chains = {
       lastLookStart: 1645567884179,
       launchTokensAmount: 3_000_000,
     },
+    scan: { name: 'BscScan', url: 'https://testnet.bscscan.com/' },
     chainName: 'Binance Smart Chain Testnet',
     chainId: '0x61',
     tokens: [
