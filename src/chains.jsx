@@ -10,7 +10,7 @@ const localChainConfig = {
   approvalTime: 2,
   rpcUrls: ['http://127.0.0.1:8545/'],
   launchData: {
-    launchContractAddress: '0xF32D39ff9f6Aa7a7A64d7a4F00a54826Ef791a55',
+    launchContractAddress: '0x8A93d247134d91e0de6f96547cB0204e5BE8e5D8',
     launchTime: 1645545947422,
     lastLookStart: 1645545947422,
 
@@ -28,7 +28,7 @@ const localChainConfig = {
     {
       name: 'USDC',
       usdcPoolContractAddress: '0x976fcd02f7C4773dd89C309fBF55D5923B4c98a1',
-      address: '0x40918Ba7f132E0aCba2CE4de4c4baF9BD2D7D849',
+      address: '0xb9bEECD1A582768711dE1EE7B0A1d582D9d72a6C',
 
       decimals: '6',
       icon: <Usdc />,
