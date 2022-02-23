@@ -135,16 +135,16 @@ export const ModalDisplay = ({
         <ModalOptions
           isOnWithdraw={isOnWithdraw}
           setIsOnWithdraw={setIsOnWithdraw}
-          selectedTokenIndex={tokenData?.name}
+          selectedTokenName={tokenData?.name}
         />
         <ModalInput
-          selectedTokenIndex={tokenData?.name}
+          selectedTokenName={tokenData?.name}
           className="mt-10"
           value={tokenAmount}
           handleChange={setTokenAmount}
         />
         <ModalInfo
-          selectedTokenIndex={tokenData?.name}
+          selectedTokenName={tokenData?.name}
           isOnWithdraw={isOnWithdraw}
         />
         <br />
@@ -154,7 +154,7 @@ export const ModalDisplay = ({
           connectWallet={connectWallet}
           isConnected={isConnected}
           isOnWithdraw={isOnWithdraw}
-          selectedTokenIndex={tokenData?.name}
+          selectedTokenName={tokenData?.name}
         />
         <br />
       </div>

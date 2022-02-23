@@ -3,7 +3,7 @@ import React from 'react'
 export const ModalOptions = ({
   isOnWithdraw,
   setIsOnWithdraw,
-  selectedTokenIndex,
+  selectedTokenName,
   className = '',
 }) => {
   const Option = ({ boolean, optionName, isDisabled }) => {
@@ -17,7 +17,7 @@ export const ModalOptions = ({
         }`}
         onClick={() => setIsOnWithdraw(!isOnWithdraw)}
       >
-        {optionName} {selectedTokenIndex}
+        {optionName} {selectedTokenName}
       </button>
     )
   }

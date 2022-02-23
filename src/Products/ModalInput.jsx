@@ -1,7 +1,7 @@
 import React from 'react'
 
 export const ModalInput = ({
-  selectedTokenIndex,
+  selectedTokenName,
   className = '',
   value,
   handleChange,
@@ -11,7 +11,7 @@ export const ModalInput = ({
       className={`self-center w-10/12 h-10 bg-dark flex justify-between items-center rounded-lg p-6 ${className} `}
     >
       <div className=" text-white text-sm  w-auto left-0 ">
-        {selectedTokenIndex}
+        {selectedTokenName}
       </div>
       <input
         type="number"

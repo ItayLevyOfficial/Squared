@@ -2,42 +2,42 @@ import React from 'react'
 import { ModalLine } from './ModalLine'
 import { useFetchUserBalance } from '../dashboard/useFetchUserBalance'
 
-export const ModalDeposited = ({ selectedTokenIndex }) => {
+export const ModalDeposited = ({ selectedTokenName }) => {
   const [ethBalance, usdcBalance, sqrdBalance, sqrdLpBalance] =
     useFetchUserBalance()
   return (
     <ModalLine
       title="Deposited"
       amount={
-        selectedTokenIndex === 'ETH'
+        selectedTokenName === 'ETH'
           ? ethBalance
-          : selectedTokenIndex === 'USDC'
+          : selectedTokenName === 'USDC'
           ? usdcBalance
-          : selectedTokenIndex === 'SQRD'
+          : selectedTokenName === 'SQRD'
           ? sqrdBalance
           : sqrdLpBalance
       }
-      selectedTokenIndex={selectedTokenIndex}
+      selectedTokenName={selectedTokenName}
     />
   )
 }
 
-export const ModalInfo = ({ isOnWithdraw, selectedTokenIndex }) => {
+export const ModalInfo = ({ isOnWithdraw, selectedTokenName }) => {
   return (
     <div className="text-white text-sm mt-6">
       {isOnWithdraw ? (
         <>
-          <ModalDeposited selectedTokenIndex={selectedTokenIndex} />
+          <ModalDeposited selectedTokenName={selectedTokenName} />
           <br />
           <ModalLine
             title="Requested Withdrawal"
             amount="0.0"
-            selectedTokenIndex={selectedTokenIndex}
+            selectedTokenName={selectedTokenName}
           />
           <ModalLine
             title="Available for Withdrawal"
             amount="0.0"
-            selectedTokenIndex={selectedTokenIndex}
+            selectedTokenName={selectedTokenName}
           />
           <br /> <br />
           <div className="w-full flex flex-col items-center text-xs">
@@ -52,7 +52,7 @@ export const ModalInfo = ({ isOnWithdraw, selectedTokenIndex }) => {
         </>
       ) : (
         <>
-          <ModalDeposited selectedTokenIndex={selectedTokenIndex} />
+          <ModalDeposited selectedTokenName={selectedTokenName} />
           <br /> <br />
           <div className="w-full flex flex-col items-center text-xs">
             <span>
