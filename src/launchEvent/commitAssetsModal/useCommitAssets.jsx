@@ -43,7 +43,6 @@ export const useCommitAssets = () => {
     })
     if (launchStage === 1) {
       if (selectedTokenIndex === 0) {
-        console.table({amount})
         const tx = await launchContract.deposit(
           {
             token: tokenData.address,
