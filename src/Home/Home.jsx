@@ -15,7 +15,7 @@ export const Home = () => {
           style={{ animationDuration: '30s' }}
           width={150}
         />
-        <h1 className="text-8xl -tracking-wider font-bold mb-4">Squared</h1>
+        <h1 className="text-8xl tracking-normal font-bold mb-4">Squared</h1>
         <h2 className="text-primary text-3xl font-light mb-14 tracking-wide">
           Sustainable Liquidity for Long Tail Assets
         </h2>
