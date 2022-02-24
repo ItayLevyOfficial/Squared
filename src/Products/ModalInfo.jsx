@@ -5,12 +5,17 @@ import { selectedChain } from '../chains'
 import { PoolAbi } from './ABIs/PoolAbi'
 import { EthPoolAbi } from './ABIs/EthPoolAbi'
 
-export const ModalDepositedLine = ({
-  selectedTokenName,
-  selectedTokenIndex,
-}) => {
+export const ModalDepositedLine = ({ selectedTokenName }) => {
   const balance = useFetchUserBalance(
-    selectedChain.tokens[1],
+    selectedChain.tokens[
+      selectedTokenName === 'ETH'
+        ? 0
+        : selectedTokenName === 'USDC'
+        ? 1
+        : selectedTokenName === 'SQRD'
+        ? 2
+        : 3
+    ],
     selectedTokenName === 'ETH' ? EthPoolAbi : PoolAbi
   )
   return (

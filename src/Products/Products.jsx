@@ -23,7 +23,7 @@ export const StakingPoolWrapper = ({ children, className }) => {
 
 export const Products = () => {
   const [isModalOpen, setIsOpen] = useState(false)
-  const [selectedTokenIndex, setSelectedTokenIndex] = useState(0)
+  const [selectedTokenIndex, setSelectedTokenIndex] = useState(null)
   const [tokenAmount, setTokenAmount] = useState('')
 
   const ethBalance = useFetchContractBalance(
