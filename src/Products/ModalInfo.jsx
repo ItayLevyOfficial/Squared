@@ -1,22 +1,22 @@
 import React from 'react'
 import { ModalLine } from './ModalLine'
-import { useFetchUserBalance } from '../dashboard/useFetchUserBalance'
+import { useFetchUserBalance } from './useFetchBalance'
+import { selectedChain } from '../chains'
+import { PoolAbi } from './ABIs/PoolAbi'
+import { EthPoolAbi } from './ABIs/EthPoolAbi'
 
-export const ModalDepositedLine = ({ selectedTokenName }) => {
-  const [ethBalance, usdcBalance, sqrdBalance, sqrdLpBalance] =
-    useFetchUserBalance()
+export const ModalDepositedLine = ({
+  selectedTokenName,
+  selectedTokenIndex,
+}) => {
+  const balance = useFetchUserBalance(
+    selectedChain.tokens[1],
+    selectedTokenName === 'ETH' ? EthPoolAbi : PoolAbi
+  )
   return (
     <ModalLine
       title="Deposited"
-      amount={
-        selectedTokenName === 'ETH'
-          ? ethBalance
-          : selectedTokenName === 'USDC'
-          ? usdcBalance
-          : selectedTokenName === 'SQRD'
-          ? sqrdBalance
-          : sqrdLpBalance
-      }
+      amount={balance}
       selectedTokenName={selectedTokenName}
     />
   )

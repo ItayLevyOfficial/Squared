@@ -1,9 +1,20 @@
-import { useFetchPoolBalance } from './useFetchPoolBalance'
+import { useFetchContractBalance } from './useFetchBalance'
+import { selectedChain } from '../chains'
+import { PoolAbi } from './ABIs/PoolAbi'
+import { EthPoolAbi } from './ABIs/EthPoolAbi'
 
 export const StakingPool = ({ el, openModal }) => {
   const { name } = el
-  const [ethBalance, usdcBalance, sqrdBalance, sqrdLpBalance] =
-    useFetchPoolBalance()
+  const ethBalance = useFetchContractBalance(
+    selectedChain.tokens[0],
+    EthPoolAbi
+  )
+  const usdcBalance = useFetchContractBalance(selectedChain.tokens[1], PoolAbi)
+  const sqrdBalance = useFetchContractBalance(selectedChain.tokens[2], PoolAbi)
+  const sqrdLpBalance = useFetchContractBalance(
+    selectedChain.tokens[3],
+    PoolAbi
+  )
 
   return (
     <div className="group w-56 h-full text-white border-transparent rounded-xl flex flex-col items-center justify-between p-2 flex-shrink-0">

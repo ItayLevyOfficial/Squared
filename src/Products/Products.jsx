@@ -8,8 +8,10 @@ import { PageWrapper } from '../layouts/PageWrapper'
 import { ModalDisplay } from './ModalDisplay'
 import { selectedChain } from '../chains'
 import { useState } from 'react'
-import { useFetchPoolBalance } from './useFetchPoolBalance'
+import { useFetchContractBalance } from './useFetchBalance'
 import { NetworkModal } from '../launchEvent/commitAssetsModal/NetworkModal'
+import { EthPoolAbi } from './ABIs/EthPoolAbi'
+import { PoolAbi } from './ABIs/PoolAbi'
 
 export const StakingPoolWrapper = ({ children, className }) => {
   return (
@@ -20,13 +22,16 @@ export const StakingPoolWrapper = ({ children, className }) => {
 }
 
 export const Products = () => {
-  const [ethBalance, usdcBalance, sqrdBalance, sqrdLpBalance] =
-    useFetchPoolBalance()
-
   const [isModalOpen, setIsOpen] = useState(false)
-  const [selectedTokenIndex, setSelectedTokenIndex] = useState(null)
-
+  const [selectedTokenIndex, setSelectedTokenIndex] = useState(0)
   const [tokenAmount, setTokenAmount] = useState('')
+
+  const ethBalance = useFetchContractBalance(
+    selectedChain.tokens[0],
+    EthPoolAbi
+  )
+  const usdcBalance = useFetchContractBalance(selectedChain.tokens[1], PoolAbi)
+  const sqrdBalance = useFetchContractBalance(selectedChain.tokens[2], PoolAbi)
 
   const open = (id) => {
     setIsOpen(true)

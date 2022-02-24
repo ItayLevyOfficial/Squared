@@ -8,13 +8,17 @@ import {
   InformationWrapper,
 } from '../products/Information'
 import { useState } from 'react'
-import { useFetchUserBalance } from './useFetchUserBalance'
+import { useFetchUserBalance } from '../products/useFetchBalance'
 import { StakingPoolWrapper } from '../products/Products'
 import { NetworkModal } from '../launchEvent/commitAssetsModal/NetworkModal'
+import { EthPoolAbi } from '../products/ABIs/EthPoolAbi'
+import { PoolAbi } from '../products/ABIs/PoolAbi'
 
 export const Dashboard = () => {
-  const [ethBalance, usdcBalance, sqrdBalance, sqrdLpBalance] =
-    useFetchUserBalance()
+  const ethBalance = useFetchUserBalance(selectedChain.tokens[0], EthPoolAbi)
+  const usdcBalance = useFetchUserBalance(selectedChain.tokens[1], PoolAbi)
+  const sqrdBalance = useFetchUserBalance(selectedChain.tokens[2], PoolAbi)
+  const sqrdLpBalance = useFetchUserBalance(selectedChain.tokens[3], PoolAbi)
 
   const [isModalOpen, setIsOpen] = useState(false)
   const [selectedTokenIndex, setSelectedTokenIndex] = useState(null)
@@ -33,6 +37,7 @@ export const Dashboard = () => {
 
   return (
     <PageWrapper>
+      <NetworkModal />
       <ModalDisplay
         isOpen={isModalOpen}
         close={close}
@@ -62,7 +67,6 @@ export const Dashboard = () => {
           </button>
         </InformationBox>
       </InformationWrapper>
-      <NetworkModal />
     </PageWrapper>
   )
 }
