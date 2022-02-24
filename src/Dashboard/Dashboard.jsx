@@ -14,6 +14,7 @@ import { NetworkModal } from '../launchEvent/commitAssetsModal/NetworkModal'
 import { EthPoolAbi } from '../products/ABIs/EthPoolAbi'
 import { PoolAbi } from '../products/ABIs/PoolAbi'
 import { useDepositAssets } from '../products/useDepositAssets'
+import { SuccessModal } from '../launchEvent/commitAssetsModal/MessageModal'
 
 export const Dashboard = () => {
   const ethBalance = useFetchUserBalance(selectedChain.tokens[0], EthPoolAbi)
@@ -25,25 +26,18 @@ export const Dashboard = () => {
   const [selectedTokenIndex, setSelectedTokenIndex] = useState(null)
   const [tokenAmount, setTokenAmount] = useState('')
   const [commitAssets, txHash, setTxHash] = useDepositAssets()
-
   const open = (id) => {
     setIsOpen(true)
     setSelectedTokenIndex(id)
   }
 
-  const close = () => {
-    setIsOpen(false)
-    setSelectedTokenIndex(null)
-    setTokenAmount('')
-  }
-
   return (
     <PageWrapper>
       <NetworkModal />
-      {txHash && selectedToken && (
+      {txHash && (
         <SuccessModal
           close={() => {
-            setSelectedToken(null)
+            setSelectedTokenIndex(null)
             setTxHash(null)
           }}
           txHash={txHash}
@@ -51,11 +45,15 @@ export const Dashboard = () => {
       )}
       <ModalDisplay
         isOpen={isModalOpen}
-        close={close}
+        close={() => {
+          setIsOpen(false)
+          setSelectedTokenIndex(null)
+          setTokenAmount('')
+        }}
         selectedTokenIndex={selectedTokenIndex}
         setTokenAmount={setTokenAmount}
         tokenAmount={tokenAmount}
-        commitAssets={commitAssets}
+        handleSubmit={commitAssets}
       />
       <StakingPoolWrapper className={'-mt-32'}>
         {selectedChain.tokens.map((el, index) => (
