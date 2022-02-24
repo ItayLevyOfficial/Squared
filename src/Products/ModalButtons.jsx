@@ -19,6 +19,7 @@ export const ModalButtons = ({
   handleSubmit,
   selectedTokenIndex,
   tokenAmount,
+  close,
 }) => {
   return (
     <div className="w-full h-10 flex justify-center items-center space-x-4">
@@ -35,7 +36,10 @@ export const ModalButtons = ({
             } ${selectedTokenName}`}
             onClick={
               isConnected
-                ? () => handleSubmit({ tokenAmount, selectedTokenIndex })
+                ? () => {
+                    handleSubmit({ tokenAmount, selectedTokenIndex })
+                    close()
+                  }
                 : connectWallet
             }
           />

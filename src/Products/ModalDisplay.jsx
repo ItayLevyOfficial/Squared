@@ -69,6 +69,7 @@ export const ModalDisplay = ({
         />
         <br />
         <ModalButtons
+          close={close}
           isOnWithdraw={isOnWithdraw}
           selectedTokenName={tokenData?.name}
           isConnected={isConnected}

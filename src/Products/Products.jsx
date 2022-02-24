@@ -28,7 +28,6 @@ export const Products = () => {
   const [selectedTokenIndex, setSelectedTokenIndex] = useState(null)
   const [tokenAmount, setTokenAmount] = useState('')
   const [commitAssets, txHash, setTxHash] = useDepositAssets()
-  const selectedToken = selectedChain.tokens[selectedTokenIndex]
 
   const ethBalance = useFetchContractBalance(
     selectedChain.tokens[0],
@@ -42,19 +41,13 @@ export const Products = () => {
     setSelectedTokenIndex(id)
   }
 
-  const close = () => {
-    setIsOpen(false)
-    setSelectedTokenIndex(null)
-    setTokenAmount('')
-  }
-
   return (
     <PageWrapper>
       <NetworkModal />
-      {txHash && selectedToken && (
+      {txHash && (
         <SuccessModal
           close={() => {
-            setSelectedToken(null)
+            setSelectedTokenIndex(null)
             setTxHash(null)
           }}
           txHash={txHash}
@@ -63,7 +56,11 @@ export const Products = () => {
       <ModalDisplay
         handleSubmit={commitAssets}
         isOpen={isModalOpen}
-        close={close}
+        close={() => {
+          setIsOpen(false)
+          setSelectedTokenIndex(null)
+          setTokenAmount('')
+        }}
         selectedTokenIndex={selectedTokenIndex}
         tokenAmount={tokenAmount}
         setTokenAmount={setTokenAmount}

@@ -79,7 +79,6 @@ export const useDepositAssets = () => {
         break
       }
     }
-    close()
   }
 
   return [commitAssets, txHash, setTxHash]
