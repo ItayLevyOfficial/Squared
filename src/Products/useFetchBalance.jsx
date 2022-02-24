@@ -4,6 +4,7 @@ import { useContract } from '../launchEvent/utils'
 import { erc20abi } from '../launchEvent/abis/erc20abi'
 import { ethers } from 'ethers'
 import { selectedChain } from '../chains'
+import { useEventListener } from '../launchEvent/useEventListener'
 
 export const formatBigErc20 = (bigNumber, decimals) =>
   bigNumber.div(10 ** decimals).toNumber()
@@ -32,7 +33,7 @@ export const useFetchContractBalance = (chain, abi) => {
 
   useEffect(() => {
     fetchBalance()
-  }, [poolContract])
+  }, [fetchBalance, poolContract])
 
   return balance
 }
@@ -55,7 +56,7 @@ export const useFetchUserBalance = (chain, abi) => {
     if (address) {
       fetchBalance()
     }
-  }, [address, poolContract])
+  }, [address, fetchBalance, poolContract])
 
   return balance
 }

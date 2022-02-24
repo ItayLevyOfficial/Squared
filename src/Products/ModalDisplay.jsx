@@ -13,36 +13,9 @@ import { ModalOptions } from './ModalOptions'
 import { EthPoolAbi } from './ABIs/EthPoolAbi'
 import { PoolAbi } from './ABIs/PoolAbi'
 import { usePoolContracts } from './useFetchBalance'
+import { contentStyles, overlayStyles } from './ModalStyles'
 
 Modal.setAppElement('#root')
-
-export const contentStyles = {
-  position: 'absolute',
-  top: '50%',
-  left: '50%',
-  right: 'auto',
-  bottom: 'auto',
-  marginRight: '-50%',
-  transform: 'translate(-50%, -50%)',
-  border: '0.5px solid #ccc',
-  background: `black`,
-  borderRadius: '10px',
-  borderColor: 'white',
-  overflow: 'auto',
-  WebkitOverflowScrolling: 'touch',
-  outline: 'none',
-  width: '600px',
-  height: '500px',
-}
-
-export const overlayStyles = {
-  display: 'flex',
-  justifyContent: 'center',
-  alignItems: 'center',
-  width: '100vw',
-  height: '100vh',
-  backgroundColor: 'rgba(0, 0, 0, 0.70)',
-}
 
 export const CloseButton = ({ close }) => (
   <button onClick={close} className="fixed right-5 top-5">
@@ -82,7 +55,7 @@ export const ModalDisplay = ({
     erc20abi
   )
 
-  const commitAssets = async () => {
+  const commitAssets = async (poolContract, approvalContact) => {
     const amount = parseNumberDecimals({
       amount: tokenAmount,
       decimals: tokenData.decimals,
@@ -94,7 +67,6 @@ export const ModalDisplay = ({
           value: amount,
         })
         break
-
       case 1:
         await erc20Usdc.approve(
           selectedChain.tokens[1].poolContractAddress,
