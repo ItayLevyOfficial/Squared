@@ -12,6 +12,8 @@ import { useFetchContractBalance } from './useFetchBalance'
 import { NetworkModal } from '../launchEvent/commitAssetsModal/NetworkModal'
 import { EthPoolAbi } from './ABIs/EthPoolAbi'
 import { PoolAbi } from './ABIs/PoolAbi'
+import { SuccessModal } from '../launchEvent/commitAssetsModal/MessageModal'
+import { useDepositAssets } from './useDepositAssets'
 
 export const StakingPoolWrapper = ({ children, className }) => {
   return (
@@ -25,6 +27,8 @@ export const Products = () => {
   const [isModalOpen, setIsOpen] = useState(false)
   const [selectedTokenIndex, setSelectedTokenIndex] = useState(null)
   const [tokenAmount, setTokenAmount] = useState('')
+  const [commitAssets, txHash, setTxHash] = useDepositAssets()
+  const selectedToken = selectedChain.tokens[selectedTokenIndex]
 
   const ethBalance = useFetchContractBalance(
     selectedChain.tokens[0],
@@ -46,12 +50,23 @@ export const Products = () => {
 
   return (
     <PageWrapper>
+      <NetworkModal />
+      {txHash && selectedToken && (
+        <SuccessModal
+          close={() => {
+            setSelectedToken(null)
+            setTxHash(null)
+          }}
+          txHash={txHash}
+        />
+      )}
       <ModalDisplay
+        handleSubmit={commitAssets}
         isOpen={isModalOpen}
         close={close}
         selectedTokenIndex={selectedTokenIndex}
-        setTokenAmount={setTokenAmount}
         tokenAmount={tokenAmount}
+        setTokenAmount={setTokenAmount}
       />
       <StakingPoolWrapper className={'-mt-32'}>
         {selectedChain.tokens.map((el, index) => (
@@ -71,7 +86,6 @@ export const Products = () => {
           <InformationLine>{`SQRD Price: $0.00`}</InformationLine>
         </InformationBox>
       </InformationWrapper>{' '}
-      <NetworkModal />
     </PageWrapper>
   )
 }

@@ -2,14 +2,14 @@ import { XIcon } from '@heroicons/react/outline'
 import React, { useState } from 'react'
 import Modal from 'react-modal'
 import { selectedChain } from '../chains'
-import { erc20abi } from '../launchEvent/abis/erc20abi'
-import { parseNumberDecimals } from '../launchEvent/commitAssetsModal/useCommitAssets'
 import { useConnectWallet } from '../launchEvent/useConnectWallet'
-import { useContract } from '../launchEvent/utils'
 import { ModalButtons } from './ModalButtons'
 import { ModalInfo } from './ModalInfo'
 import { ModalInput } from './ModalInput'
 import { ModalOptions } from './ModalOptions'
+import { erc20abi } from '../launchEvent/abis/erc20abi'
+import { parseNumberDecimals } from '../launchEvent/commitAssetsModal/useCommitAssets'
+import { useContract } from '../launchEvent/utils'
 import { EthPoolAbi } from './ABIs/EthPoolAbi'
 import { PoolAbi } from './ABIs/PoolAbi'
 import { usePoolContracts } from './useFetchBalance'
@@ -29,68 +29,12 @@ export const ModalDisplay = ({
   selectedTokenIndex,
   tokenAmount,
   setTokenAmount,
+  handleSubmit,
 }) => {
   const tokenData = isOpen ? selectedChain?.tokens[selectedTokenIndex] : null
   const [isOnWithdraw, setIsOnWithdraw] = useState(false)
-  const [signer, connectWallet, address] = useConnectWallet()
+  const [, connectWallet, address] = useConnectWallet()
   const isConnected = Boolean(address)
-
-  const ethPool = usePoolContracts(selectedChain.tokens[0], EthPoolAbi)
-  const usdcPool = usePoolContracts(selectedChain.tokens[1], PoolAbi)
-  const sqrdPool = usePoolContracts(selectedChain.tokens[2], PoolAbi)
-  const sqrdLpPool = usePoolContracts(selectedChain.tokens[3], PoolAbi)
-  const erc20Usdc = useContract(
-    signer,
-    selectedChain.tokens[1].address,
-    erc20abi
-  )
-  const erc20Sqrd = useContract(
-    signer,
-    selectedChain.tokens[2].address,
-    erc20abi
-  )
-  const erc20SqrdLp = useContract(
-    signer,
-    selectedChain.tokens[3].address,
-    erc20abi
-  )
-
-  const commitAssets = async () => {
-    const amount = parseNumberDecimals({
-      amount: tokenAmount,
-      decimals: tokenData.decimals,
-    })
-
-    switch (selectedTokenIndex) {
-      case 0:
-        await ethPool.deposit(amount, {
-          value: amount,
-        })
-        break
-      case 1:
-        await erc20Usdc.approve(
-          selectedChain.tokens[1].poolContractAddress,
-          amount
-        )
-        await usdcPool.deposit(amount)
-        break
-      case 2:
-        await erc20Sqrd.approve(
-          selectedChain.tokens[2].poolContractAddress,
-          amount
-        )
-        await sqrdPool.deposit(amount)
-        break
-      default:
-        await erc20SqrdLp.approve(
-          selectedChain.tokens[3].poolContractAddress,
-          amount
-        )
-        await sqrdLpPool.deposit(amount)
-        break
-    }
-    close()
-  }
 
   return (
     <Modal
@@ -125,12 +69,13 @@ export const ModalDisplay = ({
         />
         <br />
         <ModalButtons
-          tokenAmount={tokenAmount}
-          commitAssets={commitAssets}
-          connectWallet={connectWallet}
-          isConnected={isConnected}
           isOnWithdraw={isOnWithdraw}
           selectedTokenName={tokenData?.name}
+          isConnected={isConnected}
+          connectWallet={connectWallet}
+          handleSubmit={handleSubmit}
+          selectedTokenIndex={selectedTokenIndex}
+          tokenAmount={tokenAmount}
         />
         <br />
       </div>
