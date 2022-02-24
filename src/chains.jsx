@@ -11,6 +11,7 @@ const localChainConfig = {
   rpcUrls: ['http://127.0.0.1:8545/'],
   launchData: {
     launchContractAddress: '0x6F6f570F45833E249e27022648a26F4076F48f78',
+
     launchTime: 1645545947422,
     lastLookStart: 1645595947422,
 
@@ -29,6 +30,7 @@ const localChainConfig = {
       name: 'USDC',
       poolContractAddress: '0x5FeaeBfB4439F3516c74939A9D04e95AFE82C4ae',
       address: '0x8A93d247134d91e0de6f96547cB0204e5BE8e5D8',
+
       decimals: '6',
       icon: <Usdc />,
     },
