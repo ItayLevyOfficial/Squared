@@ -4,7 +4,6 @@ import { useContract } from '../launchEvent/utils'
 import { erc20abi } from '../launchEvent/abis/erc20abi'
 import { ethers } from 'ethers'
 import { selectedChain } from '../chains'
-import { useEventListener } from '../launchEvent/useEventListener'
 
 export const formatBigErc20 = (bigNumber, decimals) =>
   bigNumber.div(10 ** decimals).toNumber()
