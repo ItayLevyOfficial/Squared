@@ -55,7 +55,7 @@ export const ModalDisplay = ({
     erc20abi
   )
 
-  const commitAssets = async (poolContract, approvalContact) => {
+  const commitAssets = async () => {
     const amount = parseNumberDecimals({
       amount: tokenAmount,
       decimals: tokenData.decimals,

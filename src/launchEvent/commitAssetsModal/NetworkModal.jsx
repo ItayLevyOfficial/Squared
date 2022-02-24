@@ -2,9 +2,10 @@ import Modal from 'react-modal'
 import { selectedChain } from '../../chains'
 import { useState, useEffect } from 'react'
 import errorIcon from '../icons/error.svg'
-import { overlayStyles } from '../../Products/ModalDisplay'
+import { overlayStyles } from '../../Products/ModalStyles'
 import { commitContentStyles } from './commitAssetsModal'
 import { ModalTitle, ModalParagraph } from './MessageModal'
+
 const useNetworkModal = () => {
   const [wrongNetwork, setWrongNetwork] = useState(false)
   useEffect(() => {
