@@ -33,7 +33,7 @@ export const useFetchContractBalance = (chain, abi) => {
 
   useEffect(() => {
     fetchBalance()
-  }, [fetchBalance, poolContract])
+  }, [poolContract])
 
   return balance
 }
@@ -56,7 +56,7 @@ export const useFetchUserBalance = (chain, abi) => {
     if (address) {
       fetchBalance()
     }
-  }, [address, fetchBalance, poolContract])
+  }, [address, poolContract])
 
   return balance
 }
