@@ -8,25 +8,29 @@ import { selectedChain } from '../chains'
 export const formatBigErc20 = (bigNumber, decimals) =>
   bigNumber.div(10 ** decimals).toNumber()
 
-export const usePoolContracts = (chain, abi) => {
+export const usePoolContracts = (selectedToken, abi) => {
   const [signer, ,] = useConnectWallet()
-  const poolContract = useContract(signer, chain.poolContractAddress, abi)
+  const poolContract = useContract(
+    signer,
+    selectedToken.poolContractAddress,
+    abi
+  )
 
   return poolContract
 }
 
-export const useFetchContractBalance = (chain, abi) => {
+export const useFetchContractBalance = (selectedToken, abi) => {
   const [signer, ,] = useConnectWallet()
   const [balance, setBalance] = useState(0)
-  const poolContract = usePoolContracts(chain, abi)
-  const erc20 = useContract(signer, chain.address, erc20abi)
+  const poolContract = usePoolContracts(selectedToken, abi)
+  const erc20 = useContract(signer, selectedToken.address, erc20abi)
 
   const fetchBalance = useCallback(async () => {
     const balance = await erc20.balanceOf(poolContract.address)
-    if (chain === selectedChain.tokens[0]) {
+    if (selectedToken === selectedChain.tokens[0]) {
       setBalance(parseInt(ethers.utils.formatEther(balance)))
     } else {
-      setBalance(parseInt(formatBigErc20(balance, chain.decimals)))
+      setBalance(parseInt(formatBigErc20(balance, selectedToken.decimals)))
     }
   }, [poolContract])
 
