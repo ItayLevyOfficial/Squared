@@ -41,17 +41,17 @@ export const useFetchContractBalance = (selectedToken, abi) => {
   return balance
 }
 
-export const useFetchUserBalance = (chain, abi) => {
+export const useFetchUserBalance = (selectedToken, abi) => {
   const [, , address] = useConnectWallet()
   const [balance, setBalance] = useState(0)
-  const poolContract = usePoolContracts(chain, abi)
+  const poolContract = usePoolContracts(selectedToken, abi)
 
   const fetchBalance = useCallback(async () => {
     const balance = await poolContract.balanceOf(address)
-    if (chain === selectedChain.tokens[0]) {
+    if (selectedToken === selectedChain.tokens[0]) {
       setBalance(parseInt(ethers.utils.formatEther(balance)))
     } else {
-      setBalance(parseInt(formatBigErc20(balance, chain.decimals)))
+      setBalance(parseInt(formatBigErc20(balance, selectedToken.decimals)))
     }
   }, [address, poolContract])
 
