@@ -8,22 +8,22 @@ export const usePoolContracts = () => {
   const [signer, ,] = useConnectWallet()
   const ethPoolContract = useContract(
     signer,
-    selectedChain.tokens[0].ethPoolContractAddress,
+    selectedChain.tokens[0].poolContractAddress,
     EthPoolAbi
   )
   const usdcPoolContract = useContract(
     signer,
-    selectedChain.tokens[1].usdcPoolContractAddress,
+    selectedChain.tokens[1].poolContractAddress,
     PoolAbi
   )
   const sqrdPoolContract = useContract(
     signer,
-    selectedChain.tokens[2].sqrdPoolContractAddress,
+    selectedChain.tokens[2].poolContractAddress,
     PoolAbi
   )
   const sqrdLpPoolContract = useContract(
     signer,
-    selectedChain.tokens[3].sqrdLpPoolContractAddress,
+    selectedChain.tokens[3].poolContractAddress,
     PoolAbi
   )
 
