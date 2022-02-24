@@ -10,7 +10,7 @@ const localChainConfig = {
   approvalTime: 2,
   rpcUrls: ['http://127.0.0.1:8545/'],
   launchData: {
-    launchContractAddress: '0xF32D39ff9f6Aa7a7A64d7a4F00a54826Ef791a55',
+    launchContractAddress: '0x6F6f570F45833E249e27022648a26F4076F48f78',
     launchTime: 1645545947422,
     lastLookStart: 1645595947422,
 
@@ -20,28 +20,28 @@ const localChainConfig = {
   tokens: [
     {
       name: 'ETH',
-      poolContractAddress: '0xB0f05d25e41FbC2b52013099ED9616f1206Ae21B',
+      poolContractAddress: '0x19cEcCd6942ad38562Ee10bAfd44776ceB67e923',
       address: '0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2',
       decimals: '18',
       icon: <EthereumIcon />,
     },
     {
       name: 'USDC',
-      poolContractAddress: '0x5FeaeBfB4439F3516c74939A9D04e95AFE82C4ae',
-      address: '0xb9bEECD1A582768711dE1EE7B0A1d582D9d72a6C',
+      poolContractAddress: '0x32EEce76C2C2e8758584A83Ee2F522D4788feA0f',
+      address: '0x8A93d247134d91e0de6f96547cB0204e5BE8e5D8',
       decimals: '6',
       icon: <Usdc />,
     },
     {
       name: 'SQRD',
-      poolContractAddress: '0x19cEcCd6942ad38562Ee10bAfd44776ceB67e923',
-      address: '0x8A93d247134d91e0de6f96547cB0204e5BE8e5D8',
+      poolContractAddress: '0x927b167526bAbB9be047421db732C663a0b77B11',
+      address: '0xb9bEECD1A582768711dE1EE7B0A1d582D9d72a6C',
       decimals: '6',
     },
     {
       name: 'SQRD LP',
-      poolContractAddress: '0xD42912755319665397FF090fBB63B1a31aE87Cee',
-      address: '0xB0f05d25e41FbC2b52013099ED9616f1206Ae21B',
+      poolContractAddress: '0xfcDB4564c18A9134002b9771816092C9693622e3',
+      address: '0x40918Ba7f132E0aCba2CE4de4c4baF9BD2D7D849',
       decimals: '6',
     },
   ],

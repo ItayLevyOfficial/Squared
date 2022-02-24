@@ -57,15 +57,15 @@ export const ModalDisplay = ({
   tokenAmount,
   setTokenAmount,
 }) => {
+  const tokenData = isOpen ? selectedChain?.tokens[selectedTokenIndex] : null
+  const [isOnWithdraw, setIsOnWithdraw] = useState(false)
+  const [signer, connectWallet, address] = useConnectWallet()
+  const isConnected = Boolean(address)
+
   const ethPool = usePoolContracts(selectedChain.tokens[0], EthPoolAbi)
   const usdcPool = usePoolContracts(selectedChain.tokens[1], PoolAbi)
   const sqrdPool = usePoolContracts(selectedChain.tokens[2], PoolAbi)
   const sqrdLpPool = usePoolContracts(selectedChain.tokens[3], PoolAbi)
-  const tokenData = isOpen ? selectedChain?.tokens[selectedTokenIndex] : null
-  const [isOnWithdraw, setIsOnWithdraw] = useState(false)
-
-  const [signer, connectWallet, address] = useConnectWallet()
-  const isConnected = Boolean(address)
   const erc20Usdc = useContract(
     signer,
     selectedChain.tokens[1].address,
