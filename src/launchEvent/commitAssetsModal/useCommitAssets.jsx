@@ -1,11 +1,12 @@
 import { BigNumber } from 'ethers'
 import { useContext, useState } from 'react'
-import { selectedChain } from '../../chains'
 import { launchContractAbi } from '../abis/defiRoundAbi'
-import { erc20abi } from '../abis/erc20abi'
 import { StageContext } from '../LaunchEventScreen'
+import { selectedChain } from '../../chains'
+import { erc20abi } from '../abis/erc20abi'
 import { useConnectWallet } from '../useConnectWallet'
 import { useContract } from '../utils'
+import { usePoolContracts } from '../../products/useErc20Functions'
 
 export const parseNumberDecimals = ({ amount, decimals }) => {
   const wholeSide = Math.floor(amount)
@@ -24,7 +25,33 @@ export const parseNumberDecimals = ({ amount, decimals }) => {
   }
 }
 
-export const useCommitAssets = () => {
+export const useCommitPoolAssets = (selectedToken, abi) => {
+  const [signer] = useConnectWallet()
+  const [txHash, setTxHash] = useState()
+  const erc20 = useContract(signer, selectedToken.address, erc20abi)
+
+  const roundContract = usePoolContracts(selectedToken, abi)
+
+  const commitAssets = async ({ tokenAmount, selectedTokenIndex }) => {
+    const tokenData = selectedChain.tokens[+selectedTokenIndex]
+    const amount = parseNumberDecimals({
+      amount: tokenAmount,
+      decimals: tokenData.decimals,
+    })
+
+    if (selectedTokenIndex === 0) {
+      const tx = await roundContract.deposit(amount, { value: amount })
+      setTxHash(tx.hash)
+    } else {
+      await erc20.approve(selectedToken.poolContractAddress, amount)
+      const tx = await roundContract.deposit(amount)
+      setTxHash(tx.hash)
+    }
+  }
+  return [commitAssets, txHash, setTxHash]
+}
+
+export const useCommitLaunchAssets = () => {
   const [signer] = useConnectWallet()
   const erc20 = useContract(signer, selectedChain.tokens[1].address, erc20abi)
   const [txHash, setTxHash] = useState()

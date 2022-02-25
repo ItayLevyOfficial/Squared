@@ -2,44 +2,14 @@ import { XIcon } from '@heroicons/react/outline'
 import React, { useState } from 'react'
 import Modal from 'react-modal'
 import { selectedChain } from '../chains'
-import { erc20abi } from '../launchEvent/abis/erc20abi'
-import { parseNumberDecimals } from '../launchEvent/commitAssetsModal/useCommitAssets'
 import { useConnectWallet } from '../launchEvent/useConnectWallet'
-import { useContract } from '../launchEvent/utils'
-import { ModalButtons } from './ModalButtons'
+import { ModalButton } from './ModalButton'
 import { ModalInfo } from './ModalInfo'
 import { ModalInput } from './ModalInput'
 import { ModalOptions } from './ModalOptions'
-import { usePoolContracts } from './usePoolContracts'
+import { contentStyles, overlayStyles } from './ModalStyles'
+
 Modal.setAppElement('#root')
-
-export const contentStyles = {
-  position: 'absolute',
-  top: '50%',
-  left: '50%',
-  right: 'auto',
-  bottom: 'auto',
-  marginRight: '-50%',
-  transform: 'translate(-50%, -50%)',
-  border: '0.5px solid #ccc',
-  background: `black`,
-  borderRadius: '10px',
-  borderColor: 'white',
-  overflow: 'auto',
-  WebkitOverflowScrolling: 'touch',
-  outline: 'none',
-  width: '600px',
-  height: '500px',
-}
-
-export const overlayStyles = {
-  display: 'flex',
-  justifyContent: 'center',
-  alignItems: 'center',
-  width: '100vw',
-  height: '100vh',
-  backgroundColor: 'rgba(0, 0, 0, 0.70)',
-}
 
 export const CloseButton = ({ close }) => (
   <button onClick={close} className="fixed right-5 top-5">
@@ -53,68 +23,13 @@ export const ModalDisplay = ({
   selectedTokenIndex,
   tokenAmount,
   setTokenAmount,
+  handleSubmit,
+  balance,
 }) => {
-  const [
-    ethPoolContract,
-    usdcPoolContract,
-    sqrdPoolContract,
-    sqrdLpPoolContract,
-  ] = usePoolContracts()
   const tokenData = isOpen ? selectedChain?.tokens[selectedTokenIndex] : null
   const [isOnWithdraw, setIsOnWithdraw] = useState(false)
-
-  const [signer, connectWallet, address] = useConnectWallet()
+  const [, connectWallet, address] = useConnectWallet()
   const isConnected = Boolean(address)
-  const erc20Usdc = useContract(
-    signer,
-    selectedChain.tokens[1].address,
-    erc20abi
-  )
-  const erc20Sqrd = useContract(
-    signer,
-    selectedChain.tokens[2].address,
-    erc20abi
-  )
-  const erc20SqrdLp = useContract(
-    signer,
-    selectedChain.tokens[3].address,
-    erc20abi
-  )
-
-  const commitAssets = async () => {
-    const amount = parseNumberDecimals({
-      amount: tokenAmount,
-      decimals: tokenData.decimals,
-    })
-    if (selectedTokenIndex === 0) {
-      await ethPoolContract.deposit(amount, { value: amount })
-    } else {
-      switch (selectedTokenIndex) {
-        case 1:
-          await erc20Usdc.approve(
-            selectedChain.tokens[1].usdcPoolContractAddress,
-            amount
-          )
-          await usdcPoolContract.deposit(amount)
-          break
-        case 2:
-          await erc20Sqrd.approve(
-            selectedChain.tokens[2].sqrdPoolContractAddress,
-            amount
-          )
-          await sqrdPoolContract.deposit(amount)
-          break
-        default:
-          await erc20SqrdLp.approve(
-            selectedChain.tokens[3].sqrdLpPoolContractAddress,
-            amount
-          )
-          await sqrdLpPoolContract.deposit(amount)
-          break
-      }
-    }
-    close()
-  }
 
   return (
     <Modal
@@ -143,18 +58,37 @@ export const ModalDisplay = ({
           handleChange={setTokenAmount}
         />
         <ModalInfo
+          balance={balance}
           selectedTokenName={tokenData?.name}
           isOnWithdraw={isOnWithdraw}
         />
         <br />
-        <ModalButtons
-          tokenAmount={tokenAmount}
-          commitAssets={commitAssets}
-          connectWallet={connectWallet}
-          isConnected={isConnected}
-          isOnWithdraw={isOnWithdraw}
-          selectedTokenName={tokenData?.name}
-        />
+        <div className="w-full h-10 flex justify-center items-center space-x-4">
+          {isConnected ? (
+            isOnWithdraw ? (
+              <>
+                <ModalButton text={`Request Withdrawal`} />
+                <ModalButton text={`Withdraw ${tokenData?.name}`} />
+              </>
+            ) : (
+              <ModalButton
+                text={` ${tokenData?.name === 'SQRD' ? 'Stake' : 'Deposit'} ${
+                  tokenData?.name
+                }`}
+                onClick={
+                  isConnected
+                    ? () => {
+                        handleSubmit({ tokenAmount, selectedTokenIndex })
+                        close()
+                      }
+                    : connectWallet
+                }
+              />
+            )
+          ) : (
+            <ModalButton text={`Connect Wallet`} onClick={connectWallet} />
+          )}
+        </div>
         <br />
       </div>
     </Modal>
