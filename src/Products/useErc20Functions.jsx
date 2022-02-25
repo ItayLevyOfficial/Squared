@@ -23,6 +23,7 @@ export const usePoolContracts = (selectedToken, abi) => {
 export const useFetchPoolBalance = (selectedToken, abi) => {
   const [signer, ,] = useConnectWallet()
   const [balance, setBalance] = useState(0)
+
   const poolContract = usePoolContracts(selectedToken, abi)
   const erc20 = useContract(signer, selectedToken.address, erc20abi)
 
@@ -36,6 +37,20 @@ export const useFetchPoolBalance = (selectedToken, abi) => {
   }, [poolContract])
 
   return balance
+}
+export const getListOfPoolBalances = () => {
+  const ethBalance = useFetchPoolBalance(selectedChain.tokens[0], EthPoolAbi)
+  const usdcBalance = useFetchPoolBalance(selectedChain.tokens[1], PoolAbi)
+  const sqrdBalance = useFetchPoolBalance(selectedChain.tokens[2], PoolAbi)
+  const sqrdLpBalance = useFetchPoolBalance(selectedChain.tokens[3], PoolAbi)
+
+  const listOfPoolBalances = [
+    ethBalance,
+    usdcBalance,
+    sqrdBalance,
+    sqrdLpBalance,
+  ]
+  return listOfPoolBalances
 }
 
 export const useFetchUserBalance = (selectedToken, abi) => {
@@ -56,12 +71,17 @@ export const useFetchUserBalance = (selectedToken, abi) => {
   return balance
 }
 
-export const getListOfBalances = () => {
-  const ethBalance = useFetchPoolBalance(selectedChain.tokens[0], EthPoolAbi)
-  const usdcBalance = useFetchPoolBalance(selectedChain.tokens[1], PoolAbi)
-  const sqrdBalance = useFetchPoolBalance(selectedChain.tokens[2], PoolAbi)
-  const sqrdLpBalance = useFetchPoolBalance(selectedChain.tokens[3], PoolAbi)
+export const getListOfUserBalances = () => {
+  const ethBalance = useFetchUserBalance(selectedChain.tokens[0], EthPoolAbi)
+  const usdcBalance = useFetchUserBalance(selectedChain.tokens[1], PoolAbi)
+  const sqrdBalance = useFetchUserBalance(selectedChain.tokens[2], PoolAbi)
+  const sqrdLpBalance = useFetchUserBalance(selectedChain.tokens[3], PoolAbi)
 
-  const balanceList = [ethBalance, usdcBalance, sqrdBalance, sqrdLpBalance]
-  return balanceList
+  const listOfUserBalances = [
+    ethBalance,
+    usdcBalance,
+    sqrdBalance,
+    sqrdLpBalance,
+  ]
+  return listOfUserBalances
 }

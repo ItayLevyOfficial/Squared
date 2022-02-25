@@ -8,7 +8,7 @@ import { PageWrapper } from '../layouts/PageWrapper'
 import { ModalDisplay } from './ModalDisplay'
 import { selectedChain } from '../chains'
 import { useState } from 'react'
-import { getListOfBalances } from './useErc20Functions'
+import { getListOfPoolBalances } from './useErc20Functions'
 import { NetworkModal } from '../launchEvent/commitAssetsModal/NetworkModal'
 import { EthPoolAbi } from './ABIs/EthPoolAbi'
 import { PoolAbi } from './ABIs/PoolAbi'
@@ -31,7 +31,7 @@ export const Products = () => {
     selectedChain.tokens[+selectedTokenIndex],
     selectedTokenIndex === 0 ? EthPoolAbi : PoolAbi
   )
-  const balanceList = getListOfBalances()
+  const balanceList = getListOfPoolBalances()
 
   const open = (id) => {
     setIsOpen(true)

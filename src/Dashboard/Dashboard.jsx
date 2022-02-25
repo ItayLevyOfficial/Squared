@@ -8,7 +8,10 @@ import {
   InformationWrapper,
 } from '../products/Information'
 import { useState } from 'react'
-import { getListOfBalances } from '../products/useErc20Functions'
+import {
+  getListOfPoolBalances,
+  getListOfUserBalances,
+} from '../products/useErc20Functions'
 import { StakingPoolWrapper } from '../products/Products'
 import { NetworkModal } from '../launchEvent/commitAssetsModal/NetworkModal'
 import { EthPoolAbi } from '../products/ABIs/EthPoolAbi'
@@ -24,7 +27,8 @@ export const Dashboard = () => {
     selectedChain.tokens[+selectedTokenIndex],
     selectedTokenIndex === 0 ? EthPoolAbi : PoolAbi
   )
-  const balanceList = getListOfBalances()
+  const listOfPoolBalances = getListOfPoolBalances()
+  const listOfUserBalances = getListOfUserBalances()
 
   const open = (id) => {
     setIsOpen(true)
@@ -61,16 +65,16 @@ export const Dashboard = () => {
             el={el}
             key={index}
             openModal={() => open(index)}
-            balance={balanceList[index]}
+            balance={listOfPoolBalances[index]}
           />
         ))}
       </StakingPoolWrapper>
       <InformationWrapper>
         <InformationBox title={'Your Balance'}>
-          <InformationLine>{`ETH: ${balanceList[0]}`} </InformationLine>
-          <InformationLine>{`USDC: ${balanceList[1]}`}</InformationLine>
-          <InformationLine>{`SQRD: ${balanceList[2]}`}</InformationLine>
-          <InformationLine>{`SQRD LP: ${balanceList[3]}`}</InformationLine>
+          <InformationLine>{`ETH: ${listOfUserBalances[0]}`} </InformationLine>
+          <InformationLine>{`USDC: ${listOfUserBalances[1]}`}</InformationLine>
+          <InformationLine>{`SQRD: ${listOfUserBalances[2]}`}</InformationLine>
+          <InformationLine>{`SQRD LP: ${listOfUserBalances[3]}`}</InformationLine>
         </InformationBox>
         <div className="w-[0.5px] h-full bg-white" />
         <InformationBox title={'Your Rewards'}>
