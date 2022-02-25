@@ -1,6 +1,6 @@
 import React from 'react'
 import { ModalLine } from './ModalLine'
-import { useFetchUserBalance } from './useFetchBalance'
+import { useFetchUserBalance } from './useErc20Functions'
 import { selectedChain } from '../chains'
 import { PoolAbi } from './ABIs/PoolAbi'
 import { EthPoolAbi } from './ABIs/EthPoolAbi'

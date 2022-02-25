@@ -3,7 +3,6 @@ import { useConnectWallet } from '../launchEvent/useConnectWallet'
 import { useContract } from '../launchEvent/utils'
 import { erc20abi } from '../launchEvent/abis/erc20abi'
 import { ethers } from 'ethers'
-import { selectedChain } from '../chains'
 
 export const formatBigErc20 = (value, decimals) =>
   ethers.utils.formatUnits(value, decimals)
@@ -15,7 +14,6 @@ export const usePoolContracts = (selectedToken, abi) => {
     selectedToken.poolContractAddress,
     abi
   )
-
   return poolContract
 }
 
@@ -27,17 +25,12 @@ export const useFetchPoolBalance = (selectedToken, abi) => {
 
   const fetchBalance = useCallback(async () => {
     const balance = await erc20.balanceOf(poolContract.address)
-    if (selectedToken === selectedChain.tokens[0]) {
-      setBalance(parseInt(formatBigErc20(balance, selectedToken.decimals)))
-    } else {
-      setBalance(parseInt(formatBigErc20(balance, selectedToken.decimals)))
-    }
+    setBalance(parseInt(formatBigErc20(balance, selectedToken.decimals)))
   }, [poolContract])
 
   useEffect(() => {
     fetchBalance()
   }, [poolContract])
-
   return balance
 }
 
@@ -48,11 +41,7 @@ export const useFetchUserBalance = (selectedToken, abi) => {
 
   const fetchBalance = useCallback(async () => {
     const balance = await poolContract.balanceOf(address)
-    if (selectedToken === selectedChain.tokens[0]) {
-      setBalance(parseInt(formatBigErc20(balance, selectedToken.decimals)))
-    } else {
-      setBalance(parseInt(formatBigErc20(balance, selectedToken.decimals)))
-    }
+    setBalance(parseInt(formatBigErc20(balance, selectedToken.decimals)))
   }, [address, poolContract])
 
   useEffect(() => {
@@ -60,6 +49,5 @@ export const useFetchUserBalance = (selectedToken, abi) => {
       fetchBalance()
     }
   }, [address, poolContract])
-
   return balance
 }

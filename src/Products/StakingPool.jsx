@@ -1,4 +1,4 @@
-import { useFetchPoolBalance } from './useFetchBalance'
+import { useFetchPoolBalance } from './useErc20Functions'
 import { selectedChain } from '../chains'
 import { PoolAbi } from './ABIs/PoolAbi'
 import { EthPoolAbi } from './ABIs/EthPoolAbi'

@@ -8,7 +8,7 @@ import {
   InformationWrapper,
 } from '../products/Information'
 import { useState } from 'react'
-import { useFetchUserBalance } from '../products/useFetchBalance'
+import { useFetchUserBalance } from '../products/useErc20Functions'
 import { StakingPoolWrapper } from '../products/Products'
 import { NetworkModal } from '../launchEvent/commitAssetsModal/NetworkModal'
 import { EthPoolAbi } from '../products/ABIs/EthPoolAbi'

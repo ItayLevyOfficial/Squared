@@ -5,7 +5,7 @@ import { PoolAbi } from './ABIs/PoolAbi'
 import { erc20abi } from '../launchEvent/abis/erc20abi'
 import { useContract } from '../launchEvent/utils'
 import { useConnectWallet } from '../launchEvent/useConnectWallet'
-import { usePoolContracts } from './useFetchBalance'
+import { usePoolContracts } from './useErc20Functions'
 import { parseNumberDecimals } from '../launchEvent/commitAssetsModal/useCommitAssets'
 
 export const useDepositAssets = () => {
