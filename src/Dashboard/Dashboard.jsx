@@ -13,8 +13,7 @@ import { StakingPoolWrapper } from '../products/Products'
 import { NetworkModal } from '../launchEvent/commitAssetsModal/NetworkModal'
 import { EthPoolAbi } from '../products/ABIs/EthPoolAbi'
 import { PoolAbi } from '../products/ABIs/PoolAbi'
-// import { useDepositAssets } from '../products/useDepositAssets'
-import { useCommitAssets } from '../launchEvent/commitAssetsModal/useCommitAssets'
+import { useCommitPoolAssets } from '../launchEvent/commitAssetsModal/useCommitAssets'
 import { SuccessModal } from '../launchEvent/commitAssetsModal/MessageModal'
 
 export const Dashboard = () => {
@@ -26,9 +25,9 @@ export const Dashboard = () => {
   const [isModalOpen, setIsOpen] = useState(false)
   const [selectedTokenIndex, setSelectedTokenIndex] = useState(0)
   const [tokenAmount, setTokenAmount] = useState('')
-  const [commitAssets, txHash, setTxHash] = useCommitAssets(
-    selectedChain.tokens[selectedTokenIndex],
-    PoolAbi
+  const [commitAssets, txHash, setTxHash] = useCommitPoolAssets(
+    selectedChain.tokens[+selectedTokenIndex],
+    selectedTokenIndex === 0 ? EthPoolAbi : PoolAbi
   )
 
   const open = (id) => {

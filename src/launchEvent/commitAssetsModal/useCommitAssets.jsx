@@ -2,6 +2,7 @@ import { BigNumber } from 'ethers'
 import { useContext, useState } from 'react'
 import { launchContractAbi } from '../abis/defiRoundAbi'
 import { StageContext } from '../LaunchEventScreen'
+import { EthPoolAbi } from '../../products/ABIs/EthPoolAbi'
 import { selectedChain } from '../../chains'
 import { erc20abi } from '../abis/erc20abi'
 import { useConnectWallet } from '../useConnectWallet'
@@ -25,6 +26,32 @@ export const parseNumberDecimals = ({ amount, decimals }) => {
   }
 }
 
+export const useCommitPoolAssets = (selectedToken, abi) => {
+  const [signer] = useConnectWallet()
+  const [txHash, setTxHash] = useState()
+  const erc20 = useContract(signer, selectedToken.address, erc20abi)
+
+  const roundContract = usePoolContracts(selectedToken, abi)
+
+  const commitAssets = async ({ tokenAmount, selectedTokenIndex }) => {
+    const tokenData = selectedChain.tokens[+selectedTokenIndex]
+    const amount = parseNumberDecimals({
+      amount: tokenAmount,
+      decimals: tokenData.decimals,
+    })
+
+    if (selectedTokenIndex === 0) {
+      const tx = await roundContract.deposit(amount, { value: amount })
+      setTxHash(tx.hash)
+    } else {
+      await erc20.approve(selectedToken.poolContractAddress, amount)
+      const tx = await roundContract.deposit(amount)
+      setTxHash(tx.hash)
+    }
+  }
+  return [commitAssets, txHash, setTxHash]
+}
+
 export const useCommitAssets = (selectedToken, abi = erc20abi) => {
   const [signer] = useConnectWallet()
   const [txHash, setTxHash] = useState()
@@ -33,7 +60,7 @@ export const useCommitAssets = (selectedToken, abi = erc20abi) => {
   const roundContract = usePoolContracts(selectedToken, abi)
 
   const commitAssets = async ({ tokenAmount, selectedTokenIndex }) => {
-    const tokenData = selectedChain.tokens[selectedTokenIndex]
+    const tokenData = selectedChain.tokens[+selectedTokenIndex]
     const amount = parseNumberDecimals({
       amount: tokenAmount,
       decimals: tokenData.decimals,
@@ -50,7 +77,7 @@ export const useCommitAssets = (selectedToken, abi = erc20abi) => {
       )
       setTxHash(tx.hash)
     } else {
-      await erc20.approve(selectedToken.address, amount)
+      await erc20.approve(selectedToken.poolContractAddress, amount)
       const tx = await roundContract.deposit(
         {
           token: tokenData.address,
