@@ -22,6 +22,8 @@ export const Dashboard = () => {
   const sqrdBalance = useFetchUserBalance(selectedChain.tokens[2], PoolAbi)
   const sqrdLpBalance = useFetchUserBalance(selectedChain.tokens[3], PoolAbi)
 
+  const balanceList = [ethBalance, usdcBalance, sqrdBalance, sqrdLpBalance]
+
   const [isModalOpen, setIsOpen] = useState(false)
   const [selectedTokenIndex, setSelectedTokenIndex] = useState(0)
   const [tokenAmount, setTokenAmount] = useState('')
@@ -61,7 +63,12 @@ export const Dashboard = () => {
       />
       <StakingPoolWrapper className={'-mt-32'}>
         {selectedChain.tokens.map((el, index) => (
-          <StakingPool el={el} key={index} openModal={() => open(index)} />
+          <StakingPool
+            el={el}
+            key={index}
+            openModal={() => open(index)}
+            balance={balanceList[index]}
+          />
         ))}
       </StakingPoolWrapper>
       <InformationWrapper>

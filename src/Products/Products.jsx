@@ -13,7 +13,7 @@ import { NetworkModal } from '../launchEvent/commitAssetsModal/NetworkModal'
 import { EthPoolAbi } from './ABIs/EthPoolAbi'
 import { PoolAbi } from './ABIs/PoolAbi'
 import { SuccessModal } from '../launchEvent/commitAssetsModal/MessageModal'
-import { useDepositAssets } from './useDepositAssets'
+import { useCommitPoolAssets } from '../launchEvent/commitAssetsModal/useCommitAssets'
 
 export const StakingPoolWrapper = ({ children, className }) => {
   return (
@@ -27,11 +27,17 @@ export const Products = () => {
   const [isModalOpen, setIsOpen] = useState(false)
   const [selectedTokenIndex, setSelectedTokenIndex] = useState(null)
   const [tokenAmount, setTokenAmount] = useState('')
-  const [commitAssets, txHash, setTxHash] = useDepositAssets()
+  const [commitAssets, txHash, setTxHash] = useCommitPoolAssets(
+    selectedChain.tokens[+selectedTokenIndex],
+    selectedTokenIndex === 0 ? EthPoolAbi : PoolAbi
+  )
 
   const ethBalance = useFetchPoolBalance(selectedChain.tokens[0], EthPoolAbi)
   const usdcBalance = useFetchPoolBalance(selectedChain.tokens[1], PoolAbi)
   const sqrdBalance = useFetchPoolBalance(selectedChain.tokens[2], PoolAbi)
+  const sqrdLpBalance = useFetchPoolBalance(selectedChain.tokens[3], PoolAbi)
+
+  const balanceList = [ethBalance, usdcBalance, sqrdLpBalance, sqrdLpBalance]
 
   const open = (id) => {
     setIsOpen(true)
@@ -64,7 +70,12 @@ export const Products = () => {
       />
       <StakingPoolWrapper className={'-mt-32'}>
         {selectedChain.tokens.map((el, index) => (
-          <StakingPool el={el} key={index} openModal={() => open(index)} />
+          <StakingPool
+            el={el}
+            key={index}
+            openModal={() => open(index)}
+            balance={balanceList[index]}
+          />
         ))}
       </StakingPoolWrapper>
       <InformationWrapper>
