@@ -8,7 +8,10 @@ import { ModalDisplay } from '../products/ModalDisplay'
 import { selectedChain } from '../chains'
 import { InformationWrapper } from '../products/Information'
 import { useState } from 'react'
-import { getListOfPoolBalances } from '../products/useErc20Functions'
+import {
+  getListOfPoolBalances,
+  getListOfUserBalances,
+} from '../products/useErc20Functions'
 import { NetworkModal } from '../launchEvent/commitAssetsModal/NetworkModal'
 import { EthPoolAbi } from '../products/ABIs/EthPoolAbi'
 import { PoolAbi } from '../products/ABIs/PoolAbi'
@@ -25,6 +28,7 @@ export const PageWrapper = ({ children }) => {
     selectedTokenIndex === 0 ? EthPoolAbi : PoolAbi
   )
   const listOfPoolBalances = getListOfPoolBalances()
+  const listOfUserBalances = getListOfUserBalances()
 
   const open = (id) => {
     setIsOpen(true)
@@ -53,6 +57,7 @@ export const PageWrapper = ({ children }) => {
             setTokenAmount('')
           }}
           selectedTokenIndex={selectedTokenIndex}
+          balance={listOfUserBalances[selectedTokenIndex]}
           setTokenAmount={setTokenAmount}
           tokenAmount={tokenAmount}
           handleSubmit={commitAssets}

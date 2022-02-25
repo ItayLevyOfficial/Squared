@@ -44,7 +44,10 @@ export const ModalInfo = ({ isOnWithdraw, selectedTokenName, balance }) => {
         </>
       ) : (
         <>
-          <ModalDepositedLine selectedTokenName={selectedTokenName} />
+          <ModalDepositedLine
+            selectedTokenName={selectedTokenName}
+            balance={balance}
+          />
           <br /> <br />
           <div className="w-full flex flex-col items-center text-xs">
             <span>
