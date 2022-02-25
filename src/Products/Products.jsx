@@ -8,7 +8,7 @@ import { PageWrapper } from '../layouts/PageWrapper'
 import { ModalDisplay } from './ModalDisplay'
 import { selectedChain } from '../chains'
 import { useState } from 'react'
-import { useFetchContractBalance } from './useFetchBalance'
+import { useFetchPoolBalance } from './useFetchBalance'
 import { NetworkModal } from '../launchEvent/commitAssetsModal/NetworkModal'
 import { EthPoolAbi } from './ABIs/EthPoolAbi'
 import { PoolAbi } from './ABIs/PoolAbi'
@@ -29,12 +29,9 @@ export const Products = () => {
   const [tokenAmount, setTokenAmount] = useState('')
   const [commitAssets, txHash, setTxHash] = useDepositAssets()
 
-  const ethBalance = useFetchContractBalance(
-    selectedChain.tokens[0],
-    EthPoolAbi
-  )
-  const usdcBalance = useFetchContractBalance(selectedChain.tokens[1], PoolAbi)
-  const sqrdBalance = useFetchContractBalance(selectedChain.tokens[2], PoolAbi)
+  const ethBalance = useFetchPoolBalance(selectedChain.tokens[0], EthPoolAbi)
+  const usdcBalance = useFetchPoolBalance(selectedChain.tokens[1], PoolAbi)
+  const sqrdBalance = useFetchPoolBalance(selectedChain.tokens[2], PoolAbi)
 
   const open = (id) => {
     setIsOpen(true)
