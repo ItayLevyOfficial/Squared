@@ -51,7 +51,7 @@ export const useCommitPoolAssets = (selectedToken, abi) => {
   return [commitAssets, txHash, setTxHash]
 }
 
-export const useCommitAssets = () => {
+export const useCommitLaunchAssets = () => {
   const [signer] = useConnectWallet()
   const erc20 = useContract(signer, selectedChain.tokens[1].address, erc20abi)
   const [txHash, setTxHash] = useState()
