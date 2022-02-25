@@ -6,11 +6,7 @@ import { ScreenPaddedContainer } from '../launchEvent/LaunchEventScreen'
 import { StakingPool } from '../products/StakingPool'
 import { ModalDisplay } from '../products/ModalDisplay'
 import { selectedChain } from '../chains'
-import {
-  InformationBox,
-  InformationLine,
-  InformationWrapper,
-} from '../products/Information'
+import { InformationWrapper } from '../products/Information'
 import { useState } from 'react'
 import {
   getListOfPoolBalances,

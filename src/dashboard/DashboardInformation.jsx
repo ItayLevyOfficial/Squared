@@ -2,7 +2,7 @@ import { PageWrapper } from '../layouts/PageWrapper'
 import { InformationBox, InformationLine } from '../products/Information'
 import { getListOfUserBalances } from '../products/useErc20Functions'
 
-export const Dashboard = () => {
+export const DashboardInformation = () => {
   const listOfUserBalances = getListOfUserBalances()
 
   return (

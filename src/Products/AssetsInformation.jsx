@@ -1,8 +1,8 @@
 import { PageWrapper } from '../layouts/PageWrapper'
-import { InformationBox, InformationLine } from '../products/Information'
-import { getListOfPoolBalances } from '../products/useErc20Functions'
+import { InformationBox, InformationLine } from './Information'
+import { getListOfPoolBalances } from './useErc20Functions'
 
-export const Products = () => {
+export const AssetsInformation = () => {
   const listOfPoolBalances = getListOfPoolBalances()
 
   return (

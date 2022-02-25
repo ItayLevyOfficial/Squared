@@ -2,8 +2,8 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
 import { ScrollToTop } from './layouts/ScrollToTop'
 import { Home } from './Home/Home'
 import React from 'react'
-import { Products } from './products/Products'
-import { Dashboard } from './dashboard/Dashboard'
+import { AssetsInformation } from './products/AssetsInformation'
+import { DashboardInformation } from './dashboard/DashboardInformation'
 import { LaunchScreenContext } from './launchEvent/LaunchEventScreen'
 
 function App() {
@@ -13,8 +13,8 @@ function App() {
         <ScrollToTop>
           <Routes>
             <Route path="/launch" element={<LaunchScreenContext />} />
-            <Route path="/assets" element={<Products />} />
-            <Route path="/dashboard" element={<Dashboard />} />
+            <Route path="/assets" element={<AssetsInformation />} />
+            <Route path="/dashboard" element={<DashboardInformation />} />
             <Route path="/" element={<Home />} />
           </Routes>
         </ScrollToTop>
