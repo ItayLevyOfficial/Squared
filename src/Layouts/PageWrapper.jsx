@@ -35,27 +35,22 @@ export const PageWrapper = ({ children }) => {
     setSelectedTokenIndex(id)
   }
 
+  const close = () => {
+    setIsOpen(false)
+    setSelectedTokenIndex(null)
+    setTokenAmount('')
+    setTxHash(null)
+  }
+
   return (
     <ScreenPaddedContainer>
       <Header connectWallet={connectWallet} address={address} />
       <div className="flex flex-col justify-evenly items-center w-10/12 h-full ">
         <NetworkModal />
-        {txHash && (
-          <SuccessModal
-            close={() => {
-              setSelectedTokenIndex(null)
-              setTxHash(null)
-            }}
-            txHash={txHash}
-          />
-        )}
+        {txHash && <SuccessModal close={close} txHash={txHash} />}
         <ModalDisplay
           isOpen={isModalOpen}
-          close={() => {
-            setIsOpen(false)
-            setSelectedTokenIndex(null)
-            setTokenAmount('')
-          }}
+          close={close}
           selectedTokenIndex={selectedTokenIndex}
           balance={listOfUserBalances[selectedTokenIndex]}
           setTokenAmount={setTokenAmount}
