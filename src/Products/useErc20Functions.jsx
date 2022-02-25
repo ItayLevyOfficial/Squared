@@ -3,6 +3,9 @@ import { useConnectWallet } from '../launchEvent/useConnectWallet'
 import { useContract } from '../launchEvent/utils'
 import { erc20abi } from '../launchEvent/abis/erc20abi'
 import { ethers } from 'ethers'
+import { selectedChain } from '../chains'
+import { EthPoolAbi } from './ABIs/EthPoolAbi'
+import { PoolAbi } from './ABIs/PoolAbi'
 
 export const formatBigErc20 = (value, decimals) =>
   ethers.utils.formatUnits(value, decimals)
@@ -31,6 +34,7 @@ export const useFetchPoolBalance = (selectedToken, abi) => {
   useEffect(() => {
     fetchBalance()
   }, [poolContract])
+
   return balance
 }
 
@@ -50,4 +54,14 @@ export const useFetchUserBalance = (selectedToken, abi) => {
     }
   }, [address, poolContract])
   return balance
+}
+
+export const getListOfBalances = () => {
+  const ethBalance = useFetchPoolBalance(selectedChain.tokens[0], EthPoolAbi)
+  const usdcBalance = useFetchPoolBalance(selectedChain.tokens[1], PoolAbi)
+  const sqrdBalance = useFetchPoolBalance(selectedChain.tokens[2], PoolAbi)
+  const sqrdLpBalance = useFetchPoolBalance(selectedChain.tokens[3], PoolAbi)
+
+  const balanceList = [ethBalance, usdcBalance, sqrdBalance, sqrdLpBalance]
+  return balanceList
 }

@@ -8,7 +8,7 @@ import {
   InformationWrapper,
 } from '../products/Information'
 import { useState } from 'react'
-import { useFetchUserBalance } from '../products/useErc20Functions'
+import { getListOfBalances } from '../products/useErc20Functions'
 import { StakingPoolWrapper } from '../products/Products'
 import { NetworkModal } from '../launchEvent/commitAssetsModal/NetworkModal'
 import { EthPoolAbi } from '../products/ABIs/EthPoolAbi'
@@ -17,13 +17,6 @@ import { useCommitPoolAssets } from '../launchEvent/commitAssetsModal/useCommitA
 import { SuccessModal } from '../launchEvent/commitAssetsModal/MessageModal'
 
 export const Dashboard = () => {
-  const ethBalance = useFetchUserBalance(selectedChain.tokens[0], EthPoolAbi)
-  const usdcBalance = useFetchUserBalance(selectedChain.tokens[1], PoolAbi)
-  const sqrdBalance = useFetchUserBalance(selectedChain.tokens[2], PoolAbi)
-  const sqrdLpBalance = useFetchUserBalance(selectedChain.tokens[3], PoolAbi)
-
-  const balanceList = [ethBalance, usdcBalance, sqrdBalance, sqrdLpBalance]
-
   const [isModalOpen, setIsOpen] = useState(false)
   const [selectedTokenIndex, setSelectedTokenIndex] = useState(0)
   const [tokenAmount, setTokenAmount] = useState('')
@@ -31,6 +24,7 @@ export const Dashboard = () => {
     selectedChain.tokens[+selectedTokenIndex],
     selectedTokenIndex === 0 ? EthPoolAbi : PoolAbi
   )
+  const balanceList = getListOfBalances()
 
   const open = (id) => {
     setIsOpen(true)
@@ -73,10 +67,10 @@ export const Dashboard = () => {
       </StakingPoolWrapper>
       <InformationWrapper>
         <InformationBox title={'Your Balance'}>
-          <InformationLine>{`ETH: ${ethBalance}`} </InformationLine>
-          <InformationLine>{`USDC: ${usdcBalance}`}</InformationLine>
-          <InformationLine>{`SQRD: ${sqrdBalance}`}</InformationLine>
-          <InformationLine>{`SQRD LP: ${sqrdLpBalance}`}</InformationLine>
+          <InformationLine>{`ETH: ${balanceList[0]}`} </InformationLine>
+          <InformationLine>{`USDC: ${balanceList[1]}`}</InformationLine>
+          <InformationLine>{`SQRD: ${balanceList[2]}`}</InformationLine>
+          <InformationLine>{`SQRD LP: ${balanceList[3]}`}</InformationLine>
         </InformationBox>
         <div className="w-[0.5px] h-full bg-white" />
         <InformationBox title={'Your Rewards'}>

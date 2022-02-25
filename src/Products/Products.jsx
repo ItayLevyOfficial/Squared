@@ -8,7 +8,7 @@ import { PageWrapper } from '../layouts/PageWrapper'
 import { ModalDisplay } from './ModalDisplay'
 import { selectedChain } from '../chains'
 import { useState } from 'react'
-import { useFetchPoolBalance } from './useErc20Functions'
+import { getListOfBalances } from './useErc20Functions'
 import { NetworkModal } from '../launchEvent/commitAssetsModal/NetworkModal'
 import { EthPoolAbi } from './ABIs/EthPoolAbi'
 import { PoolAbi } from './ABIs/PoolAbi'
@@ -31,13 +31,7 @@ export const Products = () => {
     selectedChain.tokens[+selectedTokenIndex],
     selectedTokenIndex === 0 ? EthPoolAbi : PoolAbi
   )
-
-  const ethBalance = useFetchPoolBalance(selectedChain.tokens[0], EthPoolAbi)
-  const usdcBalance = useFetchPoolBalance(selectedChain.tokens[1], PoolAbi)
-  const sqrdBalance = useFetchPoolBalance(selectedChain.tokens[2], PoolAbi)
-  const sqrdLpBalance = useFetchPoolBalance(selectedChain.tokens[3], PoolAbi)
-
-  const balanceList = [ethBalance, usdcBalance, sqrdLpBalance, sqrdLpBalance]
+  const balanceList = getListOfBalances()
 
   const open = (id) => {
     setIsOpen(true)
@@ -80,9 +74,9 @@ export const Products = () => {
       </StakingPoolWrapper>
       <InformationWrapper>
         <InformationBox title={'Value Locked'}>
-          <InformationLine>{`ETH TVL: ${ethBalance} `}</InformationLine>
-          <InformationLine>{`USDC TVL: ${usdcBalance}`}</InformationLine>
-          <InformationLine>{`SQRD TVL: ${sqrdBalance} `}</InformationLine>
+          <InformationLine>{`ETH TVL: ${balanceList[0]} `}</InformationLine>
+          <InformationLine>{`USDC TVL: ${balanceList[1]}`}</InformationLine>
+          <InformationLine>{`SQRD TVL: ${balanceList[2]} `}</InformationLine>
         </InformationBox>
         <div className="w-[0.5px] h-full bg-white" />
         <InformationBox title={'Cycle'}>
