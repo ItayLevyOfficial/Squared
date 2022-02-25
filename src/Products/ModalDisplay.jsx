@@ -3,16 +3,10 @@ import React, { useState } from 'react'
 import Modal from 'react-modal'
 import { selectedChain } from '../chains'
 import { useConnectWallet } from '../launchEvent/useConnectWallet'
-import { ModalButtons } from './ModalButtons'
+import { ModalButton } from './ModalButtons'
 import { ModalInfo } from './ModalInfo'
 import { ModalInput } from './ModalInput'
 import { ModalOptions } from './ModalOptions'
-import { erc20abi } from '../launchEvent/abis/erc20abi'
-import { parseNumberDecimals } from '../launchEvent/commitAssetsModal/useCommitAssets'
-import { useContract } from '../launchEvent/utils'
-import { EthPoolAbi } from './ABIs/EthPoolAbi'
-import { PoolAbi } from './ABIs/PoolAbi'
-import { usePoolContracts } from './useFetchBalance'
 import { contentStyles, overlayStyles } from './ModalStyles'
 
 Modal.setAppElement('#root')
@@ -68,16 +62,32 @@ export const ModalDisplay = ({
           isOnWithdraw={isOnWithdraw}
         />
         <br />
-        <ModalButtons
-          close={close}
-          isOnWithdraw={isOnWithdraw}
-          selectedTokenName={tokenData?.name}
-          isConnected={isConnected}
-          connectWallet={connectWallet}
-          handleSubmit={handleSubmit}
-          selectedTokenIndex={selectedTokenIndex}
-          tokenAmount={tokenAmount}
-        />
+        <div className="w-full h-10 flex justify-center items-center space-x-4">
+          {isConnected ? (
+            isOnWithdraw ? (
+              <>
+                <ModalButton text={`Request Withdrawal`} />
+                <ModalButton text={`Withdraw ${tokenData?.name}`} />
+              </>
+            ) : (
+              <ModalButton
+                text={` ${tokenData?.name === 'SQRD' ? 'Stake' : 'Deposit'} ${
+                  tokenData?.name
+                }`}
+                onClick={
+                  isConnected
+                    ? () => {
+                        handleSubmit({ tokenAmount, selectedTokenIndex })
+                        close()
+                      }
+                    : connectWallet
+                }
+              />
+            )
+          ) : (
+            <ModalButton text={`Connect Wallet`} onClick={connectWallet} />
+          )}
+        </div>
         <br />
       </div>
     </Modal>
