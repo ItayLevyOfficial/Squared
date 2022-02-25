@@ -65,7 +65,7 @@ export const PageWrapper = ({ children }) => {
           tokenAmount={tokenAmount}
           handleSubmit={commitAssets}
         />
-        <div className="-mt-32">
+        <div className="w-full flex items-center justify-evenly -mt-32">
           {selectedChain.tokens.map((el, index) => (
             <StakingPool
               el={el}
