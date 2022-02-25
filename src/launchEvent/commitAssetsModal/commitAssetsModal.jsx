@@ -1,7 +1,7 @@
 import React, { useState, useContext } from 'react'
 import Modal from 'react-modal'
 import { selectedChain } from '../../chains'
-import { ModalButton } from '../../Products/ModalButtons'
+import { ModalButton } from '../../products/ModalButton'
 import { CloseButton } from '../../Products/ModalDisplay'
 import { ModalInput } from '../../Products/ModalInput'
 import { useConnectWallet } from '../useConnectWallet'
