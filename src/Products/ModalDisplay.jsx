@@ -24,6 +24,7 @@ export const ModalDisplay = ({
   tokenAmount,
   setTokenAmount,
   handleSubmit,
+  balance,
 }) => {
   const tokenData = isOpen ? selectedChain?.tokens[selectedTokenIndex] : null
   const [isOnWithdraw, setIsOnWithdraw] = useState(false)
@@ -57,8 +58,8 @@ export const ModalDisplay = ({
           handleChange={setTokenAmount}
         />
         <ModalInfo
+          balance={balance}
           selectedTokenName={tokenData?.name}
-          selectedTokenIndex={selectedTokenIndex}
           isOnWithdraw={isOnWithdraw}
         />
         <br />

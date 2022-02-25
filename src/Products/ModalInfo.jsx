@@ -1,23 +1,7 @@
 import React from 'react'
 import { ModalLine } from './ModalLine'
-import { useFetchUserBalance } from './useErc20Functions'
-import { selectedChain } from '../chains'
-import { PoolAbi } from './ABIs/PoolAbi'
-import { EthPoolAbi } from './ABIs/EthPoolAbi'
 
-export const ModalDepositedLine = ({ selectedTokenName }) => {
-  const balance = useFetchUserBalance(
-    selectedChain.tokens[
-      selectedTokenName === 'ETH'
-        ? 0
-        : selectedTokenName === 'USDC'
-        ? 1
-        : selectedTokenName === 'SQRD'
-        ? 2
-        : 3
-    ],
-    selectedTokenName === 'ETH' ? EthPoolAbi : PoolAbi
-  )
+export const ModalDepositedLine = ({ selectedTokenName, balance }) => {
   return (
     <ModalLine
       title="Deposited"
@@ -27,12 +11,15 @@ export const ModalDepositedLine = ({ selectedTokenName }) => {
   )
 }
 
-export const ModalInfo = ({ isOnWithdraw, selectedTokenName }) => {
+export const ModalInfo = ({ isOnWithdraw, selectedTokenName, balance }) => {
   return (
     <div className="text-white text-sm mt-6">
       {isOnWithdraw ? (
         <>
-          <ModalDepositedLine selectedTokenName={selectedTokenName} />
+          <ModalDepositedLine
+            selectedTokenName={selectedTokenName}
+            balance={balance}
+          />
           <br />
           <ModalLine
             title="Requested Withdrawal"
