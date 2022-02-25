@@ -13,7 +13,8 @@ import { StakingPoolWrapper } from '../products/Products'
 import { NetworkModal } from '../launchEvent/commitAssetsModal/NetworkModal'
 import { EthPoolAbi } from '../products/ABIs/EthPoolAbi'
 import { PoolAbi } from '../products/ABIs/PoolAbi'
-import { useDepositAssets } from '../products/useDepositAssets'
+// import { useDepositAssets } from '../products/useDepositAssets'
+import { useCommitAssets } from '../launchEvent/commitAssetsModal/useCommitAssets'
 import { SuccessModal } from '../launchEvent/commitAssetsModal/MessageModal'
 
 export const Dashboard = () => {
@@ -23,9 +24,13 @@ export const Dashboard = () => {
   const sqrdLpBalance = useFetchUserBalance(selectedChain.tokens[3], PoolAbi)
 
   const [isModalOpen, setIsOpen] = useState(false)
-  const [selectedTokenIndex, setSelectedTokenIndex] = useState(null)
+  const [selectedTokenIndex, setSelectedTokenIndex] = useState(0)
   const [tokenAmount, setTokenAmount] = useState('')
-  const [commitAssets, txHash, setTxHash] = useDepositAssets()
+  const [commitAssets, txHash, setTxHash] = useCommitAssets(
+    selectedChain.tokens[selectedTokenIndex],
+    PoolAbi
+  )
+
   const open = (id) => {
     setIsOpen(true)
     setSelectedTokenIndex(id)
