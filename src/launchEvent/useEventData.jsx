@@ -34,7 +34,7 @@ export const useEventData = () => {
         .then((response) => {
           setTotalCommitments(formatBigUsd(response))
         })
-        .catch((error) => console.error({ error }))
+        .catch(error => console.error({ error }))
     }
   }, [launchContract])
 
