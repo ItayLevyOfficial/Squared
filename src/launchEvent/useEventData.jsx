@@ -29,9 +29,12 @@ export const useEventData = () => {
   }, [launchContract])
   const fetchTotalCommitments = useCallback(() => {
     if (launchContract) {
-      launchContract.totalValue().then((response) => {
-        setTotalCommitments(formatBigUsd(response))
-      })
+      launchContract
+        .totalValue()
+        .then((response) => {
+          setTotalCommitments(formatBigUsd(response))
+        })
+        .catch((error) => console.error({ error }))
     }
   }, [launchContract])
 
