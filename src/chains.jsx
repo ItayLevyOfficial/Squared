@@ -13,7 +13,6 @@ const localChainConfig = {
     launchContractAddress: '0xF32D39ff9f6Aa7a7A64d7a4F00a54826Ef791a55',
     launchTime: 1645545947422,
     lastLookStart: 1645786947422,
-
     launchTokensAmount: 3_000_000,
   },
   scan: { name: 'Etherscan', url: 'https://etherscan.io/' },
@@ -28,7 +27,7 @@ const localChainConfig = {
     {
       name: 'USDC',
       poolContractAddress: '0x5FeaeBfB4439F3516c74939A9D04e95AFE82C4ae',
-      address: '0x8A93d247134d91e0de6f96547cB0204e5BE8e5D8',
+      address: '0x40918Ba7f132E0aCba2CE4de4c4baF9BD2D7D849',
       decimals: '6',
       icon: <Usdc />,
     },
