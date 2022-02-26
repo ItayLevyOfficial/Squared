@@ -1,4 +1,4 @@
-import { useEffect, useState, useCallback } from 'react'
+import { useCallback, useEffect, useState } from 'react'
 import { selectedChain } from '../chains'
 import { launchContractAbi } from './abis/defiRoundAbi'
 import { formatBigUsd } from './LaunchScreenBody'
@@ -17,9 +17,14 @@ export const useEventData = () => {
 
   useEffect(() => {
     if (launchContract) {
-      launchContract.getMaxTotalValue().then((maxTotalValue) => {
-        setMaxTotalCommitments(formatBigUsd(maxTotalValue))
-      })
+      launchContract
+        .getMaxTotalValue()
+        .then((maxTotalValue) => {
+          setMaxTotalCommitments(formatBigUsd(maxTotalValue))
+        })
+        .catch((error) => {
+          console.error({ error })
+        })
     }
   }, [launchContract])
   const fetchTotalCommitments = useCallback(() => {
@@ -29,7 +34,7 @@ export const useEventData = () => {
       })
     }
   }, [launchContract])
-  
+
   useEventListener({
     contract: launchContract,
     eventName: 'Withdrawn',
