@@ -30,6 +30,7 @@ export const useCommitLaunchAssets = () => {
     })
     if (launchStage === 1) {
       if (selectedTokenIndex === 0) {
+        console.log({proof});
         const tx = await launchContract.deposit(
           {
             token: tokenData.address,
