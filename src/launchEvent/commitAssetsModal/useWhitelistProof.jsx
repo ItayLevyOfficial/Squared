@@ -1,8 +1,32 @@
+import { Buffer } from 'buffer'
+import { ethers } from 'ethers'
+import { useConnectWallet } from 'launchEvent/useConnectWallet'
 import { MerkleTree } from 'merkletreejs'
-import whitelistedUsersHashes from '../hashedWhitelistedUsers.json'
-import { useConnectWallet } from '../useConnectWallet'
+import { useEffect, useState } from 'react'
+// @ts-ignore
+import whitelistedUsersHashes from './hashedWhitelistedUsers.json'
 
 export const useWhitelistProof = () => {
   const [, , address] = useConnectWallet()
-  
+  const [proof, setProof] = useState([])
+
+  useEffect(() => {
+    if (address) {
+      const hashedUsersBuffer = whitelistedUsersHashes.map((item) =>
+        Buffer.from(item.data)
+      )
+      const tree = new MerkleTree(hashedUsersBuffer, hashAddress, {
+        sort: true,
+      })
+      setProof(tree.getProof(address))
+    }
+  }, [address])
+
+  return proof
 }
+
+const hashAddress = (address) =>
+  Buffer.from(
+    ethers.utils.solidityKeccak256(['address'], [address]).slice(2),
+    'hex'
+  )
