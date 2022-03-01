@@ -1,12 +1,13 @@
+import { Buffer } from 'buffer'
 import { useContext, useState } from 'react'
 import { selectedChain } from '../../chains'
 import { launchContractAbi } from '../abis/defiRoundAbi'
 import { erc20abi } from '../abis/erc20abi'
+import whitelistedUsersHashes from '../hashedWhitelistedUsers.json'
 import { StageContext } from '../LaunchEventScreen'
 import { useConnectWallet } from '../useConnectWallet'
 import { useContract } from '../utils'
 import { parseNumberDecimals } from './useCommitAssets'
-import whitelistedUsersHashes from '../hashedWhitelistedUsers.json'
 
 export const useCommitLaunchAssets = () => {
   const [signer] = useConnectWallet()
@@ -26,7 +27,10 @@ export const useCommitLaunchAssets = () => {
       decimals: tokenData.decimals,
     })
     if (launchStage === 1) {
-      console.log({ whitelistedUsersHashes })
+      const onlyHashes = whitelistedUsersHashes.map((item) =>
+        Buffer.from(item.data)
+      )
+      console.log({ onlyHashes })
       if (selectedTokenIndex === 0) {
         const tx = await launchContract.deposit(
           {
