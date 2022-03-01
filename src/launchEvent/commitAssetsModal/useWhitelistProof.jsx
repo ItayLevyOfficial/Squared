@@ -8,7 +8,6 @@ import whitelistedUsersHashes from './hashedWhitelistedUsers.json'
 export const useWhitelistProof = () => {
   const [, , address] = useConnectWallet()
   const [proof, setProof] = useState([])
-
   useEffect(() => {
     if (address) {
       const hashedUsersBuffer = whitelistedUsersHashes.map((item) =>

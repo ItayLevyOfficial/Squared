@@ -8,9 +8,11 @@ import { useConnectWallet } from '../useConnectWallet'
 import { useContract } from '../utils'
 import whitelistedUsersHashes from './hashedWhitelistedUsers.json'
 import { parseNumberDecimals } from './useCommitAssets'
+import { useWhitelistProof } from './useWhitelistProof'
 
 export const useCommitLaunchAssets = () => {
   const [signer] = useConnectWallet()
+  const proof = useWhitelistProof()
   const erc20 = useContract(signer, selectedChain.tokens[1].address, erc20abi)
   const [txHash, setTxHash] = useState()
   const launchContract = useContract(
@@ -37,7 +39,7 @@ export const useCommitLaunchAssets = () => {
             token: tokenData.address,
             amount: amount,
           },
-          [],
+          proof,
           { value: amount }
         )
         setTxHash(tx.hash)
@@ -51,7 +53,7 @@ export const useCommitLaunchAssets = () => {
             token: tokenData.address,
             amount: amount,
           },
-          [],
+          proof,
           {}
         )
         setTxHash(tx.hash)
