@@ -5,6 +5,8 @@ import { erc20abi } from '../abis/erc20abi'
 import { StageContext } from '../LaunchEventScreen'
 import { useConnectWallet } from '../useConnectWallet'
 import { useContract } from '../utils'
+import { parseNumberDecimals } from './useCommitAssets'
+import whitelistedUsersHashes from '../hashedWhitelistedUsers.json'
 
 export const useCommitLaunchAssets = () => {
   const [signer] = useConnectWallet()
@@ -24,6 +26,7 @@ export const useCommitLaunchAssets = () => {
       decimals: tokenData.decimals,
     })
     if (launchStage === 1) {
+      console.log({ whitelistedUsersHashes })
       if (selectedTokenIndex === 0) {
         const tx = await launchContract.deposit(
           {
