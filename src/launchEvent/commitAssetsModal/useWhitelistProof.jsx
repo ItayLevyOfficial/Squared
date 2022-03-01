@@ -3,7 +3,6 @@ import { ethers } from 'ethers'
 import { useConnectWallet } from 'launchEvent/useConnectWallet'
 import { MerkleTree } from 'merkletreejs'
 import { useEffect, useState } from 'react'
-// @ts-ignore
 import whitelistedUsersHashes from './hashedWhitelistedUsers.json'
 
 export const useWhitelistProof = () => {

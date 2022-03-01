@@ -3,12 +3,11 @@ import { useContext, useState } from 'react'
 import { selectedChain } from '../../chains'
 import { launchContractAbi } from '../abis/defiRoundAbi'
 import { erc20abi } from '../abis/erc20abi'
-import whitelistedUsersHashes from '../hashedWhitelistedUsers.json'
 import { StageContext } from '../LaunchEventScreen'
 import { useConnectWallet } from '../useConnectWallet'
 import { useContract } from '../utils'
+import whitelistedUsersHashes from './hashedWhitelistedUsers.json'
 import { parseNumberDecimals } from './useCommitAssets'
-import { MerkleTree } from 'merkletreejs'
 
 export const useCommitLaunchAssets = () => {
   const [signer] = useConnectWallet()
