@@ -8,6 +8,7 @@ import { StageContext } from '../LaunchEventScreen'
 import { useConnectWallet } from '../useConnectWallet'
 import { useContract } from '../utils'
 import { parseNumberDecimals } from './useCommitAssets'
+import { MerkleTree } from 'merkletreejs'
 
 export const useCommitLaunchAssets = () => {
   const [signer] = useConnectWallet()
