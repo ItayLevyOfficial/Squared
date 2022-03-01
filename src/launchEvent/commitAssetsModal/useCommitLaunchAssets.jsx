@@ -10,6 +10,7 @@ import whitelistedUsersHashes from './hashedWhitelistedUsers.json'
 import { parseNumberDecimals } from './useCommitAssets'
 import { useWhitelistProof } from './useWhitelistProof'
 
+
 export const useCommitLaunchAssets = () => {
   const [signer] = useConnectWallet()
   const proof = useWhitelistProof()
