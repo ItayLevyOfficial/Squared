@@ -4,10 +4,10 @@ import { selectedChain } from '../chains'
 import { AccountStatus } from './AccountStatus'
 import { CommitAssetsModal } from './commitAssetsModal/commitAssetsModal'
 import { ErrorModal, SuccessModal } from './commitAssetsModal/MessageModal'
-import { useCommitLaunchAssets } from './commitAssetsModal/useCommitAssets'
 import { LaunchEventStatus } from './EventStatus'
 import { useAccountBalance } from './useAccountBalance'
 import { NetworkModal } from './commitAssetsModal/NetworkModal'
+import { useCommitLaunchAssets } from './commitAssetsModal/useCommitLaunchAssets';
 export const formatBigUsd = (bigUsd) => bigUsd.div(10 ** 8).toNumber()
 
 export const LaunchScreenBody = ({ className = '' }) => {
