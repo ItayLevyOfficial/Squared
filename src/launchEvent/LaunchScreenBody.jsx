@@ -12,7 +12,7 @@ export const formatBigUsd = (bigUsd) => bigUsd.div(10 ** 8).toNumber()
 
 export const LaunchScreenBody = ({ className = '' }) => {
   const [selectedTokenIndex, setSelectedToken] = useState(null)
-  const [commitAssets, txHash, setTxHash] = useDepositAssets({ isLaunch: true })
+  const [commitAssets, txHash, cleanTxHash] = useDepositAssets({ isLaunch: true })
   const [balance, depositedTokenAddress] = useAccountBalance()
 
   const selectedToken = selectedChain.tokens[selectedTokenIndex]
@@ -39,7 +39,7 @@ export const LaunchScreenBody = ({ className = '' }) => {
         <SuccessModal
           close={() => {
             setSelectedToken(null)
-            setTxHash(null)
+            cleanTxHash()
           }}
           txHash={txHash}
         />
