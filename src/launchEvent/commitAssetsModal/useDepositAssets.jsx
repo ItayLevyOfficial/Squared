@@ -7,7 +7,7 @@ import { useContract } from '../utils'
 import { parseNumberDecimals } from './useCommitAssets'
 import { useWhitelistProof } from './useWhitelistProof'
 
-export const useDepositAssets = ({ isLaunch }) => {
+export const useDepositAssets = (isLaunch) => {
   const [signer] = useConnectWallet()
   const proof = useWhitelistProof()
   const erc20 = useContract(signer, selectedChain.tokens[1].address, erc20abi)
@@ -23,14 +23,13 @@ export const useDepositAssets = ({ isLaunch }) => {
       amount: tokenAmount,
       decimals: tokenData.decimals,
     })
-    const depositArgs = [
-      {
-        token: tokenData.address,
-        amount: amount,
-      },
-    ]
+    const depositArgs = []
+
     if (isLaunch) {
+      depositArgs.push({ token: tokenData.address, amount: amount })
       depositArgs.push(proof)
+    } else {
+      depositArgs.push(amount)
     }
     if (selectedTokenIndex === 0) {
       depositArgs.push({ value: amount })

@@ -15,7 +15,7 @@ export const formatBigUsd = (bigUsd) => bigUsd.div(10 ** 8).toNumber()
 export const LaunchScreenBody = ({ className = '' }) => {
   const [selectedTokenIndex, setSelectedToken] = useState(null)
   const launchStage = useContext(StageContext)
-  const depositControls = useDepositAssets({ isLaunch: true })
+  const depositControls = useDepositAssets(true)
   const withdrawControls = useWithdrawAssets()
   const [handleSubmit, txHash, cleanTxHash] =
     launchStage === 1 ? depositControls : withdrawControls
