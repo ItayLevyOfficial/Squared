@@ -7,7 +7,7 @@ import { useContract } from '../utils'
 import { parseNumberDecimals } from './useCommitAssets'
 import { useWhitelistProof } from './useWhitelistProof'
 
-export const useDepositAssets = () => {
+export const useDepositAssets = ({ isLaunch }) => {
   const [signer] = useConnectWallet()
   const proof = useWhitelistProof()
   const erc20 = useContract(signer, selectedChain.tokens[1].address, erc20abi)
@@ -17,11 +17,7 @@ export const useDepositAssets = () => {
     selectedChain.launchData.launchContractAddress,
     launchContractAbi
   )
-  const commitAssets = async ({
-    tokenAmount,
-    selectedTokenIndex,
-    isLaunch,
-  }) => {
+  const commitAssets = async ({ tokenAmount, selectedTokenIndex }) => {
     const tokenData = selectedChain.tokens[selectedTokenIndex]
     const amount = parseNumberDecimals({
       amount: tokenAmount,
@@ -36,7 +32,7 @@ export const useDepositAssets = () => {
     if (isLaunch) {
       depositArgs.push([proof])
     }
-    if (selectedTokenIndex) {
+    if (selectedTokenIndex === 0) {
       depositArgs.push([{ value: amount }])
     } else {
       depositArgs.push([{}])
