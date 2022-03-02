@@ -10,9 +10,10 @@ const localChainConfig = {
   approvalTime: 2,
   rpcUrls: ['http://127.0.0.1:8545/'],
   launchData: {
+    // TODO - before launch, update the the actual launch time.
+    launchTime: Date.now() - 60 * 1000 * 60 * 12,
+    lastLookStart: Date.now() - 60 * 1000 * 60 * 12,
     launchContractAddress: '0xF32D39ff9f6Aa7a7A64d7a4F00a54826Ef791a55',
-    launchTime: 1645545947422,
-    lastLookStart: 1645786947422,
 
     launchTokensAmount: 3_000_000,
   },
@@ -60,8 +61,9 @@ const chains = {
     ],
     launchData: {
       launchContractAddress: '0x2B22E8545b2f49b1D06c5928Fb17141A95153d6c',
-      launchTime: 1645567884179,
-      lastLookStart: 1645567884179,
+      // TODO - before launch, update the the actual launch time.
+      launchTime: Date.now() - 60 * 1000 * 60 * 12,
+      lastLookStart: Date.now() - 60 * 1000 * 60 * 12,
       launchTokensAmount: 3_000_000,
     },
     scan: { name: 'BscScan', url: 'https://testnet.bscscan.com/' },
