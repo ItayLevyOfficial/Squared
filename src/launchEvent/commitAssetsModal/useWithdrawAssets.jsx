@@ -15,11 +15,11 @@ export const useWithdrawAssets = () => {
   )
 
   const withdrawAssets = async ({ selectedTokenIndex, tokenAmount }) => {
+    const tokenData = selectedChain.tokens[selectedTokenIndex]
     const amount = parseNumberDecimals({
       amount: tokenAmount,
       decimals: tokenData.decimals,
     })
-    const tokenData = selectedChain.tokens[selectedTokenIndex]
     const tx = await launchContract.withdraw(
       { token: tokenData.address, amount: amount },
       selectedTokenIndex === 0
