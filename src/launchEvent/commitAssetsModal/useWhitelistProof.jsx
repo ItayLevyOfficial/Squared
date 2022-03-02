@@ -24,7 +24,6 @@ export const useWhitelistProof = () => {
         sort: true
       })
       const newProof = (tree.getProof(hashAddress(address))).map(item => item.data)
-      console.log({newProof});
       setProof(newProof)
     }
   }, [address])

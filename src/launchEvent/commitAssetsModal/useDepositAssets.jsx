@@ -92,7 +92,6 @@ export const useDepositAssets = (isLaunch) => {
       selectedTokenIndex,
       tokenAmount,
     })
-    console.log({ depositArgs })
     if (selectedTokenIndex !== 0) {
       await erc20.approve(
         selectedChain.launchData.launchContractAddress,
