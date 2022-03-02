@@ -42,32 +42,21 @@ export const useDepositAssets = () => {
       depositArgs.push([{}])
     }
     console.log({ depositArgs })
-    // TODO: Continue from here
-    if (selectedTokenIndex === 0) {
-      const tx = await launchContract.deposit(
-        {
-          token: tokenData.address,
-          amount: amount,
-        },
-        proof,
-        { value: amount }
-      )
-      setTxHash(tx.hash)
-    } else {
+    if (selectedTokenIndex !== 0) {
       await erc20.approve(
         selectedChain.launchData.launchContractAddress,
         amount
       )
-      const tx = await launchContract.deposit(
-        {
-          token: tokenData.address,
-          amount: amount,
-        },
-        proof,
-        {}
-      )
-      setTxHash(tx.hash)
     }
+    const tx = await launchContract.deposit(
+      {
+        token: tokenData.address,
+        amount: amount,
+      },
+      proof,
+      { value: amount }
+    )
+    setTxHash(tx.hash)
   }
 
   const cleanTxHash = () => setTxHash(null)
