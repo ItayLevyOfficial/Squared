@@ -20,7 +20,7 @@ const localChainConfig = {
   tokens: [
     {
       name: 'ETH',
-      poolContractAddress: '0xD42912755319665397FF090fBB63B1a31aE87Cee',
+      poolContractAddress: '0xB0f05d25e41FbC2b52013099ED9616f1206Ae21B',
       address: '0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2',
       decimals: '18',
       icon: <EthereumIcon />,
