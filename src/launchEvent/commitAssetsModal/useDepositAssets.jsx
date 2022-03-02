@@ -6,8 +6,25 @@ import { PoolAbi } from '../../products/ABIs/PoolAbi'
 import { launchContractAbi } from '../abis/defiRoundAbi'
 import { erc20abi } from '../abis/erc20abi'
 import { useConnectWallet } from '../useConnectWallet'
-import { parseNumberDecimals } from './useCommitAssets'
 import { useWhitelistProof } from './useWhitelistProof'
+import { BigNumber } from 'ethers'
+
+export const parseNumberDecimals = ({ amount, decimals }) => {
+  const wholeSide = Math.floor(amount)
+  const wholeSideFormatted = BigNumber.from(wholeSide).mul(
+    BigNumber.from('10').pow(BigNumber.from(decimals))
+  )
+  const decimalSide = amount % 1
+  if (decimalSide === 0) {
+    return wholeSideFormatted
+  } else {
+    const decimalSideWhole = Math.round(decimalSide * 10 ** 6)
+    const formattedDecimalSide = BigNumber.from(decimalSideWhole).mul(
+      BigNumber.from('10').pow(BigNumber.from(decimals - 6))
+    )
+    return formattedDecimalSide.add(wholeSideFormatted)
+  }
+}
 
 export const useDepositAssets = (isLaunch) => {
   const [signer] = useConnectWallet()

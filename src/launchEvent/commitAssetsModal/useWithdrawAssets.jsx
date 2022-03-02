@@ -3,7 +3,7 @@ import { selectedChain } from '../../chains'
 import { launchContractAbi } from '../abis/defiRoundAbi'
 import { useConnectWallet } from '../useConnectWallet'
 import { useContract } from '../utils'
-import { parseNumberDecimals } from './useCommitAssets'
+import { parseNumberDecimals } from './useDepositAssets'
 
 export const useWithdrawAssets = () => {
   const [signer] = useConnectWallet()
