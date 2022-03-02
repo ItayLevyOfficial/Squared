@@ -21,7 +21,7 @@ export const PrimaryLink = ({ children, onClick }) => (
   </span>
 )
 
-export const CommitAssetsModal = ({
+export const ActionModal = ({
   selectedTokenIndex,
   close,
   handleSubmit,
