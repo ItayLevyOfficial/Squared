@@ -31,7 +31,7 @@ export const useDepositAssets = (isLaunch) => {
   const proof = useWhitelistProof()
   const [txHash, setTxHash] = useState()
 
-  const commitAssets = async ({ tokenAmount, selectedTokenIndex }) => {
+  const getDepositContracts = (selectedTokenIndex) => {
     const selectedToken = selectedChain.tokens[selectedTokenIndex]
     const depositContractAddress = isLaunch
       ? selectedChain.launchData.launchContractAddress
@@ -41,8 +41,19 @@ export const useDepositAssets = (isLaunch) => {
       : selectedTokenIndex === 0
       ? EthPoolAbi
       : PoolAbi
-    const depositContract = new ethers.Contract(depositContractAddress, depositContractABI, signer)
-    const erc20 = new ethers.Contract(selectedToken.address, erc20abi, signer)
+    const depositContract = new ethers.Contract(
+      depositContractAddress,
+      depositContractABI,
+      signer
+    )
+    const erc20Contract = new ethers.Contract(selectedToken.address, erc20abi, signer)
+
+    return [depositContract, erc20Contract]
+  }
+
+  const depositAssets = async ({ tokenAmount, selectedTokenIndex }) => {
+    const selectedToken = selectedChain.tokens[selectedTokenIndex]
+    const [depositContract, erc20] = getDepositContracts()
     const amount = parseNumberDecimals({
       amount: tokenAmount,
       decimals: selectedToken.decimals,
@@ -73,5 +84,5 @@ export const useDepositAssets = (isLaunch) => {
 
   const cleanTxHash = () => setTxHash(null)
 
-  return [commitAssets, txHash, cleanTxHash]
+  return [depositAssets, txHash, cleanTxHash]
 }
