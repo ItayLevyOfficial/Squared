@@ -46,14 +46,20 @@ export const useDepositAssets = (isLaunch) => {
       depositContractABI,
       signer
     )
-    const erc20Contract = new ethers.Contract(selectedToken.address, erc20abi, signer)
+    const erc20Contract = new ethers.Contract(
+      selectedToken.address,
+      erc20abi,
+      signer
+    )
 
     return [depositContract, erc20Contract]
   }
 
-  const depositAssets = async ({ tokenAmount, selectedTokenIndex }) => {
-    const selectedToken = selectedChain.tokens[selectedTokenIndex]
-    const [depositContract, erc20] = getDepositContracts()
+  const getDepositArgs = ({
+    tokenAmount,
+    selectedToken,
+    selectedTokenIndex,
+  }) => {
     const amount = parseNumberDecimals({
       amount: tokenAmount,
       decimals: selectedToken.decimals,
@@ -71,6 +77,21 @@ export const useDepositAssets = (isLaunch) => {
     } else {
       depositArgs.push({})
     }
+    return depositArgs
+  }
+
+  const depositAssets = async ({ tokenAmount, selectedTokenIndex }) => {
+    const selectedToken = selectedChain.tokens[selectedTokenIndex]
+    const [depositContract, erc20] = getDepositContracts()
+    const amount = parseNumberDecimals({
+      amount: tokenAmount,
+      decimals: selectedToken.decimals,
+    })
+    const depositArgs = getDepositArgs({
+      selectedToken,
+      selectedTokenIndex,
+      tokenAmount,
+    })
     console.log({ depositArgs })
     if (selectedTokenIndex !== 0) {
       await erc20.approve(
@@ -78,8 +99,7 @@ export const useDepositAssets = (isLaunch) => {
         amount
       )
     }
-    const tx = await depositContract.deposit(...depositArgs)
-    setTxHash(tx.hash)
+    setTxHash(await depositContract.deposit(...depositArgs))
   }
 
   const cleanTxHash = () => setTxHash(null)
