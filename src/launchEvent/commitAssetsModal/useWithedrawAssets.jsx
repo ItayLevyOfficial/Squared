@@ -1,4 +1,3 @@
-import { Buffer } from 'buffer'
 import { useContext, useState } from 'react'
 import { selectedChain } from '../../chains'
 import { launchContractAbi } from '../abis/defiRoundAbi'
@@ -9,6 +8,30 @@ import { useContract } from '../utils'
 import { parseNumberDecimals } from './useCommitAssets'
 import { useWhitelistProof } from './useWhitelistProof'
 
+export const useWithdrawAssets = () => {
+  const [signer] = useConnectWallet()
+  const [txHash, setTxHash] = useState()
+  const launchContract = useContract(
+    signer,
+    selectedChain.launchData.launchContractAddress,
+    launchContractAbi
+  )
+
+  const withdrawAssets = async ({ selectedTokenIndex, tokenAmount }) => {
+    const amount = parseNumberDecimals({
+      amount: tokenAmount,
+      decimals: tokenData.decimals,
+    })
+    const tokenData = selectedChain.tokens[selectedTokenIndex]
+    const tx = await launchContract.withdraw(
+      { token: tokenData.address, amount: amount },
+      selectedTokenIndex === 0
+    )
+    setTxHash(tx.hash)
+  }
+
+  return [withdrawAssets, txHash, setTxHash]
+}
 
 export const useCommitLaunchAssets = () => {
   const [signer] = useConnectWallet()
@@ -30,7 +53,7 @@ export const useCommitLaunchAssets = () => {
     })
     if (launchStage === 1) {
       if (selectedTokenIndex === 0) {
-        console.log({proof});
+        console.log({ proof })
         const tx = await launchContract.deposit(
           {
             token: tokenData.address,
