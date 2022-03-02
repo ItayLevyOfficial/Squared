@@ -82,7 +82,7 @@ export const useDepositAssets = (isLaunch) => {
 
   const depositAssets = async ({ tokenAmount, selectedTokenIndex }) => {
     const selectedToken = selectedChain.tokens[selectedTokenIndex]
-    const [depositContract, erc20] = getDepositContracts()
+    const [depositContract, erc20] = getDepositContracts(selectedTokenIndex)
     const amount = parseNumberDecimals({
       amount: tokenAmount,
       decimals: selectedToken.decimals,
@@ -99,7 +99,7 @@ export const useDepositAssets = (isLaunch) => {
         amount
       )
     }
-    setTxHash(await depositContract.deposit(...depositArgs))
+    setTxHash((await depositContract.deposit(...depositArgs)).hash)
   }
 
   const cleanTxHash = () => setTxHash(null)
