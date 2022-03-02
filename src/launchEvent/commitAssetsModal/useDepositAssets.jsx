@@ -17,16 +17,31 @@ export const useDepositAssets = () => {
     selectedChain.launchData.launchContractAddress,
     launchContractAbi
   )
-  const commitAssets = async ({ tokenAmount, selectedTokenIndex, isLaunch }) => {
+  const commitAssets = async ({
+    tokenAmount,
+    selectedTokenIndex,
+    isLaunch,
+  }) => {
     const tokenData = selectedChain.tokens[selectedTokenIndex]
     const amount = parseNumberDecimals({
       amount: tokenAmount,
       decimals: tokenData.decimals,
     })
-    const depositArgs = [{
-      token: tokenData.address,
-      amount: amount,
-    }]
+    const depositArgs = [
+      {
+        token: tokenData.address,
+        amount: amount,
+      },
+    ]
+    if (isLaunch) {
+      depositArgs.push([proof])
+    }
+    if (selectedTokenIndex) {
+      depositArgs.push([{ value: amount }])
+    } else {
+      depositArgs.push([{}])
+    }
+    console.log({ depositArgs })
     // TODO: Continue from here
     if (selectedTokenIndex === 0) {
       const tx = await launchContract.deposit(
