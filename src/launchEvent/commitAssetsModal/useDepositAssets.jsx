@@ -30,12 +30,12 @@ export const useDepositAssets = ({ isLaunch }) => {
       },
     ]
     if (isLaunch) {
-      depositArgs.push([proof])
+      depositArgs.push(proof)
     }
     if (selectedTokenIndex === 0) {
-      depositArgs.push([{ value: amount }])
+      depositArgs.push({ value: amount })
     } else {
-      depositArgs.push([{}])
+      depositArgs.push({})
     }
     console.log({ depositArgs })
     if (selectedTokenIndex !== 0) {
@@ -44,14 +44,7 @@ export const useDepositAssets = ({ isLaunch }) => {
         amount
       )
     }
-    const tx = await launchContract.deposit(
-      {
-        token: tokenData.address,
-        amount: amount,
-      },
-      proof,
-      { value: amount }
-    )
+    const tx = await launchContract.deposit(...depositArgs)
     setTxHash(tx.hash)
   }
 
