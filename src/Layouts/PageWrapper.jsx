@@ -1,32 +1,26 @@
-import React from 'react'
-import { Header } from './Header'
-import { useConnectWallet } from '../launchEvent/useConnectWallet'
+import React, { useState } from 'react'
+import { selectedChain } from '../chains'
+import { SuccessModal } from '../launchEvent/commitAssetsModal/MessageModal'
+import { NetworkModal } from '../launchEvent/commitAssetsModal/NetworkModal'
+import { useDepositAssets } from '../launchEvent/commitAssetsModal/useDepositAssets'
 import { Footer } from '../launchEvent/Footer'
 import { ScreenPaddedContainer } from '../launchEvent/LaunchEventScreen'
-import { StakingPool } from '../products/StakingPool'
-import { ModalDisplay } from '../products/ModalDisplay'
-import { selectedChain } from '../chains'
+import { useConnectWallet } from '../launchEvent/useConnectWallet'
 import { InformationWrapper } from '../products/Information'
-import { useState } from 'react'
+import { ModalDisplay } from '../products/ModalDisplay'
+import { StakingPool } from '../products/StakingPool'
 import {
   getListOfPoolBalances,
-  getListOfUserBalances,
+  getListOfUserBalances
 } from '../products/useErc20Functions'
-import { NetworkModal } from '../launchEvent/commitAssetsModal/NetworkModal'
-import { EthPoolAbi } from '../products/ABIs/EthPoolAbi'
-import { PoolAbi } from '../products/ABIs/PoolAbi'
-import { useCommitPoolAssets } from '../launchEvent/commitAssetsModal/useCommitAssets'
-import { SuccessModal } from '../launchEvent/commitAssetsModal/MessageModal'
+import { Header } from './Header'
 
 export const PageWrapper = ({ children }) => {
   const [, connectWallet, address] = useConnectWallet()
   const [isModalOpen, setIsOpen] = useState(false)
   const [selectedTokenIndex, setSelectedTokenIndex] = useState(0)
   const [tokenAmount, setTokenAmount] = useState('')
-  const [commitAssets, txHash, setTxHash] = useCommitPoolAssets(
-    selectedChain.tokens[+selectedTokenIndex],
-    selectedTokenIndex === 0 ? EthPoolAbi : PoolAbi
-  )
+  const [commitAssets, txHash, setTxHash] = useDepositAssets()
   const listOfPoolBalances = getListOfPoolBalances()
   const listOfUserBalances = getListOfUserBalances()
 
