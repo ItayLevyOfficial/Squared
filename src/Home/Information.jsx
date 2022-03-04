@@ -20,3 +20,5 @@ export const InformationBox = ({ title, children }) => {
 export const InformationWrapper = ({ children }) => {
   return <div className="flex -mt-20 h-[200px] w-10/12">{children}</div>
 }
+
+export const Information = () => {}

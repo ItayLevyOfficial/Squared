@@ -6,13 +6,13 @@ import { useDepositAssets } from '../launchEvent/commitAssetsModal/useDepositAss
 import { Footer } from '../launchEvent/Footer'
 import { ScreenPaddedContainer } from '../launchEvent/LaunchEventScreen'
 import { useConnectWallet } from '../launchEvent/useConnectWallet'
-import { InformationWrapper } from '../products/Information'
-import { ModalDisplay } from '../products/ModalDisplay'
-import { StakingPool } from '../products/StakingPool'
+import { InformationWrapper } from '../home/Information'
+import { ModalDisplay } from '../home/ModalDisplay'
+import { StakingPool } from '../home/StakingPool'
 import {
   getListOfPoolBalances,
-  getListOfUserBalances
-} from '../products/useErc20Functions'
+  getListOfUserBalances,
+} from '../home/useErc20Functions'
 import { Header } from './Header'
 
 export const PageWrapper = ({ children }) => {

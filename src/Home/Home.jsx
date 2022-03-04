@@ -1,33 +1,23 @@
-import React from 'react'
-import { useNavigate } from 'react-router-dom'
-import { Footer } from '../launchEvent/Footer'
-import Logo from '../launchEvent/icons/logo.svg'
+import { PageWrapper } from '../layouts/PageWrapper'
+import { InformationBox, InformationLine } from './Information'
+import { getListOfPoolBalances } from './useErc20Functions'
 
 export const Home = () => {
-  const navigate = useNavigate()
+  const listOfPoolBalances = getListOfPoolBalances()
 
   return (
-    <div className="flex flex-col justify-between items-center w-screen h-screen z-20 py-20 animate-fadeIn relative">
-      <div className="flex flex-col items-center">
-        <img
-          src={Logo}
-          className="object-cover mt-20 mb-6 animate-spin"
-          style={{ animationDuration: '30s' }}
-          width={150}
-        />
-        <h1 className="text-8xl -tracking-wider font-bold mb-4">Squared</h1>
-        <h2 className="text-primary text-3xl font-light mb-14 tracking-wide">
-          Sustainable Liquidity for Long Tail Assets
-        </h2>
-        <button
-          type="button"
-          onClick={() => navigate('/launch')}
-          className="py-3 px-10 bg-dark hover:bg-opacity-80 hover:text-gold rounded-xl text-xl tracking-wider font-medium"
-        >
-          Enter App
-        </button>
-      </div>
-      <Footer />
-    </div>
+    <PageWrapper>
+      <InformationBox title={'Value Locked'}>
+        <InformationLine>{`ETH TVL: ${listOfPoolBalances[0]} `}</InformationLine>
+        <InformationLine>{`USDC TVL: ${listOfPoolBalances[1]}`}</InformationLine>
+        <InformationLine>{`SQRD TVL: ${listOfPoolBalances[2]} `}</InformationLine>
+      </InformationBox>
+      <div className="w-[0.5px] h-full bg-white" />
+      <InformationBox title={'Cycle'}>
+        <InformationLine>{`This Cycle: CYCLE ZERO-0`}</InformationLine>
+        <InformationLine>{`Next Cycle: 3 DAYS 9 HOURS`}</InformationLine>
+        <InformationLine>{`SQRD Price: $0.00`}</InformationLine>
+      </InformationBox>
+    </PageWrapper>
   )
 }
