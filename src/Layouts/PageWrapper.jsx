@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { selectedChain } from '../chains/selectedChain'
+import { selectedChain } from '../constants' 
 import { SuccessModal } from '../launchEvent/commitAssetsModal/MessageModal'
 import { NetworkModal } from '../launchEvent/commitAssetsModal/NetworkModal'
 import { useDepositAssets } from '../launchEvent/commitAssetsModal/useDepositAssets'

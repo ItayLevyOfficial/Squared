@@ -1,6 +1,6 @@
 import { ethers } from 'ethers'
 import { useCallback, useEffect, useState } from 'react'
-import { selectedChain } from '../chains/selectedChain'
+import { selectedChain } from '../constants'
 import { launchContractAbi } from './abis/defiRoundAbi'
 import { formatBigUsd } from './LaunchScreenBody'
 import { provider, useConnectWallet } from './useConnectWallet'

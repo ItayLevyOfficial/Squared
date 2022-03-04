@@ -6,10 +6,10 @@ import { createContext } from 'react'
 import { useState } from 'react'
 import { useEffect } from 'react'
 import { provider } from './useConnectWallet'
-import { selectedChain } from '../chains/selectedChain'
 import { launchContractAbi } from './abis/defiRoundAbi'
 import { useContract } from './utils'
 import { useEventListener } from './useEventListener'
+import { selectedChain } from '../constants'
 
 export const StageContext = createContext(1)
 

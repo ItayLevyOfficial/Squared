@@ -1,7 +1,7 @@
 import { XIcon } from '@heroicons/react/outline'
 import React, { useState } from 'react'
 import Modal from 'react-modal'
-import { selectedChain } from '../chains/selectedChain'
+import { selectedChain } from '../constants'
 import { useConnectWallet } from '../launchEvent/useConnectWallet'
 import { ModalButton } from './ModalButton'
 import { ModalInfo } from './ModalInfo'

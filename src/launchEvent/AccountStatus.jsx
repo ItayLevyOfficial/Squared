@@ -1,5 +1,5 @@
 import React from 'react'
-import { selectedChain } from '../chains/selectedChain'
+import { selectedChain } from '../constants'
 
 const DepositButton = ({ tokenName, icon, className = '', onClick }) => (
   <button

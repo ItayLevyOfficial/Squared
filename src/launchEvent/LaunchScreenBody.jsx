@@ -1,6 +1,6 @@
 import { ethers } from 'ethers'
 import React, { useContext, useState } from 'react'
-import { selectedChain } from '../chains/selectedChain'
+import { selectedChain } from '../constants'
 import { AccountStatus } from './AccountStatus'
 import { ActionModal } from './commitAssetsModal/commitAssetsModal'
 import { ErrorModal, SuccessModal } from './commitAssetsModal/MessageModal'
