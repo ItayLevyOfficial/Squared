@@ -1,5 +1,5 @@
 import { useEffect, useState, useCallback } from 'react'
-import { selectedChain } from '../selectedChain'
+import { selectedChain } from '../chains/selectedChain'
 import { launchContractAbi } from './abis/defiRoundAbi'
 import { formatBigUsd } from './LaunchScreenBody'
 import { provider } from './useConnectWallet'

@@ -1,5 +1,5 @@
 import Modal from 'react-modal'
-import { selectedChain } from '../../selectedChain'
+import { selectedChain } from '../../chains/selectedChain'
 import { useState, useEffect } from 'react'
 import errorIcon from '../icons/error.svg'
 import { overlayStyles } from '../../Products/ModalStyles'

@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { selectedChain } from '../../selectedChain'
+import { selectedChain } from '../../chains/selectedChain'
 import { launchContractAbi } from '../abis/defiRoundAbi'
 import { useConnectWallet } from '../useConnectWallet'
 import { useContract } from '../utils'

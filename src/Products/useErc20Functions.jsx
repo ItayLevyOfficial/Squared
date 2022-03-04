@@ -3,7 +3,7 @@ import { useConnectWallet } from '../launchEvent/useConnectWallet'
 import { useContract } from '../launchEvent/utils'
 import { erc20abi } from '../launchEvent/abis/erc20abi'
 import { ethers } from 'ethers'
-import { selectedChain } from '../selectedChain'
+import { selectedChain } from '../chains/selectedChain'
 import { EthPoolAbi } from './ABIs/EthPoolAbi'
 import { PoolAbi } from './ABIs/PoolAbi'
 

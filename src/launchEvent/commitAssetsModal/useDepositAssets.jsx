@@ -1,6 +1,6 @@
 import { ethers } from 'ethers'
 import { useState } from 'react'
-import { selectedChain } from '../../selectedChain'
+import { selectedChain } from '../../chains/selectedChain'
 import { EthPoolAbi } from '../../products/ABIs/EthPoolAbi'
 import { PoolAbi } from '../../products/ABIs/PoolAbi'
 import { launchContractAbi } from '../abis/defiRoundAbi'
