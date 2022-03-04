@@ -3,9 +3,10 @@ import React, { useContext, useState } from 'react'
 import { selectedChain } from '../chains'
 import { AccountStatus } from './AccountStatus'
 import { ActionModal } from './commitAssetsModal/commitAssetsModal'
-import { ErrorModal, SuccessModal } from './commitAssetsModal/MessageModal'
+import { NotWhitelistedErrorModal, SingleAssetErrorModal, SuccessModal } from './commitAssetsModal/MessageModal'
 import { NetworkModal } from './commitAssetsModal/NetworkModal'
 import { useDepositAssets } from './commitAssetsModal/useDepositAssets'
+import { useWhitelistProof } from './commitAssetsModal/useWhitelistProof'
 import { useWithdrawAssets } from './commitAssetsModal/useWithdrawAssets'
 import { LaunchEventStatus } from './EventStatus'
 import { StageContext } from './LaunchEventScreen'
@@ -26,6 +27,7 @@ export const LaunchScreenBody = ({ className = '' }) => {
     (token) => token.address === depositedTokenAddress
   )?.name
   const tokenName = selectedToken?.name ?? ''
+  const proof = useWhitelistProof()
 
   return (
     <div className={`flex space-x-32 ${className}`}>
@@ -40,7 +42,7 @@ export const LaunchScreenBody = ({ className = '' }) => {
       <div className="w-[0.5px] h-full bg-white" />
       <LaunchEventStatus />
       {txHash && selectedToken ? (
-        <SuccessModal
+         proof.length === 0 ? <NotWhitelistedErrorModal /> : <SuccessModal
           close={() => {
             setSelectedToken(null)
             cleanTxHash()
@@ -55,7 +57,7 @@ export const LaunchScreenBody = ({ className = '' }) => {
           handleSubmit={handleSubmit}
         />
       ) : (
-        <ErrorModal
+        <SingleAssetErrorModal
           close={() => setSelectedToken(null)}
           isOpen={selectedTokenIndex !== null}
           tokenName={tokenName}

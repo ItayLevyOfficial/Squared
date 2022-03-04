@@ -1,11 +1,11 @@
 import { faCheck, faCopy } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import copy from 'copy-to-clipboard'
-import React, { useContext, useState } from 'react'
+import { useContext, useState } from 'react'
 import Modal from 'react-modal'
 import { selectedChain } from '../../chains'
-import { overlayStyles } from '../../Products/ModalStyles'
 import { CloseButton } from '../../products/ModalDisplay'
+import { overlayStyles } from '../../Products/ModalStyles'
 import errorIcon from '../icons/error.svg'
 import { SuccessIcon } from '../icons/success'
 import { StageContext } from '../LaunchEventScreen'
@@ -83,7 +83,7 @@ export const SuccessModal = ({ txHash, close }) => {
   )
 }
 
-export const ErrorModal = ({
+export const SingleAssetErrorModal = ({
   isOpen,
   tokenName,
   depositedTokenName,
@@ -100,6 +100,23 @@ export const ErrorModal = ({
           or {tokenName}. Since you already committed {depositedTokenName},
           further {launchStage === 1 ? 'deposits' : 'withdrawals'} of{' '}
           {tokenName} are not allowed. <PrimaryLink>Learn more</PrimaryLink>
+        </>
+      }
+      close={close}
+    />
+  )
+}
+
+export const NotWhitelistedErrorModal = ({ close }) => {
+  return (
+    <MessageModal
+      header="Commit Not Allowed"
+      isOpen
+      footer={
+        <>
+          In the launch event, only whitelisted users can commit assets to buy
+          SQRD. Looks like the connected Metamask address isn't whitelisted.{' '}
+          <PrimaryLink>Learn more</PrimaryLink>
         </>
       }
       close={close}
