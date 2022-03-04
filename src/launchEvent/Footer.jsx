@@ -15,7 +15,7 @@ const FooterIcon = ({ src, url }) => (
 )
 
 const twitter = 'https://twitter.com/squared_dao'
-const medium = 'https://squaredfinance.medium.com/'
+const medium = 'https://medium.com/@squared_finance'
 const github = 'https://github.com/squareddao/squared_contracts'
 const discord = 'https://discord.gg/j7SstuFv7E'
 const docs = 'https://docs.squared.finance'
