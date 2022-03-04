@@ -1,5 +1,5 @@
 import React, { useContext } from 'react'
-import { selectedChain } from '../chains'
+import { selectedChain } from '../selectedChain'
 import { AddressButton } from '../Layouts/Header'
 import { PrimaryLink } from './commitAssetsModal/commitAssetsModal'
 import Logo from './icons/logo.svg'

@@ -4,6 +4,7 @@ import { Busd } from './launchEvent/icons/busd'
 import { EthereumIcon } from './launchEvent/icons/ethereum'
 import { Usdc } from './launchEvent/icons/usdc'
 
+
 const localChainConfig = {
   chainId: '0x539',
   chainName: 'hardhat',

@@ -1,6 +1,6 @@
 import { ethers } from 'ethers'
 import { useEffect, useState } from 'react'
-import { selectedChain } from '../chains'
+import { selectedChain } from '../selectedChain'
 
 export const provider = window.ethereum
   ? new ethers.providers.Web3Provider(window.ethereum)
