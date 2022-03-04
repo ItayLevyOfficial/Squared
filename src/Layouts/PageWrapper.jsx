@@ -36,6 +36,49 @@ export const PageWrapper = ({ children }) => {
     setTxHash(null)
   }
 
+  const LeftPoolSection = selectedChain.tokens
+    .filter((el, index) => index === 2)
+    .map((el, index) => (
+      <StakingPool
+        el={el}
+        key={index}
+        openModal={() => open(index)}
+        balance={listOfPoolBalances[index]}
+      />
+    ))
+
+  const MiddlePoolSection = selectedChain.tokens
+    .filter((el, index) => index <= 1)
+    .map((el, index) => (
+      <StakingPool
+        el={el}
+        key={index}
+        openModal={() => open(index)}
+        balance={listOfPoolBalances[index]}
+      />
+    ))
+
+  const RightPoolSection = selectedChain.tokens
+    .filter((el, index) => index === 3)
+    .map((el, index) => (
+      <StakingPool
+        el={el}
+        key={index}
+        openModal={() => open(index)}
+        balance={listOfPoolBalances[index]}
+      />
+    ))
+
+  const PoolWrapper = ({ title, children }) => {
+    return (
+      <div className="flex flex-col w-fit">
+        <h1 className="self-center font-baloo text-xl p-2">{title}</h1>
+        <div className="h-[0.5px] bg-white mb-4" />
+        <div className="flex"> {children}</div>
+      </div>
+    )
+  }
+
   return (
     <ScreenPaddedContainer>
       <Header connectWallet={connectWallet} address={address} />
@@ -51,15 +94,11 @@ export const PageWrapper = ({ children }) => {
           tokenAmount={tokenAmount}
           handleSubmit={commitAssets}
         />
+
         <div className="w-full flex items-center justify-evenly -mt-32">
-          {selectedChain.tokens.map((el, index) => (
-            <StakingPool
-              el={el}
-              key={index}
-              openModal={() => open(index)}
-              balance={listOfPoolBalances[index]}
-            />
-          ))}
+          <PoolWrapper title="SQRD Staking Pool">{LeftPoolSection}</PoolWrapper>
+          <PoolWrapper title="Launch Pool">{MiddlePoolSection}</PoolWrapper>
+          <PoolWrapper title="SQRD LP Pool">{RightPoolSection}</PoolWrapper>
         </div>
         <InformationWrapper>{children}</InformationWrapper>
       </div>
