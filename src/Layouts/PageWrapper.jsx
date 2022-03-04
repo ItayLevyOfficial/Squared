@@ -40,7 +40,7 @@ export const PageWrapper = ({ children }) => {
     <ScreenPaddedContainer>
       <Header connectWallet={connectWallet} address={address} />
       <div className="flex flex-col justify-evenly items-center w-10/12 h-full ">
-        <NetworkModal />
+        <NetworkModal close={close} />
         {txHash && <SuccessModal close={close} txHash={txHash} />}
         <ModalDisplay
           isOpen={isModalOpen}

@@ -1,14 +1,12 @@
 import React from 'react'
 import MetamaskIcon from '../launchEvent/icons/metamask.svg'
 import { BrandingSection } from '../launchEvent/LaunchScreenHeader'
-
-export const PageToggleWrapper = ({ children }) => {
-  return (
-    <div className="flex cursor-pointer group space-x-2 items-center  p-2 ">
-      {children}
-    </div>
-  )
-}
+import {
+  timeLeftBarWidth,
+  weekInMillis,
+} from '../launchEvent/LaunchScreenHeader'
+import { convertMilliseconds } from '../launchEvent/utils'
+import { selectedChain } from '../chains'
 
 export const Header = (props) => {
   return (
@@ -17,11 +15,10 @@ export const Header = (props) => {
     `}
     >
       <BrandingSection>CYCLE ZERO</BrandingSection>
-      <PageToggle />
-      <div className="flex items-center h-fit w-44 justify-end flex-shrink-0">
-        <img src={MetamaskIcon} alt="" className="mr-4" />
-        <AddressButton {...props} />
-      </div>
+
+      <TimeLeft />
+
+      <AddressSection />
     </nav>
   )
 }
@@ -48,3 +45,43 @@ export const AddressButton = ({ address, connectWallet }) =>
       Connect
     </AddressContainer>
   )
+
+const AddressSection = (props) => {
+  return (
+    <div className="flex items-center h-fit w-44 justify-end flex-shrink-0">
+      <img src={MetamaskIcon} alt="" className="mr-4" />
+      <AddressButton {...props} />
+    </div>
+  )
+}
+
+const TimeLeft = () => {
+  const timeLeftData = {
+    startTime: selectedChain.launchData.launchTime,
+    length: weekInMillis,
+  }
+
+  const remainTimeMillis =
+    timeLeftData.startTime + timeLeftData.length - new Date().getTime()
+  const remainTimePercent =
+    100 - Math.round((remainTimeMillis / timeLeftData.length) * 100)
+  const formattedRemainTime = convertMilliseconds(remainTimeMillis)
+
+  return (
+    <div className="mb-6 flex flex-col items-center self-center">
+      <h2
+        className={`text-white text-lg tracking-wide font-light font-number mb-4`}
+      >
+        {`Next Cycle: ${
+          formattedRemainTime.d > 0 ? `${formattedRemainTime.d} DAYS` : ''
+        } ${formattedRemainTime.h} HOURS ${formattedRemainTime.m} MINUTES`}
+      </h2>
+      <div className={`bg-lightPrimary h-4 ${timeLeftBarWidth} rounded-md`}>
+        <div
+          className={`bg-darkPrimary rounded-md h-full`}
+          style={{ width: `${remainTimePercent}%` }}
+        />
+      </div>
+    </div>
+  )
+}
