@@ -1,13 +1,13 @@
 import React, { useState, useContext } from 'react'
 import Modal from 'react-modal'
 import { selectedChain } from '../../chains'
-import { ModalButton } from '../../landing/ModalButtontton'
-import { CloseButton } from '../../landing/ModalDisplayplay'
-import { ModalInput } from '../../landing/ModalInputnput'
+import { ModalButton } from '../../home/ModalButton'
+import { CloseButton } from '../../home/ModalDisplay'
+import { ModalInput } from '../../home/ModalInput'
 import { useConnectWallet } from '../useConnectWallet'
 import { ModalParagraph, ModalTitle } from './MessageModal'
 import { StageContext } from '../LaunchEventScreen'
-import { contentStyles, overlayStyles } from '../../landing/ModalStylesyles'
+import { contentStyles, overlayStyles } from '../../home/ModalStyles'
 export const commitContentStyles = {
   ...contentStyles,
   height: '400px',
