@@ -1,5 +1,7 @@
 import { hardhat } from './hardhat'
 import HarmonyIcon from './oneLogo.svg'
+import terraUSD from './terraUSD.png'
+
 export const harmony = {
   ...hardhat,
   tokens: [
@@ -10,7 +12,8 @@ export const harmony = {
     },
     {
       ...hardhat.tokens[1],
-      name: 'oneUSD',
+      name: 'UST',
+      icon: <img src={terraUSD} width={30}/>
     },
   ],
 }
