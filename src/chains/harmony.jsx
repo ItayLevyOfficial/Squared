@@ -1,11 +1,16 @@
 import { Usdc } from '../launchEvent/icons/usdc'
-import { hardhat } from './hardhat'
 import HarmonyIcon from './oneLogo.svg'
 
 export const harmony = {
-  ...hardhat,
   chainId: '0x6357D2E0',
   chainName: 'Harmony Testnet',
+  launchData: {
+    // TODO - before launch, update the the actual launch time.
+    launchTime: Date.now() - 60 * 1000 * 60 * 12,
+    lastLookStart: Date.now() - 60 * 1000 * 60 * 12,
+    launchContractAddress: 'one17ljvza5zh5yjph38dlfde2am0a8r0j4kmct5gq',
+    launchTokensAmount: 3_000_000,
+  },
   tokens: [
     {
       name: 'ONE',
