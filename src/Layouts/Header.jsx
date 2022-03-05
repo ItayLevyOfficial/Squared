@@ -7,8 +7,11 @@ import {
 } from '../launchEvent/LaunchScreenHeader'
 import { convertMilliseconds } from '../launchEvent/utils'
 import { selectedChain } from '../chains'
+import { useConnectWallet } from '../launchEvent/useConnectWallet'
 
-export const Header = (props) => {
+export const Header = () => {
+  const [, connectWallet, address] = useConnectWallet()
+
   return (
     <nav
       className={`flex w-full justify-between items-center
@@ -18,7 +21,7 @@ export const Header = (props) => {
 
       <TimeLeft />
 
-      <AddressSection />
+      <AddressSection connectWallet={connectWallet} address={address} />
     </nav>
   )
 }
@@ -46,11 +49,11 @@ export const AddressButton = ({ address, connectWallet }) =>
     </AddressContainer>
   )
 
-const AddressSection = (props) => {
+const AddressSection = ({ connectWallet, address }) => {
   return (
     <div className="flex items-center h-fit w-44 justify-end flex-shrink-0">
       <img src={MetamaskIcon} alt="" className="mr-4" />
-      <AddressButton {...props} />
+      <AddressButton connectWallet={connectWallet} address={address} />
     </div>
   )
 }

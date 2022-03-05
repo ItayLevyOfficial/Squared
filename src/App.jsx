@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
 import { ScrollToTop } from './layouts/ScrollToTop'
 import { Landing } from './landing/Landing'
 import { LaunchScreenContext } from './launchEvent/LaunchEventScreen'
-import { Home } from './home/Home'
+import { HomeScreen } from './home/HomeScreen'
 
 function App() {
   return (
@@ -12,7 +12,7 @@ function App() {
         <ScrollToTop>
           <Routes>
             <Route path="/" element={<Landing />} />
-            <Route path="/home" element={<Home />} />
+            <Route path="/home" element={<HomeScreen />} />
             <Route path="/launch" element={<LaunchScreenContext />} />
           </Routes>
         </ScrollToTop>
