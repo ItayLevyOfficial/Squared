@@ -4,6 +4,8 @@ import HarmonyIcon from './oneLogo.svg'
 
 export const harmony = {
   ...hardhat,
+  chainId: '0x6357D2E0',
+  chainName: 'Harmony Testnet',
   tokens: [
     {
       name: 'ONE',
