@@ -41,8 +41,8 @@ export const HomeScreenBody = () => {
         handleSubmit={commitAssets}
       />
       <div className="flex space-x-32">
-        <AccountStatus className="ml-16" />
-        <div className="w-[0.5px] h-[400px] bg-white self-center" />
+        <AccountStatus className="ml-4" />
+        <div className="w-[0.5px] h-[300px] bg-white self-center" />
         <StakingPools open={open} className="" />
       </div>
     </>
