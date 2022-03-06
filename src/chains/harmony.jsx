@@ -8,7 +8,7 @@ export const harmony = {
     // TODO - before launch, update the the actual launch time.
     launchTime: Date.now() - 60 * 1000 * 60 * 12,
     lastLookStart: Date.now() - 60 * 1000 * 60 * 12,
-    launchContractAddress: '0xf7e4c17682bd0920de276fd2dcabbb7f4e37cab6',
+    launchContractAddress: '0x33Aa3FC0DeBaa504e7b83C29c7609F4082A5FFc0',
     launchTokensAmount: 3_000_000,
   },
   tokens: [
