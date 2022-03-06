@@ -3,12 +3,15 @@ import HarmonyIcon from './oneLogo.svg'
 
 export const harmony = {
   chainId: '0x6357D2E0',
+  rpcUrls: [
+    'https://api.s0.b.hmny.io',
+  ],
   chainName: 'Harmony Testnet',
   launchData: {
     // TODO - before launch, update the the actual launch time.
     launchTime: Date.now() - 60 * 1000 * 60 * 12,
     lastLookStart: Date.now() - 60 * 1000 * 60 * 12,
-    launchContractAddress: '0x33Aa3FC0DeBaa504e7b83C29c7609F4082A5FFc0',
+    launchContractAddress: '0xF95C24c3f38A797aB1De70dBd04b08ef24AC52D2',
     launchTokensAmount: 3_000_000,
   },
   tokens: [
