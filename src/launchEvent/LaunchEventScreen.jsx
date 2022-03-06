@@ -1,17 +1,13 @@
-import React, { useCallback } from 'react'
-import { LaunchScreenBody } from './LaunchScreenBody'
-import { Footer } from './Footer'
-import { LaunchScreenHeader } from './LaunchScreenHeader'
-import { createContext } from 'react'
-import { useState } from 'react'
-import { useEffect } from 'react'
-import { provider } from './useConnectWallet'
-import { launchContractAbi } from './abis/defiRoundAbi'
-import { useContract } from './utils'
-import { useEventListener } from './useEventListener'
+import React, { createContext, useCallback, useEffect, useState } from 'react'
+// import Web3 from 'web3'
 import { selectedChain } from '../constants'
-import { erc20abi } from './abis/erc20abi'
-
+import { launchContractAbi } from './abis/defiRoundAbi'
+import { Footer } from './Footer'
+import { LaunchScreenBody } from './LaunchScreenBody'
+import { LaunchScreenHeader } from './LaunchScreenHeader'
+import { provider } from './useConnectWallet'
+import { useEventListener } from './useEventListener'
+import { useContract } from './utils'
 export const StageContext = createContext(1)
 
 export const LaunchScreenContext = () => {
@@ -21,12 +17,6 @@ export const LaunchScreenContext = () => {
     selectedChain.launchData.launchContractAddress,
     launchContractAbi
   )
-  const usdc = useContract(provider, selectedChain.tokens[0].address, erc20abi)
-  useEffect(() => {
-    if (usdc) {
-      usdc.totalSupply().then((response) => console.log({ response }))
-    }
-  }, [usdc])
   const handleRatesPublished = useCallback(() => setStage(1), [])
 
   useEventListener({
@@ -47,15 +37,21 @@ export const LaunchScreenContext = () => {
   )
 }
 
-export const LaunchEventScreen = () => (
-  <ScreenPaddedContainer>
-    <div className="flex flex-col items-center justify-between w-full max-w-screen-2xl h-full">
-      <LaunchScreenHeader />
-      <LaunchScreenBody className={'-mt-20'} />
-      <Footer />
-    </div>
-  </ScreenPaddedContainer>
-)
+export const LaunchEventScreen = () => {
+  
+  // const web3 = new Web3(Web3.givenProvider)
+  // console.log({web3});
+
+  return (
+    <ScreenPaddedContainer>
+      <div className="flex flex-col items-center justify-between w-full max-w-screen-2xl h-full">
+        <LaunchScreenHeader />
+        <LaunchScreenBody className={'-mt-20'} />
+        <Footer />
+      </div>
+    </ScreenPaddedContainer>
+  )
+}
 
 export const ScreenPaddedContainer = (props) => (
   <div className="w-screen h-screen bg-black flex flex-col items-center px-16 pt-10 pb-16">

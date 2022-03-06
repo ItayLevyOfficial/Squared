@@ -47,7 +47,7 @@ export const useEventData = () => {
       launchContract.totalValue().then((response) => {
         console.log({response});
         setTotalCommitments(formatBigUsd(response))
-      }).catch(err => console.error({err}))
+      })
     }
   }, [launchContract])
 
