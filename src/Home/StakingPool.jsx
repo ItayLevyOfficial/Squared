@@ -11,7 +11,7 @@ export const StakingPool = ({ el, openModal, balance }) => {
       </div>
       <div className=" flex justify-evenly w-10/12 space-x-10">
         <PoolInformation title={'Balance'} balance={balance} />
-        <PoolInformation title={'Yield'} balance={balance} />
+        <PoolInformation title={'Yield'} balance={'0%'} />
         <PoolInformation title={'TVL'} balance={balance} />
       </div>
     </div>

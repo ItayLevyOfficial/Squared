@@ -7,13 +7,12 @@ export const DepositButton = ({
   className = '',
   onClick,
   event,
-  spacerClassName,
 }) => (
   <button
     className={`w-80 py-3 font-medium items-center text-lg rounded-xl flex ${className} hover:bg-opacity-95`}
     onClick={onClick}
   >
-    <div className={`w-8 ${spacerClassName}`} />
+    <div className="w-8" />
     {icon}
     <div className="w-4" />
     {event}&nbsp;{tokenName}

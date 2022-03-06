@@ -20,11 +20,10 @@ export const AccountStatus = ({ className }) => {
         <InformationLine>SQRD Price: $23.50</InformationLine>{' '}
       </div>
       <DepositButton
-        spacerClassName="w-20"
         className="mb-5 bg-darkPrimary mt-10"
         icon={sqrdIcon}
         event={'Claim'}
-        tokenName={'SQRD'}
+        tokenName={'SQRD Rewards'}
         onClick={null}
       />
     </div>
