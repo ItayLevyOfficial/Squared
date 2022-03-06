@@ -10,6 +10,7 @@ import { launchContractAbi } from './abis/defiRoundAbi'
 import { useContract } from './utils'
 import { useEventListener } from './useEventListener'
 import { selectedChain } from '../constants'
+import { erc20abi } from './abis/erc20abi'
 
 export const StageContext = createContext(1)
 
@@ -20,6 +21,12 @@ export const LaunchScreenContext = () => {
     selectedChain.launchData.launchContractAddress,
     launchContractAbi
   )
+  const usdc = useContract(provider, selectedChain.tokens[0].address, erc20abi)
+  useEffect(() => {
+    if (usdc) {
+      usdc.totalSupply().then((response) => console.log({ response }))
+    }
+  }, [usdc])
   const handleRatesPublished = useCallback(() => setStage(1), [])
 
   useEventListener({
