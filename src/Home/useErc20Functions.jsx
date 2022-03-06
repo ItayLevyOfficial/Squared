@@ -30,15 +30,15 @@ export const useFetchPoolBalance = (selectedToken, abi) => {
   const fetchBalance = useCallback(async () => {
     const balance = await erc20.balanceOf(poolContract.address)
     setBalance(parseInt(formatBigErc20(balance, selectedToken.decimals)))
-  }, [poolContract])
+  }, [erc20, selectedToken.decimals, poolContract])
 
   useEffect(() => {
     fetchBalance()
-  }, [poolContract])
+  }, [erc20, fetchBalance, selectedToken.decimals, poolContract])
 
   return balance
 }
-export const getListOfPoolBalances = () => {
+export const GetListOfPoolBalances = () => {
   const ethBalance = useFetchPoolBalance(selectedChain.tokens[0], EthPoolAbi)
   const usdcBalance = useFetchPoolBalance(selectedChain.tokens[1], PoolAbi)
   const sqrdBalance = useFetchPoolBalance(selectedChain.tokens[2], PoolAbi)
@@ -61,17 +61,17 @@ export const useFetchUserBalance = (selectedToken, abi) => {
   const fetchBalance = useCallback(async () => {
     const balance = await poolContract.balanceOf(address)
     setBalance(parseInt(formatBigErc20(balance, selectedToken.decimals)))
-  }, [address, poolContract])
+  }, [address, selectedToken.decimals, poolContract])
 
   useEffect(() => {
     if (address) {
       fetchBalance()
     }
-  }, [address, poolContract])
+  }, [address, fetchBalance, poolContract])
   return balance
 }
 
-export const getListOfUserBalances = () => {
+export const GetListOfUserBalances = () => {
   const ethBalance = useFetchUserBalance(selectedChain.tokens[0], EthPoolAbi)
   const usdcBalance = useFetchUserBalance(selectedChain.tokens[1], PoolAbi)
   const sqrdBalance = useFetchUserBalance(selectedChain.tokens[2], PoolAbi)
