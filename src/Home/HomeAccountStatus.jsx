@@ -1,5 +1,3 @@
-import { getListOfPoolBalances } from './useErc20Functions'
-
 export const InformationLine = ({ children }) => {
   return (
     <div className="font-number text-xl mb-2 tracking-wider">{children}</div>
@@ -7,8 +5,6 @@ export const InformationLine = ({ children }) => {
 }
 
 export const AccountStatus = ({ className }) => {
-  const listOfPoolBalances = getListOfPoolBalances()
-
   return (
     <div className={`flex flex-col  ${className}`}>
       <div className="w-full text-4xl font-medium tracking-wide mb-10">
@@ -16,10 +12,10 @@ export const AccountStatus = ({ className }) => {
       </div>
 
       <div className="w-full font-number tracking-wider self-center space-y-4">
-        <InformationLine>{`Total Balance: ${listOfPoolBalances[0]} `}</InformationLine>{' '}
-        <InformationLine>{`Earned Rewards: ${listOfPoolBalances[1]}`}</InformationLine>
-        <InformationLine>{`Available Rewards: ${listOfPoolBalances[1]}`}</InformationLine>
-        <InformationLine>{`SQRD Price: $23.50 `}</InformationLine>{' '}
+        <InformationLine>Total Balance: 0</InformationLine>{' '}
+        <InformationLine>Earned Rewards: 0</InformationLine>
+        <InformationLine>Available Rewards: 0</InformationLine>
+        <InformationLine>SQRD Price: $23.50</InformationLine>{' '}
       </div>
       <button className="bg-darkPrimary text-white w-[200px] text-md p-2 text-md rounded-lg opacity-60 mt-6">
         Claim SQRD

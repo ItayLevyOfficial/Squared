@@ -1,9 +1,9 @@
 import { StakingPool } from './StakingPool'
 import { selectedChain } from '../chains'
-import { getListOfPoolBalances } from './useErc20Functions'
+import { GetListOfPoolBalances } from './useErc20Functions'
 
 export const StakingPools = ({ className, open }) => {
-  const listofPoolBalances = getListOfPoolBalances()
+  const listofPoolBalances = GetListOfPoolBalances()
 
   return (
     <div

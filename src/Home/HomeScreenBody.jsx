@@ -3,7 +3,7 @@ import { SuccessModal } from '../launchEvent/commitAssetsModal/MessageModal'
 import { NetworkModal } from '../launchEvent/commitAssetsModal/NetworkModal'
 import { useDepositAssets } from '../launchEvent/commitAssetsModal/useDepositAssets'
 import { ModalDisplay } from '../home/ModalDisplay'
-import { getListOfUserBalances } from '../home/useErc20Functions'
+import { GetListOfUserBalances } from '../home/useErc20Functions'
 import { AccountStatus } from './HomeAccountStatus'
 import { StakingPools } from './HomeStakingPools'
 
@@ -13,7 +13,7 @@ export const HomeScreenBody = () => {
   const [tokenAmount, setTokenAmount] = useState('')
   const [commitAssets, txHash, setTxHash] = useDepositAssets()
 
-  const listOfUserBalances = getListOfUserBalances()
+  const listOfUserBalances = GetListOfUserBalances()
 
   const open = (id) => {
     setIsOpen(true)
