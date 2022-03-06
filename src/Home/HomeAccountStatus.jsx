@@ -2,7 +2,7 @@ import { getListOfPoolBalances } from './useErc20Functions'
 
 export const InformationLine = ({ children }) => {
   return (
-    <div className="font-number text-lg mb-2 tracking-wider">{children}</div>
+    <div className="font-number text-xl mb-2 tracking-wider">{children}</div>
   )
 }
 
@@ -10,19 +10,20 @@ export const AccountStatus = ({ className }) => {
   const listOfPoolBalances = getListOfPoolBalances()
 
   return (
-    <div className={`flex flex-col space-y-2 ${className}`}>
-      <div className="w-full text-4xl font-medium tracking-wide mb-2">
+    <div className={`flex flex-col  ${className}`}>
+      <div className="w-full text-4xl font-medium tracking-wide mb-10">
         Your Account Status
       </div>
 
-      <div className="w-full font-number text-lg mb-2 tracking-wider self-center">
+      <div className="w-full font-number tracking-wider self-center space-y-4">
         <InformationLine>{`Total Balance: ${listOfPoolBalances[0]} `}</InformationLine>{' '}
         <InformationLine>{`Earned Rewards: ${listOfPoolBalances[1]}`}</InformationLine>
         <InformationLine>{`Available Rewards: ${listOfPoolBalances[1]}`}</InformationLine>
-        <button className="bg-darkPrimary text-white w-[200px] text-md p-2 text-md rounded-lg opacity-50 mt-6">
-          Claim SQRD
-        </button>
+        <InformationLine>{`SQRD Price: $23.50 `}</InformationLine>{' '}
       </div>
+      <button className="bg-darkPrimary text-white w-[200px] text-md p-2 text-md rounded-lg opacity-60 mt-6">
+        Claim SQRD
+      </button>
     </div>
   )
 }

@@ -30,9 +30,7 @@ export const HomeScreenBody = () => {
   return (
     <>
       <NetworkModal close={close} />
-
       {txHash && <SuccessModal close={close} txHash={txHash} />}
-
       <ModalDisplay
         isOpen={isModalOpen}
         close={close}
@@ -42,11 +40,10 @@ export const HomeScreenBody = () => {
         tokenAmount={tokenAmount}
         handleSubmit={commitAssets}
       />
-
-      <div className="flex space-x-32 w-full">
-        <AccountStatus className="ml-20 mt-10 w-7/12" />
-        <div className="w-[0.5px] h-full bg-white" />
-        <StakingPools open={open} />
+      <div className="flex space-x-32">
+        <AccountStatus className="ml-16" />
+        <div className="w-[0.5px] h-[400px] bg-white self-center" />
+        <StakingPools open={open} className="" />
       </div>
     </>
   )
