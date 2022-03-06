@@ -11,33 +11,6 @@ export const useConnectWallet = () => {
   const [address, setAddress] = useState(null)
 
   const connectWallet = async () => {
-    try {
-      await window.ethereum?.request({
-        method: 'wallet_switchEthereumChain',
-        params: [{ chainId: selectedChain.chainId }],
-      })
-    } catch (switchError) {
-      if (switchError.code === 4902) {
-        try {
-          await window.ethereum?.request({
-            method: 'wallet_addEthereumChain',
-            params: [
-              {
-                chainId: selectedChain.chainId,
-                chainName: selectedChain.chainName,
-                rpcUrls: selectedChain.rpcUrls,
-              },
-            ],
-          })
-          await window.ethereum?.request({
-            method: 'wallet_switchEthereumChain',
-            params: [{ chainId: selectedChain.chainId }],
-          })
-        } catch (addError) {
-          console.error({ addError })
-        }
-      }
-    }
     await provider.send('eth_requestAccounts', [])
     window.location.reload()
   }
