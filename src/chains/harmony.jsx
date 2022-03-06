@@ -3,9 +3,6 @@ import HarmonyIcon from './oneLogo.svg'
 
 export const harmony = {
   chainId: '0x6357D2E0',
-  rpcUrls: [
-    'https://api.s0.b.hmny.io',
-  ],
   chainName: 'Harmony Testnet',
   launchData: {
     // TODO - before launch, update the the actual launch time.
