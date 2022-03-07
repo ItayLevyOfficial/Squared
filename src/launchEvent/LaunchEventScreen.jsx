@@ -1,5 +1,4 @@
-import React, { createContext, useCallback, useEffect, useState } from 'react'
-// import Web3 from 'web3'
+import { createContext, useCallback, useEffect, useState } from 'react'
 import { selectedChain } from '../constants'
 import { launchContractAbi } from './abis/defiRoundAbi'
 import { Footer } from './Footer'

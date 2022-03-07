@@ -8,20 +8,20 @@ export const harmony = {
     // TODO - before launch, update the the actual launch time.
     launchTime: Date.now() - 60 * 1000 * 60 * 12,
     lastLookStart: Date.now() - 60 * 1000 * 60 * 12,
-    launchContractAddress: '0xF95C24c3f38A797aB1De70dBd04b08ef24AC52D2',
+    launchContractAddress: '0xc6a985AD26D2034e500ad6da9a4827dcAfA34D8a',
     launchTokensAmount: 3_000_000,
   },
   tokens: [
     {
       name: 'ONE',
       icon: <img src={HarmonyIcon} width={30} />,
-      address: '0xcf664087a5bb0237a0bad6742852ec6c8d69a27a',
+      address: '0x7466d7d0c21fa05f32f5a0fa27e12bdc06348ce2',
       decimals: 18,
     },
     {
       name: 'USDC',
       icon: <Usdc />,
-      address: '0x985458e523db3d53125813ed68c274899e9dfab4',
+      address: '0xa62d9d5ce0295f58c8185c057c668262d6549d10',
       decimals: 6,
     },
   ],
