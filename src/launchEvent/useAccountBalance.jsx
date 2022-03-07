@@ -14,7 +14,6 @@ export const useAccountBalance = () => {
   )
   const [balance, setBalance] = useState(0)
 
-  console.log({depositedToken});
   const readLaunchContract = useContract(
     provider,
     selectedChain.launchData.launchContractAddress,
