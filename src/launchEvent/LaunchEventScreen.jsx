@@ -37,10 +37,6 @@ export const LaunchScreenContext = () => {
 }
 
 export const LaunchEventScreen = () => {
-  
-  // const web3 = new Web3(Web3.givenProvider)
-  // console.log({web3});
-
   return (
     <ScreenPaddedContainer>
       <div className="flex flex-col items-center justify-between w-full max-w-screen-2xl h-full">
