@@ -11,6 +11,7 @@ export const harmony = {
     launchContractAddress: '0xc6a985AD26D2034e500ad6da9a4827dcAfA34D8a',
     launchTokensAmount: 3_000_000,
   },
+  scan: { name: 'Harmony Block Explorer', url: 'https://explorer.pops.one/' },
   tokens: [
     {
       name: 'ONE',
