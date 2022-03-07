@@ -4,6 +4,7 @@ import HarmonyIcon from './oneLogo.svg'
 export const harmony = {
   chainId: '0x6357D2E0',
   chainName: 'Harmony Testnet',
+  approvalTime: 2,
   launchData: {
     // TODO - before launch, update the the actual launch time.
     launchTime: Date.now() - 60 * 1000 * 60 * 12,
