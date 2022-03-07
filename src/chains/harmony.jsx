@@ -15,7 +15,7 @@ export const harmony = {
     {
       name: 'ONE',
       icon: <img src={HarmonyIcon} width={30} />,
-      address: '0x7466d7d0c21fa05f32f5a0fa27e12bdc06348ce2',
+      address: '0x7466d7d0C21Fa05F32F5a0Fa27e12bdC06348Ce2',
       decimals: 18,
     },
     {
