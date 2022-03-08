@@ -32,19 +32,19 @@ export const LaunchScreenContext = () => {
   return (
     <StageContext.Provider value={stage + 1}>
       <div className="fixed bottom-10 left-10 flex flex-col space-y-4">
-        <RoutingButton selected={stage === 0}>Launch Event</RoutingButton>
-        <RoutingButton selected={stage === 1}>Last Look</RoutingButton>
-        <RoutingButton selected={stage === 2}>Cycle Zero</RoutingButton>
+        <RoutingButton currentStage={stage} buttonStage={0} setStage={setStage}>Launch Event</RoutingButton>
+        <RoutingButton currentStage={stage} buttonStage={1} setStage={setStage}>Last Look</RoutingButton>
+        <RoutingButton currentStage={stage} buttonStage={2} setStage={setStage}>Cycle Zero</RoutingButton>
       </div>
       {[0, 1].includes(stage) ? <LaunchEventScreen /> : null}
     </StageContext.Provider>
   )
 }
 
-const RoutingButton = ({ children, selected }) => (
-  <button
+const RoutingButton = ({ children, currentStage, buttonStage, setStage}) => (
+  <button onClick={() => setStage(buttonStage)}
     className={`w-48 py-3 font-medium text-lg rounded-full text-center ${
-      selected ? 'bg-darkPrimary' : 'border-solid border-[0.5px] border-white'
+      currentStage === buttonStage ? 'bg-darkPrimary' : 'border-solid border-[0.5px] border-white'
     }`}
   >
     {children}
