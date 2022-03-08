@@ -38,7 +38,7 @@ export const useFetchPoolBalance = (selectedToken, abi) => {
 
   return balance
 }
-export const GetListOfPoolBalances = () => {
+export const usePoolBalances = () => {
   const ethBalance = useFetchPoolBalance(selectedChain.tokens[0], EthPoolAbi)
   const usdcBalance = useFetchPoolBalance(selectedChain.tokens[1], PoolAbi)
   const sqrdBalance = useFetchPoolBalance(selectedChain.tokens[2], PoolAbi)
@@ -71,7 +71,7 @@ export const useFetchUserBalance = (selectedToken, abi) => {
   return balance
 }
 
-export const GetListOfUserBalances = () => {
+export const useUserBalances = () => {
   const ethBalance = useFetchUserBalance(selectedChain.tokens[0], EthPoolAbi)
   const usdcBalance = useFetchUserBalance(selectedChain.tokens[1], PoolAbi)
   const sqrdBalance = useFetchUserBalance(selectedChain.tokens[2], PoolAbi)

@@ -1,9 +1,9 @@
 import { StakingPool } from './StakingPool'
 import { selectedChain } from '../chains'
-import { GetListOfPoolBalances } from './useErc20Functions'
+import { usePoolBalances } from './useErc20Functions'
 
-export const StakingPools = ({ className, open }) => {
-  const listofPoolBalances = GetListOfPoolBalances()
+export const StakingPools = ({ className, openModal }) => {
+  const listofPoolBalances = usePoolBalances()
 
   return (
     <div
@@ -16,7 +16,7 @@ export const StakingPools = ({ className, open }) => {
         <StakingPool
           el={el}
           key={index}
-          openModal={() => open(index)}
+          openModal={() => openModal(index)}
           balance={listofPoolBalances[index]}
         />
       ))}
