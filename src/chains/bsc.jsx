@@ -1,5 +1,6 @@
-import { Bnb } from "../launchEvent/icons/BNB";
-import { Busd } from "../launchEvent/icons/busd";
+import { Bnb } from '../launchEvent/icons/BNB'
+import { Busd } from '../launchEvent/icons/busd'
+import { tokenAddress } from './tokenAddress'
 
 export const bsc = {
   rpcUrls: [
@@ -21,12 +22,26 @@ export const bsc = {
       icon: <Bnb />,
       decimals: 18,
       address: '0x094616F0BdFB0b526bD735Bf66Eca0Ad254ca81F',
+      poolContractAddress: tokenAddress.nativeTokenPoolAddress,
     },
     {
       name: 'BUSD',
       icon: <Busd />,
       decimals: 18,
       address: '0x8301F2213c0eeD49a7E28Ae4c3e91722919B8B47',
+      poolContractAddress: tokenAddress.stableTokenPoolAddress,
+    },
+    {
+      name: 'SQRD',
+      poolContractAddress: tokenAddress.sqrdPoolAddress,
+      address: tokenAddress.sqrdTokenAddress,
+      decimals: '6',
+    },
+    {
+      name: 'SQRD LP',
+      poolContractAddress: tokenAddress.sqrdLpPoolAddress,
+      address: tokenAddress.sqrdLpTokenAddress,
+      decimals: '6',
     },
   ],
 }
