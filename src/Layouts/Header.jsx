@@ -1,69 +1,27 @@
-import { BookOpenIcon, LibraryIcon } from '@heroicons/react/outline'
 import React from 'react'
-import { useLocation } from 'react-router-dom'
 import MetamaskIcon from '../launchEvent/icons/metamask.svg'
 import { BrandingSection } from '../launchEvent/LaunchScreenHeader'
+import {
+  timeLeftBarWidth,
+  weekInMillis,
+} from '../launchEvent/LaunchScreenHeader'
+import { convertMilliseconds } from '../launchEvent/utils'
+import { selectedChain } from '../chains'
+import { useConnectWallet } from '../launchEvent/useConnectWallet'
 
-export const PageToggleWrapper = ({ children }) => {
-  return (
-    <div className="flex cursor-pointer group space-x-2 items-center  p-2 ">
-      {children}
-    </div>
-  )
-}
+export const Header = () => {
+  const [, connectWallet, address] = useConnectWallet()
 
-export const PageToggle = () => {
-  const { pathname } = useLocation()
-
-  return (
-    <div className="flex items-center justify-center space-x-6 mr-12">
-      <PageToggleWrapper>
-        <LibraryIcon
-          className={`h-6 text-white ${pathname !== '/assets' && 'opacity-40'}`}
-        />
-
-        <a
-          href="/assets"
-          className={`text-white font-medium  text-lg ${
-            pathname !== '/assets' && 'opacity-40'
-          }`}
-        >
-          Assets
-        </a>
-      </PageToggleWrapper>
-      <div className="w-1.5 h-1.5 border bg-white rounded-full" />
-
-      <PageToggleWrapper>
-        <a
-          href="/dashboard"
-          className={`text-white font-medium text-lg ${
-            pathname !== '/dashboard' && 'opacity-40'
-          }`}
-        >
-          Dashboard
-        </a>{' '}
-        <BookOpenIcon
-          className={`h-6 text-white ${
-            pathname !== '/dashboard' && 'opacity-40'
-          }`}
-        />
-      </PageToggleWrapper>
-    </div>
-  )
-}
-
-export const Header = (props) => {
   return (
     <nav
       className={`flex w-full justify-between items-center
     `}
     >
-      <BrandingSection children={'CYCLE ZERO'} />
-      <PageToggle />
-      <div className="flex items-center h-fit w-44 justify-end flex-shrink-0">
-        <img src={MetamaskIcon} alt="" className="mr-4" />
-        <AddressButton {...props} />
-      </div>
+      <BrandingSection>CYCLE ZERO</BrandingSection>
+
+      <TimeLeft />
+
+      <AddressSection connectWallet={connectWallet} address={address} />
     </nav>
   )
 }
@@ -90,3 +48,43 @@ export const AddressButton = ({ address, connectWallet }) =>
       Connect
     </AddressContainer>
   )
+
+const AddressSection = ({ connectWallet, address }) => {
+  return (
+    <div className="flex items-center h-fit w-44 justify-end flex-shrink-0">
+      <img src={MetamaskIcon} alt="" className="mr-4" />
+      <AddressButton connectWallet={connectWallet} address={address} />
+    </div>
+  )
+}
+
+const TimeLeft = () => {
+  const timeLeftData = {
+    startTime: selectedChain.launchData.launchTime,
+    length: weekInMillis,
+  }
+
+  const remainTimeMillis =
+    timeLeftData.startTime + timeLeftData.length - new Date().getTime()
+  const remainTimePercent =
+    100 - Math.round((remainTimeMillis / timeLeftData.length) * 100)
+  const formattedRemainTime = convertMilliseconds(remainTimeMillis)
+
+  return (
+    <div className="mb-6 flex flex-col items-center self-center">
+      <h2
+        className={`text-white text-lg tracking-wide font-light font-number mb-4`}
+      >
+        {`Next Cycle: ${
+          formattedRemainTime.d > 0 ? `${formattedRemainTime.d} DAYS` : ''
+        } ${formattedRemainTime.h} HOURS ${formattedRemainTime.m} MINUTES`}
+      </h2>
+      <div className={`bg-lightPrimary h-4 ${timeLeftBarWidth} rounded-md`}>
+        <div
+          className={`bg-darkPrimary rounded-md h-full`}
+          style={{ width: `${remainTimePercent}%` }}
+        />
+      </div>
+    </div>
+  )
+}

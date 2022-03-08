@@ -1,7 +1,13 @@
 import React from 'react'
 import { selectedChain } from '../chains'
 
-const DepositButton = ({ tokenName, icon, className = '', onClick }) => (
+export const DepositButton = ({
+  tokenName,
+  icon,
+  className = '',
+  onClick,
+  event,
+}) => (
   <button
     className={`w-80 py-3 font-medium items-center text-lg rounded-xl flex ${className} hover:bg-opacity-95`}
     onClick={onClick}
@@ -9,7 +15,7 @@ const DepositButton = ({ tokenName, icon, className = '', onClick }) => (
     <div className="w-8" />
     {icon}
     <div className="w-4" />
-    Deposit / Withdraw&nbsp;{tokenName}
+    {event}&nbsp;{tokenName}
   </button>
 )
 
@@ -49,6 +55,7 @@ export const AccountStatus = ({
         }`}
       />
       <DepositButton
+        event="Deposit / Withdraw"
         backgroundColorClass=""
         icon={selectedChain.tokens[0].icon}
         tokenName={nativeTokenName}
@@ -56,6 +63,7 @@ export const AccountStatus = ({
         onClick={handleNativeClick}
       />
       <DepositButton
+        event="Deposit / Withdraw"
         icon={selectedChain.tokens[1].icon}
         tokenName={stableTokenName}
         onClick={handleStableClick}

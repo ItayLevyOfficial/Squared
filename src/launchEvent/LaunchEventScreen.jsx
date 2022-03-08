@@ -42,16 +42,14 @@ export const LaunchScreenContext = () => {
 
 export const LaunchEventScreen = () => (
   <ScreenPaddedContainer>
-    <div className="flex flex-col items-center justify-between w-full max-w-screen-2xl h-full">
-      <LaunchScreenHeader />
-      <LaunchScreenBody className={'-mt-20'} />
-      <Footer />
-    </div>
+    <LaunchScreenHeader />
+    <LaunchScreenBody className={'-mt-20'} />
+    <Footer />
   </ScreenPaddedContainer>
 )
 
 export const ScreenPaddedContainer = (props) => (
-  <div className="w-screen h-screen bg-black flex flex-col items-center px-16 pt-10 pb-16">
+  <div className="w-screen max-w-screen-2xl h-screen bg-black flex flex-col items-center justify-between px-16 pt-10 pb-16">
     {props.children}
   </div>
 )
