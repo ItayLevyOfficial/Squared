@@ -1,16 +1,12 @@
-import React, { useCallback } from 'react'
-import { LaunchScreenBody } from './LaunchScreenBody'
-import { Footer } from './Footer'
-import { LaunchScreenHeader } from './LaunchScreenHeader'
-import { createContext } from 'react'
-import { useState } from 'react'
-import { useEffect } from 'react'
-import { provider } from './useConnectWallet'
-import { selectedChain } from '../chains'
+import { createContext, useCallback, useEffect, useState } from 'react'
+import { selectedChain } from '../constants'
 import { launchContractAbi } from './abis/defiRoundAbi'
-import { useContract } from './utils'
+import { Footer } from './Footer'
+import { LaunchScreenBody } from './LaunchScreenBody'
+import { LaunchScreenHeader } from './LaunchScreenHeader'
+import { provider } from './useConnectWallet'
 import { useEventListener } from './useEventListener'
-
+import { useContract } from './utils'
 export const StageContext = createContext(1)
 
 export const LaunchScreenContext = () => {

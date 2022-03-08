@@ -1,5 +1,5 @@
+import { selectedChain } from '../constants'
 import { StakingPool } from './StakingPool'
-import { selectedChain } from '../chains'
 import { usePoolBalances } from './useErc20Functions'
 
 export const StakingPools = ({ className, openModal }) => {

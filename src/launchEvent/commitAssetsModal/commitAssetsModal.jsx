@@ -1,6 +1,6 @@
-import React, { useState, useContext } from 'react'
+import { useState, useContext } from 'react'
 import Modal from 'react-modal'
-import { selectedChain } from '../../chains'
+import { selectedChain } from '../../constants'
 import { ModalButton } from '../../home/ModalButton'
 import { CloseButton } from '../../home/ModalDisplay'
 import { ModalInput } from '../../home/ModalInput'

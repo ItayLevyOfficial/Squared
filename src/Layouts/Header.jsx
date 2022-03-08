@@ -6,8 +6,8 @@ import {
   weekInMillis,
 } from '../launchEvent/LaunchScreenHeader'
 import { convertMilliseconds } from '../launchEvent/utils'
-import { selectedChain } from '../chains'
 import { useConnectWallet } from '../launchEvent/useConnectWallet'
+import { selectedChain } from '../constants'
 
 export const Header = () => {
   const [, connectWallet, address] = useConnectWallet()

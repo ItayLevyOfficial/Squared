@@ -1,9 +1,9 @@
-import TwitterIcon from './icons/twitter.svg'
-import MediumIcon from './icons/medium.svg'
-import DocsIcon from './icons/docs.svg'
-import DiscordIcon from './icons/discord.svg'
-import GithubIcon from './icons/github.svg'
 import React from 'react'
+import DiscordIcon from './icons/discord.svg'
+import DocsIcon from './icons/docs.svg'
+import GithubIcon from './icons/github.svg'
+import MediumIcon from './icons/medium.svg'
+import TwitterIcon from './icons/twitter.svg'
 
 const FooterIcon = ({ src, url }) => (
   <img
