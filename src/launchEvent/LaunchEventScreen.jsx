@@ -31,6 +31,11 @@ export const LaunchScreenContext = () => {
   }, [readLaunchContract])
   return (
     <StageContext.Provider value={stage + 1}>
+      <div className="fixed bottom-10 left-10 flex flex-col space-y-4">
+        <RoutingButton selected={stage === 0}>Launch Event</RoutingButton>
+        <RoutingButton selected={stage === 1}>Last Look</RoutingButton>
+        <RoutingButton selected={stage === 2}>Cycle Zero</RoutingButton>
+      </div>
       {[0, 1].includes(stage) ? <LaunchEventScreen /> : null}
     </StageContext.Provider>
   )
@@ -48,11 +53,6 @@ const RoutingButton = ({ children, selected }) => (
 
 export const LaunchEventScreen = () => (
   <ScreenPaddedContainer>
-    <div className="fixed bottom-10 left-10 flex flex-col space-y-4">
-      <RoutingButton selected>Launch Event</RoutingButton>
-      <RoutingButton>Last Look</RoutingButton>
-      <RoutingButton>Cycle Zero</RoutingButton>
-    </div>
     <LaunchScreenHeader />
     <LaunchScreenBody className={'-mt-20'} />
     <Footer />
