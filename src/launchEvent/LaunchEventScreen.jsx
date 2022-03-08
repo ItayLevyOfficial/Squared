@@ -36,8 +36,23 @@ export const LaunchScreenContext = () => {
   )
 }
 
+const RoutingButton = ({ children, selected }) => (
+  <button
+    className={`w-48 py-3 font-medium text-lg rounded-full text-center ${
+      selected ? 'bg-darkPrimary' : 'border-solid border-[0.5px] border-white'
+    }`}
+  >
+    {children}
+  </button>
+)
+
 export const LaunchEventScreen = () => (
   <ScreenPaddedContainer>
+    <div className="fixed bottom-10 left-10 flex flex-col space-y-4">
+      <RoutingButton selected>Launch Event</RoutingButton>
+      <RoutingButton>Last Look</RoutingButton>
+      <RoutingButton>Cycle Zero</RoutingButton>
+    </div>
     <LaunchScreenHeader />
     <LaunchScreenBody className={'-mt-20'} />
     <Footer />
