@@ -2,7 +2,7 @@ import Modal from 'react-modal'
 import { selectedChain } from '../../constants'
 import { useState, useEffect } from 'react'
 import errorIcon from '../icons/error.svg'
-import { overlayStyles } from '../../Products/ModalStyles'
+import { overlayStyles } from '../../home/ModalStyles'
 import { commitContentStyles } from './commitAssetsModal'
 import { ModalTitle, ModalParagraph } from './MessageModal'
 

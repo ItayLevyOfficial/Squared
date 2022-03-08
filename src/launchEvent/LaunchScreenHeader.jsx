@@ -8,7 +8,7 @@ import { StageContext } from './LaunchEventScreen'
 import { useConnectWallet } from './useConnectWallet'
 import { convertMilliseconds } from './utils'
 
-const timeLeftBarWidth = 'w-[580px]'
+export const timeLeftBarWidth = 'w-[580px]'
 
 export const LaunchScreenHeader = () => {
   const launchStage = useContext(StageContext)

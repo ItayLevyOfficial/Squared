@@ -1,13 +1,13 @@
-import React, { useState, useContext } from 'react'
+import { useState, useContext } from 'react'
 import Modal from 'react-modal'
 import { selectedChain } from '../../constants'
-import { ModalButton } from '../../products/ModalButton'
-import { CloseButton } from '../../Products/ModalDisplay'
-import { ModalInput } from '../../Products/ModalInput'
+import { ModalButton } from '../../home/ModalButton'
+import { CloseButton } from '../../home/ModalDisplay'
+import { ModalInput } from '../../home/ModalInput'
 import { useConnectWallet } from '../useConnectWallet'
 import { ModalParagraph, ModalTitle } from './MessageModal'
 import { StageContext } from '../LaunchEventScreen'
-import { contentStyles, overlayStyles } from '../../products/ModalStyles'
+import { contentStyles, overlayStyles } from '../../home/ModalStyles'
 export const commitContentStyles = {
   ...contentStyles,
   height: '400px',
@@ -21,11 +21,7 @@ export const PrimaryLink = ({ children, onClick }) => (
   </span>
 )
 
-export const ActionModal = ({
-  selectedTokenIndex,
-  close,
-  handleSubmit,
-}) => {
+export const ActionModal = ({ selectedTokenIndex, close, handleSubmit }) => {
   const isOpen = selectedTokenIndex !== null
   const tokenData = isOpen ? selectedChain.tokens[selectedTokenIndex] : null
   const [tokenAmount, setTokenAmount] = useState('')

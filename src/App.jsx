@@ -1,10 +1,9 @@
+import React from 'react'
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
 import { ScrollToTop } from './layouts/ScrollToTop'
-import { Home } from './Home/Home'
-import React from 'react'
-import { AssetsInformation } from './products/AssetsInformation'
-import { DashboardInformation } from './dashboard/DashboardInformation'
+import { Landing } from './landing/Landing'
 import { LaunchScreenContext } from './launchEvent/LaunchEventScreen'
+import { HomeScreen } from './home/HomeScreen'
 
 function App() {
   return (
@@ -12,10 +11,9 @@ function App() {
       <Router>
         <ScrollToTop>
           <Routes>
+            <Route path="/" element={<Landing />} />
+            <Route path="/home" element={<HomeScreen />} />
             <Route path="/launch" element={<LaunchScreenContext />} />
-            <Route path="/assets" element={<AssetsInformation />} />
-            <Route path="/dashboard" element={<DashboardInformation />} />
-            <Route path="/" element={<Home />} />
           </Routes>
         </ScrollToTop>
       </Router>

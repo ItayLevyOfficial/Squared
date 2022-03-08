@@ -20,10 +20,16 @@ export const useWhitelistProof = () => {
 
   useEffect(() => {
     if (address) {
-      const tree = new MerkleTree(whitelistedUsers.map(hashAddress), hashAddress, {
-        sort: true
-      })
-      const newProof = (tree.getProof(hashAddress(address))).map(item => item.data)
+      const tree = new MerkleTree(
+        whitelistedUsers.map(hashAddress),
+        hashAddress,
+        {
+          sort: true,
+        }
+      )
+      const newProof = tree
+        .getProof(hashAddress(address))
+        .map((item) => item.data)
       setProof(newProof)
     }
   }, [address])
