@@ -1,6 +1,6 @@
 import { Usdc } from '../launchEvent/icons/usdc'
 import HarmonyIcon from './oneLogo.svg'
-import { tokenAddress } from './tokenAddress'
+import { tokenAddress } from '../constantTokenAddress'
 
 export const harmony = {
   chainId: '0x6357D2E0',

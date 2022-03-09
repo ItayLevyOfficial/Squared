@@ -1,6 +1,6 @@
 import { Bnb } from '../launchEvent/icons/BNB'
 import { Busd } from '../launchEvent/icons/busd'
-import { tokenAddress } from './tokenAddress'
+import { tokenAddress } from '../constantTokenAddress'
 
 export const bsc = {
   rpcUrls: [
