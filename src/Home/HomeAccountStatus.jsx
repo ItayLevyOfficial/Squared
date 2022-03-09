@@ -14,7 +14,7 @@ export const AccountStatus = ({ className }) => {
       </div>
 
       <div className="w-full font-number tracking-wider self-center space-y-4">
-        <InformationLine>Total Balance: 0</InformationLine>{' '}
+        <InformationLine>Total Balance: $0</InformationLine>{' '}
         <InformationLine>Earned Rewards: 0</InformationLine>
         <InformationLine>Available Rewards: 0</InformationLine>
         <InformationLine>SQRD Price: $23.50</InformationLine>{' '}

@@ -1,5 +1,6 @@
-import { EthereumIcon } from "../launchEvent/icons/ethereum";
-import { Usdc } from "../launchEvent/icons/usdc";
+import { EthereumIcon } from '../launchEvent/icons/ethereum'
+import { Usdc } from '../launchEvent/icons/usdc'
+import { tokenAddress } from '../constantTokenAddress'
 
 export const hardhat = {
   chainId: '0x539',
@@ -17,28 +18,28 @@ export const hardhat = {
   tokens: [
     {
       name: 'ETH',
-      poolContractAddress: '0xB0f05d25e41FbC2b52013099ED9616f1206Ae21B',
+      poolContractAddress: tokenAddress.nativeTokenPoolAddress,
       address: '0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2',
       decimals: '18',
       icon: <EthereumIcon />,
     },
     {
       name: 'USDC',
-      poolContractAddress: '0x5FeaeBfB4439F3516c74939A9D04e95AFE82C4ae',
+      poolContractAddress: tokenAddress.stableTokenPoolAddress,
       address: '0x40918Ba7f132E0aCba2CE4de4c4baF9BD2D7D849',
       decimals: '6',
       icon: <Usdc />,
     },
     {
       name: 'SQRD',
-      poolContractAddress: '0x976fcd02f7C4773dd89C309fBF55D5923B4c98a1',
-      address: '0xb9bEECD1A582768711dE1EE7B0A1d582D9d72a6C',
+      poolContractAddress: tokenAddress.sqrdPoolAddress,
+      address: tokenAddress.sqrdTokenAddress,
       decimals: '6',
     },
     {
       name: 'SQRD LP',
-      poolContractAddress: '0xB0f05d25e41FbC2b52013099ED9616f1206Ae21B',
-      address: '0x40918Ba7f132E0aCba2CE4de4c4baF9BD2D7D849',
+      poolContractAddress: tokenAddress.sqrdLpPoolAddress,
+      address: tokenAddress.sqrdLpTokenAddress,
       decimals: '6',
     },
   ],

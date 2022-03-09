@@ -1,5 +1,6 @@
 import { Usdc } from '../launchEvent/icons/usdc'
 import HarmonyIcon from './oneLogo.svg'
+import { tokenAddress } from '../constantTokenAddress'
 
 export const harmony = {
   chainId: '0x6357D2E0',
@@ -18,13 +19,27 @@ export const harmony = {
       name: 'ONE',
       icon: <img src={HarmonyIcon} width={30} />,
       address: '0x7466d7d0C21Fa05F32F5a0Fa27e12bdC06348Ce2',
+      poolContractAddress: tokenAddress.nativeTokenPoolAddress,
       decimals: 18,
     },
     {
       name: 'USDC',
       icon: <Usdc />,
       address: '0xa62d9d5ce0295f58c8185c057c668262d6549d10',
+      poolContractAddress: tokenAddress.stableTokenPoolAddress,
       decimals: 6,
+    },
+    {
+      name: 'SQRD',
+      poolContractAddress: tokenAddress.sqrdPoolAddress,
+      address: tokenAddress.sqrdTokenAddress,
+      decimals: '6',
+    },
+    {
+      name: 'SQRD LP',
+      poolContractAddress: tokenAddress.sqrdLpPoolAddress,
+      address: tokenAddress.sqrdLpTokenAddress,
+      decimals: '6',
     },
   ],
 }
