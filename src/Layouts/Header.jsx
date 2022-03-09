@@ -14,13 +14,11 @@ export const Header = () => {
 
   return (
     <nav
-      className={`flex w-full justify-between items-center
+      className={`flex w-full justify-between
     `}
     >
       <BrandingSection>CYCLE ZERO</BrandingSection>
-
       <TimeLeft />
-
       <AddressSection connectWallet={connectWallet} address={address} />
     </nav>
   )
@@ -49,7 +47,7 @@ export const AddressButton = ({ address, connectWallet }) =>
     </AddressContainer>
   )
 
-const AddressSection = ({ connectWallet, address }) => {
+export const AddressSection = ({ connectWallet, address }) => {
   return (
     <div className="flex items-center h-fit w-44 justify-end flex-shrink-0">
       <img src={MetamaskIcon} alt="" className="mr-4" />

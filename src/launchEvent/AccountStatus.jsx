@@ -1,4 +1,3 @@
-import React from 'react'
 import { selectedChain } from '../constants'
 
 export const DepositButton = ({

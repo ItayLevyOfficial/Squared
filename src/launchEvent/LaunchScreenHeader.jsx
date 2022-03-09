@@ -1,9 +1,8 @@
 import React, { useContext } from 'react'
 import { selectedChain } from '../constants'
-import { AddressButton } from '../Layouts/Header'
+import { AddressSection } from '../Layouts/Header'
 import { PrimaryLink } from './commitAssetsModal/commitAssetsModal'
 import Logo from './icons/logo.svg'
-import MetamaskIcon from './icons/metamask.svg'
 import { StageContext } from './LaunchEventScreen'
 import { useConnectWallet } from './useConnectWallet'
 import { convertMilliseconds } from './utils'
@@ -71,12 +70,6 @@ const MiddleSection = () => {
   )
 }
 
-const AddressSection = ({ connectWallet, address }) => (
-  <div className="flex items-center h-fit w-44 justify-end flex-shrink-0">
-    <img src={MetamaskIcon} alt="" className="mr-4" />
-    <AddressButton address={address} connectWallet={connectWallet} />
-  </div>
-)
 export const weekInMillis = 604800000
 
 const TimeLeft = ({ className = '' }) => {
