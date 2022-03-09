@@ -18,14 +18,14 @@ export const hardhat = {
   tokens: [
     {
       name: 'ETH',
-      poolContractAddress: '0xB0f05d25e41FbC2b52013099ED9616f1206Ae21B',
+      poolContractAddress: tokenAddress.nativeTokenPoolAddress,
       address: '0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2',
       decimals: '18',
       icon: <EthereumIcon />,
     },
     {
       name: 'USDC',
-      poolContractAddress: '0x976fcd02f7C4773dd89C309fBF55D5923B4c98a1',
+      poolContractAddress: tokenAddress.stableTokenPoolAddress,
       address: '0x40918Ba7f132E0aCba2CE4de4c4baF9BD2D7D849',
       decimals: '6',
       icon: <Usdc />,
