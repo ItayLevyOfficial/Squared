@@ -25,7 +25,7 @@ export const AccountStatus = ({ className }) => {
         <InformationLine>SQRD Price: $23.50</InformationLine>{' '}
       </div>
       <DepositButton
-        className="mb-5 bg-darkPrimary mt-10"
+        className="mb-5 bg-white text-black mt-10"
         icon={sqrdIcon}
         event={'Claim'}
         tokenName={'SQRD Rewards'}
@@ -43,18 +43,14 @@ const sqrdIcon = (
     fill="none"
     xmlns="http://www.w3.org/2000/svg"
   >
-    <circle cx="15" cy="15" r="15" fill="white" />
     <path
-      d="M22.9375 9.71875L15.5 6L8.0625 9.71875V19.2812L15.5 23L22.9375 19.2812V9.71875Z"
+      d="M28.125 6.5625L15 0L1.875 6.5625V23.4375L15 30L28.125 23.4375V6.5625Z"
       fill="#FBFCD4"
     />
     <path
-      d="M15.5 13.4375L8.0625 9.71875V19.2812L15.5 23L22.9375 19.2812V9.71875L15.5 13.4375Z"
+      d="M15 13.125L1.875 6.5625V23.4375L15 30L28.125 23.4375V6.5625L15 13.125Z"
       fill="#FFDD03"
     />
-    <path
-      d="M15.5 13.4375V23L22.9375 19.2812V9.71875L15.5 13.4375Z"
-      fill="#FBC403"
-    />
+    <path d="M15 13.125V30L28.125 23.4375V6.5625L15 13.125Z" fill="#FBC403" />
   </svg>
 )

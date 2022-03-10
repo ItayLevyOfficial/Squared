@@ -8,7 +8,7 @@ export const DepositButton = ({
   event,
 }) => (
   <button
-    className={`w-80 py-3 font-medium items-center text-lg rounded-xl flex ${className} hover:bg-opacity-95`}
+    className={`w-80 py-3 font-medium items-center text-lg rounded-xl flex  hover:bg-opacity-95 ${className}`}
     onClick={onClick}
   >
     <div className="w-8" />

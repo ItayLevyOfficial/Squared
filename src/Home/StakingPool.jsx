@@ -6,7 +6,7 @@ export const StakingPool = ({ el, openModal, balance }) => {
       onClick={() => openModal(name)}
       className="space-x-10 py-2 px-6 w-full rounded-xl flex items-center mb-4 border-solid border-[0.5px] border-white  border-opacity-50 hover:border-primary hover:cursor-pointer "
     >
-      <div className="flex items-center space-x-4 flex-1 self-center">
+      <div className="flex items-center space-x-4 flex-1 self-center font-bold text-lg">
         {name}
       </div>
       <div className=" flex justify-evenly w-10/12 space-x-10">
