@@ -11,7 +11,7 @@ export const timeLeftBarWidth = 'w-[580px]'
 
 export const LaunchScreenHeader = () => {
   const launchStage = useContext(StageContext)
-  const phase = launchStage === 1 ? 'TAKE OFF EVENT' : 'LAST LOOK'
+  const phase = launchStage === 1 ? 'LAUNCH EVENT' : 'LAST LOOK'
   const [, connectWallet, address] = useConnectWallet()
 
   return (
@@ -46,7 +46,7 @@ const MiddleSection = () => {
     launchStage === 1 ? (
       <>
         {' '}
-        Squared's take-off event has arrived. It's the first time users can buy
+        Squared's Launch Event has arrived. It's the first time users can buy
         SQRD to fill our liquidity reserve.&nbsp;
         <PrimaryLink>Learn more</PrimaryLink>
       </>
