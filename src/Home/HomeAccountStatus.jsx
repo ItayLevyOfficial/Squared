@@ -1,5 +1,6 @@
 import { DepositButton } from '../launchEvent/AccountStatus'
-
+import { useFetchTotalBalance } from '../Home/useErc20Functions'
+import { selectedChain } from '../constants'
 export const InformationLine = ({ children }) => {
   return (
     <div className="font-number text-xl mb-2 tracking-wider">{children}</div>
@@ -7,6 +8,8 @@ export const InformationLine = ({ children }) => {
 }
 
 export const AccountStatus = ({ className }) => {
+  const balance = useFetchTotalBalance()
+
   return (
     <div className={`flex flex-col  ${className}`}>
       <div className="w-full text-4xl font-medium tracking-wide mb-10">
@@ -14,7 +17,9 @@ export const AccountStatus = ({ className }) => {
       </div>
 
       <div className="w-full font-number tracking-wider self-center space-y-4">
-        <InformationLine>Total Balance: $0</InformationLine>{' '}
+        <InformationLine>
+          Total Balance: {balance} {selectedChain.tokens[0].name}
+        </InformationLine>{' '}
         <InformationLine>Earned Rewards: 0</InformationLine>
         <InformationLine>Available Rewards: 0</InformationLine>
         <InformationLine>SQRD Price: $23.50</InformationLine>{' '}

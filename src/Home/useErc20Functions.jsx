@@ -1,5 +1,5 @@
 import { useEffect, useState, useCallback } from 'react'
-import { useConnectWallet } from '../launchEvent/useConnectWallet'
+import { useConnectWallet, provider } from '../launchEvent/useConnectWallet'
 import { useContract } from '../launchEvent/utils'
 import { erc20abi } from '../launchEvent/abis/erc20abi'
 import { ethers } from 'ethers'
@@ -84,4 +84,21 @@ export const useUserBalances = () => {
     sqrdLpBalance,
   ]
   return listOfUserBalances
+}
+
+export const useFetchTotalBalance = () => {
+  const [, , address] = useConnectWallet()
+  const [balance, setBalance] = useState(0)
+
+  const fetchBalance = useCallback(async () => {
+    const balance = await provider.getBalance(address)
+    setBalance(ethers.utils.formatUnits(balance, 18))
+  }, [address])
+
+  useEffect(() => {
+    if (address) {
+      fetchBalance()
+    }
+  }, [address, fetchBalance])
+  return parseInt(balance)
 }
