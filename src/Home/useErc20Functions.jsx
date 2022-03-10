@@ -92,7 +92,7 @@ export const useFetchTotalBalance = () => {
 
   const fetchBalance = useCallback(async () => {
     const balance = await provider.getBalance(address)
-    setBalance(ethers.utils.formatUnits(balance, 18))
+    setBalance(formatBigErc20(balance, 18))
   }, [address])
 
   useEffect(() => {
