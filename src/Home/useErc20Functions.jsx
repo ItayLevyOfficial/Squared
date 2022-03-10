@@ -33,8 +33,10 @@ export const useFetchPoolBalance = (selectedToken, abi) => {
       setBalance(parseInt(formatBigErc20(newBalance, selectedToken.decimals)))
     } catch (error) {
       console.log('fuck')
+      console.log({ error })
+      console.log({selectedToken})
     }
-  }, [selectedToken.decimals, erc20, poolContract?.address])
+  }, [erc20, poolContract?.address, selectedToken])
 
   useEffect(() => {
     if (erc20) {

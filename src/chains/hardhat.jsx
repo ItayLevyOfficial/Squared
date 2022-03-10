@@ -1,6 +1,5 @@
 import { EthereumIcon } from '../launchEvent/icons/ethereum'
 import { Usdc } from '../launchEvent/icons/usdc'
-import { tokenAddress } from '../constantTokenAddress'
 
 export const hardhat = {
   chainId: '0x539',
