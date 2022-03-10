@@ -11,25 +11,27 @@ import { useContract } from './utils'
 export const StageContext = createContext(1)
 
 export const LaunchScreenContext = () => {
-  const [stage, setStage] = useState(0)
-  const readLaunchContract = useContract(
-    provider,
-    selectedChain.launchData.launchContractAddress,
-    launchContractAbi
-  )
-  const handleRatesPublished = useCallback(() => setStage(1), [])
+  // const [stage, setStage] = useState(0)
+  const stage = 2
+  // const readLaunchContract = useContract(
+  //   provider,
+  //   selectedChain.launchData.launchContractAddress,
+  //   launchContractAbi
+  // )
+  // const handleRatesPublished = useCallback(() => setStage(1), [])
 
-  useEventListener({
-    contract: readLaunchContract,
-    handler: handleRatesPublished,
-    eventName: 'RatesPublished',
-  })
+  // useEventListener({
+  //   contract: readLaunchContract,
+  //   handler: handleRatesPublished,
+  //   eventName: 'RatesPublished',
+  // })
 
-  useEffect(() => {
-    if (readLaunchContract) {
-      readLaunchContract?.currentStage().then((response) => setStage(response))
-    }
-  }, [readLaunchContract])
+  // useEffect(() => {
+  //   if (readLaunchContract) {
+  //     readLaunchContract?.currentStage().then((response) => setStage(response))
+  //   }
+  // }, [readLaunchContract])
+  const setStage = () => {}
   return (
     <StageContext.Provider value={stage + 1}>
       <div className="fixed bottom-10 left-10 flex flex-col space-y-3">

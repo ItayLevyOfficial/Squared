@@ -25,16 +25,22 @@ export const useFetchPoolBalance = (selectedToken, abi) => {
   const [balance, setBalance] = useState(0)
 
   const poolContract = usePoolContracts(selectedToken, abi)
-  const erc20 = useContract(signer, selectedToken.address, erc20abi)
+  const erc20 = useContract(signer, selectedToken?.address, erc20abi)
 
   const fetchBalance = useCallback(async () => {
-    const balance = await erc20.balanceOf(poolContract.address)
-    setBalance(parseInt(formatBigErc20(balance, selectedToken.decimals)))
-  }, [erc20, selectedToken.decimals, poolContract])
+    try {
+      const newBalance = await erc20?.balanceOf(poolContract?.address)
+      setBalance(parseInt(formatBigErc20(newBalance, selectedToken.decimals)))
+    } catch (error) {
+      console.log('fuck')
+    }
+  }, [selectedToken.decimals, erc20, poolContract?.address])
 
   useEffect(() => {
-    fetchBalance()
-  }, [erc20, fetchBalance, selectedToken.decimals, poolContract])
+    if (erc20) {
+      fetchBalance()
+    }
+  }, [erc20, fetchBalance])
 
   return balance
 }
@@ -59,8 +65,12 @@ export const useFetchUserBalance = (selectedToken, abi) => {
   const poolContract = usePoolContracts(selectedToken, abi)
 
   const fetchBalance = useCallback(async () => {
-    const balance = await poolContract.balanceOf(address)
-    setBalance(parseInt(formatBigErc20(balance, selectedToken.decimals)))
+    try {
+      const balance = await poolContract?.balanceOf(address)
+      setBalance(parseInt(formatBigErc20(balance, selectedToken.decimals)))
+    } catch (error) {
+      console.log('fuck 12')
+    }
   }, [address, selectedToken.decimals, poolContract])
 
   useEffect(() => {
