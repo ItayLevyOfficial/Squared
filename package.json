@@ -4,9 +4,9 @@
   "homepage": "./",
   "scripts": {
     "start": "react-scripts start",
-    "dev": "vite",
-    "build": "vite build",
-    "preview": "vite preview"
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
   },
   "dependencies": {
     "@emotion/react": "11.7.1",
@@ -45,5 +45,23 @@
   "prettier": {
     "semi": false,
     "singleQuote": true
+  },
+  "eslintConfig": {
+    "extends": [
+      "react-app",
+      "react-app/jest"
+    ]
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
   }
 }
