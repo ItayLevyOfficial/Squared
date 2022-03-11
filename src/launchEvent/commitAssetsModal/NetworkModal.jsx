@@ -13,7 +13,9 @@ const useNetworkModal = () => {
   const currentBrowserChain = window?.ethereum?.networkVersion?.toUpperCase()
   console.table({ currentBrowserChain, formattedSelectedChainId })
   const [wrongNetwork, setWrongNetwork] = useState(
-    window.ethereum ? currentBrowserChain !== formattedSelectedChainId : false
+    currentBrowserChain
+      ? currentBrowserChain !== formattedSelectedChainId
+      : false
   )
 
   useEffect(() => {
