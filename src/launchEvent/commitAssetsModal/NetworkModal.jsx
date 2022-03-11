@@ -8,8 +8,8 @@ import { ModalParagraph, ModalTitle } from './MessageModal'
 
 const useNetworkModal = () => {
   const formattedSelectedChainId = parseInt(selectedChain.chainId, 16).toString().toUpperCase()
-  const [wrongNetwork, setWrongNetwork] = useState(
-    window?.ethereum?.networkVersion.toUpperCase() !== formattedSelectedChainId
+  const [wrongNetwork, setWrongNetwork] = useState( false
+    // window?.ethereum?.networkVersion?.toUpperCase() !== formattedSelectedChainId
   )
 
   useEffect(() => {
