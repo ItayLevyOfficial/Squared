@@ -24,14 +24,5 @@ export const useConnectWallet = () => {
     }
   }, [signer])
 
-  useEffect(() => {
-    if (window.ethereum) {
-      const handleChainChange = () => window.location.reload()
-      window.ethereum.on('chainChanged', handleChainChange)
-      return () =>
-        window.ethereum.removeListener('chainChanged', handleChainChange)
-    }
-  }, [])
-
   return [signer, connectWallet, address]
 }
