@@ -68,7 +68,7 @@ export const useFetchUserBalance = (selectedToken, abi) => {
       const balance = await poolContract?.balanceOf(address)
       setBalance(parseInt(formatBigErc20(balance, selectedToken.decimals)))
     } catch (error) {
-      console.log('fuck 12')
+      console.error({ error })
     }
   }, [address, selectedToken.decimals, poolContract])
 
