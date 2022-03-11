@@ -1,12 +1,11 @@
-import { createContext, useCallback, useEffect, useState } from 'react'
+import { createContext, useCallback, useState } from 'react'
 import { selectedChain } from '../constants'
-import { HomeScreen } from '../home/HomeScreen'
+import { HomeScreen } from '../Home/HomeScreen'
 import { launchContractAbi } from './abis/defiRoundAbi'
 import { Footer } from './Footer'
 import { LaunchScreenBody } from './LaunchScreenBody'
 import { LaunchScreenHeader } from './LaunchScreenHeader'
 import { provider } from './useConnectWallet'
-import { useEventListener } from './useEventListener'
 import { useContract } from './utils'
 export const StageContext = createContext(1)
 

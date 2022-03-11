@@ -2,10 +2,10 @@ import React, { useState } from 'react'
 import { SuccessModal } from '../launchEvent/commitAssetsModal/MessageModal'
 import { NetworkModal } from '../launchEvent/commitAssetsModal/NetworkModal'
 import { useDepositAssets } from '../launchEvent/commitAssetsModal/useDepositAssets'
-import { ModalDisplay } from '../home/ModalDisplay'
-import { useUserBalances } from '../home/useErc20Functions'
 import { AccountStatus } from './HomeAccountStatus'
 import { StakingPools } from './HomeStakingPools'
+import { ModalDisplay } from './ModalDisplay'
+import { useUserBalances } from './useErc20Functions'
 
 export const HomeScreenBody = () => {
   const [isModalOpen, setIsModalOpen] = useState(false)

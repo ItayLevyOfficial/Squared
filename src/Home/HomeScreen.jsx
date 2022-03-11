@@ -1,7 +1,6 @@
-import React from 'react'
 import { Footer } from '../launchEvent/Footer'
 import { ScreenPaddedContainer } from '../launchEvent/LaunchEventScreen'
-import { Header } from '../layouts/Header'
+import { Header } from '../Layouts/Header'
 import { HomeScreenBody } from './HomeScreenBody'
 
 export const HomeScreen = () => {
