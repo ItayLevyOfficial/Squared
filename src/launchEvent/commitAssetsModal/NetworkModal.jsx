@@ -7,16 +7,23 @@ import { commitContentStyles } from './commitAssetsModal'
 import { ModalParagraph, ModalTitle } from './MessageModal'
 
 const useNetworkModal = () => {
-  const formattedSelectedChainId = parseInt(selectedChain.chainId, 16).toString().toUpperCase()
-  const [wrongNetwork, setWrongNetwork] = useState( false
-    // window?.ethereum?.networkVersion?.toUpperCase() !== formattedSelectedChainId
+  const formattedSelectedChainId = parseInt(selectedChain.chainId, 16)
+    .toString()
+    .toUpperCase()
+  const [wrongNetwork, setWrongNetwork] = useState(
+    window.ethereum
+      ? window?.ethereum?.networkVersion?.toUpperCase() !==
+          formattedSelectedChainId
+      : false
   )
 
   useEffect(() => {
     if (window.ethereum) {
-      const handleChainChange = newChainId => {
+      const handleChainChange = (newChainId) => {
         const currentChainId = selectedChain.chainId
-        setWrongNetwork(newChainId.toString().toUpperCase() !== currentChainId.toUpperCase())
+        setWrongNetwork(
+          newChainId.toString().toUpperCase() !== currentChainId.toUpperCase()
+        )
       }
       window.ethereum.on('chainChanged', handleChainChange)
       return () =>
