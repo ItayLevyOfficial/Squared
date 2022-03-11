@@ -12,9 +12,9 @@ export const StakingPools = ({ className, openModal }) => {
       <div className="w-full text-4xl font-medium tracking-wide mb-8">
         Staking Pools
       </div>
-      {selectedChain.tokens.map((el, index) => (
+      {selectedChain.tokens.map((token, index) => (
         <StakingPool
-          el={el}
+          token={token}
           key={index}
           openModal={() => openModal(index)}
           balance={listofPoolBalances[index]}

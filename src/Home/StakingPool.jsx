@@ -1,5 +1,5 @@
-export const StakingPool = ({ el, openModal, balance }) => {
-  const { name } = el
+export const StakingPool = ({ token, openModal, balance }) => {
+  const { name } = token
 
   return (
     <div
