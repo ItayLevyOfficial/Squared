@@ -12,7 +12,7 @@ function App() {
         <ScrollToTop>
           <Routes>
             <Route path="/" element={<Landing />} />
-            <Route path="/home" element={<HomeScreen />} />
+            {/* <Route path="/home" element={<HomeScreen />} /> */}
             <Route path="/launch" element={<LaunchScreenContext />} />
           </Routes>
         </ScrollToTop>
