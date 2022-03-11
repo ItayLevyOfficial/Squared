@@ -4,6 +4,7 @@ import { usePoolBalances } from './useErc20Functions'
 
 export const StakingPools = ({ className, openModal }) => {
   const listofPoolBalances = usePoolBalances()
+
   return (
     <div
       className={`${className} h-full flex flex-col items-center justify-evenly`}
