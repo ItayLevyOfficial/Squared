@@ -11,6 +11,8 @@ const useNetworkModal = () => {
     .toString()
     .toUpperCase()
   const currentBrowserChain = window?.ethereum?.networkVersion?.toUpperCase()
+
+  // When the user is not connected, sometimes the browser current chain will return undefined.
   const [wrongNetwork, setWrongNetwork] = useState(
     currentBrowserChain
       ? currentBrowserChain !== formattedSelectedChainId
