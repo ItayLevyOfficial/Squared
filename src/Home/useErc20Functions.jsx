@@ -10,7 +10,7 @@ import { PoolAbi } from './ABIs/PoolAbi'
 export const formatBigErc20 = (value, decimals) =>
   ethers.utils.formatUnits(value, decimals)
 
-export const usePoolContracts = (selectedToken, abi) => {
+export const usePoolContract = (selectedToken, abi) => {
   const [signer, ,] = useConnectWallet()
   const poolContract = useContract(
     signer,
@@ -23,7 +23,7 @@ export const usePoolContracts = (selectedToken, abi) => {
 export const useFetchPoolBalance = (selectedToken, abi) => {
   const [balance, setBalance] = useState(0)
 
-  const poolContract = usePoolContracts(selectedToken, abi)
+  const poolContract = usePoolContract(selectedToken, abi)
   const erc20 = useContract(provider, selectedToken?.address, erc20abi)
 
   const fetchBalance = useCallback(async () => {
@@ -61,7 +61,7 @@ export const usePoolBalances = () => {
 export const useFetchUserBalance = (selectedToken, abi) => {
   const [, , address] = useConnectWallet()
   const [balance, setBalance] = useState(0)
-  const poolContract = usePoolContracts(selectedToken, abi)
+  const poolContract = usePoolContract(selectedToken, abi)
 
   const fetchBalance = useCallback(async () => {
     try {
