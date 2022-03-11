@@ -1,6 +1,10 @@
-export const StakingPool = ({ el, openModal, balance }) => {
-  const { name } = el
+import { PoolAbi } from "./ABIs/PoolAbi"
+import { useFetchUserBalance } from "./useErc20Functions"
 
+export const StakingPool = ({ token, openModal, balance }) => {
+  const { name } = token
+  const accountBalance = useFetchUserBalance(token, PoolAbi)
+  
   return (
     <div
       onClick={() => openModal(name)}
@@ -10,7 +14,7 @@ export const StakingPool = ({ el, openModal, balance }) => {
         {name}
       </div>
       <div className=" flex justify-evenly w-10/12 space-x-10">
-        <PoolInformation title={'Balance'} balance={balance} />
+        <PoolInformation title={'Your Balance'} balance={accountBalance} />
         <PoolInformation title={'Yield'} balance={'0%'} />
         <PoolInformation title={'TVL'} balance={balance} />
       </div>
