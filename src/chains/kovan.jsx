@@ -1,3 +1,5 @@
+import { hardhat } from './hardhat'
+
 export const kovan = {
   chainId: '0x2A',
   chainName: 'kovan',
@@ -11,4 +13,17 @@ export const kovan = {
     launchTokensAmount: 3_000_000,
   },
   scan: { name: 'Etherscan', url: 'https://kovan.etherscan.io/' },
+  tokens: [
+    {
+      ...hardhat.tokens[0],
+      name: 'KETH',
+      address: '0xd0A1E359811322d97991E03f863a0C30C2cF029C',
+      poolContractAddress: '0x8A35F422B4D343b562799b95b96f4d31fE81b15b'
+    },
+    {
+      ...hardhat.tokens[1],
+      address: '0xdCFaB8057d08634279f8201b55d311c2a67897D2',
+      poolContractAddress: '0x4caeaB5547d1FD5A6685E7A52e4a900d779B767f'
+    }
+  ],
 }
