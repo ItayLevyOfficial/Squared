@@ -1,5 +1,5 @@
 import React, { useContext } from 'react'
-import { selectedChain } from '../constants'
+import { launchEventArticle, selectedChain } from '../constants'
 import { AddressSection } from '../Layouts/Header'
 import { PrimaryLink } from './commitAssetsModal/commitAssetsModal'
 import Logo from './icons/logo.svg'
@@ -48,14 +48,18 @@ const MiddleSection = () => {
         {' '}
         Squared's Launch Event has arrived. It's the first time users can buy
         SQRD to fill our liquidity reserve.&nbsp;
-        <PrimaryLink>Learn more</PrimaryLink>
+        <PrimaryLink onClick={() => window.open(launchEventArticle)}>
+          Learn more
+        </PrimaryLink>
       </>
     ) : (
       <>
         {' '}
         Squared's last look period has arrived. Now users can see the final
         swap/farming ratio and withdraw their committed funds. &nbsp;
-        <PrimaryLink>Learn more</PrimaryLink>
+        <PrimaryLink onClick={() => window.open(launchEventArticle)}>
+          Learn more
+        </PrimaryLink>
       </>
     )
   return (

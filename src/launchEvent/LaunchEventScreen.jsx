@@ -11,7 +11,7 @@ import { useContract } from './utils'
 export const StageContext = createContext(1)
 
 export const LaunchScreenContext = () => {
-  const [stage, setStage] = useState(2)
+  const [stage, setStage] = useState(0)
   const readLaunchContract = useContract(
     provider,
     selectedChain.launchData.launchContractAddress,

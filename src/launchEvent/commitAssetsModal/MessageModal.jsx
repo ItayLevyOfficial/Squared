@@ -3,7 +3,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import copy from 'copy-to-clipboard'
 import { useContext, useState } from 'react'
 import Modal from 'react-modal'
-import { selectedChain } from '../../constants'
+import { launchEventArticle, selectedChain } from '../../constants'
 import { overlayStyles } from '../../home/ModalStyles'
 import { CloseButton } from '../../home/ModalDisplay'
 import errorIcon from '../icons/error.svg'
@@ -99,7 +99,10 @@ export const ErrorModal = ({
           In the launch event, you can only deposit either {depositedTokenName}{' '}
           or {tokenName}. Since you already committed {depositedTokenName},
           further {launchStage === 1 ? 'deposits' : 'withdrawals'} of{' '}
-          {tokenName} are not allowed. <PrimaryLink>Learn more</PrimaryLink>
+          {tokenName} are not allowed.{' '}
+          <PrimaryLink onClick={() => window.open(launchEventArticle)}>
+            Learn more
+          </PrimaryLink>
         </>
       }
       close={close}

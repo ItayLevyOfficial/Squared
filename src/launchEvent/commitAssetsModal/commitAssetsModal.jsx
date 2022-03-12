@@ -1,6 +1,6 @@
 import { useState, useContext } from 'react'
 import Modal from 'react-modal'
-import { selectedChain } from '../../constants'
+import { launchEventArticle, selectedChain } from '../../constants'
 import { ModalButton } from '../../home/ModalButton'
 import { CloseButton } from '../../home/ModalDisplay'
 import { ModalInput } from '../../home/ModalInput'
@@ -12,8 +12,6 @@ export const commitContentStyles = {
   ...contentStyles,
   height: '400px',
 }
-
-const mediumArticleLink = 'https://medium.com/puffpuffmoney'
 
 export const PrimaryLink = ({ children, onClick }) => (
   <span className="text-darkPrimary underline cursor-pointer" onClick={onClick}>
@@ -37,7 +35,7 @@ export const ActionModal = ({ selectedTokenIndex, close, handleSubmit }) => {
             <>
               You will be able to withdraw your assets during the last look
               period.&nbsp;
-              <PrimaryLink onClick={() => window.open(mediumArticleLink)}>
+              <PrimaryLink onClick={() => window.open(launchEventArticle)}>
                 Learn more
               </PrimaryLink>
             </>
@@ -49,7 +47,7 @@ export const ActionModal = ({ selectedTokenIndex, close, handleSubmit }) => {
             <>
               The Last Look gives participants the opportunity to withdraw funds
               without making any swap for SQRD if they wish to opt out.&nbsp;
-              <PrimaryLink onClick={() => window.open(mediumArticleLink)}>
+              <PrimaryLink onClick={() => window.open(launchEventArticle)}>
                 Learn more
               </PrimaryLink>
             </>
