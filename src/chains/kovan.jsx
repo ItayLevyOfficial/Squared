@@ -29,6 +29,10 @@ export const kovan = {
       ...hardhat.tokens[2],
       address: '0x48B51bC25Aa41C1c6CeBc1797BF4FF5411354E5E',
       poolContractAddress: '0x3e771689A5Bcc7d56cedbb0a202c9fe0E68B93f4'
+    },{
+      ...hardhat.tokens[3],
+      address: '0x0a863a4A66fBf86fb4D1F737945C836F571C403F',
+      poolContractAddress: '0x22cC13e2b3740B0F23E37891Bd551572A25b9D6C'
     }
   ],
 }
