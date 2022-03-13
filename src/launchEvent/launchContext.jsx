@@ -3,10 +3,9 @@ import { createContext, useCallback, useState } from 'react'
 import { selectedChain } from '../constants'
 import { HomeScreen } from '../home/HomeScreen'
 import { launchContractAbi } from './abis/defiRoundAbi'
-import { LaunchEventScreen, RoutingButton } from './LaunchEventScreen'
+import { LaunchEventScreen, RoutingButton, StageContext } from './LaunchEventScreen'
 import { provider } from './useConnectWallet'
 import { useContract } from './utils'
-export const StageContext = createContext(1)
 
 export const LaunchScreenContext = () => {
   const [stage, setStage] = useState(0)
@@ -43,6 +42,6 @@ export const LaunchScreenContext = () => {
         </RoutingButton>
       </div>
       {[0, 1].includes(stage) ? <LaunchEventScreen /> : <HomeScreen />}
-    </StageContext.Provider>
+    </StageContex.Provider>
   )
 }
