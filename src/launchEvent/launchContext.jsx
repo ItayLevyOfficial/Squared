@@ -42,6 +42,6 @@ export const LaunchScreenContext = () => {
         </RoutingButton>
       </div>
       {[0, 1].includes(stage) ? <LaunchEventScreen /> : <HomeScreen />}
-    </StageContex.Provider>
+    </StageContext.Provider>
   )
 }
