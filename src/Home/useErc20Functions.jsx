@@ -29,7 +29,7 @@ export const useFetchPoolBalance = (selectedToken, abi) => {
   const fetchBalance = useCallback(async () => {
     try {
       const newBalance = await erc20?.balanceOf(poolContract?.address)
-      setBalance(parseInt(formatBigErc20(newBalance, selectedToken.decimals)))
+      setBalance(formatBigErc20(newBalance, selectedToken.decimals))
     } catch (error) {
       console.error({ error })
     }
@@ -66,7 +66,7 @@ export const useFetchUserBalance = (selectedToken, abi) => {
   const fetchBalance = useCallback(async () => {
     try {
       const balance = await poolContract?.balanceOf(address)
-      setBalance(parseInt(formatBigErc20(balance, selectedToken.decimals)))
+      setBalance(formatBigErc20(balance, selectedToken.decimals))
     } catch (error) {
       console.error({ error })
     }
