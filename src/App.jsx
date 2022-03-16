@@ -1,9 +1,7 @@
-import React from 'react'
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
-import { ScrollToTop } from './layouts/ScrollToTop'
 import { Landing } from './landing/Landing'
-import { LaunchScreenContext } from './launchEvent/LaunchEventScreen'
-import { HomeScreen } from './home/HomeScreen'
+import { LaunchScreenContext } from './launchEvent/launchContext'
+import { ScrollToTop } from './layouts/ScrollToTop'
 
 function App() {
   return (
