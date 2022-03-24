@@ -73,7 +73,7 @@ const TimeLeft = () => {
       <h2
         className={`text-white text-lg tracking-wide font-light font-number mb-4`}
       >
-        {`Next Cycle: ${
+        {` ${
           formattedRemainTime.d > 0 ? `${formattedRemainTime.d} DAYS` : ''
         } ${formattedRemainTime.h} HOURS ${formattedRemainTime.m} MINUTES`}
       </h2>
