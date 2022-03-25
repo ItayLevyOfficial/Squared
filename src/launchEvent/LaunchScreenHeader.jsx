@@ -87,9 +87,12 @@ const TimeLeft = ({ className = '' }) => {
           startTime: selectedChain.launchData.launchTime,
           length: weekInMillis,
         }
-      : {
+      : launchStage === 2 ? {
           startTime: selectedChain.launchData.lastLookStart,
           length: weekInMillis / 7,
+        } : {
+          startTime: selectedChain.launchData.lastLookStart,
+          length: weekInMillis,
         }
   const remainTimeMillis =
     timeLeftData.startTime + timeLeftData.length - new Date().getTime()
