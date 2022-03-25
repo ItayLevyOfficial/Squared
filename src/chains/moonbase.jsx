@@ -21,8 +21,8 @@ export const moonbase = {
     icon: <img src={DEVIcon} width={30} />,
   },{
     name: 'USDC',
-    poolContractAddress: '0x976fcd02f7C4773dd89C309fBF55D5923B4c98a1',
-    address: '0x40918Ba7f132E0aCba2CE4de4c4baF9BD2D7D849',
+    poolContractAddress: '0x4caeaB5547d1FD5A6685E7A52e4a900d779B767f',
+    address: '0x0a863a4A66fBf86fb4D1F737945C836F571C403F',
     decimals: '6',
     icon: <Usdc />,
   },
