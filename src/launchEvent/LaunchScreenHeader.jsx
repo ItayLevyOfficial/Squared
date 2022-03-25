@@ -40,7 +40,7 @@ export const BrandingSection = ({ children }) => (
   </div>
 )
 
-const MiddleSection = () => {
+export const MiddleSection = () => {
   const launchStage = useContext(StageContext)
   const paragraph =
     launchStage === 1 ? (
