@@ -1,7 +1,6 @@
 import React from 'react'
-import { hardhat } from './hardhat'
-import DEVIcon from './glmrIcon.png'
 import { Usdc } from '../launchEvent/icons/usdc'
+import DEVIcon from './glmrIcon.png'
 
 export const moonbase = {
   chainId: '0x507',
