@@ -28,8 +28,8 @@ export const moonbase = {
   },
   {
     name: 'SQRD',
-    poolContractAddress: '0x19cEcCd6942ad38562Ee10bAfd44776ceB67e923',
-    address: '0xb9bEECD1A582768711dE1EE7B0A1d582D9d72a6C',
+    poolContractAddress: '0x3e771689A5Bcc7d56cedbb0a202c9fe0E68B93f4',
+    address: '0x4314014f95A726B82A42cBCC6D9FAeC2851b54e8',
     decimals: '6',
   },
   {
