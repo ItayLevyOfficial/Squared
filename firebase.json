@@ -1,7 +1,7 @@
 {
   "hosting": {
     "public": "public",
-    "site": "moonbase-squared",
+    "site": "kovan-testnet",
     "ignore": ["firebase.json", "**/.*", "**/node_modules/**"],
     "rewrites": [
       {

@@ -1,0 +1,74 @@
+[debug] [2022-03-25T02:20:14.810Z] ----------------------------------------------------------------------
+[debug] [2022-03-25T02:20:14.811Z] Command:       /usr/local/bin/node /usr/local/bin/firebase deploy
+[debug] [2022-03-25T02:20:14.811Z] CLI Version:   10.3.0
+[debug] [2022-03-25T02:20:14.811Z] Platform:      darwin
+[debug] [2022-03-25T02:20:14.811Z] Node Version:  v16.14.0
+[debug] [2022-03-25T02:20:14.812Z] Time:          Thu Mar 24 2022 21:20:14 GMT-0500 (Colombia Standard Time)
+[debug] [2022-03-25T02:20:14.812Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2022-03-25T02:20:14.840Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2022-03-25T02:20:14.840Z] > authorizing via signed-in user (puffthemagicmoney@gmail.com)
+[debug] [2022-03-25T02:20:14.840Z] [iam] checking project puff-58bc2 for permissions ["firebase.projects.get","firebasehosting.sites.update"]
+[debug] [2022-03-25T02:20:14.841Z] >>> [apiv2][query] POST https://cloudresourcemanager.googleapis.com/v1/projects/puff-58bc2:testIamPermissions [none]
+[debug] [2022-03-25T02:20:14.841Z] >>> [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/puff-58bc2:testIamPermissions {"permissions":["firebase.projects.get","firebasehosting.sites.update"]}
+[debug] [2022-03-25T02:20:15.116Z] <<< [apiv2][status] POST https://cloudresourcemanager.googleapis.com/v1/projects/puff-58bc2:testIamPermissions 200
+[debug] [2022-03-25T02:20:15.117Z] <<< [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/puff-58bc2:testIamPermissions {"permissions":["firebase.projects.get","firebasehosting.sites.update"]}
+[debug] [2022-03-25T02:20:15.117Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/puff-58bc2 [none]
+[debug] [2022-03-25T02:20:15.487Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/puff-58bc2 200
+[debug] [2022-03-25T02:20:15.487Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/puff-58bc2 {"projectId":"puff-58bc2","projectNumber":"174830010808","displayName":"Puff","name":"projects/puff-58bc2","resources":{"hostingSite":"puff-58bc2"},"state":"ACTIVE"}
+[info] 
+[info] === Deploying to 'puff-58bc2'...
+[info] 
+[info] i  deploying hosting 
+[debug] [2022-03-25T02:20:15.488Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/puff-58bc2 [none]
+[debug] [2022-03-25T02:20:15.745Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/puff-58bc2 200
+[debug] [2022-03-25T02:20:15.745Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/puff-58bc2 {"projectId":"puff-58bc2","projectNumber":"174830010808","displayName":"Puff","name":"projects/puff-58bc2","resources":{"hostingSite":"puff-58bc2"},"state":"ACTIVE"}
+[debug] [2022-03-25T02:20:15.748Z] >>> [apiv2][query] POST https://firebasehosting.googleapis.com/v1beta1/projects/174830010808/sites/moonbase-squared/versions [none]
+[debug] [2022-03-25T02:20:15.748Z] >>> [apiv2][body] POST https://firebasehosting.googleapis.com/v1beta1/projects/174830010808/sites/moonbase-squared/versions {"config":{"rewrites":[{"glob":"**","path":"/index.html"}]},"labels":{"deployment-tool":"cli-firebase"}}
+[debug] [2022-03-25T02:20:16.344Z] <<< [apiv2][status] POST https://firebasehosting.googleapis.com/v1beta1/projects/174830010808/sites/moonbase-squared/versions 200
+[debug] [2022-03-25T02:20:16.344Z] <<< [apiv2][body] POST https://firebasehosting.googleapis.com/v1beta1/projects/174830010808/sites/moonbase-squared/versions {"name":"projects/174830010808/sites/moonbase-squared/versions/4528d698ce1a187d","status":"CREATED","config":{"rewrites":[{"glob":"**","path":"/index.html"}]},"labels":{"deployment-tool":"cli-firebase"}}
+[info] i  hosting[moonbase-squared]: beginning deploy... 
+[info] i  hosting[moonbase-squared]: found 13 files in public 
+[debug] [2022-03-25T02:20:16.388Z] [hosting] hash cache [cHVibGlj] stored for 13 files
+[debug] [2022-03-25T02:20:16.389Z] [hosting][hash queue][FINAL] {"max":29,"min":5,"avg":7.461538461538462,"active":0,"complete":13,"success":13,"errored":0,"retried":0,"total":13,"elapsed":33}
+[debug] [2022-03-25T02:20:16.389Z] >>> [apiv2][query] POST https://firebasehosting.googleapis.com/v1beta1/projects/174830010808/sites/moonbase-squared/versions/4528d698ce1a187d:populateFiles [none]
+[debug] [2022-03-25T02:20:16.389Z] >>> [apiv2][body] POST https://firebasehosting.googleapis.com/v1beta1/projects/174830010808/sites/moonbase-squared/versions/4528d698ce1a187d:populateFiles {"files":{"/index.html":"3c60b158ed93be9bf15bbf85f9bda9df3a04565cf2e89bfd9d281ae66d8224e7","/assets/discord.9e7a44c5.svg":"4f5b7739679677fd3578b46e2c8da0a598a2414c5d750bb5b108e64d6d82fe08","/assets/docs.b675b9d2.svg":"a003cca18035c4a2242eba7d6490b61c3a5e4d3e570c16abdd3ecc89ea6984fb","/assets/error.c50dcd0b.svg":"2c3aa736f705ba1bd0875d93c55ac645f96403a1823ba971b915ea524f661ad3","/assets/github.93f0e0e7.svg":"44fd1a1ff138e7a758190056441be0b560be4bdc589f0cb4a1f4bb61ca844af3","/assets/logo.d69f772b.svg":"8a7eb8b5ff1e63bf34beb9b0b3e8fae4be627ce15d7f1a9842eb0db79d382437","/assets/medium.c041691e.svg":"0e5f6b0f2e25b27337e4d08f2392cd88d8a1cdddf8bc01306c0c0928cb302794","/assets/logo.5de9ef3a.png":"fcc40dbca7a1530ef1157be182182617cc7996c8920adbbf8f0681997feddd5a","/assets/twitter.9f2d95d5.svg":"40c78bee557c9b42520d3b173b1ed8f5e76a74c3c28f7169dcfdb17588987c37","/assets/index.95def5c9.css":"e69c3d1b17fc27916fdb17b03a773b00286c22e7b7cfcd7441778e4730853000","/assets/metamask.9eb027d9.svg":"9371871d04c75808f082cd78179d3a929811132bcf949af962c35c8b0fef90b8","/assets/index.0904cbae.js":"0485b17ffe695d9817804a527fafb4b781ab08896752dfd79f6bb895a42ce213","/assets/vendor.6efbe77b.js":"b4f46c6e758041f73acc5b1ca690cef60f172067b3285e2e09b933f7190b3658"}}
+[debug] [2022-03-25T02:20:16.774Z] <<< [apiv2][status] POST https://firebasehosting.googleapis.com/v1beta1/projects/174830010808/sites/moonbase-squared/versions/4528d698ce1a187d:populateFiles 200
+[debug] [2022-03-25T02:20:16.775Z] <<< [apiv2][body] POST https://firebasehosting.googleapis.com/v1beta1/projects/174830010808/sites/moonbase-squared/versions/4528d698ce1a187d:populateFiles {"uploadRequiredHashes":["0485b17ffe695d9817804a527fafb4b781ab08896752dfd79f6bb895a42ce213","3c60b158ed93be9bf15bbf85f9bda9df3a04565cf2e89bfd9d281ae66d8224e7"],"uploadUrl":"https://upload-firebasehosting.googleapis.com/upload/sites/moonbase-squared/versions/4528d698ce1a187d/files"}
+[debug] [2022-03-25T02:20:16.776Z] >>> [apiv2][query] POST https://upload-firebasehosting.googleapis.com/upload/sites/moonbase-squared/versions/4528d698ce1a187d/files/0485b17ffe695d9817804a527fafb4b781ab08896752dfd79f6bb895a42ce213 [none]
+[debug] [2022-03-25T02:20:16.776Z] >>> [apiv2][body] POST https://upload-firebasehosting.googleapis.com/upload/sites/moonbase-squared/versions/4528d698ce1a187d/files/0485b17ffe695d9817804a527fafb4b781ab08896752dfd79f6bb895a42ce213 [stream]
+[debug] [2022-03-25T02:20:16.777Z] >>> [apiv2][query] POST https://upload-firebasehosting.googleapis.com/upload/sites/moonbase-squared/versions/4528d698ce1a187d/files/3c60b158ed93be9bf15bbf85f9bda9df3a04565cf2e89bfd9d281ae66d8224e7 [none]
+[debug] [2022-03-25T02:20:16.777Z] >>> [apiv2][body] POST https://upload-firebasehosting.googleapis.com/upload/sites/moonbase-squared/versions/4528d698ce1a187d/files/3c60b158ed93be9bf15bbf85f9bda9df3a04565cf2e89bfd9d281ae66d8224e7 [stream]
+[debug] [2022-03-25T02:20:16.777Z] [hosting][populate queue][FINAL] {"max":388,"min":388,"avg":388,"active":0,"complete":1,"success":1,"errored":0,"retried":0,"total":1,"elapsed":389}
+[debug] [2022-03-25T02:20:16.777Z] [hosting] uploads queued: 2
+[debug] [2022-03-25T02:20:17.416Z] <<< [apiv2][status] POST https://upload-firebasehosting.googleapis.com/upload/sites/moonbase-squared/versions/4528d698ce1a187d/files/3c60b158ed93be9bf15bbf85f9bda9df3a04565cf2e89bfd9d281ae66d8224e7 200
+[debug] [2022-03-25T02:20:17.417Z] <<< [apiv2][body] POST https://upload-firebasehosting.googleapis.com/upload/sites/moonbase-squared/versions/4528d698ce1a187d/files/3c60b158ed93be9bf15bbf85f9bda9df3a04565cf2e89bfd9d281ae66d8224e7 [stream]
+[debug] [2022-03-25T02:20:17.545Z] <<< [apiv2][status] POST https://upload-firebasehosting.googleapis.com/upload/sites/moonbase-squared/versions/4528d698ce1a187d/files/0485b17ffe695d9817804a527fafb4b781ab08896752dfd79f6bb895a42ce213 200
+[debug] [2022-03-25T02:20:17.546Z] <<< [apiv2][body] POST https://upload-firebasehosting.googleapis.com/upload/sites/moonbase-squared/versions/4528d698ce1a187d/files/0485b17ffe695d9817804a527fafb4b781ab08896752dfd79f6bb895a42ce213 [stream]
+[debug] [2022-03-25T02:20:17.546Z] [hosting][upload queue][FINAL] {"max":771,"min":641,"avg":706,"active":0,"complete":2,"success":2,"errored":0,"retried":0,"total":2,"elapsed":771}
+[info] ✔  hosting[moonbase-squared]: file upload complete 
+[debug] [2022-03-25T02:20:17.548Z] [hosting] deploy completed after 1202ms
+[debug] [2022-03-25T02:20:17.552Z] [
+  {
+    "config": {
+      "public": "public",
+      "site": "moonbase-squared",
+      "ignore": [
+        "firebase.json",
+        "**/.*",
+        "**/node_modules/**"
+      ],
+      "rewrites": [
+        {
+          "source": "**",
+          "destination": "/index.html"
+        }
+      ]
+    },
+    "site": "moonbase-squared",
+    "version": "projects/174830010808/sites/moonbase-squared/versions/4528d698ce1a187d"
+  }
+]
+[info] i  hosting[moonbase-squared]: finalizing version... 
+[debug] [2022-03-25T02:20:17.553Z] >>> [apiv2][query] PATCH https://firebasehosting.googleapis.com/v1beta1/projects/174830010808/sites/moonbase-squared/versions/4528d698ce1a187d updateMask=status
+[debug] [2022-03-25T02:20:17.554Z] >>> [apiv2][body] PATCH https://firebasehosting.googleapis.com/v1beta1/projects/174830010808/sites/moonbase-squared/versions/4528d698ce1a187d {"status":"FINALIZED"}
