@@ -13,7 +13,7 @@ export const commitContentStyles = {
   height: '400px',
 }
 
-export const PrimaryLink = ({ children, onClick }) => (
+export const PrimaryLink = ({ children, onClick = () => {} }) => (
   <span className="text-darkPrimary underline cursor-pointer" onClick={onClick}>
     {children}
   </span>

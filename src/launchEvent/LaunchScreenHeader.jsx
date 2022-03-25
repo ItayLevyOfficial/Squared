@@ -45,21 +45,24 @@ const MiddleSection = () => {
   const paragraph =
     launchStage === 1 ? (
       <>
-        {' '}
         Squared's Launch Event has arrived. It's the first time users can buy
         SQRD to fill our liquidity reserve.&nbsp;
         <PrimaryLink onClick={() => window.open(launchEventArticle)}>
           Learn more
         </PrimaryLink>
       </>
-    ) : (
+    ) : launchStage === 2 ? (
       <>
-        {' '}
         Squared's last look period has arrived. Now users can see the final
         swap/farming ratio and withdraw their committed funds. &nbsp;
         <PrimaryLink onClick={() => window.open(launchEventArticle)}>
           Learn more
         </PrimaryLink>
+      </>
+    ) : (
+      <>
+        We’re now entering the phase of Cycle Zero where DeGenesis participants
+        can claim their TOKE and migrate to the private farm.&nbsp;<PrimaryLink>Learn more</PrimaryLink>
       </>
     )
   return (
