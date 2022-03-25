@@ -4,7 +4,7 @@ import DEVIcon from './glmrIcon.png'
 
 export const moonbase = {
   chainId: '0x507',
-  chainName: 'moonbase',
+  chainName: 'Moonbase',
   approvalTime: 2,
   rpcUrls: ['https://rpc.api.moonbase.moonbeam.network'],
   scan: {
