@@ -61,8 +61,9 @@ export const MiddleSection = () => {
       </>
     ) : (
       <>
-        We’re now entering the phase of Cycle Zero where Launch participants
-        can claim their SQRD and migrate to the private farm.&nbsp;<PrimaryLink>Learn more</PrimaryLink>
+        We’re now entering the phase of Cycle Zero where Launch participants can
+        claim their SQRD and migrate to the private farm.&nbsp;
+        <PrimaryLink>Learn more</PrimaryLink>
       </>
     )
   return (
@@ -87,10 +88,12 @@ const TimeLeft = ({ className = '' }) => {
           startTime: selectedChain.launchData.launchTime,
           length: weekInMillis,
         }
-      : launchStage === 2 ? {
+      : launchStage === 2
+      ? {
           startTime: selectedChain.launchData.lastLookStart,
           length: weekInMillis / 7,
-        } : {
+        }
+      : {
           startTime: selectedChain.launchData.lastLookStart,
           length: weekInMillis,
         }
