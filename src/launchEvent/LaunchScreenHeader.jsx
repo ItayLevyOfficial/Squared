@@ -61,8 +61,8 @@ export const MiddleSection = () => {
       </>
     ) : (
       <>
-        We’re now entering the phase of Cycle Zero where DeGenesis participants
-        can claim their TOKE and migrate to the private farm.&nbsp;<PrimaryLink>Learn more</PrimaryLink>
+        We’re now entering the phase of Cycle Zero where Launch participants
+        can claim their SQRD and migrate to the private farm.&nbsp;<PrimaryLink>Learn more</PrimaryLink>
       </>
     )
   return (
