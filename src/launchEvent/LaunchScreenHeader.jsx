@@ -40,26 +40,30 @@ export const BrandingSection = ({ children }) => (
   </div>
 )
 
-const MiddleSection = () => {
+export const MiddleSection = () => {
   const launchStage = useContext(StageContext)
   const paragraph =
     launchStage === 1 ? (
       <>
-        {' '}
         Squared's Launch Event has arrived. It's the first time users can buy
         SQRD to fill our liquidity reserve.&nbsp;
         <PrimaryLink onClick={() => window.open(launchEventArticle)}>
           Learn more
         </PrimaryLink>
       </>
-    ) : (
+    ) : launchStage === 2 ? (
       <>
-        {' '}
         Squared's last look period has arrived. Now users can see the final
         swap/farming ratio and withdraw their committed funds. &nbsp;
         <PrimaryLink onClick={() => window.open(launchEventArticle)}>
           Learn more
         </PrimaryLink>
+      </>
+    ) : (
+      <>
+        We’re now entering the phase of Cycle Zero where Launch participants can
+        claim their SQRD and migrate to the private farm.&nbsp;
+        <PrimaryLink>Learn more</PrimaryLink>
       </>
     )
   return (
@@ -84,9 +88,14 @@ const TimeLeft = ({ className = '' }) => {
           startTime: selectedChain.launchData.launchTime,
           length: weekInMillis,
         }
-      : {
+      : launchStage === 2
+      ? {
           startTime: selectedChain.launchData.lastLookStart,
           length: weekInMillis / 7,
+        }
+      : {
+          startTime: selectedChain.launchData.lastLookStart,
+          length: weekInMillis,
         }
   const remainTimeMillis =
     timeLeftData.startTime + timeLeftData.length - new Date().getTime()
