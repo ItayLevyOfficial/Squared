@@ -117,8 +117,8 @@ export const NotWhitelistedErrorModal = ({ close }) => {
       isOpen
       footer={
         <>
-          In the launch event, only whitelisted users can commit assets to buy
-          SQRD. Looks like the connected Metamask address isn't whitelisted.{' '}
+          In the launch event, only whitelisted users can commit assets. The
+          connected Metamask address hasn't been whitelisted.{' '}
           <PrimaryLink>Learn more</PrimaryLink>
         </>
       }

@@ -33,6 +33,8 @@ export const LaunchScreenBody = ({ className = '' }) => {
   const tokenName = selectedToken?.name ?? ''
   const proof = useWhitelistProof()
 
+  console.log({ proof })
+
   return (
     <div className={`flex space-x-32 ${className}`}>
       <AccountStatus
@@ -44,19 +46,16 @@ export const LaunchScreenBody = ({ className = '' }) => {
         handleStableClick={() => setSelectedToken(1)}
       />
       <div className="w-[0.5px] h-full bg-white" />
+      <NotWhitelistedErrorModal close={() => {}} />
       <LaunchEventStatus />
       {txHash && selectedToken ? (
-        proof.length === 0 ? (
-          <NotWhitelistedErrorModal />
-        ) : (
-          <SuccessModal
-            close={() => {
-              setSelectedToken(null)
-              cleanTxHash()
-            }}
-            txHash={txHash}
-          />
-        )
+        <SuccessModal
+          close={() => {
+            setSelectedToken(null)
+            cleanTxHash()
+          }}
+          txHash={txHash}
+        />
       ) : depositedTokenAddress === ethers.constants.AddressZero ||
         depositedTokenAddress === selectedTokenAddress ? (
         <ActionModal
