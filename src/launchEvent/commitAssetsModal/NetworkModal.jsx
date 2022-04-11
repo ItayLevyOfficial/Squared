@@ -1,28 +1,37 @@
+import { useEffect, useState } from 'react'
 import Modal from 'react-modal'
-import { selectedChain } from '../../chains'
-import { useState, useEffect } from 'react'
+import { selectedChain } from '../../constants'
+import { overlayStyles } from '../../home/ModalStyles'
 import errorIcon from '../icons/error.svg'
-import { overlayStyles } from '../../Products/ModalStyles'
 import { commitContentStyles } from './commitAssetsModal'
-import { ModalTitle, ModalParagraph } from './MessageModal'
+import { ModalParagraph, ModalTitle } from './MessageModal'
 
 const useNetworkModal = () => {
-  const [wrongNetwork, setWrongNetwork] = useState(false)
-  useEffect(() => {
-    const handleNetworkChange = () => {
-      if (
-        parseInt(selectedChain.chainId, 16).toString() !==
-        window.ethereum.networkVersion
-      ) {
-        setWrongNetwork(true)
-      }
-    }
-    handleNetworkChange()
+  const formattedSelectedChainId = parseInt(selectedChain.chainId, 16)
+    .toString()
+    .toUpperCase()
+  const currentBrowserChain = window?.ethereum?.networkVersion?.toUpperCase()
 
-    return () => {
-      setWrongNetwork(false)
+  // When the user is not connected, sometimes the browser current chain will return undefined.
+  const [wrongNetwork, setWrongNetwork] = useState(
+    currentBrowserChain
+      ? currentBrowserChain !== formattedSelectedChainId
+      : false
+  )
+
+  useEffect(() => {
+    if (window.ethereum) {
+      const handleChainChange = (newChainId) => {
+        const currentChainId = selectedChain.chainId
+        setWrongNetwork(
+          newChainId.toString().toUpperCase() !== currentChainId.toUpperCase()
+        )
+      }
+      window.ethereum.on('chainChanged', handleChainChange)
+      return () =>
+        window.ethereum.removeListener('chainChanged', handleChainChange)
     }
-  }, [])
+  }, [formattedSelectedChainId])
 
   return wrongNetwork
 }

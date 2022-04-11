@@ -1,31 +1,25 @@
-import React, { useState, useContext } from 'react'
+import { useState, useContext } from 'react'
 import Modal from 'react-modal'
-import { selectedChain } from '../../chains'
-import { ModalButton } from '../../products/ModalButton'
-import { CloseButton } from '../../Products/ModalDisplay'
-import { ModalInput } from '../../Products/ModalInput'
+import { launchEventArticle, selectedChain } from '../../constants'
+import { ModalButton } from '../../home/ModalButton'
+import { CloseButton } from '../../home/ModalDisplay'
+import { ModalInput } from '../../home/ModalInput'
 import { useConnectWallet } from '../useConnectWallet'
 import { ModalParagraph, ModalTitle } from './MessageModal'
 import { StageContext } from '../LaunchEventScreen'
-import { contentStyles, overlayStyles } from '../../products/ModalStyles'
+import { contentStyles, overlayStyles } from '../../home/ModalStyles'
 export const commitContentStyles = {
   ...contentStyles,
   height: '400px',
 }
 
-const mediumArticleLink = 'https://medium.com/puffpuffmoney'
-
-export const PrimaryLink = ({ children, onClick }) => (
+export const PrimaryLink = ({ children, onClick = () => {} }) => (
   <span className="text-darkPrimary underline cursor-pointer" onClick={onClick}>
     {children}
   </span>
 )
 
-export const ActionModal = ({
-  selectedTokenIndex,
-  close,
-  handleSubmit,
-}) => {
+export const ActionModal = ({ selectedTokenIndex, close, handleSubmit }) => {
   const isOpen = selectedTokenIndex !== null
   const tokenData = isOpen ? selectedChain.tokens[selectedTokenIndex] : null
   const [tokenAmount, setTokenAmount] = useState('')
@@ -41,7 +35,7 @@ export const ActionModal = ({
             <>
               You will be able to withdraw your assets during the last look
               period.&nbsp;
-              <PrimaryLink onClick={() => window.open(mediumArticleLink)}>
+              <PrimaryLink onClick={() => window.open(launchEventArticle)}>
                 Learn more
               </PrimaryLink>
             </>
@@ -53,7 +47,7 @@ export const ActionModal = ({
             <>
               The Last Look gives participants the opportunity to withdraw funds
               without making any swap for SQRD if they wish to opt out.&nbsp;
-              <PrimaryLink onClick={() => window.open(mediumArticleLink)}>
+              <PrimaryLink onClick={() => window.open(launchEventArticle)}>
                 Learn more
               </PrimaryLink>
             </>

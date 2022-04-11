@@ -1,16 +1,16 @@
-import { useEffect, useState, useCallback } from 'react'
-import { useConnectWallet } from '../launchEvent/useConnectWallet'
-import { useContract } from '../launchEvent/utils'
-import { erc20abi } from '../launchEvent/abis/erc20abi'
 import { ethers } from 'ethers'
-import { selectedChain } from '../chains'
+import { useCallback, useEffect, useState } from 'react'
+import { selectedChain } from '../constants'
+import { erc20abi } from '../launchEvent/abis/erc20abi'
+import { provider, useConnectWallet } from '../launchEvent/useConnectWallet'
+import { useContract } from '../launchEvent/utils'
 import { EthPoolAbi } from './ABIs/EthPoolAbi'
 import { PoolAbi } from './ABIs/PoolAbi'
 
 export const formatBigErc20 = (value, decimals) =>
   ethers.utils.formatUnits(value, decimals)
 
-export const usePoolContracts = (selectedToken, abi) => {
+export const usePoolContract = (selectedToken, abi) => {
   const [signer, ,] = useConnectWallet()
   const poolContract = useContract(
     signer,
@@ -21,24 +21,29 @@ export const usePoolContracts = (selectedToken, abi) => {
 }
 
 export const useFetchPoolBalance = (selectedToken, abi) => {
-  const [signer, ,] = useConnectWallet()
   const [balance, setBalance] = useState(0)
 
-  const poolContract = usePoolContracts(selectedToken, abi)
-  const erc20 = useContract(signer, selectedToken.address, erc20abi)
+  const poolContract = usePoolContract(selectedToken, abi)
+  const erc20 = useContract(provider, selectedToken?.address, erc20abi)
 
   const fetchBalance = useCallback(async () => {
-    const balance = await erc20.balanceOf(poolContract.address)
-    setBalance(parseInt(formatBigErc20(balance, selectedToken.decimals)))
-  }, [poolContract])
+    try {
+      const newBalance = await erc20?.balanceOf(poolContract?.address)
+      setBalance(formatBigErc20(newBalance, selectedToken.decimals))
+    } catch (error) {
+      console.error({ error })
+    }
+  }, [erc20, poolContract?.address, selectedToken])
 
   useEffect(() => {
-    fetchBalance()
-  }, [poolContract])
+    if (erc20) {
+      fetchBalance()
+    }
+  }, [erc20, fetchBalance])
 
   return balance
 }
-export const getListOfPoolBalances = () => {
+export const usePoolBalances = () => {
   const ethBalance = useFetchPoolBalance(selectedChain.tokens[0], EthPoolAbi)
   const usdcBalance = useFetchPoolBalance(selectedChain.tokens[1], PoolAbi)
   const sqrdBalance = useFetchPoolBalance(selectedChain.tokens[2], PoolAbi)
@@ -56,22 +61,26 @@ export const getListOfPoolBalances = () => {
 export const useFetchUserBalance = (selectedToken, abi) => {
   const [, , address] = useConnectWallet()
   const [balance, setBalance] = useState(0)
-  const poolContract = usePoolContracts(selectedToken, abi)
+  const poolContract = usePoolContract(selectedToken, abi)
 
   const fetchBalance = useCallback(async () => {
-    const balance = await poolContract.balanceOf(address)
-    setBalance(parseInt(formatBigErc20(balance, selectedToken.decimals)))
-  }, [address, poolContract])
+    try {
+      const balance = await poolContract?.balanceOf(address)
+      setBalance(formatBigErc20(balance, selectedToken.decimals))
+    } catch (error) {
+      console.error({ error })
+    }
+  }, [address, selectedToken.decimals, poolContract])
 
   useEffect(() => {
     if (address) {
       fetchBalance()
     }
-  }, [address, poolContract])
+  }, [address, fetchBalance, poolContract])
   return balance
 }
 
-export const getListOfUserBalances = () => {
+export const useUserBalances = () => {
   const ethBalance = useFetchUserBalance(selectedChain.tokens[0], EthPoolAbi)
   const usdcBalance = useFetchUserBalance(selectedChain.tokens[1], PoolAbi)
   const sqrdBalance = useFetchUserBalance(selectedChain.tokens[2], PoolAbi)

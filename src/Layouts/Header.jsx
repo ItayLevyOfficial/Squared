@@ -1,69 +1,19 @@
-import { BookOpenIcon, LibraryIcon } from '@heroicons/react/outline'
 import React from 'react'
-import { useLocation } from 'react-router-dom'
 import MetamaskIcon from '../launchEvent/icons/metamask.svg'
-import { BrandingSection } from '../launchEvent/LaunchScreenHeader'
+import { BrandingSection, MiddleSection } from '../launchEvent/LaunchScreenHeader'
+import { useConnectWallet } from '../launchEvent/useConnectWallet'
 
-export const PageToggleWrapper = ({ children }) => {
-  return (
-    <div className="flex cursor-pointer group space-x-2 items-center  p-2 ">
-      {children}
-    </div>
-  )
-}
+export const Header = () => {
+  const [, connectWallet, address] = useConnectWallet()
 
-export const PageToggle = () => {
-  const { pathname } = useLocation()
-
-  return (
-    <div className="flex items-center justify-center space-x-6 mr-12">
-      <PageToggleWrapper>
-        <LibraryIcon
-          className={`h-6 text-white ${pathname !== '/assets' && 'opacity-40'}`}
-        />
-
-        <a
-          href="/assets"
-          className={`text-white font-medium  text-lg ${
-            pathname !== '/assets' && 'opacity-40'
-          }`}
-        >
-          Assets
-        </a>
-      </PageToggleWrapper>
-      <div className="w-1.5 h-1.5 border bg-white rounded-full" />
-
-      <PageToggleWrapper>
-        <a
-          href="/dashboard"
-          className={`text-white font-medium text-lg ${
-            pathname !== '/dashboard' && 'opacity-40'
-          }`}
-        >
-          Dashboard
-        </a>{' '}
-        <BookOpenIcon
-          className={`h-6 text-white ${
-            pathname !== '/dashboard' && 'opacity-40'
-          }`}
-        />
-      </PageToggleWrapper>
-    </div>
-  )
-}
-
-export const Header = (props) => {
   return (
     <nav
-      className={`flex w-full justify-between items-center
+      className={`flex w-full justify-between
     `}
     >
-      <BrandingSection children={'CYCLE ZERO'} />
-      <PageToggle />
-      <div className="flex items-center h-fit w-44 justify-end flex-shrink-0">
-        <img src={MetamaskIcon} alt="" className="mr-4" />
-        <AddressButton {...props} />
-      </div>
+      <BrandingSection>CYCLE ZERO</BrandingSection>
+      <MiddleSection />
+      <AddressSection connectWallet={connectWallet} address={address} />
     </nav>
   )
 }
@@ -90,3 +40,12 @@ export const AddressButton = ({ address, connectWallet }) =>
       Connect
     </AddressContainer>
   )
+
+export const AddressSection = ({ connectWallet, address }) => {
+  return (
+    <div className="flex items-center h-fit w-44 justify-end flex-shrink-0">
+      <img src={MetamaskIcon} alt="" className="mr-4" />
+      <AddressButton connectWallet={connectWallet} address={address} />
+    </div>
+  )
+}

@@ -1,13 +1,12 @@
-import { ethers } from 'ethers'
+import { BigNumber, ethers } from 'ethers'
 import { useState } from 'react'
-import { selectedChain } from '../../chains'
-import { EthPoolAbi } from '../../products/ABIs/EthPoolAbi'
-import { PoolAbi } from '../../products/ABIs/PoolAbi'
+import { selectedChain } from '../../constants'
+import { EthPoolAbi } from '../../home/ABIs/EthPoolAbi'
+import { PoolAbi } from '../../home/ABIs/PoolAbi'
 import { launchContractAbi } from '../abis/defiRoundAbi'
 import { erc20abi } from '../abis/erc20abi'
 import { useConnectWallet } from '../useConnectWallet'
 import { useWhitelistProof } from './useWhitelistProof'
-import { BigNumber } from 'ethers'
 
 export const parseNumberDecimals = ({ amount, decimals }) => {
   const wholeSide = Math.floor(amount)

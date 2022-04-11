@@ -1,18 +1,17 @@
 import React, { useContext } from 'react'
-import { selectedChain } from '../chains'
-import { AddressButton } from '../Layouts/Header'
+import { launchEventArticle, selectedChain } from '../constants'
+import { AddressSection } from '../Layouts/Header'
 import { PrimaryLink } from './commitAssetsModal/commitAssetsModal'
 import Logo from './icons/logo.svg'
-import MetamaskIcon from './icons/metamask.svg'
 import { StageContext } from './LaunchEventScreen'
 import { useConnectWallet } from './useConnectWallet'
 import { convertMilliseconds } from './utils'
 
-const timeLeftBarWidth = 'w-[580px]'
+export const timeLeftBarWidth = 'w-[580px]'
 
 export const LaunchScreenHeader = () => {
   const launchStage = useContext(StageContext)
-  const phase = launchStage === 1 ? 'TAKE OFF EVENT' : 'LAST LOOK'
+  const phase = launchStage === 1 ? 'LAUNCH EVENT' : 'LAST LOOK'
   const [, connectWallet, address] = useConnectWallet()
 
   return (
@@ -41,21 +40,29 @@ export const BrandingSection = ({ children }) => (
   </div>
 )
 
-const MiddleSection = () => {
+export const MiddleSection = () => {
   const launchStage = useContext(StageContext)
   const paragraph =
     launchStage === 1 ? (
       <>
-        {' '}
-        Squared's take-off event has arrived. It's the first time users can buy
+        Squared's Launch Event has arrived. It's the first time users can buy
         SQRD to fill our liquidity reserve.&nbsp;
-        <PrimaryLink>Learn more</PrimaryLink>
+        <PrimaryLink onClick={() => window.open(launchEventArticle)}>
+          Learn more
+        </PrimaryLink>
+      </>
+    ) : launchStage === 2 ? (
+      <>
+        Squared's last look period has arrived. Now users can see the final
+        swap/farming ratio and withdraw their committed funds. &nbsp;
+        <PrimaryLink onClick={() => window.open(launchEventArticle)}>
+          Learn more
+        </PrimaryLink>
       </>
     ) : (
       <>
-        {' '}
-        Squared's last look period has arrived. Now users can see the final
-        swap/farming ratio and withdraw their committed funds. &nbsp;
+        We’re now entering the phase of Cycle Zero where Launch participants can
+        claim their SQRD and migrate to the private farm.&nbsp;
         <PrimaryLink>Learn more</PrimaryLink>
       </>
     )
@@ -71,12 +78,6 @@ const MiddleSection = () => {
   )
 }
 
-const AddressSection = ({ connectWallet, address }) => (
-  <div className="flex items-center h-fit w-44 justify-end flex-shrink-0">
-    <img src={MetamaskIcon} alt="" className="mr-4" />
-    <AddressButton address={address} connectWallet={connectWallet} />
-  </div>
-)
 export const weekInMillis = 604800000
 
 const TimeLeft = ({ className = '' }) => {
@@ -87,9 +88,14 @@ const TimeLeft = ({ className = '' }) => {
           startTime: selectedChain.launchData.launchTime,
           length: weekInMillis,
         }
-      : {
+      : launchStage === 2
+      ? {
           startTime: selectedChain.launchData.lastLookStart,
           length: weekInMillis / 7,
+        }
+      : {
+          startTime: selectedChain.launchData.lastLookStart,
+          length: weekInMillis,
         }
   const remainTimeMillis =
     timeLeftData.startTime + timeLeftData.length - new Date().getTime()

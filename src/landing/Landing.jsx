@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom'
 import { Footer } from '../launchEvent/Footer'
 import Logo from '../launchEvent/icons/logo.svg'
 
-export const Home = () => {
+export const Landing = () => {
   const navigate = useNavigate()
 
   return (
