@@ -6,7 +6,7 @@ import { ActionModal } from './commitAssetsModal/commitAssetsModal'
 import {
   NotWhitelistedErrorModal,
   SingleAssetErrorModal,
-  SuccessModal,
+  SuccessModal
 } from './commitAssetsModal/MessageModal'
 import { NetworkModal } from './commitAssetsModal/NetworkModal'
 import { useDepositAssets } from './commitAssetsModal/useDepositAssets'
@@ -15,6 +15,7 @@ import { useWithdrawAssets } from './commitAssetsModal/useWithdrawAssets'
 import { LaunchEventStatus } from './EventStatus'
 import { StageContext } from './LaunchEventScreen'
 import { useAccountBalance } from './useAccountBalance'
+import { useConnectWallet } from './useConnectWallet'
 export const formatBigUsd = (bigUsd) => bigUsd.div(10 ** 8).toNumber()
 
 export const LaunchScreenBody = ({ className = '' }) => {
@@ -32,8 +33,9 @@ export const LaunchScreenBody = ({ className = '' }) => {
   )?.name
   const tokenName = selectedToken?.name ?? ''
   const proof = useWhitelistProof()
+  const [, , address] = useConnectWallet()
 
-  console.log({ proof })
+  const handleModalClose = () => setSelectedToken(null)
 
   return (
     <div className={`flex space-x-32 ${className}`}>
@@ -46,26 +48,28 @@ export const LaunchScreenBody = ({ className = '' }) => {
         handleStableClick={() => setSelectedToken(1)}
       />
       <div className="w-[0.5px] h-full bg-white" />
-      <NotWhitelistedErrorModal close={() => {}} />
+
       <LaunchEventStatus />
       {txHash && selectedToken ? (
         <SuccessModal
           close={() => {
-            setSelectedToken(null)
+            handleModalClose()
             cleanTxHash()
           }}
           txHash={txHash}
         />
+      ) : proof.length === 0 && selectedToken && address ? (
+        <NotWhitelistedErrorModal close={handleModalClose} />
       ) : depositedTokenAddress === ethers.constants.AddressZero ||
         depositedTokenAddress === selectedTokenAddress ? (
         <ActionModal
           selectedTokenIndex={selectedTokenIndex}
-          close={() => setSelectedToken(null)}
+          close={handleModalClose}
           handleSubmit={handleSubmit}
         />
       ) : (
         <SingleAssetErrorModal
-          close={() => setSelectedToken(null)}
+          close={handleModalClose}
           isOpen={selectedTokenIndex !== null}
           tokenName={tokenName}
           depositedTokenName={depositedTokenName}
