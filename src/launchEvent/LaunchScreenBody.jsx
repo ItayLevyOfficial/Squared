@@ -1,9 +1,13 @@
 import { ethers } from 'ethers'
-import React, { useContext, useState } from 'react'
+import { useContext, useState } from 'react'
 import { selectedChain } from '../constants'
 import { AccountStatus } from './AccountStatus'
 import { ActionModal } from './commitAssetsModal/commitAssetsModal'
-import { NotWhitelistedErrorModal, SingleAssetErrorModal, SuccessModal } from './commitAssetsModal/MessageModal'
+import {
+  NotWhitelistedErrorModal,
+  SingleAssetErrorModal,
+  SuccessModal,
+} from './commitAssetsModal/MessageModal'
 import { NetworkModal } from './commitAssetsModal/NetworkModal'
 import { useDepositAssets } from './commitAssetsModal/useDepositAssets'
 import { useWhitelistProof } from './commitAssetsModal/useWhitelistProof'
@@ -42,13 +46,17 @@ export const LaunchScreenBody = ({ className = '' }) => {
       <div className="w-[0.5px] h-full bg-white" />
       <LaunchEventStatus />
       {txHash && selectedToken ? (
-         proof.length === 0 ? <NotWhitelistedErrorModal /> : <SuccessModal
-          close={() => {
-            setSelectedToken(null)
-            cleanTxHash()
-          }}
-          txHash={txHash}
-        />
+        proof.length === 0 ? (
+          <NotWhitelistedErrorModal />
+        ) : (
+          <SuccessModal
+            close={() => {
+              setSelectedToken(null)
+              cleanTxHash()
+            }}
+            txHash={txHash}
+          />
+        )
       ) : depositedTokenAddress === ethers.constants.AddressZero ||
         depositedTokenAddress === selectedTokenAddress ? (
         <ActionModal
