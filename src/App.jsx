@@ -9,9 +9,9 @@ function App() {
       <Router>
         <ScrollToTop>
           <Routes>
-            <Route path="/" element={<Landing />} />
+            <Route path="/*" element={<Landing />} />
             {/* <Route path="/home" element={<HomeScreen />} /> */}
-            <Route path="/launch" element={<LaunchScreenContext />} />
+            {/* <Route path="/launch" element={<LaunchScreenContext />} /> */}
           </Routes>
         </ScrollToTop>
       </Router>
