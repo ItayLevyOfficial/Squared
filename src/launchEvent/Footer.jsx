@@ -9,7 +9,7 @@ const FooterIcon = ({ src, url }) => (
   <img
     src={src}
     alt=""
-    className="opacity-70 hover:opacity-100"
+    className="opacity-70 hover:opacity-100 cursor-pointer"
     onClick={() => window.open(url)}
   />
 )
