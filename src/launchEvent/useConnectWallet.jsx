@@ -19,7 +19,7 @@ export const useConnectWallet = () => {
       try {
         signer.getAddress().then((newAddress) => setAddress(newAddress))
       } catch (error) {
-        throw new Error(error.body)
+        console.error({ error })
       }
     }
   }, [signer])
@@ -35,7 +35,7 @@ export const useConnectWallet = () => {
         return () =>
           window.ethereum.removeListener('accountsChanged', handleAccountChange)
       } catch (error) {
-        throw new Error(error.body)
+        console.error({ error })
       }
     }
   }, [address, signer])
