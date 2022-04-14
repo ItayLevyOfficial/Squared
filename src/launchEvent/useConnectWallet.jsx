@@ -24,5 +24,21 @@ export const useConnectWallet = () => {
     }
   }, [signer])
 
+  useEffect(() => {
+    const handleAccountChange = () => {
+      window.location.reload()
+    }
+
+    if (window.ethereum) {
+      try {
+        window.ethereum.on('accountsChanged', handleAccountChange)
+        return () =>
+          window.ethereum.removeListener('accountsChanged', handleAccountChange)
+      } catch (error) {
+        console.error({ error })
+      }
+    }
+  }, [address, signer])
+
   return [signer, connectWallet, address]
 }
