@@ -83,7 +83,7 @@ export const SuccessModal = ({ txHash, close }) => {
   )
 }
 
-export const ErrorModal = ({
+export const SingleAssetErrorModal = ({
   isOpen,
   tokenName,
   depositedTokenName,
@@ -103,6 +103,23 @@ export const ErrorModal = ({
           <PrimaryLink onClick={() => window.open(launchEventArticle)}>
             Learn more
           </PrimaryLink>
+        </>
+      }
+      close={close}
+    />
+  )
+}
+
+export const NotWhitelistedErrorModal = ({ close }) => {
+  return (
+    <MessageModal
+      header="Commit Not Allowed"
+      isOpen
+      footer={
+        <>
+          In the launch event, only whitelisted users can commit assets. The
+          connected Metamask address hasn't been whitelisted.{' '}
+          <PrimaryLink>Learn more</PrimaryLink>
         </>
       }
       close={close}

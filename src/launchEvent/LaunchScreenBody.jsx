@@ -1,15 +1,21 @@
 import { ethers } from 'ethers'
-import React, { useContext, useState } from 'react'
+import { useContext, useState } from 'react'
 import { selectedChain } from '../constants'
 import { AccountStatus } from './AccountStatus'
 import { ActionModal } from './commitAssetsModal/commitAssetsModal'
-import { ErrorModal, SuccessModal } from './commitAssetsModal/MessageModal'
+import {
+  NotWhitelistedErrorModal,
+  SingleAssetErrorModal,
+  SuccessModal
+} from './commitAssetsModal/MessageModal'
 import { NetworkModal } from './commitAssetsModal/NetworkModal'
 import { useDepositAssets } from './commitAssetsModal/useDepositAssets'
+import { useWhitelistProof } from './commitAssetsModal/useWhitelistProof'
 import { useWithdrawAssets } from './commitAssetsModal/useWithdrawAssets'
 import { LaunchEventStatus } from './EventStatus'
 import { StageContext } from './LaunchEventScreen'
 import { useAccountBalance } from './useAccountBalance'
+import { useConnectWallet } from './useConnectWallet'
 export const formatBigUsd = (bigUsd) => bigUsd.div(10 ** 8).toNumber()
 
 export const LaunchScreenBody = ({ className = '' }) => {
@@ -26,6 +32,10 @@ export const LaunchScreenBody = ({ className = '' }) => {
     (token) => token.address === depositedTokenAddress
   )?.name
   const tokenName = selectedToken?.name ?? ''
+  const proof = useWhitelistProof()
+  const [, , address] = useConnectWallet()
+
+  const handleModalClose = () => setSelectedToken(null)
 
   return (
     <div className={`flex space-x-32 ${className}`}>
@@ -38,25 +48,28 @@ export const LaunchScreenBody = ({ className = '' }) => {
         handleStableClick={() => setSelectedToken(1)}
       />
       <div className="w-[0.5px] h-full bg-white" />
+
       <LaunchEventStatus />
       {txHash && selectedToken ? (
         <SuccessModal
           close={() => {
-            setSelectedToken(null)
+            handleModalClose()
             cleanTxHash()
           }}
           txHash={txHash}
         />
+      ) : proof.length === 0 && selectedToken && address ? (
+        <NotWhitelistedErrorModal close={handleModalClose} />
       ) : depositedTokenAddress === ethers.constants.AddressZero ||
         depositedTokenAddress === selectedTokenAddress ? (
         <ActionModal
           selectedTokenIndex={selectedTokenIndex}
-          close={() => setSelectedToken(null)}
+          close={handleModalClose}
           handleSubmit={handleSubmit}
         />
       ) : (
-        <ErrorModal
-          close={() => setSelectedToken(null)}
+        <SingleAssetErrorModal
+          close={handleModalClose}
           isOpen={selectedTokenIndex !== null}
           tokenName={tokenName}
           depositedTokenName={depositedTokenName}
