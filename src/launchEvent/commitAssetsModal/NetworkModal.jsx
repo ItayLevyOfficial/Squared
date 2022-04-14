@@ -22,11 +22,13 @@ const useNetworkModal = () => {
   useEffect(() => {
     if (window.ethereum) {
       const handleChainChange = (newChainId) => {
+        window.location.reload()
         const currentChainId = selectedChain.chainId
         setWrongNetwork(
           newChainId.toString().toUpperCase() !== currentChainId.toUpperCase()
         )
       }
+
       window.ethereum.on('chainChanged', handleChainChange)
       return () =>
         window.ethereum.removeListener('chainChanged', handleChainChange)
