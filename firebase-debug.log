@@ -1,0 +1,25 @@
+[debug] [2023-01-29T16:15:59.040Z] ----------------------------------------------------------------------
+[debug] [2023-01-29T16:15:59.041Z] Command:       /usr/local/bin/firebase /Users/itaylevy/.cache/firebase/tools/lib/node_modules/firebase-tools/lib/bin/firebase deploy
+[debug] [2023-01-29T16:15:59.042Z] CLI Version:   11.21.0
+[debug] [2023-01-29T16:15:59.042Z] Platform:      darwin
+[debug] [2023-01-29T16:15:59.042Z] Node Version:  v16.16.0
+[debug] [2023-01-29T16:15:59.048Z] Time:          Sun Jan 29 2023 18:15:59 GMT+0200 (Israel Standard Time)
+[debug] [2023-01-29T16:15:59.048Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2023-01-29T16:15:59.137Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2023-01-29T16:15:59.141Z] > authorizing via signed-in user (puffthemagicmoney@gmail.com)
+[debug] [2023-01-29T16:15:59.142Z] [iam] checking project puff-58bc2 for permissions ["firebase.projects.get","firebasehosting.sites.update"]
+[debug] [2023-01-29T16:15:59.145Z] >>> [apiv2][query] POST https://cloudresourcemanager.googleapis.com/v1/projects/puff-58bc2:testIamPermissions [none]
+[debug] [2023-01-29T16:15:59.146Z] >>> [apiv2][(partial)header] POST https://cloudresourcemanager.googleapis.com/v1/projects/puff-58bc2:testIamPermissions x-goog-quota-user=projects/puff-58bc2
+[debug] [2023-01-29T16:15:59.146Z] >>> [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/puff-58bc2:testIamPermissions {"permissions":["firebase.projects.get","firebasehosting.sites.update"]}
+[debug] [2023-01-29T16:15:59.870Z] <<< [apiv2][status] POST https://cloudresourcemanager.googleapis.com/v1/projects/puff-58bc2:testIamPermissions 200
+[debug] [2023-01-29T16:15:59.873Z] <<< [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/puff-58bc2:testIamPermissions {"permissions":["firebase.projects.get","firebasehosting.sites.update"]}
+[debug] [2023-01-29T16:15:59.876Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/puff-58bc2 [none]
+[debug] [2023-01-29T16:16:00.470Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/puff-58bc2 200
+[debug] [2023-01-29T16:16:00.472Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/puff-58bc2 {"projectId":"puff-58bc2","projectNumber":"174830010808","displayName":"Puff","name":"projects/puff-58bc2","resources":{"hostingSite":"puff-58bc2"},"state":"ACTIVE","etag":"1_e2e71e33-40c6-4aaa-8b1f-cef8695b537c"}
+[info] 
+[info] === Deploying to 'puff-58bc2'...
+[info] 
+[info] i  deploying hosting 
+[debug] [2023-01-29T16:16:00.485Z] >>> [apiv2][query] POST https://firebasehosting.googleapis.com/v1beta1/projects/-/sites/puff-58bc2/versions [none]
+[debug] [2023-01-29T16:16:00.488Z] >>> [apiv2][body] POST https://firebasehosting.googleapis.com/v1beta1/projects/-/sites/puff-58bc2/versions {"status":"CREATED","labels":{"deployment-tool":"cli-firebase"}}
