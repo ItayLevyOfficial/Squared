@@ -16,9 +16,9 @@ const FooterIcon = ({ src, url }) => (
 
 const twitter = 'https://twitter.com/squared_dao'
 const medium = 'https://squaredfinance.medium.com/'
-const github = 'https://github.com/squareddao/squared_contracts'
+const github = 'https://github.com/ItayLevyOfficial/squared_backend'
 const discord = 'https://discord.gg/CFFwA4zH'
-const docs = 'https://docs.squared.finance/docs/'
+const docs = 'https://squaredfinance.gitbook.io/gitbook/'
 
 export const Footer = () => (
   <div className="flex items-center space-x-9">
