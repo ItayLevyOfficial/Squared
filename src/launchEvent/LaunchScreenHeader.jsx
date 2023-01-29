@@ -63,7 +63,7 @@ export const MiddleSection = () => {
       <>
         We’re now entering the phase of Cycle Zero where Launch participants can
         claim their SQRD and migrate to the private farm.&nbsp;
-        <PrimaryLink>Learn more</PrimaryLink>
+        <PrimaryLink onClick={() => window.open(launchEventArticle)}>Learn more</PrimaryLink>
       </>
     )
   return (

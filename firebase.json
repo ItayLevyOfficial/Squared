@@ -1,7 +1,6 @@
 {
   "hosting": {
     "public": "public",
-    "site": "moonbase-squared",
     "ignore": ["firebase.json", "**/.*", "**/node_modules/**"],
     "rewrites": [
       {
